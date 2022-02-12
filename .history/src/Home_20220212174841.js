@@ -3,7 +3,7 @@ const Home = () => {
 
     //let name = 'mario';
     const [name, setName] = useState('mario');
-    const [age, setAge] = useState(28);
+    const [age, setAge] = useState(22);
 
     const handleClick = () => {
         setName('luigi');
