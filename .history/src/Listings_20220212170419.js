@@ -10,7 +10,7 @@ const Listings = () => {
     return (
         <div className="listings">
             <h2>Fish Listings</h2>
-            <FishList blogs={blogs} title="Kokomi mains unit" />
+            <FishList blogs={blogs} title="All Fish" />
         </div>
     );
 }
