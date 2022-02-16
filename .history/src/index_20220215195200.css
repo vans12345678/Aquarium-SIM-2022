@@ -60,12 +60,11 @@
   border-radius: "8px";
 }
 
+
 .imageLogo
 {
-  width: 150px;
+  width: 200px;
   height: auto;
-  position:absolute;
-  left:10px;
-  top:5px;
-
+  text-align: left;
+  
 }

@@ -2,7 +2,7 @@
 
     return (
         <div className="aquarium">
-            <h1 className="banner1">Aquarium</h1>
+            <h2 className="banner1">Aquarium</h2>
         </div>
     );
 }

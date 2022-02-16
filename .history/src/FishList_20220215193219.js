@@ -1,4 +1,4 @@
-const FishList = ({ fish, title}) => {
+const BlogList = ({ fish, title}) => {
   return (
     <div className="fish-list">
       <h2>{ title }</h2>
@@ -12,4 +12,4 @@ const FishList = ({ fish, title}) => {
   );
 }
  
-export default FishList;
+export default BlogList;

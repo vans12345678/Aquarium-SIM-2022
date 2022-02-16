@@ -11,7 +11,7 @@ const Home = () => {
 
   return (
     <div className="home">
-      <h1 className="banner1">Homepage</h1>
+      <h1>Homepage</h1>
       <p>Welcome to Aquarium SIM 2022</p>
       {/* <button onClick={handleClick}>Click me</button> */}
     </div>

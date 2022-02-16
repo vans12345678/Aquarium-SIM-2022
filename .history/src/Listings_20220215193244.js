@@ -15,7 +15,7 @@ const Listings = () => {
   return (
     <div className="listings">
       <h1 className="banner1">Fish Listings</h1>
-      <FishList fish={fish} title="Fish stuff" />
+      <FishList blogs={blogs} title="Fish stuff" />
     </div>
   );
 };

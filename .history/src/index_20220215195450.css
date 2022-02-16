@@ -26,6 +26,7 @@
   margin-left: 16px;
   text-decoration: none;
   padding: 6px;
+  top:5px;
 }
 .navbar a:hover {
   color: #FF8600;
@@ -60,9 +61,10 @@
   border-radius: "8px";
 }
 
+
 .imageLogo
 {
-  width: 150px;
+  width: 200px;
   height: auto;
   position:absolute;
   left:10px;
