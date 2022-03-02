@@ -242,7 +242,7 @@ figcaption {
 }
 
 #fish1{
-   position:absolute;
+   position:relative;
    right: 0px;
    top: 95%;
 }
