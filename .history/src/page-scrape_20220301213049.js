@@ -25,40 +25,34 @@ const puppeteer = require('puppeteer');
     // close brower when we are done
     await browser.close();
 
-    //Loops through the array of full names and separates the common name for all the fish. Then formats the names to be
-    //used in further navigation of the website 
+    //Loops through the array of full names and separates the common name for all the fish 
     for(let i = 0; i < fullNameArray.length; i++)
     {
-      commonName[i] = String(fullNameArray[i].split(" - ", 1))    
+      commonName[i] = String(fullNameArray[i].split(" - ", 1))  
+      //console.log(commonName[i]);  
 
-      //converts the fish name to all lowercase
-       navigationName[i] = commonName[i].toLowerCase();
+       navigationName[i] = commonName[i];
        
        var space = new RegExp(/\s/);
-      // var apostrophe = new RegExp(/\'/);
+       
+       var apostrophe = new RegEx (/\'/);
+
 
         // if (apostrophe.test(navigationName[i]))
         // {
         //     const nameSplit = navigationName[i].split("'");
-        //     navigationName[i] = nameSplit[0] + nameSplit[1];
-
+        //     navigationName[i] = nameSplit[1] + nameSplit[2];
+        //     console.log(navigationName[i]);
         // }
+        navigationName[i] = navigationName[i].replace(/'/, "");
 
-        navigationName[i] = navigationName[i].replace("'", "");
 
         // Removes white spaces and adds dashes in its place
         if (space.test(navigationName[i]))
         {
             const nameSplit2 = navigationName[i].split(" ");
-            navigationName[i] = nameSplit2[0] + "-" + nameSplit2[1];
+            navigationName[i] = nameSplit2[1] + "-" + nameSplit2[2];
         }
-
-        //add a "1" at the end if the navigation name is repeated
-        if (navigationName[i] == navigationName[i-1])
-        {
-            navigationName[i] = navigationName[i] + "1";
-        }
-
         console.log(navigationName[i]);
 
     }

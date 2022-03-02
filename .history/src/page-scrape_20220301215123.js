@@ -25,13 +25,12 @@ const puppeteer = require('puppeteer');
     // close brower when we are done
     await browser.close();
 
-    //Loops through the array of full names and separates the common name for all the fish. Then formats the names to be
-    //used in further navigation of the website 
+    //Loops through the array of full names and separates the common name for all the fish 
     for(let i = 0; i < fullNameArray.length; i++)
     {
-      commonName[i] = String(fullNameArray[i].split(" - ", 1))    
+      commonName[i] = String(fullNameArray[i].split(" - ", 1))  
+      //console.log(commonName[i]);  
 
-      //converts the fish name to all lowercase
        navigationName[i] = commonName[i].toLowerCase();
        
        var space = new RegExp(/\s/);
@@ -53,7 +52,7 @@ const puppeteer = require('puppeteer');
             navigationName[i] = nameSplit2[0] + "-" + nameSplit2[1];
         }
 
-        //add a "1" at the end if the navigation name is repeated
+        //add a one if the navigation name is repeated
         if (navigationName[i] == navigationName[i-1])
         {
             navigationName[i] = navigationName[i] + "1";

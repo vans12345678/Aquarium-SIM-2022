@@ -31,7 +31,6 @@ const puppeteer = require('puppeteer');
     {
       commonName[i] = String(fullNameArray[i].split(" - ", 1))    
 
-      //converts the fish name to all lowercase
        navigationName[i] = commonName[i].toLowerCase();
        
        var space = new RegExp(/\s/);
