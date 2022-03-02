@@ -5,12 +5,12 @@ const mysql = require('mysql');
 
 (async () => {
 
-    const db = mysql.createConnection({
+    const db = mysql.createPool({
         host: 'localhost',
         user: 'root',
         password: 'password',
         database: 'aquariumsim2022_db'
-    });
+    })
 
     //initialize variables and arrays
     const browser = await puppeteer.launch();
@@ -147,7 +147,8 @@ const mysql = require('mysql');
         fullFishSpecArrays[k] = formattedSpecArray;
     }
 
-    const sqlInsert = "INSERT INTO tblfish(fishScientificName, fishCommonName, fishAverageSize, fishLowerPH, fishUpperPH, fishLowerTemp, fishUpperTemp, fishAggrSameSpecies, fishAggrOtherSpecies, fishLocationTank) VALUES ('fishsciname2', 'fishcomname2', 20.1, 21.2, 22.3, 23.4, 35.5, 'Aggressive', 'Passive', 'Bottom Half');"; 
+    const sqlInsert = "INSERT INTO tblfish (fishID, fishScientificName, fishCommonName, fishAverageSize, fishLowerPH, fishUpperPH, fishLowerTemp, fishAggrSameSpecies, fishAggrOtherSpecies, fishLocationTank)" +
+    " VALUES (1, 'fishsciname', 'fishcomname', 20, 21, 22, 23, 'Aggressive', 'Passive' 'Bottom Half');"; 
 
 
     db.connect(function(err) 

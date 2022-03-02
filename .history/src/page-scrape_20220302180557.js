@@ -147,7 +147,7 @@ const mysql = require('mysql');
         fullFishSpecArrays[k] = formattedSpecArray;
     }
 
-    const sqlInsert = "INSERT INTO tblfish(fishScientificName, fishCommonName, fishAverageSize, fishLowerPH, fishUpperPH, fishLowerTemp, fishUpperTemp, fishAggrSameSpecies, fishAggrOtherSpecies, fishLocationTank) VALUES ('fishsciname2', 'fishcomname2', 20.1, 21.2, 22.3, 23.4, 35.5, 'Aggressive', 'Passive', 'Bottom Half');"; 
+    const sqlInsert = "INSERT INTO tblfish(fishScientificName, fishCommonName, fishAverageSize, fishLowerPH, fishUpperPH, fishLowerTemp, fishUpperTemp, fishAggrSameSpecies, fishAggrOtherSpecies, fishLocationTank) VALUES ('fishsciname', 'fishcomname', 20.1, 21.2, 22.3, 23.4, 35.5, 'Aggressive', 'Passive', 'Bottom Half');"; 
 
 
     db.connect(function(err) 
