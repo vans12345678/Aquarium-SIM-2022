@@ -14,12 +14,12 @@ const puppeteer = require('puppeteer');
 
 
     // // another example, this time using the evaluate function to return innerText of body
-    for(let i = 0; i <= 742; i++)
-    {
+    // for(let i = 0; i <= 742; i++)
+    // {
 
-        const moreContent = await page.evaluate((i) => document.getElementById("LN" + i + "_" + i).innerHTML);
-        console.log(moreContent);
-    }
+        const moreContent = await page.evaluate((x) => document.getElementById("LN" + 0 + "_" + 0).innerHTML);
+         console.log(moreContent);
+    // }
     
 
     // close brower when we are done
