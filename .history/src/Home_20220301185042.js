@@ -46,7 +46,7 @@ const Home = () => {
         <br />
         <br />
         <h1 className="orangeText">WELCOME TO AQUARIUM SIM 2022</h1>
-
+        <Button variant="primary">Primary</Button>{" "}
         <p className="text-center ">
           maybe add a video here showing off the application portion
         </p>

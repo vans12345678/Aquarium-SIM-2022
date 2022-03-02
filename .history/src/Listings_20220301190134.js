@@ -33,6 +33,7 @@ const Listings = () => {
         <br />
         <br />
         <br />
+        <h1>ABOUT THIS PROJECT</h1>
         <div className="table">
           <Table
             striped
@@ -53,16 +54,6 @@ const Listings = () => {
                 <td>1</td>
                 <td>Mark</td>
                 <td>Otto</td>
-              </tr>
-              <tr>
-                <td>2</td>
-                <td>Jacob</td>
-                <td>Thornton</td>
-              </tr>
-              <tr>
-                <td>2</td>
-                <td>Jacob</td>
-                <td>Thornton</td>
               </tr>
               <tr>
                 <td>2</td>

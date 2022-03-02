@@ -33,19 +33,15 @@ const Listings = () => {
         <br />
         <br />
         <br />
+        <h1>ABOUT THIS PROJECT</h1>
         <div className="table">
-          <Table
-            striped
-            bordered
-            hover
-            variant="dark"
-            className="w-50 text-center"
-          >
+          <Table striped bordered hover variant="dark" className="w-50">
             <thead>
               <tr>
-                <th>Fish Image</th>
-                <th>Fish Name</th>
-                <th>Fish Family</th>
+                <th>#</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Username</th>
               </tr>
             </thead>
             <tbody>
@@ -53,21 +49,18 @@ const Listings = () => {
                 <td>1</td>
                 <td>Mark</td>
                 <td>Otto</td>
+                <td>@mdo</td>
               </tr>
               <tr>
                 <td>2</td>
                 <td>Jacob</td>
                 <td>Thornton</td>
+                <td>@fat</td>
               </tr>
               <tr>
-                <td>2</td>
-                <td>Jacob</td>
-                <td>Thornton</td>
-              </tr>
-              <tr>
-                <td>2</td>
-                <td>Jacob</td>
-                <td>Thornton</td>
+                <td>3</td>
+                <td colSpan={2}>Larry the Bird</td>
+                <td>@twitter</td>
               </tr>
             </tbody>
           </Table>

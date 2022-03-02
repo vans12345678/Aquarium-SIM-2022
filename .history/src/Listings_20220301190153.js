@@ -59,16 +59,6 @@ const Listings = () => {
                 <td>Jacob</td>
                 <td>Thornton</td>
               </tr>
-              <tr>
-                <td>2</td>
-                <td>Jacob</td>
-                <td>Thornton</td>
-              </tr>
-              <tr>
-                <td>2</td>
-                <td>Jacob</td>
-                <td>Thornton</td>
-              </tr>
             </tbody>
           </Table>
         </div>

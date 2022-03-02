@@ -1,6 +1,6 @@
 import FishList from "./FishList";
 import { useState } from "react";
-import { Table } from "react-bootstrap";
+import Table from "react-bootstrap/Table";
 
 const Listings = () => {
   const [fish, setBlogs] = useState([
@@ -33,45 +33,8 @@ const Listings = () => {
         <br />
         <br />
         <br />
-        <div className="table">
-          <Table
-            striped
-            bordered
-            hover
-            variant="dark"
-            className="w-50 text-center"
-          >
-            <thead>
-              <tr>
-                <th>Fish Image</th>
-                <th>Fish Name</th>
-                <th>Fish Family</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>1</td>
-                <td>Mark</td>
-                <td>Otto</td>
-              </tr>
-              <tr>
-                <td>2</td>
-                <td>Jacob</td>
-                <td>Thornton</td>
-              </tr>
-              <tr>
-                <td>2</td>
-                <td>Jacob</td>
-                <td>Thornton</td>
-              </tr>
-              <tr>
-                <td>2</td>
-                <td>Jacob</td>
-                <td>Thornton</td>
-              </tr>
-            </tbody>
-          </Table>
-        </div>
+        <h1>ABOUT THIS PROJECT</h1>
+
         <br />
         <br />
         <br />

@@ -49,7 +49,11 @@
     text-shadow: 2px 2px black;
 }
 
-
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
 /********END OF NAVBAR**********/
 /* .content {
   max-width: 600px;
@@ -106,20 +110,9 @@
    position: relative;
    
 }
-
-.darkBlueSection {
-  background-color: #27187E;
-
-  height: 100%;
-  position: relative;
-
-}
 .darkBlueText{
   color:#27187E;
   
-}
-.whiteText{
-  color:white;
 }
 
 .boldText{
@@ -244,7 +237,7 @@ figcaption {
 #fish1{
    position:absolute;
    right: 0px;
-   bottom: -60px;
+   bottom: -70px;
 }
 
 #sword{
@@ -295,10 +288,4 @@ figcaption {
    right: 20px;
      height: 50px;
      width: 50px;
-}
-
-
-.table{
-   margin-left: auto;
-   margin-right: auto;
 }

@@ -28,7 +28,7 @@ const Listings = () => {
 
         <br />
       </section>
-      <section>
+      <section className="darkBlueSection">
         <br />
         <br />
         <br />

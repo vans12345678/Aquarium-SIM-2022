@@ -33,44 +33,12 @@ const Listings = () => {
         <br />
         <br />
         <br />
-        <div className="table">
-          <Table
-            striped
-            bordered
-            hover
-            variant="dark"
-            className="w-50 text-center"
-          >
-            <thead>
-              <tr>
-                <th>Fish Image</th>
-                <th>Fish Name</th>
-                <th>Fish Family</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>1</td>
-                <td>Mark</td>
-                <td>Otto</td>
-              </tr>
-              <tr>
-                <td>2</td>
-                <td>Jacob</td>
-                <td>Thornton</td>
-              </tr>
-              <tr>
-                <td>2</td>
-                <td>Jacob</td>
-                <td>Thornton</td>
-              </tr>
-              <tr>
-                <td>2</td>
-                <td>Jacob</td>
-                <td>Thornton</td>
-              </tr>
-            </tbody>
-          </Table>
+        <h1>ABOUT THIS PROJECT</h1>
+        <div>
+          react-dom.development.js:394 Warning: Can't perform a React state
+          update on an unmounted component. This is a no-op, but it indicates a
+          memory leak in your application. To fix, cancel all subscriptions and
+          asynchronous tasks in a useEffect cleanup function. at Home
         </div>
         <br />
         <br />

@@ -120,6 +120,7 @@
 }
 .whiteText{
   color:white;
+   border-bottom: 3px solid #FF8600;
 }
 
 .boldText{

@@ -33,45 +33,31 @@ const Listings = () => {
         <br />
         <br />
         <br />
-        <div className="table">
-          <Table
-            striped
-            bordered
-            hover
-            variant="dark"
-            className="w-50 text-center"
-          >
-            <thead>
-              <tr>
-                <th>Fish Image</th>
-                <th>Fish Name</th>
-                <th>Fish Family</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>1</td>
-                <td>Mark</td>
-                <td>Otto</td>
-              </tr>
-              <tr>
-                <td>2</td>
-                <td>Jacob</td>
-                <td>Thornton</td>
-              </tr>
-              <tr>
-                <td>2</td>
-                <td>Jacob</td>
-                <td>Thornton</td>
-              </tr>
-              <tr>
-                <td>2</td>
-                <td>Jacob</td>
-                <td>Thornton</td>
-              </tr>
-            </tbody>
-          </Table>
-        </div>
+        <h1>ABOUT THIS PROJECT</h1>
+        <Table striped bordered hover size="sm">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>First Name</th>
+              <th>Last Name</th>
+              <th>Username</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td>Mark</td>
+              <td>Otto</td>
+              <td>@mdo</td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td>Jacob</td>
+              <td>Thornton</td>
+              <td>@fat</td>
+            </tr>
+          </tbody>
+        </Table>
         <br />
         <br />
         <br />

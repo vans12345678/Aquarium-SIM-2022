@@ -106,20 +106,9 @@
    position: relative;
    
 }
-
-.darkBlueSection {
-  background-color: #27187E;
-
-  height: 100%;
-  position: relative;
-
-}
 .darkBlueText{
   color:#27187E;
   
-}
-.whiteText{
-  color:white;
 }
 
 .boldText{
