@@ -74,6 +74,8 @@ const puppeteer = require('puppeteer');
             navigationName[i] = navigationName[i] + "1";
         }
 
+        console.log(navigationName[i]);
+
    }
 
 })();

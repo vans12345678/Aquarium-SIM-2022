@@ -4,19 +4,16 @@ const puppeteer = require('puppeteer');
 
 (async () => {
 
-    //initialize variables and arrays
     const browser = await puppeteer.launch();
     const page = await browser.newPage();
     const fullNameArray = [];
     const commonName = [];
     const navigationName = [];
 
-    //initial page navigation
     await page.goto('https://en.aqua-fish.net/fish/');
     await page.click('#searchME');
     await page.waitForTimeout(2000);
 
-    //scrape the fish name entries in the website
     const fishNames = await page.$$('#searchResults > ul > li ');
     let i = 0;
     for(let li of fishNames){
@@ -25,7 +22,7 @@ const puppeteer = require('puppeteer');
         i++;
       }
 
-    //close brower when we are done
+    // close brower when we are done
     await browser.close();
 
     //Loops through the array of full names and separates the common name for all the fish. Then formats the names to be
@@ -36,23 +33,21 @@ const puppeteer = require('puppeteer');
 
       //converts the fish name to all lowercase
        navigationName[i] = commonName[i].toLowerCase();
+       
 
-
-       //finds and removes name entries with the weird apostrophe
-        var apostrophe = new RegExp(/’/);
+        var apostrophe = new RegExp(/'/);
 
         if (apostrophe.test(navigationName[i]))
         {
-            const nameSplit = navigationName[i].split(apostrophe);
+            const nameSplit = navigationName[i].split("'");
             navigationName[i] = nameSplit[0] + nameSplit[1];
 
         }
 
-        //finds and removes name entries with standard apostrophe
         navigationName[i] = navigationName[i].replace("'", "");
 
+        // Removes white spaces and adds dashes in its place
 
-        //Removes white spaces and adds dashes in its place
         var space = new RegExp(/\s/);
         
         if (space.test(navigationName[i]))
@@ -74,7 +69,9 @@ const puppeteer = require('puppeteer');
             navigationName[i] = navigationName[i] + "1";
         }
 
-   }
+        console.log(navigationName[i]);
+
+    }
 
 })();
 
