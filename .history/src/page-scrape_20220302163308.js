@@ -122,6 +122,11 @@ const puppeteer = require('puppeteer');
         formattedSpecArray[5] = lowerTemperature;
         formattedSpecArray[6] = upperTemperature;
 
+        for (let i = 0; i< temperatureSplit.length; i++)
+        {
+            console.log(temperatureSplit[i]);
+        }
+
         //formatting temperament
         const toOwnSpecies = fishSpecArray[11].split(": ");
         const toOtherSpecies = fishSpecArray[12].split(": ");

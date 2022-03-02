@@ -107,36 +107,13 @@ const puppeteer = require('puppeteer');
         const size2 = parseInt(sizeSplit[7]);
         const avgSize = (size1 + size2)/2;
         formattedSpecArray[2] = avgSize;
+        console.log(sizeSplit[5]);
 
-        //formatting pH range
-        const phSplit = fishSpecArray[5].split(" ");
-        const lowerPH = parseFloat(phSplit[6]);
-        const upperPH = parseFloat(phSplit[8]);
-        formattedSpecArray[3] = lowerPH;
-        formattedSpecArray[4] = upperPH;
-
-        //formatting temperature range
-        const temperatureSplit = fishSpecArray[8].split(" ");
-        const lowerTemperature = parseFloat(temperatureSplit[2]);
-        const upperTemperature = parseFloat(temperatureSplit[4]);
-        formattedSpecArray[5] = lowerTemperature;
-        formattedSpecArray[6] = upperTemperature;
-
-        //formatting temperament
-        const toOwnSpecies = fishSpecArray[11].split(": ");
-        const toOtherSpecies = fishSpecArray[12].split(": ");
-        formattedSpecArray[7] = toOwnSpecies[1];
-        formattedSpecArray[8] = toOtherSpecies[1];
-
-        //formatting tank location
-        const locationSplit = fishSpecArray[13].split(": ");
-        formattedSpecArray[9] = locationSplit[1];
-
-
-        for (let i = 0; i< formattedSpecArray.length; i++)
+        for (let i = 0; i< sizeSplit.length; i++)
         {
-            console.log(formattedSpecArray[i]);
+            console.log(sizeSplit[i]);
         }
+
         
 
     //close brower when we are done

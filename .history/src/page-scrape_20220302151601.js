@@ -11,7 +11,6 @@ const puppeteer = require('puppeteer');
     const commonName = [];
     const navigationName = [];
     const fishSpecArray =[];
-    const formattedSpecArray = [];
 
     //initial page navigation
     await page.goto('https://en.aqua-fish.net/fish/');
@@ -78,66 +77,18 @@ const puppeteer = require('puppeteer');
 
     //navigation
     await page.goto('https://en.aqua-fish.net/fish/' + navigationName[0]);
-    await page.waitForTimeout(50);
 
-    //scraping 
+
+    //scrapting 
     const fishSpecs = await page.$$('#fishProfile > #article_content > p ');
     let j = 0;
-    
     for(let p of fishSpecs){
         const specText = await page.evaluate(el => el.innerText, p);
         fishSpecArray[j] = specText;
         j++;
-        //console.log(specText);
         }
-        
-        ////////////////////Formating fish data///////////////////////////////
 
-        //formatting scientific name
-        const sNameSplit = fishSpecArray[0].split(": ", 2); 
-        formattedSpecArray[0] = sNameSplit[1];
-
-        //formatting common name
-        const cNameSplit = fishSpecArray[1].split(": ", 2);
-        formattedSpecArray[1] = cNameSplit[1];
-
-        //formatting and averaging size 
-        const sizeSplit = fishSpecArray[3].split(" ");
-        const size1 = parseInt(sizeSplit[5]);
-        const size2 = parseInt(sizeSplit[7]);
-        const avgSize = (size1 + size2)/2;
-        formattedSpecArray[2] = avgSize;
-
-        //formatting pH range
-        const phSplit = fishSpecArray[5].split(" ");
-        const lowerPH = parseFloat(phSplit[6]);
-        const upperPH = parseFloat(phSplit[8]);
-        formattedSpecArray[3] = lowerPH;
-        formattedSpecArray[4] = upperPH;
-
-        //formatting temperature range
-        const temperatureSplit = fishSpecArray[8].split(" ");
-        const lowerTemperature = parseFloat(temperatureSplit[2]);
-        const upperTemperature = parseFloat(temperatureSplit[4]);
-        formattedSpecArray[5] = lowerTemperature;
-        formattedSpecArray[6] = upperTemperature;
-
-        //formatting temperament
-        const toOwnSpecies = fishSpecArray[11].split(": ");
-        const toOtherSpecies = fishSpecArray[12].split(": ");
-        formattedSpecArray[7] = toOwnSpecies[1];
-        formattedSpecArray[8] = toOtherSpecies[1];
-
-        //formatting tank location
-        const locationSplit = fishSpecArray[13].split(": ");
-        formattedSpecArray[9] = locationSplit[1];
-
-
-        for (let i = 0; i< formattedSpecArray.length; i++)
-        {
-            console.log(formattedSpecArray[i]);
-        }
-        
+    console.log(fishSpec);
 
     //close brower when we are done
     await browser.close();

@@ -116,20 +116,25 @@ const puppeteer = require('puppeteer');
         formattedSpecArray[4] = upperPH;
 
         //formatting temperature range
-        const temperatureSplit = fishSpecArray[8].split(" ");
+        const temperatureSplit = fishSpecArray[9].split(" ");
         const lowerTemperature = parseFloat(temperatureSplit[2]);
         const upperTemperature = parseFloat(temperatureSplit[4]);
         formattedSpecArray[5] = lowerTemperature;
         formattedSpecArray[6] = upperTemperature;
 
+        for (let i = 0; i< temperatureSplit.length; i++)
+        {
+            console.log(temperatureSplit[i]);
+        }
+
         //formatting temperament
-        const toOwnSpecies = fishSpecArray[11].split(": ");
-        const toOtherSpecies = fishSpecArray[12].split(": ");
+        const toOwnSpecies = fishSpecArray[12].split(": ");
+        const toOtherSpecies = fishSpecArray[14].split(": ");
         formattedSpecArray[7] = toOwnSpecies[1];
         formattedSpecArray[8] = toOtherSpecies[1];
 
         //formatting tank location
-        const locationSplit = fishSpecArray[13].split(": ");
+        const locationSplit = fishSpecArray[14].split(": ");
         formattedSpecArray[9] = locationSplit[1];
 
 
