@@ -98,12 +98,6 @@
     position: relative;
  
 }
-.homeMiddle
-{
-    background-color:white;
-    height: 100%;
-    position: relative;
-}
 .darkSection{
   background-color:#AEB8FE;
   
@@ -249,7 +243,7 @@ figcaption {
 #fish1{
    position:absolute;
    right: 0px;
-   top: 70%;
+   top: 95%;
 }
 
 #sword{

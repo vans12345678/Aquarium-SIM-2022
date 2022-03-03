@@ -61,7 +61,7 @@ const Home = () => {
         <br />
         <br />
       </section>
-      <section className="homeMiddle">
+      <section>
         <br />
         <br />
         <br />
