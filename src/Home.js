@@ -1,11 +1,15 @@
 import { useState } from "react";
 
-import { Button } from "react-bootstrap";
 import { useEffect } from "react";
-import fish from "./images/fish1.png";
+import betta from "./images/betta.png";
 import arrow from "./images/arrow.jpg";
 import swordtail from "./images/swordtail-border-right.png";
+import zebraDanio from "./images/zebra-danio.png";
+import commonPleco from "./images/common-pleco.png";
+import guppy from "./images/guppy.png";
+import pearlGourami from "./images/pearl-gourami.png";
 import "bootstrap/dist/css/bootstrap.min.css";
+import React from "react";
 
 const Home = () => {
   // The back-to-top button is hidden at the beginning
@@ -80,7 +84,7 @@ const Home = () => {
           </p>
         </div>
         <div id="fish1" className="fishanim">
-          <img width="150px" height="100px" src={fish} alt="" />
+          <img width="150px" height="100px" src={guppy} alt="" />
         </div>
 
         <br />
