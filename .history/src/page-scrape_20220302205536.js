@@ -1,8 +1,6 @@
 const axios = require('axios');
 const { parse } = require('node-html-parser');
-const puppeteer = require('puppeteer-extra');
-const StealthPlugin = require('puppeteer-extra-plugin-stealth');
-puppeteer.use(StealthPlugin());
+const puppeteer = require('puppeteer');
 const mysql = require('mysql');
 
 (async () => {
@@ -24,19 +22,20 @@ const mysql = require('mysql');
     const fullFishSpecArrays = [];
 
     //initial page navigation
+    console.log("before");
     await page.goto('https://en.aqua-fish.net/fish/');
+    console.log("after");
     await page.click('#searchME');
     await page.waitForTimeout(2000);
 
     //scrape the fish name entries in the website
     const fishNames = await page.$$('#searchResults > ul > li ');
     let i = 0;
-    for(let li of fishNames)
-    {
+    for(let li of fishNames){
         const fullNameText = await page.evaluate(el => el.innerText, li);
         fullNameArray[i] = fullNameText;
         i++;
-    }
+      }
 
     //Loops through the array of full names and separates the common name for all the fish. Then formats the names to be
     //used in further navigation of the website 
@@ -83,27 +82,27 @@ const mysql = require('mysql');
         {
             navigationName[i] = navigationName[i] + "1";
         }
+
    }
     ////////  Further navigation and scraping //////////////
 
-    for (let k=176; k <= 225; k++)
+
+    for (let k=0; k < 2; k++)
     {
         const formattedSpecArray = [];
         //navigation
         await page.goto('https://en.aqua-fish.net/fish/' + navigationName[k]);
-        let num = Math.floor(Math.random() * 10000) + 3000;
-        await page.waitForTimeout(num);
+        await page.waitForTimeout(100);
 
         //scraping 
         const fishSpecs = await page.$$('#fishProfile > #article_content > p ');
         let j = 0;
 
-        for(let p of fishSpecs)
-        {
-            const specText = await page.evaluate(el => el.innerText, p);
-            fishSpecArray[j] = specText;
-            j++;
-            //console.log(specText);
+        for(let p of fishSpecs){
+        const specText = await page.evaluate(el => el.innerText, p);
+        fishSpecArray[j] = specText;
+        j++;
+        //console.log(specText);
         }
     
         ////////////////////Formating fish data///////////////////////////////
@@ -164,13 +163,24 @@ const mysql = require('mysql');
         " VALUES (?);"; 
         let values = [fishSciName, fishCommonName, fishAverageSize, fishLowerPH, fishUpperPH, fishLowerTemp, fishUpperTemp, fishAggrSameSpecies, fishAggrOtherSpecies, fishLocationTank]; 
 
-        db.query(sqlInsert, [values], function (err, result, fields) 
-        {
-            if (err) throw err;
-            console.log(result);
-        });
+        // db.query(sqlInsert, [values], function (err, result, fields) 
+        // {
+        //     if (err) throw err;
+        //     console.log(result);
+        // });
         
-    }   
+    }
+
+    const sqlInsert = "INSERT INTO tblfish(fishScientificName, fishCommonName, fishAverageSize, fishLowerPH, fishUpperPH, fishLowerTemp, fishUpperTemp, fishAggrSameSpecies, fishAggrOtherSpecies, fishLocationTank) VALUES ('fishsciname2', 'fishcomname2', 20.1, 21.2, 22.3, 23.4, 35.5, 'Aggressive', 'Passive', 'Bottom Half');"; 
+
+   
+
+
+    // for (let i = 0; i < 2; i++)
+    // {
+
+
+    // }
 
     //close brower when we are done
     await browser.close();

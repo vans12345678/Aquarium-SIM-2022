@@ -36,7 +36,7 @@ const mysql = require('mysql');
         const fullNameText = await page.evaluate(el => el.innerText, li);
         fullNameArray[i] = fullNameText;
         i++;
-    }
+      }
 
     //Loops through the array of full names and separates the common name for all the fish. Then formats the names to be
     //used in further navigation of the website 

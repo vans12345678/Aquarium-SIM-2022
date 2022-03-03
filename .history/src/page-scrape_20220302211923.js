@@ -1,8 +1,8 @@
 const axios = require('axios');
 const { parse } = require('node-html-parser');
 const puppeteer = require('puppeteer-extra');
-const StealthPlugin = require('puppeteer-extra-plugin-stealth');
-puppeteer.use(StealthPlugin());
+const StealthPlugin = require('puppeteer-extra-plugin-stealth')
+puppeteer.use(StealthPlugin())
 const mysql = require('mysql');
 
 (async () => {
@@ -31,12 +31,11 @@ const mysql = require('mysql');
     //scrape the fish name entries in the website
     const fishNames = await page.$$('#searchResults > ul > li ');
     let i = 0;
-    for(let li of fishNames)
-    {
+    for(let li of fishNames){
         const fullNameText = await page.evaluate(el => el.innerText, li);
         fullNameArray[i] = fullNameText;
         i++;
-    }
+      }
 
     //Loops through the array of full names and separates the common name for all the fish. Then formats the names to be
     //used in further navigation of the website 
@@ -83,10 +82,12 @@ const mysql = require('mysql');
         {
             navigationName[i] = navigationName[i] + "1";
         }
+
    }
     ////////  Further navigation and scraping //////////////
 
-    for (let k=176; k <= 225; k++)
+
+    for (let k=100; k < navigationName.length; k++)
     {
         const formattedSpecArray = [];
         //navigation
@@ -98,12 +99,11 @@ const mysql = require('mysql');
         const fishSpecs = await page.$$('#fishProfile > #article_content > p ');
         let j = 0;
 
-        for(let p of fishSpecs)
-        {
-            const specText = await page.evaluate(el => el.innerText, p);
-            fishSpecArray[j] = specText;
-            j++;
-            //console.log(specText);
+        for(let p of fishSpecs){
+        const specText = await page.evaluate(el => el.innerText, p);
+        fishSpecArray[j] = specText;
+        j++;
+        //console.log(specText);
         }
     
         ////////////////////Formating fish data///////////////////////////////
@@ -170,7 +170,18 @@ const mysql = require('mysql');
             console.log(result);
         });
         
-    }   
+    }
+
+    const sqlInsert = "INSERT INTO tblfish(fishScientificName, fishCommonName, fishAverageSize, fishLowerPH, fishUpperPH, fishLowerTemp, fishUpperTemp, fishAggrSameSpecies, fishAggrOtherSpecies, fishLocationTank) VALUES ('fishsciname2', 'fishcomname2', 20.1, 21.2, 22.3, 23.4, 35.5, 'Aggressive', 'Passive', 'Bottom Half');"; 
+
+   
+
+
+    // for (let i = 0; i < 2; i++)
+    // {
+
+
+    // }
 
     //close brower when we are done
     await browser.close();
