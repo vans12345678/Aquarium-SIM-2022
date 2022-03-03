@@ -159,26 +159,18 @@ const mysql = require('mysql');
         
         let sqlInsert = "INSERT INTO tblfish(fishScientificName, fishCommonName, fishAverageSize, fishLowerPH, fishUpperPH, fishLowerTemp, fishUpperTemp, fishAggrSameSpecies, fishAggrOtherSpecies, fishLocationTank)" + 
         " VALUES (?);"; 
-        let values = [fishSciName, fishCommonName, fishAverageSize, fishLowerPH, fishUpperPH, fishLowerTemp, fishUpperTemp, fishAggrSameSpecies, fishAggrOtherSpecies, fishLocationTank]; 
-
-        db.query(sqlInsert, [values], function (err, result, fields) 
+        let values = [fishSciName, fishCommonName, fishAverageSize, fishLowerPH, fishUpperPH, fishLowerTemp, fishUpperTemp, fishAggrSameSpecies, fishAggrOtherSpecies, fishLocationTank];
+        db.connect(function(err) 
         {
             if (err) throw err;
-            console.log(result);
+            db.query(sqlInsert, [values], function (err, result, fields) 
+            {
+              if (err) throw err;
+              console.log(result);
+            });
         });
-        
     }
 
-    const sqlInsert = "INSERT INTO tblfish(fishScientificName, fishCommonName, fishAverageSize, fishLowerPH, fishUpperPH, fishLowerTemp, fishUpperTemp, fishAggrSameSpecies, fishAggrOtherSpecies, fishLocationTank) VALUES ('fishsciname2', 'fishcomname2', 20.1, 21.2, 22.3, 23.4, 35.5, 'Aggressive', 'Passive', 'Bottom Half');"; 
-
-   
-
-
-    // for (let i = 0; i < 2; i++)
-    // {
-
-
-    // }
 
     //close brower when we are done
     await browser.close();

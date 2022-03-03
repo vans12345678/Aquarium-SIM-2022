@@ -145,27 +145,6 @@ const mysql = require('mysql');
         formattedSpecArray[9] = locationSplit[1];
 
         fullFishSpecArrays[k] = formattedSpecArray;
-
-        let fishSciName = fullFishSpecArrays[k][0];
-        let fishCommonName = fullFishSpecArrays[k][1]; 
-        let fishAverageSize = fullFishSpecArrays[k][2]; 
-        let fishLowerPH = fullFishSpecArrays[k][3]; 
-        let fishUpperPH = fullFishSpecArrays[k][4]; 
-        let fishLowerTemp = fullFishSpecArrays[k][5];
-        let fishUpperTemp = fullFishSpecArrays[k][6]; 
-        let fishAggrSameSpecies = fullFishSpecArrays[k][7]; 
-        let fishAggrOtherSpecies =fullFishSpecArrays[k][8];
-        let fishLocationTank=fullFishSpecArrays[k][9];
-        
-        let sqlInsert = "INSERT INTO tblfish(fishScientificName, fishCommonName, fishAverageSize, fishLowerPH, fishUpperPH, fishLowerTemp, fishUpperTemp, fishAggrSameSpecies, fishAggrOtherSpecies, fishLocationTank)" + 
-        " VALUES (?);"; 
-        let values = [fishSciName, fishCommonName, fishAverageSize, fishLowerPH, fishUpperPH, fishLowerTemp, fishUpperTemp, fishAggrSameSpecies, fishAggrOtherSpecies, fishLocationTank]; 
-
-        db.query(sqlInsert, [values], function (err, result, fields) 
-        {
-            if (err) throw err;
-            console.log(result);
-        });
         
     }
 

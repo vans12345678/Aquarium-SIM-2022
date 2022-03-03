@@ -85,7 +85,7 @@ const mysql = require('mysql');
     ////////  Further navigation and scraping //////////////
 
 
-    for (let k=0; k < 2; k++)
+    for (let k=0; k < 100; k++)
     {
         const formattedSpecArray = [];
         //navigation
