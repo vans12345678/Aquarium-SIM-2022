@@ -229,13 +229,13 @@ figcaption {
 }
 
 
-/* .sword-tail-pos {
+.sword-tail-pos {
   position: absolute;
   right: 0px;
   bottom: -50px;
  
 
-} */
+}
 
 @keyframes up {
   

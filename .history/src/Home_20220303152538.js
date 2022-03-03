@@ -133,16 +133,15 @@ const Home = () => {
         <br />
         <br />
         <br />
-        <div class="bubbles bubble-1"></div>
-        <div class="bubbles bubble-5"></div>
-        <div class="bubbles bubble-2"></div>
-        <div class="bubbles bubble-6"></div>
-        <div class="bubbles bubble-3"></div>
-        <div class="bubbles bubble-7"></div>
-        <div class="bubbles bubble-4"></div>
-        <div class="bubbles bubble-8"></div>
       </section>
-
+      <div class="bubbles bubble-1"></div>
+      <div class="bubbles bubble-5"></div>
+      <div class="bubbles bubble-2"></div>
+      <div class="bubbles bubble-6"></div>
+      <div class="bubbles bubble-3"></div>
+      <div class="bubbles bubble-7"></div>
+      <div class="bubbles bubble-4"></div>
+      <div class="bubbles bubble-8"></div>
       {showButton && (
         <button onClick={scrollToTop} className="back-to-top ">
           <img className="arrowimg" src={arrow} alt="submit" />

@@ -189,7 +189,45 @@ figcaption {
 
 @keyframes fish {
 
- 
+    /* 0% {
+      transform: translateX(220px) rotate(-10deg);
+    }
+
+     20% {
+       transform: translateX(-300px) rotate(10deg);
+     }
+
+    30% {
+      transform: translateX(-500px) rotate(-10deg);
+    }
+
+    40% {
+      transform: translateX(-700px) rotate(0deg);
+    }
+
+    50% {
+      transform: translateX(-900px) rotate(10deg);
+    }
+
+    60% {
+      transform: translateX(-1100px) rotate(-5deg);
+    }
+
+    70% {
+      transform: translateX(-1300px) rotate(0deg);
+    }
+
+    80% {
+      transform: translateX(-1500px) rotate(10deg);
+    }
+
+    90% {
+      transform: translateX(-1700px) rotate(-10deg);
+    }
+
+    100% {
+      transform: translateX(-1900px) rotate(0deg);
+    } */
 
      from {
        margin-left: 100%;
@@ -201,6 +239,21 @@ figcaption {
       
      }
 
+       /* 0% {
+         transform: translateX(100px) rotateY(0deg);
+       }
+
+       49% {
+         transform: translateX(500px) rotateY(0deg);
+       }
+
+       50% {
+         transform: translateX(500px) rotateY(360deg);
+       }
+
+       100% {
+         transform: translateX(100px) rotateY(360deg);
+       } */
 }
 
 
@@ -213,7 +266,14 @@ figcaption {
   
 }
 
+.swordanim {
+  animation-name: swordfish;
+  animation-duration: 12s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+  animation-direction: normal;
 
+}
 
 #fish1{
    position:absolute;
@@ -229,19 +289,19 @@ figcaption {
 }
 
 
-/* .sword-tail-pos {
+.sword-tail-pos {
   position: absolute;
   right: 0px;
   bottom: -50px;
  
 
-} */
+}
 
 @keyframes up {
   
 
   100% {
-    transform: translateY(-2000px);
+    transform: translateY(-800px);
   }
 }
 
@@ -260,43 +320,9 @@ figcaption {
 }
 
 .bubble-2 {
-  left: 50%;
-  animation: up 4s infinite;
+  left: 350px;
+  animation: up 2s infinite;
 }
-
-.bubble-3 {
-  left: 30%;
-  opacity: .30;
-  animation: up 5s infinite;
-}
-
-.bubble-4 {
-  left: 80%;
-  animation: up 5s infinite;
-}
-
-.bubble-5 {
-  left: 90%;
-  animation: up 5s infinite;
-}
-
-.bubble-6 {
-  left: 10%;
-  opacity: .30;
-  animation: up 3s infinite;
-}
-
-.bubble-7 {
-  left: 60%;
-  animation: up 4s infinite;
-}
-
-.bubble-8 {
-  left: 70%;
-  opacity: .30;
-  animation: up 3s infinite;
-}
-
 
 
 /**************BACK TO TOP BUTTON***********************/
