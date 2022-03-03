@@ -53,7 +53,6 @@ const Home = () => {
         <div id="sword" className="fishanim">
           <img width="200px" height="100px" src={swordtail} alt="" />
         </div>
-
         <br />
         <br />
         <br />
@@ -62,7 +61,7 @@ const Home = () => {
         <br />
         <br />
       </section>
-      <section className="homeMiddle">
+      <section>
         <br />
         <br />
         <br />
@@ -77,12 +76,11 @@ const Home = () => {
             reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
             pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
             culpa qui officia deserunt mollit anim id est laborum.
-          </p>
+          </p>     
         </div>
         <div id="fish1" className="fishanim">
           <img width="150px" height="100px" src={fish} alt="" />
         </div>
-
         <br />
         <br />
         <br />
@@ -133,16 +131,7 @@ const Home = () => {
         <br />
         <br />
         <br />
-        <div class="bubbles bubble-1"></div>
-        <div class="bubbles bubble-5"></div>
-        <div class="bubbles bubble-2"></div>
-        <div class="bubbles bubble-6"></div>
-        <div class="bubbles bubble-3"></div>
-        <div class="bubbles bubble-7"></div>
-        <div class="bubbles bubble-4"></div>
-        <div class="bubbles bubble-8"></div>
       </section>
-
       {showButton && (
         <button onClick={scrollToTop} className="back-to-top ">
           <img className="arrowimg" src={arrow} alt="submit" />
