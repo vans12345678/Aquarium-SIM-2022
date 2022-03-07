@@ -1,5 +1,8 @@
 const path = require('path')
-require('dotenv').config();
+require('dotenv').config({ 
+   path: path.resolve(__dirname, '../../.env') 
+})
+const env = require('dotenv');
 const puppeteer = require('puppeteer-extra');
 const StealthPlugin = require('puppeteer-extra-plugin-stealth');
 puppeteer.use(StealthPlugin());
@@ -8,13 +11,14 @@ const mysql = require('mysql');
 (async () => {
 
     const db = mysql.createConnection({
-        host: process.env.DB_HOST,
-        user:process.env.DB_USERNAME,
-        password: process.env.DB_PASSWORD,
-        database: process.env.DB_DATABASE
+        host: process.env.HOST,
+        user: process.env.USERNAME,
+        password: process.env.PASSWORD,
+        database: process.env.DATABASE
     });
 
-    //console.log(process.env.DB_HOST + "\n" + process.env.DB_USERNAME + "\n" + process.env.DB_PASSWORD + "\n" + process.env.DB_DATABASE);
+    //console.log(process.env.HOST + "\n" + process.env.USERNAME + "\n" + process.env.PASSWORD + "\n" + process.env.DATABASE);
+    console.log(process.env['SOCKET_PATH']);
 
     //initialize variables and arrays
     const browser = await puppeteer.launch();
@@ -59,27 +63,18 @@ const mysql = require('mysql');
             sciNameArr.push(regExp.exec(nameArrSet[i]));
         }   
     }
-    //Print out fish common name, scientific name and common name
-    for(let i = 0; i < sciNameArr.length; i++)
-    {
-        //There is a single record that is null.
-        if(sciNameArr[i] != null && priceArr[i] != "")
-        {
-            console.log("Common Name: " + commonNameArr[i] + "\n" +
-                        "Scientific Name: " + sciNameArr[i][1] + "\n" +
-                        "Price: " + priceArr[i] + "\n\n");
-
-            let sqlInsert = "INSERT INTO tbltetra(tetraCommonName, tetraScientificName, tetraPrice) VALUES (?);"; 
-            let values = [commonNameArr[i], sciNameArr[i][1], priceArr[i]]; 
-
-            db.query(sqlInsert, [values], function (err, result, fields) 
-            {
-                if (err) throw err;
-                console.log(result);
-            });
-        }       
+    // //Print out fish common name, scientific name and common name
+    // for(let i = 0; i < sciNameArr.length; i++)
+    // {
+    //     //There is a single record that is null.
+    //     if(sciNameArr[i] != null)
+    //     {
+    //         console.log("Common Name: " + commonNameArr[i] + "\n" +
+    //                     "Scientific Name: " + sciNameArr[i][1] + "\n" +
+    //                     "Price: " + priceArr[i] + "\n\n");
+    //     }
         
-    }
+    // }
 
     // console.log(commonNameArr.length + " " + priceArr.length + " " + sciNameArr.length);
 

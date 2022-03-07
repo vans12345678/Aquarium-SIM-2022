@@ -4,19 +4,18 @@ const { parse } = require('node-html-parser');
 const puppeteer = require('puppeteer-extra');
 const StealthPlugin = require('puppeteer-extra-plugin-stealth');
 puppeteer.use(StealthPlugin());
-const mysql = require('mysql2');
+const mysql = require('mysql');
 
 (async () => {
 
     const db = mysql.createConnection({
-        host: process.env.DB_HOST,
-        user:process.env.DB_USERNAME,
-        password: process.env.DB_PASSWORD,
-        database: process.env.DB_DATABASE
+        host: process.env.HOST,
+        user: process.env.USERNAME,
+        password: process.env.PASSWORD,
+        database: process.env.DATABASE
     });
 
-    //console.log(process.env.DB_HOST + "\n" + process.env.DB_USERNAME + "\n" + process.env.DB_PASSWORD + "\n" + process.env.DB_DATABASE);
-    
+
     //initialize variables and arrays
     const browser = await puppeteer.launch();
     const page = await browser.newPage();

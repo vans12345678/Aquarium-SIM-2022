@@ -14,7 +14,8 @@ const mysql = require('mysql');
         database: process.env.DB_DATABASE
     });
 
-    //console.log(process.env.DB_HOST + "\n" + process.env.DB_USERNAME + "\n" + process.env.DB_PASSWORD + "\n" + process.env.DB_DATABASE);
+    console.log(process.env.DB_HOST + "\n" + process.env.DB_USERNAME + "\n" + process.env.DB_PASSWORD + "\n" + process.env.DB_DATABASE);
+    //console.log(process.env['SOCKET_PATH']);
 
     //initialize variables and arrays
     const browser = await puppeteer.launch();

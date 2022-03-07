@@ -8,13 +8,14 @@ const mysql = require('mysql');
 (async () => {
 
     const db = mysql.createConnection({
-        host: process.env.DB_HOST,
-        user:process.env.DB_USERNAME,
-        password: process.env.DB_PASSWORD,
-        database: process.env.DB_DATABASE
+        host: process.env.HOST,
+        user: process.env.USERNAME,
+        password: process.env.PASSWORD,
+        database: process.env.DATABASE
     });
 
-    //console.log(process.env.DB_HOST + "\n" + process.env.DB_USERNAME + "\n" + process.env.DB_PASSWORD + "\n" + process.env.DB_DATABASE);
+    console.log(process.env.HOST + "\n" + process.env.USERNAME + "\n" + process.env.PASSWORD + "\n" + process.env.DATABASE);
+    //console.log(process.env['SOCKET_PATH']);
 
     //initialize variables and arrays
     const browser = await puppeteer.launch();
@@ -63,21 +64,22 @@ const mysql = require('mysql');
     for(let i = 0; i < sciNameArr.length; i++)
     {
         //There is a single record that is null.
-        if(sciNameArr[i] != null && priceArr[i] != "")
+        if(sciNameArr[i] != null)
         {
             console.log("Common Name: " + commonNameArr[i] + "\n" +
                         "Scientific Name: " + sciNameArr[i][1] + "\n" +
                         "Price: " + priceArr[i] + "\n\n");
+        }
 
-            let sqlInsert = "INSERT INTO tbltetra(tetraCommonName, tetraScientificName, tetraPrice) VALUES (?);"; 
-            let values = [commonNameArr[i], sciNameArr[i][1], priceArr[i]]; 
+        let sqlInsert = "INSERT INTO tbltetra(fishScientificName, fishCommonName, fishAverageSize, fishLowerPH, fishUpperPH, fishLowerTemp, fishUpperTemp, fishAggrSameSpecies, fishAggrOtherSpecies, fishLocationTank)" + 
+        " VALUES (?);"; 
+        let values = [fishSciName, fishCommonName, fishAverageSize, fishLowerPH, fishUpperPH, fishLowerTemp, fishUpperTemp, fishAggrSameSpecies, fishAggrOtherSpecies, fishLocationTank]; 
 
-            db.query(sqlInsert, [values], function (err, result, fields) 
-            {
-                if (err) throw err;
-                console.log(result);
-            });
-        }       
+        db.query(sqlInsert, [values], function (err, result, fields) 
+        {
+            if (err) throw err;
+            console.log(result);
+        });
         
     }
 
