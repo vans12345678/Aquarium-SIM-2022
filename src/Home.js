@@ -9,7 +9,11 @@ import commonPleco from "./images/common-pleco.png";
 import guppy from "./images/guppy.png";
 import pearlGourami from "./images/pearl-gourami.png";
 import "bootstrap/dist/css/bootstrap.min.css";
+
 import React from "react";
+
+import { faHome } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const Home = () => {
   // The back-to-top button is hidden at the beginning
@@ -49,11 +53,12 @@ const Home = () => {
         <br />
         <br />
         <br />
-        <h1 className="orangeText">WELCOME TO AQUARIUM SIM 2022</h1>
+        <h1 className="orangeText">WELCOME TO AQUARIUM SIM 2022 </h1>
 
         <p className="text-center ">
           maybe add a video here showing off the application portion
         </p>
+
         <div id="sword" className="fishanim">
           <img width="200px" height="100px" src={swordtail} alt="" />
         </div>
@@ -118,19 +123,17 @@ const Home = () => {
           <figure>
             <div id="avatarAshok"></div>
             <figcaption className="boldText">Ashok Sasitharan</figcaption>
-            <figcaption className="boldText">
-              Lead Front-End Developer
-            </figcaption>
+            <figcaption className="boldText">Lead Developer</figcaption>
           </figure>
           <figure>
             <div id="avatarJacky"></div>
             <figcaption className="boldText">Jacky Yuan</figcaption>
-            <figcaption className="boldText">VERY CoOL GUY</figcaption>
+            <figcaption className="boldText">Project Analyst</figcaption>
           </figure>
           <figure>
             <div id="avatarAndre"></div>
             <figcaption className="boldText">Andre Agrippa</figcaption>
-            <figcaption className="boldText">VERY CoOL GUY</figcaption>
+            <figcaption className="boldText">Project Manager</figcaption>
           </figure>
         </div>
 
@@ -146,7 +149,11 @@ const Home = () => {
         <div class="bubbles bubble-4"></div>
         <div class="bubbles bubble-8"></div>
       </section>
-
+      <section className="darkBlueSection">
+        <footer className="footer">
+          <p>Some footer nonsense!</p>
+        </footer>
+      </section>
       {showButton && (
         <button onClick={scrollToTop} className="back-to-top ">
           <img className="arrowimg" src={arrow} alt="submit" />
