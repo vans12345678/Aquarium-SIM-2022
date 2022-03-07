@@ -9,6 +9,7 @@
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: 100% 100%; */
+    
    
  
 }
@@ -47,6 +48,10 @@
   color: #FF8600;
   border-bottom: 3px solid #FF8600;
     text-shadow: 2px 2px black;
+}
+
+.footer{
+    background-color: #27187E;
 }
 
 
@@ -95,6 +100,7 @@
   
    background-color:#758BFD;
     height: 100%;
+        width: 100%;
     position: relative;
  
 }
@@ -111,7 +117,9 @@
   background-color:#AEB8FE;
   
    height: 100%;
+    width: 100%;
    position: relative;
+       
    
 }
 
@@ -120,6 +128,7 @@
 
   height: 100%;
   position: relative;
+
 
 }
 .darkBlueText{
@@ -134,7 +143,7 @@
   font-weight: bold;
 }
 
-.home:before
+/* .home:before
 {
   content:"";
   background-color:#AEB8FE;
@@ -143,7 +152,7 @@
   width: 4000px;
   left: -2000px;
   z-index: -1;
-}
+} */
 
 /***IMAGES***/
 
@@ -200,7 +209,7 @@ figcaption {
  
 
      0% {
-       margin-left: 100%;
+       margin-left:99%;
       transform: rotate(0deg);
      }
      30%{
@@ -252,13 +261,6 @@ figcaption {
 }
 
 
-/* .sword-tail-pos {
-  position: absolute;
-  right: 0px;
-  bottom: -50px;
- 
-
-} */
 
 @keyframes up {
   
@@ -356,4 +358,13 @@ figcaption {
 .table{
    margin-left: auto;
    margin-right: auto;
+}
+
+
+.aquarium{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+
+
 }
