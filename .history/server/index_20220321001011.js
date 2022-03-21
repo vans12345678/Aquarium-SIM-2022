@@ -26,26 +26,11 @@ app.post('/fish', urlencodedParser, (req, res) => {
 
     const search = req.body.search;
     const searchTemp = "%"+search+"%";
-    const sqlSelect = "SELECT * FROM tblfishmatches WHERE fishMatchCommonName LIKE ?";
+    const sqlSelect = "SELECT * FROM tblfishmatches WHERE tetraCommonName LIKE ?";
 
     console.log(search);
 
     db.query(sqlSelect, searchTemp, (err, result) =>{
-        if(err)
-        {
-            console.log(err);
-        }
-        else
-        {
-            res.send(result);
-        }
-    })
-});
-app.post('/fishAll', (req, res) => {
-
-    const sqlSelect = "SELECT * FROM tblfishmatches";
-
-    db.query(sqlSelect, (err, result) =>{
         if(err)
         {
             console.log(err);

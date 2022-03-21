@@ -8,7 +8,7 @@ const Listings = () => {
   const [fishList, setFishList] = useState([]);
   const [search, setSearch] = useState("");
   const getFish = () =>{
-    Axios.post("http://localhost:3001/fishAll").then((response) => {
+    Axios.get("http://localhost:3001/fish").then((response) => {
       setFishList(response.data);
     });
   }
@@ -28,8 +28,8 @@ const Listings = () => {
         <br />
         <h1 className="orangeText">Listings</h1>
         <p className="text-center ">Check out fish prices here!</p>
-        <button onClick={getFish}>Get All</button>
-        <button onClick={searchFish}>Search Common Names</button>
+        <button onClick={getFish}>Get Tetras</button>
+        <button onClick={searchFish}>Search Tetras</button>
         <input
           type="text"
           onChange={(event) => {

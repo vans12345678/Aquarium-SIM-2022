@@ -8,7 +8,7 @@ const Listings = () => {
   const [fishList, setFishList] = useState([]);
   const [search, setSearch] = useState("");
   const getFish = () =>{
-    Axios.post("http://localhost:3001/fishAll").then((response) => {
+    Axios.get("http://localhost:3001/fish").then((response) => {
       setFishList(response.data);
     });
   }

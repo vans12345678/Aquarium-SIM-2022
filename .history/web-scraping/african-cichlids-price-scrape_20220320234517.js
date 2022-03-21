@@ -19,9 +19,8 @@ const mysql = require('mysql');
     //initialize variables and arrays
     const browser = await puppeteer.launch();
     const page = await browser.newPage();
-    const URL = 'https://aquaristsacrosscanada.com/collections/barbs';
+    const URL = 'https://aquaristsacrosscanada.com/collections/all-africans';
     const storeName = "Aquarists Across Canada";
-
 
     //initial page navigation
     await page.goto(URL);
@@ -71,12 +70,14 @@ const mysql = require('mysql');
 
             sciNameArr[i][1] = sciNameArr[i][1].split(".", 1).toString().trim();
 
-            console.log("Common Name: " + commonNameArr[i] + "\n" +
-                        "Scientific Name: " + sciNameArr[i][1] + "\n" +
-                        "Price: " + priceArr[i] + "\n\n");
+            // console.log("Common Name: " + commonNameArr[i] + "\n" +
+            //             "Scientific Name: " + sciNameArr[i][1] + "\n" +
+            //             "Price: " + priceArr[i] + "\n\n");
 
-            let sqlInsert = "INSERT INTO tblfishstore(fishCommonName, fishScientificName, fishPrice, fishURL, fishStoreName) VALUES (?);"; 
-            let values = [commonNameArr[i], sciNameArr[i][1], priceArr[i], URL, storeName]; 
+            //console.log(sciNameArr[i][1]);
+
+            let sqlInsert = "INSERT INTO tblafricancichlids(africanCichlidsCommonName, africanCichlidsScientificName, africanCichlidsPrice) VALUES (?);"; 
+            let values = [commonNameArr[i], sciNameArr[i][1], priceArr[i]]; 
 
             db.query(sqlInsert, [values], function (err, result, fields) 
             {
@@ -87,7 +88,7 @@ const mysql = require('mysql');
         
     }
 
-    // console.log(commonNameArr.length + " " + priceArr.length + " " + sciNameArr.length);
+    //console.log(commonNameArr.length + " " + priceArr.length + " " + sciNameArr.length);
 
     //close brower when we are done
     await browser.close();

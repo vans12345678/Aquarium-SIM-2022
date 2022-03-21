@@ -41,21 +41,6 @@ app.post('/fish', urlencodedParser, (req, res) => {
         }
     })
 });
-app.post('/fishAll', (req, res) => {
-
-    const sqlSelect = "SELECT * FROM tblfishmatches";
-
-    db.query(sqlSelect, (err, result) =>{
-        if(err)
-        {
-            console.log(err);
-        }
-        else
-        {
-            res.send(result);
-        }
-    })
-});
 
 app.listen(3001, ()=>{
     console.log("Server running on port 3001");

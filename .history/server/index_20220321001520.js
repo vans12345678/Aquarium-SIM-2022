@@ -45,7 +45,7 @@ app.post('/fishAll', (req, res) => {
 
     const sqlSelect = "SELECT * FROM tblfishmatches";
 
-    db.query(sqlSelect, (err, result) =>{
+    db.query(sqlSelect, searchTemp, (err, result) =>{
         if(err)
         {
             console.log(err);

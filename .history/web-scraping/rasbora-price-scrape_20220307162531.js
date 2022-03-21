@@ -19,12 +19,9 @@ const mysql = require('mysql');
     //initialize variables and arrays
     const browser = await puppeteer.launch();
     const page = await browser.newPage();
-    const URL = 'https://aquaristsacrosscanada.com/collections/barbs';
-    const storeName = "Aquarists Across Canada";
-
 
     //initial page navigation
-    await page.goto(URL);
+    await page.goto('https://aquaristsacrosscanada.com/collections/rasbora');
     await page.waitForTimeout(2000);
     
     const fishNames = await page.$$('main > div > div > div > div > div > a ');
@@ -75,8 +72,8 @@ const mysql = require('mysql');
                         "Scientific Name: " + sciNameArr[i][1] + "\n" +
                         "Price: " + priceArr[i] + "\n\n");
 
-            let sqlInsert = "INSERT INTO tblfishstore(fishCommonName, fishScientificName, fishPrice, fishURL, fishStoreName) VALUES (?);"; 
-            let values = [commonNameArr[i], sciNameArr[i][1], priceArr[i], URL, storeName]; 
+            let sqlInsert = "INSERT INTO tblrasbora(rasboraCommonName, rasboraScientificName, rasboraPrice) VALUES (?);"; 
+            let values = [commonNameArr[i], sciNameArr[i][1], priceArr[i]]; 
 
             db.query(sqlInsert, [values], function (err, result, fields) 
             {
