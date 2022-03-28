@@ -1,0 +1,219 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
+
+/* base styles */
+* {
+  margin: 0;
+  font-family: "Quicksand";
+  /* color: #AEB8FE; */
+  /* background-image: url('./images/background.png');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: 100% 100%; */
+   
+ 
+}
+/********NAVBAR**********/
+.navbar {
+  padding: 20px;
+  display: flex;
+  align-items: center;
+ background-color:#758BFD;
+  height: 100px;
+}
+.orangeText{
+  color: #FF8600;
+}
+.navbar h2 {
+  color: #27187E;
+}
+.navbar .links {
+  margin-left: auto;
+ 
+}
+.navbar a {
+  margin-left: 16px;
+  text-decoration: none;
+  padding: 6px;
+  color:black;
+  font-weight: bold;
+}
+.navbar a:hover {
+  color: #FF8600;
+  border-bottom: 3px solid #FF8600;
+    text-shadow: 2px 2px black;
+}
+.navbar .active{
+  color: #FF8600;
+  border-bottom: 3px solid #FF8600;
+    text-shadow: 2px 2px black;
+}
+/********END OF NAVBAR**********/
+/* .content {
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 20px;
+} */
+
+.banner1{
+  background-image: url('./images/background.png');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: contain;
+ }
+ h1{
+  padding-top: 15px;
+  text-align: center;
+  color: #758BFD;
+  border-radius: 10px;
+  width: 100%;
+  height: 100px;
+  /* margin: 50px auto; */
+  text-shadow: 2px 2px black;
+}
+
+.importantLink
+{
+  color: "white";
+  background-color: "#f1356d";
+  border-radius: "8px";
+}
+
+.imageLogo
+{
+  width: 150px;
+  height: auto;
+  position:absolute;
+  left:15px;
+  top:15px;
+
+}
+
+.home{
+  
+   background-color:#758BFD;
+    
+    height: 100%;
+    position: relative;
+ 
+}
+.darkSection{
+  background-color:#AEB8FE;
+  
+   height: 100%;
+   position: relative;
+   
+}
+.darkBlueText{
+  color:#27187E;
+  
+}
+
+.boldText{
+  font-weight: bold;
+}
+
+.home:before
+{
+  content:"";
+  background-color:#AEB8FE;
+  position: absolute;
+  height: 100%;
+  width: 4000px;
+  left: -2000px;
+  z-index: -1;
+}
+
+/***IMAGES***/
+
+
+#avatarAshok{
+  border-radius: 50%;
+  width: 250px;
+  height: 250px;
+ background-image: url('./images/ashok-picture.jpg');
+ background-size: cover;
+ display: inline-block;
+ margin-left: 11%;
+ text-align: center;
+}
+#avatarJacky {
+  border-radius: 50%;
+  width: 250px;
+  height: 250px;
+  background-image: url('./images/jacky.jpg');
+  background-size: cover;
+  display: inline-block;
+  margin-left: 11%;
+  text-align: center;
+}
+#avatarAndre {
+  border-radius: 50%;
+  width: 250px;
+  height: 250px;
+  background-image: url('./images/andre.jpg');
+  background-size: cover;
+  display: inline-block;
+  margin-left: 11%;
+  text-align: center;
+}
+
+figure {
+  display: inline-block;
+  padding-left: 9%;
+ 
+}
+
+figcaption {
+  text-align: center;
+   display: block;
+   padding-left: 17%;
+ 
+   
+}
+
+/**********ANIMATIONS************/
+
+@keyframes fish {
+    0% {
+      -webkit-transform: translate(200%, 75%) rotate(0deg)
+    }
+
+    20% {
+      -webkit-transform: translate(100%, -55%) rotate(40deg)
+    }
+
+    40% {
+      -webkit-transform: translate(100%, -125%) rotate(-20deg)
+    }
+
+    60% {
+      -webkit-transform: translate(-400%) rotate(-40deg)
+    }
+
+    80% {
+      -webkit-transform: translate(-200%) rotate(-10deg)
+    }
+
+    100% {
+      -webkit-transform: translate(-1000%) rotate(0deg)
+    }
+}
+.fishanim {
+  animation-name: fish;
+  animation-duration: 15s;
+    animation-iteration-count: infinite;
+  position: relative;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+     
+}
+.fishpos{
+  position:absolute;
+  right: 0px;
+  bottom: -50px;
+
+
+  
+
+  
+}

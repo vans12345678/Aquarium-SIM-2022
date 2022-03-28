@@ -1,0 +1,203 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
+
+/* base styles */
+* {
+  margin: 0;
+  font-family: "Quicksand";
+  /* color: #AEB8FE; */
+  /* background-image: url('./images/background.png');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: 100% 100%; */
+   
+ 
+}
+/********NAVBAR**********/
+.navbar {
+  padding: 20px;
+  display: flex;
+  align-items: center;
+ background-color:#758BFD;
+  height: 100px;
+}
+.orangeText{
+  color: #FF8600;
+}
+.navbar h2 {
+  color: #27187E;
+}
+.navbar .links {
+  margin-left: auto;
+ 
+}
+.navbar a {
+  margin-left: 16px;
+  text-decoration: none;
+  padding: 6px;
+  color:black;
+  font-weight: bold;
+}
+.navbar a:hover {
+  color: #FF8600;
+  border-bottom: 3px solid #FF8600;
+    text-shadow: 2px 2px black;
+}
+.navbar .active{
+  color: #FF8600;
+  border-bottom: 3px solid #FF8600;
+    text-shadow: 2px 2px black;
+}
+/********END OF NAVBAR**********/
+/* .content {
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 20px;
+} */
+
+.banner1{
+  background-image: url('./images/background.png');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: contain;
+ }
+ h1{
+  padding-top: 15px;
+  text-align: center;
+  color: #758BFD;
+  border-radius: 10px;
+  width: 100%;
+  height: 100px;
+  /* margin: 50px auto; */
+  text-shadow: 2px 2px black;
+}
+
+.importantLink
+{
+  color: "white";
+  background-color: "#f1356d";
+  border-radius: "8px";
+}
+
+.imageLogo
+{
+  width: 150px;
+  height: auto;
+  position:absolute;
+  left:15px;
+  top:15px;
+
+}
+
+.home{
+  
+   background-color:#758BFD;
+    
+    height: 100%;
+    position: relative;
+ 
+}
+.darkSection{
+  background-color:#AEB8FE;
+  
+   height: 100%;
+   position: relative;
+   
+}
+.darkBlueText{
+  color:#27187E;
+  
+}
+
+.boldText{
+  font-weight: bold;
+}
+
+.home:before
+{
+  content:"";
+  background-color:#AEB8FE;
+  position: absolute;
+  height: 100%;
+  width: 4000px;
+  left: -2000px;
+  z-index: -1;
+}
+
+/***IMAGES***/
+/* .circular--square {
+  border-radius: 50%;
+
+  
+}
+
+
+
+ .circular--portrait {
+  position: relative;
+  width: 250px;
+  height: 250px;
+  overflow: hidden;
+  border-radius: 50%;
+   display: inline-block;
+  
+}
+.circular--portrait p{
+    position: absolute;
+    width: 100%;
+    height: auto;
+    text-align: center;
+    bottom: 0;
+    left: 0;
+  
+}
+.circular--portrait img {
+  width: 100%;
+  height: auto;
+ 
+}  */
+
+/* .circle-image {
+  display: inline-block;
+  overflow: hidden;
+  width: 150px;
+ 
+  height: 150px;
+  position: relative;
+}
+
+.circle-image img {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  border-radius: 50%;
+  object-fit: cover;
+ 
+} */
+
+#avatarAshok{
+  border-radius: 50%;
+  width: 250px;
+  height: 250px;
+ background-image: url('./images/ashok-picture.jpg');
+ background-size: cover;
+ display: inline-block;
+ margin-left: 11%;
+}
+
+figure {
+  display: block;
+  padding-left: 13%;
+ 
+}
+
+figcaption {
+  text-align: center;
+   display: block;
+   padding-right: 24%;
+ 
+   
+}
+
+.caption {
+  display: block;
+}
