@@ -44,6 +44,7 @@ function handlePageClick({selected: selectedPage}){
 function resetPage() {
     setCurrentPage(0);
     const offset = (currentPage) * perPage;
+    const currentPageData = fishList.slice(offset, offset + perPage);
 }
 
 const offset = (currentPage) * perPage;

@@ -13,6 +13,7 @@ const Compendium = () => {
   const [fishList, setFishList] = useState([]);
   const [search, setSearch] = useState("");
   const [currentPage, setCurrentPage] = useState(0);
+  var resetPage = false;
 
 
   //function for retrieving all fish entries
@@ -41,9 +42,9 @@ function handlePageClick({selected: selectedPage}){
   setCurrentPage(selectedPage);
 }
 
-function resetPage() {
+resetPage = () =>{
     setCurrentPage(0);
-    const offset = (currentPage) * perPage;
+    handlePageClick(0);
 }
 
 const offset = (currentPage) * perPage;
@@ -64,7 +65,8 @@ const pageCount = Math.ceil(fishList.length / perPage);
         <br />
         <h1 className="orangeText">Fish Data</h1>
         <button onClick={(event)=>{
-          searchFishAll()       }}
+          searchFishAll()       
+          resetPage = true}}
         >Search Common Names</button>
         <input
           type="text"

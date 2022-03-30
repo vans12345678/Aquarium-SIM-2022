@@ -43,7 +43,7 @@ function handlePageClick({selected: selectedPage}){
 
 function resetPage() {
     setCurrentPage(0);
-    const offset = (currentPage) * perPage;
+    handlePageClick(0);
 }
 
 const offset = (currentPage) * perPage;

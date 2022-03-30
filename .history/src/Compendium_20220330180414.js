@@ -1,10 +1,11 @@
 import { useState, useEffect } from "react";
-import { Table} from "react-bootstrap";
+import { Table, Pagination } from "react-bootstrap";
 import Axios from "axios";
 import { NavLink } from "react-router-dom";
 import { Route } from "react-router-dom";
 import { useRouteMatch } from "react-router-dom";
 import ReactPaginate from 'react-paginate';
+
 
 
 const perPage = 10;
@@ -29,7 +30,6 @@ const Compendium = () => {
         setFishList(response.data);
       }
     );
-    resetPage();
   };
 
   useEffect(()=>{
@@ -41,10 +41,6 @@ function handlePageClick({selected: selectedPage}){
   setCurrentPage(selectedPage);
 }
 
-function resetPage() {
-    setCurrentPage(0);
-    const offset = (currentPage) * perPage;
-}
 
 const offset = (currentPage) * perPage;
 console.log(offset);
@@ -64,7 +60,8 @@ const pageCount = Math.ceil(fishList.length / perPage);
         <br />
         <h1 className="orangeText">Fish Data</h1>
         <button onClick={(event)=>{
-          searchFishAll()       }}
+          searchFishAll()       
+         offset = 0}}
         >Search Common Names</button>
         <input
           type="text"

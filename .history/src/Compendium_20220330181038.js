@@ -7,6 +7,7 @@ import { useRouteMatch } from "react-router-dom";
 import ReactPaginate from 'react-paginate';
 
 
+
 const perPage = 10;
 
 const Compendium = () => {
@@ -29,7 +30,6 @@ const Compendium = () => {
         setFishList(response.data);
       }
     );
-    resetPage();
   };
 
   useEffect(()=>{
@@ -41,12 +41,12 @@ function handlePageClick({selected: selectedPage}){
   setCurrentPage(selectedPage);
 }
 
-function resetPage() {
-    setCurrentPage(0);
-    const offset = (currentPage) * perPage;
+function resetPage(){
+  selectedPage = 1;
 }
 
-const offset = (currentPage) * perPage;
+
+var offset = (currentPage) * perPage;
 console.log(offset);
 
 const currentPageData = fishList.slice(offset, offset + perPage);
@@ -64,7 +64,8 @@ const pageCount = Math.ceil(fishList.length / perPage);
         <br />
         <h1 className="orangeText">Fish Data</h1>
         <button onClick={(event)=>{
-          searchFishAll()       }}
+          searchFishAll()       
+          resetPage()}}
         >Search Common Names</button>
         <input
           type="text"
