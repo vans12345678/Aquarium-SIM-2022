@@ -41,6 +41,46 @@ app.post('/fish', urlencodedParser, (req, res) => {
         }
     })
 });
+
+app.post('/fishComp', urlencodedParser, (req, res) => {
+
+    const search = req.body.search;
+    const searchTemp = "%"+search+"%";
+    const sqlSelect = "SELECT * FROM tblfish WHERE fishCommonName LIKE ?";
+
+    console.log(search);
+
+    db.query(sqlSelect, searchTemp, (err, result) =>{
+        if(err)
+        {
+            console.log(result);
+            console.log(err);
+        }
+        else
+        {
+            res.send(result);
+        }
+    })
+});
+
+app.post('/currentFishGet', urlencodedParser, (req, res) => {
+
+    const currentFishName = req.body.currentFishName;
+    const currentFishName2 =currentFishName.trim();
+    const sqlSelect = "SELECT * FROM tblfish WHERE fishScientificName = '" + currentFishName2+"'";
+
+    db.query(sqlSelect, (err, result) =>{
+        if(err)
+        {
+            console.log(err);
+        }
+        else
+        {
+            res.send(result);
+        }
+    })
+});
+
 app.post('/fishAll', (req, res) => {
 
     const sqlSelect = "SELECT * FROM tblfishmatches";
@@ -61,6 +101,22 @@ app.get('/fishAdd', (req, res) => {
     
 
     
+});
+
+app.get('/fishGet', (req, res) => {
+
+    const sqlSelect = "SELECT * FROM tblfish";
+
+    db.query(sqlSelect, (err, result) =>{
+        if(err)
+        {
+            console.log(err);
+        }
+        else
+        {
+            res.send(result);
+        }
+    })
 });
 
 app.listen(3001, ()=>{
