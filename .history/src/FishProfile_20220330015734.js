@@ -5,7 +5,7 @@ import { NavLink } from "react-router-dom";
 import { Table } from "react-bootstrap";
 import Axios from "axios";
 
-//Retrieves the fish name from the URL
+
 function getFishName () {
   const currentFishURL = window.location.pathname;
   const temp = currentFishURL.split("/", 3);
@@ -22,7 +22,6 @@ function getFishName () {
  return currentFishName;
 }
 
-//Formats the fish names for use as the page title
 function pageTitle (commonName, ScientificName) {
   if (commonName != "N/A")
   {
@@ -36,7 +35,6 @@ function pageTitle (commonName, ScientificName) {
   return pageTitleName;
 }
 
-//formats the fish name for use in external weblinks
 function formatFishNameForLink(nameForFormatting, altName) {
 if (nameForFormatting != "N/A")
 {
@@ -69,9 +67,8 @@ var apostrophe = new RegExp(/’/);
     }
 return naviName;
 }
-
 const FishProfile = () => {
-//gets the info for the current fish
+
   var [fishInfo, setFishInfo] = useState([]);
   const getCurrentFish = () => {
     if (fishInfo.length === 0){
@@ -83,7 +80,7 @@ const FishProfile = () => {
 
   return (
     <div>
-      {/* Outputs the fish data */}
+      
       <section className="homeMiddle" onLoad={getCurrentFish()}>
       {fishInfo.map((val, key) => {
         return(
@@ -140,7 +137,6 @@ const FishProfile = () => {
               })}
       </section>
       <hr/>
-      {/* outputs External Links */}
       <h1>External Links</h1>
       {fishInfo.map((val, key) => {
         return(

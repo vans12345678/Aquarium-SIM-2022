@@ -5,7 +5,7 @@ import { NavLink } from "react-router-dom";
 import { Table } from "react-bootstrap";
 import Axios from "axios";
 
-//Retrieves the fish name from the URL
+
 function getFishName () {
   const currentFishURL = window.location.pathname;
   const temp = currentFishURL.split("/", 3);
@@ -19,59 +19,17 @@ function getFishName () {
       }
   }
 
+  function formatFishNameForLink (nameForFormatting, altName){
+
+
+
+  }
+
  return currentFishName;
 }
 
-//Formats the fish names for use as the page title
-function pageTitle (commonName, ScientificName) {
-  if (commonName != "N/A")
-  {
-    var pageTitleName = commonName;
-  }
-  else
-  {
-    var pageTitleName = ScientificName;
-  }
-
-  return pageTitleName;
-}
-
-//formats the fish name for use in external weblinks
-function formatFishNameForLink(nameForFormatting, altName) {
-if (nameForFormatting != "N/A")
-{
-  var naviName = nameForFormatting.toLowerCase();
-}
-else
-{
-  var naviName = altName.toLowerCase();
-}
-var apostrophe = new RegExp(/’/);
-
-    if (apostrophe.test(naviName))
-    {
-        const nameSplit = naviName.split(apostrophe);
-        naviName = nameSplit[0] + nameSplit[1];
-
-    }
-    var space = new RegExp(/\s/);
-    if (space.test(naviName))
-    {
-        const nameSplit2 = naviName.split(" ");
-        naviName = nameSplit2[0];
-        if(nameSplit2.length > 1)
-        {
-            for(let j = 1; j < nameSplit2.length; j++)
-            {
-              naviName += "-" + nameSplit2[j];
-            }
-        }
-    }
-return naviName;
-}
-
 const FishProfile = () => {
-//gets the info for the current fish
+
   var [fishInfo, setFishInfo] = useState([]);
   const getCurrentFish = () => {
     if (fishInfo.length === 0){
@@ -83,12 +41,12 @@ const FishProfile = () => {
 
   return (
     <div>
-      {/* Outputs the fish data */}
+      
       <section className="homeMiddle" onLoad={getCurrentFish()}>
       {fishInfo.map((val, key) => {
         return(
           <div key = {val.fishID}>
-          <h1>{pageTitle(val.fishCommonName, val.fishScientificName)}</h1>
+          <h1>{val.fishCommonName}</h1>
           <img className="aquarium"
           width="20%"
           height="20%"
@@ -140,49 +98,31 @@ const FishProfile = () => {
               })}
       </section>
       <hr/>
-      {/* outputs External Links */}
       <h1>External Links</h1>
       {fishInfo.map((val, key) => {
         return(
           <div key = {val.fishID}>
             <Table 
+            bordered
+            hover
+            striped
             className="w-50 text-center">
-              <tbody className="section">
-              <tr className="mb-4"> 
+              <tr> 
                 <td>
-                <b><NavLink to={{pathname:"https://en.wikipedia.org/wiki/"+val.fishScientificName}} target="_blank">Wikipedia Page</NavLink></b>
-                <br/>
+                <NavLink to={{pathname:"https://en.wikipedia.org/wiki/"+val.fishScientificName}} target="_blank">Wikipedia Page</NavLink>
                 </td>
               </tr>
-              <tr className="mb-4">
+              <tr>
                 <td>
-                  <b><NavLink to={{pathname:"https://en.aqua-fish.net/fish/"+formatFishNameForLink(val.fishCommonName, val.fishScientificName)}} target="_blank">aqua-fish.net</NavLink></b>
+                <NavLink to={{pathname:"https://en.aqua-fish.net/fish/"+formatFishNameForLink(val.fishCommonName, val.fishScientificName)}} target="_blank">Aqua-fish.net</NavLink>
                 </td>
               </tr>
-              </tbody>
             </Table>
       </div>
         )
     })}
     <br/>
     <br/>
-    <b><NavLink to='/Compendium'>Return to Compendium Page</NavLink></b>
-    <section className="darkSection">
-        <br />
-        <br />
-        <br />
-        <br />
-
-        <div className="container">
-          <br />
-          <br />
-        </div>
-
-        <br />
-        <br />
-        <br />
-        <br />
-      </section>
     </div>
 
   );

@@ -5,7 +5,7 @@ import { NavLink } from "react-router-dom";
 import { Table } from "react-bootstrap";
 import Axios from "axios";
 
-//Retrieves the fish name from the URL
+
 function getFishName () {
   const currentFishURL = window.location.pathname;
   const temp = currentFishURL.split("/", 3);
@@ -22,7 +22,6 @@ function getFishName () {
  return currentFishName;
 }
 
-//Formats the fish names for use as the page title
 function pageTitle (commonName, ScientificName) {
   if (commonName != "N/A")
   {
@@ -36,7 +35,6 @@ function pageTitle (commonName, ScientificName) {
   return pageTitleName;
 }
 
-//formats the fish name for use in external weblinks
 function formatFishNameForLink(nameForFormatting, altName) {
 if (nameForFormatting != "N/A")
 {
@@ -69,9 +67,8 @@ var apostrophe = new RegExp(/’/);
     }
 return naviName;
 }
-
 const FishProfile = () => {
-//gets the info for the current fish
+
   var [fishInfo, setFishInfo] = useState([]);
   const getCurrentFish = () => {
     if (fishInfo.length === 0){
@@ -83,7 +80,7 @@ const FishProfile = () => {
 
   return (
     <div>
-      {/* Outputs the fish data */}
+      
       <section className="homeMiddle" onLoad={getCurrentFish()}>
       {fishInfo.map((val, key) => {
         return(
@@ -140,49 +137,29 @@ const FishProfile = () => {
               })}
       </section>
       <hr/>
-      {/* outputs External Links */}
       <h1>External Links</h1>
       {fishInfo.map((val, key) => {
         return(
           <div key = {val.fishID}>
             <Table 
+            striped
             className="w-50 text-center">
-              <tbody className="section">
-              <tr className="mb-4"> 
+              <tr> 
                 <td>
-                <b><NavLink to={{pathname:"https://en.wikipedia.org/wiki/"+val.fishScientificName}} target="_blank">Wikipedia Page</NavLink></b>
-                <br/>
+                <NavLink to={{pathname:"https://en.wikipedia.org/wiki/"+val.fishScientificName}} target="_blank">Wikipedia Page</NavLink>
                 </td>
               </tr>
-              <tr className="mb-4">
+              <tr>
                 <td>
-                  <b><NavLink to={{pathname:"https://en.aqua-fish.net/fish/"+formatFishNameForLink(val.fishCommonName, val.fishScientificName)}} target="_blank">aqua-fish.net</NavLink></b>
+                  <NavLink to={{pathname:"https://en.aqua-fish.net/fish/"+formatFishNameForLink(val.fishCommonName, val.fishScientificName)}} target="_blank">{formatFishNameForLink(val.fishCommonName, val.fishScientificName)}</NavLink>
                 </td>
               </tr>
-              </tbody>
             </Table>
       </div>
         )
     })}
     <br/>
     <br/>
-    <b><NavLink to='/Compendium'>Return to Compendium Page</NavLink></b>
-    <section className="darkSection">
-        <br />
-        <br />
-        <br />
-        <br />
-
-        <div className="container">
-          <br />
-          <br />
-        </div>
-
-        <br />
-        <br />
-        <br />
-        <br />
-      </section>
     </div>
 
   );

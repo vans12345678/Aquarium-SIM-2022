@@ -10,7 +10,6 @@ const Compendium = () => {
   const [fishList, setFishList] = useState([]);
   const [search, setSearch] = useState("");
 
-  //function for retrieving all fish entries
     const getFish = () => {
       if (fishList.length === 0){
       Axios.get("http://localhost:3001/fishGet").then((response) => {
@@ -18,8 +17,6 @@ const Compendium = () => {
       });
     }
   };
-
-  //function for retrieving specific fish entries using search
   const searchFishAll = () => {
     Axios.post("http://localhost:3001/fishComp", { search: search }).then(
       (response) => {
@@ -28,7 +25,6 @@ const Compendium = () => {
     );
   };
 
-  //sets the route URLs
   const { path, url } = useRouteMatch()
 
   return (
