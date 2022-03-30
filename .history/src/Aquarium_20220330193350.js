@@ -14,8 +14,7 @@ import swordtail from "./images/swordtail-border-right.png";
 import commonPleco from "./images/common-pleco.png";
 import { ListGroup, Button } from "react-bootstrap";
 import Axios from 'axios';
-import {FishBasic} from './classes/FishBasic';
-import {Fish} from './classes/Fish';
+import {Fish, FishBasic} from './classes/FishBasic';
 import { useState } from "react";
 // import { Application } from "pixi.js";
 // import { useIteration } from "./useIteration.js";
@@ -137,7 +136,25 @@ import { useState } from "react";
 // }
 
 const Aquarium = () => {
-   
+  const fish = new Fish("commonName", "scientificName", 13, 14, 15, "aggressiveSameSpecies", "aggressiveOtherSpecies", "locationTank", 14.99);
+  const fish2 = new Fish("commonName2", "scientificName2", 13, 14, 15, "aggressiveSameSpecie2", "aggressiveOtherSpecies", "locationTank", 14.99);
+
+  var arrFish = [];
+  arrFish[0] = fish.commonName;
+  arrFish[1] = fish2.commonName;
+  let arrCommonName = new Array(2);
+  arrCommonName.push(fish);
+  arrCommonName.push(fish2);
+
+  const commonName = [ fish.commonName ];
+  const scientificName = fish.scientificName;
+  const averageSize = fish.averageSize;
+  const lowerPH = fish.lowerPH;
+  const upperPH = fish.upperPH;
+  const aggressiveSameSpecies = fish.aggressiveSameSpecies;
+  const aggressiveOtherSpecies = fish.aggressiveOtherSpecies;
+  const fishLocationTank = fish.fishLocationTank;
+  const fishImage = fish.image;
 
   const [fishList, setFishList] = useState([]);
 

@@ -137,7 +137,22 @@ import { useState } from "react";
 // }
 
 const Aquarium = () => {
-   
+   var arrFish = [];
+  arrFish[0] = fish.commonName;
+  arrFish[1] = fish2.commonName;
+  let arrCommonName = new Array(2);
+  arrCommonName.push(fish);
+  arrCommonName.push(fish2);
+
+  const commonName = [ fish.commonName ];
+  const scientificName = fish.scientificName;
+  const averageSize = fish.averageSize;
+  const lowerPH = fish.lowerPH;
+  const upperPH = fish.upperPH;
+  const aggressiveSameSpecies = fish.aggressiveSameSpecies;
+  const aggressiveOtherSpecies = fish.aggressiveOtherSpecies;
+  const fishLocationTank = fish.fishLocationTank;
+  const fishImage = fish.image;
 
   const [fishList, setFishList] = useState([]);
 
