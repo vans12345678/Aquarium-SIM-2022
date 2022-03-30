@@ -10,6 +10,7 @@ import ReactPaginate from 'react-paginate';
 
 const perPage = 10;
 
+
 const Compendium = () => {
   const [fishList, setFishList] = useState([]);
   const [search, setSearch] = useState("");
@@ -57,6 +58,8 @@ const pageCount = Math.ceil(fishList.length / perPage);
       <section className="home">
         <br />
         <br />
+        <br />
+        <br />
         <h1 className="orangeText">Fish Data</h1>
         <button onClick={searchFishAll}>Search Common Names</button>
         <input
@@ -72,6 +75,8 @@ const pageCount = Math.ceil(fishList.length / perPage);
         <br />
       </section>
       <section>
+        <br />
+        <br />
         <br />
         <br />
         
@@ -97,7 +102,7 @@ const pageCount = Math.ceil(fishList.length / perPage);
                     <td>{val.fishCommonName}</td>
                     <td>{val.fishScientificName}</td>
                     <td>
-                      <NavLink to={`/Fishprofile/${val.fishScientificName}`}>Details</NavLink>
+                      <NavLink to={`/Fishprofile/${val.fishScientificName}`}>Here</NavLink>
                     </td>
 
                   </tr>
@@ -108,14 +113,11 @@ const pageCount = Math.ceil(fishList.length / perPage);
             </tbody>
           </Table>
         </div>
-      </section>
         <ReactPaginate
-            containerClassName="pagination"
             breakLabel="..."
             nextLabel="next >"
             onPageChange={handlePageClick}
             pageRangeDisplayed={5}
-            marginPagesDisplayed={2}
             pageCount={pageCount}
             previousLabel="< previous"
             renderOnZeroPageCount={null}
@@ -127,9 +129,17 @@ const pageCount = Math.ceil(fishList.length / perPage);
             nextLinkClassName="page-link"
             breakClassName="page-item"
             breakLinkClassName="page-link"
-            activeClassName="active"
           />
-      
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+      </section>
+
       <section className="darkSection">
         <br />
         <br />

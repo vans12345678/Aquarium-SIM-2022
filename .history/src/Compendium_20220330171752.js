@@ -5,10 +5,11 @@ import { NavLink } from "react-router-dom";
 import { Route } from "react-router-dom";
 import { useRouteMatch } from "react-router-dom";
 import ReactPaginate from 'react-paginate';
-
+import PageItem from 'react-bootstrap/PageItem'
 
 
 const perPage = 10;
+
 
 const Compendium = () => {
   const [fishList, setFishList] = useState([]);
@@ -57,6 +58,8 @@ const pageCount = Math.ceil(fishList.length / perPage);
       <section className="home">
         <br />
         <br />
+        <br />
+        <br />
         <h1 className="orangeText">Fish Data</h1>
         <button onClick={searchFishAll}>Search Common Names</button>
         <input
@@ -72,6 +75,8 @@ const pageCount = Math.ceil(fishList.length / perPage);
         <br />
       </section>
       <section>
+        <br />
+        <br />
         <br />
         <br />
         
@@ -97,7 +102,7 @@ const pageCount = Math.ceil(fishList.length / perPage);
                     <td>{val.fishCommonName}</td>
                     <td>{val.fishScientificName}</td>
                     <td>
-                      <NavLink to={`/Fishprofile/${val.fishScientificName}`}>Details</NavLink>
+                      <NavLink to={`/Fishprofile/${val.fishScientificName}`}>Here</NavLink>
                     </td>
 
                   </tr>
@@ -107,29 +112,27 @@ const pageCount = Math.ceil(fishList.length / perPage);
               })}
             </tbody>
           </Table>
-        </div>
-      </section>
-        <ReactPaginate
-            containerClassName="pagination"
+          <ReactPaginate
             breakLabel="..."
             nextLabel="next >"
             onPageChange={handlePageClick}
             pageRangeDisplayed={5}
-            marginPagesDisplayed={2}
             pageCount={pageCount}
             previousLabel="< previous"
             renderOnZeroPageCount={null}
-            pageClassName="page-item"
-            pageLinkClassName="page-link"
-            previousClassName="page-item"
-            previousLinkClassName="page-link"
-            nextClassName="page-item"
-            nextLinkClassName="page-link"
-            breakClassName="page-item"
-            breakLinkClassName="page-link"
-            activeClassName="active"
+            previousLinkClassName={"pagination__link"}
           />
-      
+        </div>
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+      </section>
+
       <section className="darkSection">
         <br />
         <br />

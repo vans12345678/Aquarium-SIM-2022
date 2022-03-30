@@ -385,7 +385,6 @@ figcaption {
   align-items: center;
 }
 .pagination{
-  display: "flex";
   justify-content: center;
   align-items: center;
 }

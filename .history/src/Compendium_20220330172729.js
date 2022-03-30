@@ -57,6 +57,8 @@ const pageCount = Math.ceil(fishList.length / perPage);
       <section className="home">
         <br />
         <br />
+        <br />
+        <br />
         <h1 className="orangeText">Fish Data</h1>
         <button onClick={searchFishAll}>Search Common Names</button>
         <input
@@ -72,6 +74,8 @@ const pageCount = Math.ceil(fishList.length / perPage);
         <br />
       </section>
       <section>
+        <br />
+        <br />
         <br />
         <br />
         
@@ -97,7 +101,7 @@ const pageCount = Math.ceil(fishList.length / perPage);
                     <td>{val.fishCommonName}</td>
                     <td>{val.fishScientificName}</td>
                     <td>
-                      <NavLink to={`/Fishprofile/${val.fishScientificName}`}>Details</NavLink>
+                      <NavLink to={`/Fishprofile/${val.fishScientificName}`}>Here</NavLink>
                     </td>
 
                   </tr>
@@ -109,7 +113,7 @@ const pageCount = Math.ceil(fishList.length / perPage);
           </Table>
         </div>
       </section>
-        <ReactPaginate
+      <ReactPaginate
             containerClassName="pagination"
             breakLabel="..."
             nextLabel="next >"
@@ -129,7 +133,6 @@ const pageCount = Math.ceil(fishList.length / perPage);
             breakLinkClassName="page-link"
             activeClassName="active"
           />
-      
       <section className="darkSection">
         <br />
         <br />

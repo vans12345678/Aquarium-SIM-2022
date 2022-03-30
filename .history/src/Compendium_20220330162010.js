@@ -1,27 +1,23 @@
 import { useState, useEffect } from "react";
-import { Table, Pagination } from "react-bootstrap";
+import { Table } from "react-bootstrap";
 import Axios from "axios";
 import { NavLink } from "react-router-dom";
 import { Route } from "react-router-dom";
 import { useRouteMatch } from "react-router-dom";
 import ReactPaginate from 'react-paginate';
-
-
-
-const perPage = 10;
+import setPageNumber from 'react-paginate';
 
 const Compendium = () => {
   const [fishList, setFishList] = useState([]);
   const [search, setSearch] = useState("");
-  const [currentPage, setCurrentPage] = useState(0);
+  const [pageNumber, setCurrentPage] = useState(1);
+  const [entriesPerPage, setEntriesPerPage] = useState(10);
 
   //function for retrieving all fish entries
     const getFish = () => {
-      if (fishList.length === 0){
       Axios.get("http://localhost:3001/fishGet").then((response) => {
         setFishList(response.data);
       });
-    }
   };
 
   //function for retrieving specific fish entries using search
@@ -33,28 +29,36 @@ const Compendium = () => {
     );
   };
 
-  useEffect(()=>{
-    getFish();
-  },[]);
-
-function handlePageClick({selected: selectedPage}){
-  console.log("selected page", selectedPage)
-  setCurrentPage(selectedPage);
-}
-
-const offset = currentPage * perPage;
-
-const currentPageData = fishList.slice(offset, offset + perPage);
-
-const pageCount = Math.ceil(fishList.length / perPage);
-
   //sets the route URLs
   const { path, url } = useRouteMatch()
 
+  var pagesVisited = pageNumber * entriesPerPage;
+  var displayEntries = fishList.slice(pagesVisited, pagesVisited + entriesPerPage).map((fishList)=>{
+    return (
+      <tr key={val.fishID}>
+        <td>{val.fishCommonName}</td>
+        <td>{val.fishScientificName}</td>
+        <td>
+          <NavLink to={`/fishprofile/${val.fishScientificName}`}>Here</NavLink>
+        </td>
+
+      </tr>    
+    ); 
+  });
+  var pageCount = Math.ceil(fishList.length / entriesPerPage);
+
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
+
+  const changePage = ({selected}) =>{
+    setPageNumber(selected);
+  };
+  
 
   return (
     <div>
       <section className="home">
+        <br />
+        <br />
         <br />
         <br />
         <h1 className="orangeText">Fish Data</h1>
@@ -64,6 +68,7 @@ const pageCount = Math.ceil(fishList.length / perPage);
           onChange={(event) => {
             setSearch(event.target.value);
           }}
+          onLoad={getFish()}
         />
  
         <br />
@@ -72,6 +77,8 @@ const pageCount = Math.ceil(fishList.length / perPage);
         <br />
       </section>
       <section>
+        <br />
+        <br />
         <br />
         <br />
         
@@ -91,45 +98,45 @@ const pageCount = Math.ceil(fishList.length / perPage);
               </tr>
             </thead>
             <tbody> 
-              {currentPageData.map((val, key) => {
+              {/* {currentEntry.map((val, key) => {
                 return (
                   <tr key={val.fishID}>
                     <td>{val.fishCommonName}</td>
                     <td>{val.fishScientificName}</td>
                     <td>
-                      <NavLink to={`/Fishprofile/${val.fishScientificName}`}>Details</NavLink>
+                      <NavLink to={`/fishprofile/${val.fishScientificName}`}>Here</NavLink>
                     </td>
 
                   </tr>
                   
                 );
 
-              })}
+              })} */}
+              {displayEntries}
             </tbody>
           </Table>
-        </div>
-      </section>
-        <ReactPaginate
-            containerClassName="pagination"
-            breakLabel="..."
-            nextLabel="next >"
-            onPageChange={handlePageClick}
-            pageRangeDisplayed={5}
-            marginPagesDisplayed={2}
-            pageCount={pageCount}
-            previousLabel="< previous"
-            renderOnZeroPageCount={null}
-            pageClassName="page-item"
-            pageLinkClassName="page-link"
-            previousClassName="page-item"
-            previousLinkClassName="page-link"
-            nextClassName="page-item"
-            nextLinkClassName="page-link"
-            breakClassName="page-item"
-            breakLinkClassName="page-link"
-            activeClassName="active"
+          <ReactPaginate 
+          previousLabel={"Previous"}
+          nextLabel={"Next"}
+          pageCount={pageCount}
+          onPageChange={changePage}
+          containerClassName={"paginationBttns"}
+          previousLinkClassName={"previousBttn"}
+          nextLinkClassName={"nextBttn"}
+          disabledClassName={"paginationDisabled"}
+          activeClassName={"paginationActive"}
           />
-      
+        </div>
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+      </section>
+
       <section className="darkSection">
         <br />
         <br />
@@ -154,4 +161,4 @@ const pageCount = Math.ceil(fishList.length / perPage);
   
 };
 
-export default Compendium
+export default Compendium;

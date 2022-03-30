@@ -1,14 +1,13 @@
 import { useState, useEffect } from "react";
-import { Table, Pagination } from "react-bootstrap";
+import { Table } from "react-bootstrap";
 import Axios from "axios";
 import { NavLink } from "react-router-dom";
 import { Route } from "react-router-dom";
 import { useRouteMatch } from "react-router-dom";
 import ReactPaginate from 'react-paginate';
 
-
-
 const perPage = 10;
+
 
 const Compendium = () => {
   const [fishList, setFishList] = useState([]);
@@ -32,21 +31,11 @@ const Compendium = () => {
       }
     );
   };
-
+  
   useEffect(()=>{
     getFish();
   },[]);
-
-function handlePageClick({selected: selectedPage}){
-  console.log("selected page", selectedPage)
-  setCurrentPage(selectedPage);
-}
-
-const offset = currentPage * perPage;
-
-const currentPageData = fishList.slice(offset, offset + perPage);
-
-const pageCount = Math.ceil(fishList.length / perPage);
+  
 
   //sets the route URLs
   const { path, url } = useRouteMatch()
@@ -55,6 +44,8 @@ const pageCount = Math.ceil(fishList.length / perPage);
   return (
     <div>
       <section className="home">
+        <br />
+        <br />
         <br />
         <br />
         <h1 className="orangeText">Fish Data</h1>
@@ -74,6 +65,8 @@ const pageCount = Math.ceil(fishList.length / perPage);
       <section>
         <br />
         <br />
+        <br />
+        <br />
         
         <div className="table">
           <Table
@@ -91,13 +84,13 @@ const pageCount = Math.ceil(fishList.length / perPage);
               </tr>
             </thead>
             <tbody> 
-              {currentPageData.map((val, key) => {
+              {fishList.map((val, key) => {
                 return (
                   <tr key={val.fishID}>
                     <td>{val.fishCommonName}</td>
                     <td>{val.fishScientificName}</td>
                     <td>
-                      <NavLink to={`/Fishprofile/${val.fishScientificName}`}>Details</NavLink>
+                      <NavLink to={`/Fishprofile/${val.fishScientificName}`}>Here</NavLink>
                     </td>
 
                   </tr>
@@ -108,28 +101,16 @@ const pageCount = Math.ceil(fishList.length / perPage);
             </tbody>
           </Table>
         </div>
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
       </section>
-        <ReactPaginate
-            containerClassName="pagination"
-            breakLabel="..."
-            nextLabel="next >"
-            onPageChange={handlePageClick}
-            pageRangeDisplayed={5}
-            marginPagesDisplayed={2}
-            pageCount={pageCount}
-            previousLabel="< previous"
-            renderOnZeroPageCount={null}
-            pageClassName="page-item"
-            pageLinkClassName="page-link"
-            previousClassName="page-item"
-            previousLinkClassName="page-link"
-            nextClassName="page-item"
-            nextLinkClassName="page-link"
-            breakClassName="page-item"
-            breakLinkClassName="page-link"
-            activeClassName="active"
-          />
-      
+
       <section className="darkSection">
         <br />
         <br />

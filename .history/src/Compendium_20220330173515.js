@@ -97,7 +97,7 @@ const pageCount = Math.ceil(fishList.length / perPage);
                     <td>{val.fishCommonName}</td>
                     <td>{val.fishScientificName}</td>
                     <td>
-                      <NavLink to={`/Fishprofile/${val.fishScientificName}`}>Details</NavLink>
+                      <NavLink to={`/Fishprofile/${val.fishScientificName}`}>Here</NavLink>
                     </td>
 
                   </tr>
@@ -109,7 +109,9 @@ const pageCount = Math.ceil(fishList.length / perPage);
           </Table>
         </div>
       </section>
+      <div >
         <ReactPaginate
+        className="center"
             containerClassName="pagination"
             breakLabel="..."
             nextLabel="next >"
@@ -128,7 +130,7 @@ const pageCount = Math.ceil(fishList.length / perPage);
             breakClassName="page-item"
             breakLinkClassName="page-link"
             activeClassName="active"
-          />
+          /></div>
       
       <section className="darkSection">
         <br />

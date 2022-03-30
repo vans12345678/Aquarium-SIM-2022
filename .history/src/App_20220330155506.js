@@ -23,7 +23,7 @@ function App() {
             <Route path="/aquarium">
               <Aquarium />
             </Route>
-            <Route path='/Compendium'>
+            <Route exact path='/Compendium'>
               <Compendium />
             </Route>
             <Route path="/Fishprofile/:FishName">
