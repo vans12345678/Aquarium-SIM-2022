@@ -25,12 +25,12 @@ const db = mysql.createConnection({
 app.post('/fish', urlencodedParser, (req, res) => {
 
     const search = req.body.search;
-    const searchTemp = ["%"+search+"%", "%"+search+"%"];
+    const searchTemp = "%"+search+"%";
     const sqlSelect = "SELECT * FROM tblfishmatches WHERE fishMatchCommonName LIKE ? OR fishMatchScientificName LIKE ?";
 
     console.log(search);
 
-    db.query(sqlSelect, searchTemp, (err, result) =>{
+    db.query(sqlSelect, (searchTemp, searchTemp), (err, result) =>{
         if(err)
         {
             console.log(err);
@@ -45,8 +45,8 @@ app.post('/fish', urlencodedParser, (req, res) => {
 app.post('/fishComp', urlencodedParser, (req, res) => {
 
     const search = req.body.search;
-    const searchTemp = ["%"+search+"%", "%"+search+"%"];
-    const sqlSelect = "SELECT * FROM tblfish WHERE fishCommonName LIKE ? OR fishScientificName LIKE ?";
+    const searchTemp = "%"+search+"%";
+    const sqlSelect = "SELECT * FROM tblfish WHERE fishCommonName LIKE ?";
 
     console.log(search);
 

@@ -76,7 +76,7 @@ const pageCount = Math.ceil(fishList.length / perPage);
         <br />
         <h1 className="orangeText">Listings</h1>
         <p className="text-center ">{userList}</p>
-        <button onClick={searchFish}>Search Fish Names</button>
+        <button onClick={searchFish}>Search Common Names</button>
         <input
           type="text"
           onChange={(event) => {
