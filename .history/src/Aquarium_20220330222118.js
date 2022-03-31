@@ -67,6 +67,7 @@ const Aquarium = () => {
         <p className="text-center ">Check out fish prices here!</p>
         {
           <button
+            onClick={getAllRainbow}
             type="button"
             className="btn btn-primary"
           >
