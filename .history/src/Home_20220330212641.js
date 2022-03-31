@@ -83,8 +83,7 @@ const Home = () => {
         <h1 className="darkBlueText">ABOUT US</h1>
         <div className="container">
           <p className="text-center darkBlueText boldText">
-          We are currently final year students of the Durham College's Computer Programming and Analysis program.
-          Having gained experience from the college in many areas of programming, ranging from working in mainframes to creating web applications, this project is a culmination of some of the knowledge and skills we have learned from the college. 
+          We are currently final year students of the Durham College's Computer Programming and Analysis program.Having gained experience from the college in many areas of programming, ranging from working in mainframes to creating web applications, this project is a culmination of some of the knowledge and skills we have learned from the college. 
           </p>
           <br />
           <br />
