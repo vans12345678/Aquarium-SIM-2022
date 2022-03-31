@@ -22,7 +22,7 @@ const Aquarium = () => {
     getFish();
   }, []);
 
-  var [userList, setUserList] = useState([]);
+  const [userList, setUserList] = useState([]);
 
   const addFish = (value) => {
     //console.log(value.fishMatchID);
@@ -52,7 +52,8 @@ const Aquarium = () => {
   }
 
   function clearSession() {
-    userList = [];
+    setUserList([]);
+    this.setState({ userList: [] });
   }
 
   let name = "";

@@ -378,7 +378,7 @@ figcaption {
   width: 5%;
      max-height: 300px;
      margin-bottom: 10px;
-     overflow-y:auto;
+     /* overflow-y:auto; */
      -webkit-overflow-scrolling: touch;
 }
 .listImg{

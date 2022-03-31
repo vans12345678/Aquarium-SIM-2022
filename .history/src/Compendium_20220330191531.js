@@ -60,24 +60,21 @@ const Compendium = () => {
         <br />
         <br />
         <h1 className="orangeText">Fish Data</h1>
-        <div className="center">
-          <Button
-            className="rounded-0 "
-            variant="primary"
-            size="sm"
-            onClick={(event) => {
-              searchFishAll();
-            }}
-          >
-            Search Common Names
-          </Button>
-          <input
-            type="text"
-            onChange={(event) => {
-              setSearch(event.target.value);
-            }}
-          />
-        </div>
+        <Button
+          className="rounded-0"
+          variant="info"
+          onClick={(event) => {
+            searchFishAll();
+          }}
+        >
+          Search Common Names
+        </Button>
+        <input
+          type="text"
+          onChange={(event) => {
+            setSearch(event.target.value);
+          }}
+        />
 
         <br />
         <br />

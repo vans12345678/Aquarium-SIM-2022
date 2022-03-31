@@ -393,10 +393,10 @@ figcaption {
 }
 
 .center{
-  /* display: "flex";
+  display: "flex";
   /* height: 100vh; */
-  /* justify-content: center;
-  align-items: center; */ 
+  justify-content: center;
+  align-items: center;
   margin-left: 2%;
 }
 

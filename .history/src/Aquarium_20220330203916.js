@@ -8,8 +8,6 @@ import commonPleco from "./images/common-pleco.png";
 import { ListGroup, Button, Card } from "react-bootstrap";
 import Axios from "axios";
 import { useState, useEffect } from "react";
-import { Fish, FishBasic } from "./classes/FishBasic";
-
 const Aquarium = () => {
   const [fishList, setFishList] = useState([]);
   const getFish = () => {
@@ -22,25 +20,6 @@ const Aquarium = () => {
     getFish();
   }, []);
 
-  var [userList, setUserList] = useState([]);
-
-  const addFish = (value) => {
-    //console.log(value.fishMatchID);
-    let fish = new FishBasic(
-      value.fishID,
-      value.fishCommonName,
-      value.fishScientificName,
-      "placeholder.png"
-    );
-    userList.push(fish);
-    setUserList(userList);
-
-    window.sessionStorage.setItem("fishNames", JSON.stringify(userList));
-    var test = JSON.parse(sessionStorage.getItem("fishNames"));
-
-    alert("Added fish to list");
-  };
-
   function fishNameChange(commonName, ScientificName) {
     if (commonName != "N/A") {
       var pageTitleName = commonName;
@@ -49,10 +28,6 @@ const Aquarium = () => {
     }
 
     return pageTitleName;
-  }
-
-  function clearSession() {
-    userList = [];
   }
 
   let name = "";
@@ -86,7 +61,7 @@ const Aquarium = () => {
             height="700px"
             alt=""
           />
-          <div className="">
+          <div className="list">
             <Card className="list" style={{ width: "40rem" }}>
               <ListGroup variant="flush">
                 {fishList.map((item) => {
@@ -107,13 +82,7 @@ const Aquarium = () => {
                         ))
                       }
 
-                      <Button
-                        className="listBtn"
-                        variant="success"
-                        onClick={function () {
-                          addFish(item);
-                        }}
-                      >
+                      <Button className="listBtn" variant="success">
                         Add
                       </Button>
                     </ListGroup.Item>
@@ -121,17 +90,82 @@ const Aquarium = () => {
                 })}
               </ListGroup>
             </Card>
-            <Button
-              className="listBtn"
-              variant="danger"
-              onClick={function () {
-                clearSession();
-              }}
-            >
-              Clear
-            </Button>
+            {/* <ListGroup>
+              <ListGroup.Item variant="secondary">
+                <div>
+                  <img
+                    className="listImg"
+                    src={swordtail}
+                    width="100px"
+                    height="50px"
+                    alt=""
+                  />
+                  Swordtail
+                </div>
+
+                <a href="">
+                  <Button variant="info">Click</Button>
+                </a>
+              </ListGroup.Item>
+              <ListGroup.Item action variant="success">
+                Success
+              </ListGroup.Item>
+              <ListGroup.Item action variant="danger">
+                Danger
+              </ListGroup.Item>
+              <ListGroup.Item action variant="warning">
+                Warning
+                <button>Click</button>
+              </ListGroup.Item>
+              <ListGroup.Item action variant="info">
+                Info
+              </ListGroup.Item>
+              <ListGroup.Item action variant="light">
+                Light
+              </ListGroup.Item>
+              <ListGroup.Item action variant="dark">
+                Dark
+              </ListGroup.Item>
+              <ListGroup.Item action variant="dark">
+                Dark
+              </ListGroup.Item>
+              <ListGroup.Item action variant="dark">
+                Dark
+              </ListGroup.Item>
+              <ListGroup.Item action variant="dark">
+                Dark
+              </ListGroup.Item>
+              <ListGroup.Item action variant="dark">
+                Dark
+              </ListGroup.Item>
+              <ListGroup.Item action variant="dark">
+                Dark
+              </ListGroup.Item>
+
+              <ListGroup.Item action variant="dark">
+                Dark
+              </ListGroup.Item>
+              <ListGroup.Item action variant="dark">
+                Dark
+              </ListGroup.Item>
+            </ListGroup> */}
           </div>
         </div>
+
+        {/* <Stage
+          width={3000}
+          height={1500}
+          raf={false}
+          renderOnComponentChange={true}
+          options={{ backgroundAlpha: 0 }}
+        >
+          {background}
+          {/* {console.log(swordtailSprite.props.name)} */}
+        {/* <Container position={[background.props.x, background.props.y]}>
+            <SwordtailSprite />
+            <BasicText />
+          </Container>
+        </Stage> */}
 
         <br />
         <br />

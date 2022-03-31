@@ -393,11 +393,11 @@ figcaption {
 }
 
 .center{
-  /* display: "flex";
+  display: "flex";
   /* height: 100vh; */
-  /* justify-content: center;
-  align-items: center; */ 
-  margin-left: 2%;
+  justify-content: center;
+  align-items: center;
+  margin-left: 5px;
 }
 
 .pagination{

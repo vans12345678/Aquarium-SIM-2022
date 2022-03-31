@@ -22,7 +22,7 @@ const Aquarium = () => {
     getFish();
   }, []);
 
-  var [userList, setUserList] = useState([]);
+  const [userList, setUserList] = useState([]);
 
   const addFish = (value) => {
     //console.log(value.fishMatchID);
@@ -52,7 +52,7 @@ const Aquarium = () => {
   }
 
   function clearSession() {
-    userList = [];
+    setUserList([]);
   }
 
   let name = "";
@@ -121,13 +121,7 @@ const Aquarium = () => {
                 })}
               </ListGroup>
             </Card>
-            <Button
-              className="listBtn"
-              variant="danger"
-              onClick={function () {
-                clearSession();
-              }}
-            >
+            <Button className="listBtn" variant="danger" onClick={clearSession}>
               Clear
             </Button>
           </div>

@@ -22,7 +22,7 @@ const Aquarium = () => {
     getFish();
   }, []);
 
-  var [userList, setUserList] = useState([]);
+  const [userList, setUserList] = useState([]);
 
   const addFish = (value) => {
     //console.log(value.fishMatchID);
@@ -49,10 +49,6 @@ const Aquarium = () => {
     }
 
     return pageTitleName;
-  }
-
-  function clearSession() {
-    userList = [];
   }
 
   let name = "";
@@ -86,7 +82,7 @@ const Aquarium = () => {
             height="700px"
             alt=""
           />
-          <div className="">
+          <div className="list">
             <Card className="list" style={{ width: "40rem" }}>
               <ListGroup variant="flush">
                 {fishList.map((item) => {
@@ -124,9 +120,7 @@ const Aquarium = () => {
             <Button
               className="listBtn"
               variant="danger"
-              onClick={function () {
-                clearSession();
-              }}
+              onClick={function () {}}
             >
               Clear
             </Button>
