@@ -38,7 +38,7 @@ const Aquarium = () => {
       <section className="home" onLoad={getAllRainbow}>
         <br />
         <br />
-
+        <br />
         <h1 className="orangeText">Aquarium</h1>
         <p className="text-center ">Check out fish prices here!</p>
         {<button onClick={getAllRainbow} type="button" className="btn btn-primary">Get All Rainbow</button>}

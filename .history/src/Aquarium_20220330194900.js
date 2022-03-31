@@ -30,6 +30,8 @@ const Aquarium = () => {
     });
   }
 
+  
+
 
   // sessionStorage.setItem("fish", JSON.stringify(fish));
   var fishObj = sessionStorage.getItem("fishName");
@@ -38,7 +40,8 @@ const Aquarium = () => {
       <section className="home" onLoad={getAllRainbow}>
         <br />
         <br />
-
+        <br />
+        <br />
         <h1 className="orangeText">Aquarium</h1>
         <p className="text-center ">Check out fish prices here!</p>
         {<button onClick={getAllRainbow} type="button" className="btn btn-primary">Get All Rainbow</button>}
@@ -46,11 +49,13 @@ const Aquarium = () => {
 
         <br />
         <br />
+        <br />
       </section>
       <section className="homeMiddle">
         <br />
         <br />
-
+        <br />
+        <br />
 
         <div className="row row-cols-1 row-cols-sm-2 row-cols-md-2 g-3 mt-1">
           <img

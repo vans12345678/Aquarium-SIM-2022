@@ -5,6 +5,7 @@ import {Fish, FishBasic} from './classes/FishBasic';
 import ReactPaginate from 'react-paginate';
 
 const perPage = 10;
+var needReset = false;
 
 const Listings = () => {
   const [fishList, setFishList] = useState([]);
@@ -22,7 +23,7 @@ const Listings = () => {
     Axios.post("http://localhost:3001/fish", {search: search}).then((response) => {
       setFishList(response.data);
     });
-    resetPage();
+    needReset = true;
   }
 
   //initially grabs all the entries
@@ -36,9 +37,16 @@ const Listings = () => {
   }
   
   function resetPage() {
+    if(needReset == true){
       setCurrentPage(0);
       const offset = (currentPage) * perPage;
-   return currentPage;   
+      return currentPage;
+    }
+    else
+    {
+      return currentPage;
+    }
+      
   }
 
   const fish2 = new FishBasic("value.fishMatchID","value.fishMatchCommonName", "value.fishMatchScientificName", 'placeholder.png');  
@@ -151,7 +159,7 @@ const pageCount = Math.ceil(fishList.length / perPage);
             breakClassName="page-item"
             breakLinkClassName="page-link"
             activeClassName="active"
-            forcePage={currentPage}
+            setPage={resetPage}
           />
       <section className="darkSection">
         <br />

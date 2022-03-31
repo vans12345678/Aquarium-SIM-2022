@@ -62,7 +62,8 @@ const pageCount = Math.ceil(fishList.length / perPage);
       <section className="home">
         <br />
         <br />
-
+        <br />
+        <br />
         <h1 className="orangeText">Fish Data</h1>
         <button onClick={(event)=>{
           searchFishAll()       }}
@@ -78,7 +79,8 @@ const pageCount = Math.ceil(fishList.length / perPage);
         <br />
         <br />
         <br />
-
+        <br />
+        <br />
       </section>
       <section>
         <br />
@@ -137,7 +139,6 @@ const pageCount = Math.ceil(fishList.length / perPage);
             breakClassName="page-item"
             breakLinkClassName="page-link"
             activeClassName="active"
-            forcePage={currentPage}
           />
       
       <section className="darkSection">

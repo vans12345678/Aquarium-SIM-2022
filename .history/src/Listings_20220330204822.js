@@ -151,7 +151,7 @@ const pageCount = Math.ceil(fishList.length / perPage);
             breakClassName="page-item"
             breakLinkClassName="page-link"
             activeClassName="active"
-            forcePage={currentPage}
+            setPage={}
           />
       <section className="darkSection">
         <br />

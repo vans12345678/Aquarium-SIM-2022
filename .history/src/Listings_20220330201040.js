@@ -22,24 +22,13 @@ const Listings = () => {
     Axios.post("http://localhost:3001/fish", {search: search}).then((response) => {
       setFishList(response.data);
     });
-    resetPage();
+    //console.log(search);
   }
 
   //initially grabs all the entries
   useEffect(()=>{
     getAllFish();
   },[]);
-
-  function handlePageClick({selected: selectedPage}){
-    console.log("selected page", selectedPage)
-    setCurrentPage(selectedPage);
-  }
-  
-  function resetPage() {
-      setCurrentPage(0);
-      const offset = (currentPage) * perPage;
-   return currentPage;   
-  }
 
   const fish2 = new FishBasic("value.fishMatchID","value.fishMatchCommonName", "value.fishMatchScientificName", 'placeholder.png');  
   const addFish = (value) =>{
@@ -61,12 +50,6 @@ const Listings = () => {
 
   }
 
-  const offset = (currentPage) * perPage;
-console.log(offset);
-
-const currentPageData = fishList.slice(offset, offset + perPage);
-
-const pageCount = Math.ceil(fishList.length / perPage);
 
   return (
     <div>
@@ -117,7 +100,7 @@ const pageCount = Math.ceil(fishList.length / perPage);
               </tr>
             </thead>
             <tbody>
-          {currentPageData.map((val, key) => {
+          {fishList.map((val, key) => {
           return (
               <tr key={val.fishMatchID}>
                 <td>{val.fishMatchCommonName}</td>
@@ -131,28 +114,16 @@ const pageCount = Math.ceil(fishList.length / perPage);
           </tbody>
           </Table>
         </div>
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
       </section>
-      <ReactPaginate
-            containerClassName="pagination"
-            breakLabel="..."
-            nextLabel="next >"
-            onPageChange={handlePageClick}
-            pageRangeDisplayed={5}
-            marginPagesDisplayed={2}
-            pageCount={pageCount}
-            previousLabel="< previous"
-            renderOnZeroPageCount={null}
-            pageClassName="page-item"
-            pageLinkClassName="page-link"
-            previousClassName="page-item"
-            previousLinkClassName="page-link"
-            nextClassName="page-item"
-            nextLinkClassName="page-link"
-            breakClassName="page-item"
-            breakLinkClassName="page-link"
-            activeClassName="active"
-            forcePage={currentPage}
-          />
+
       <section className="darkSection">
         <br />
         <br />

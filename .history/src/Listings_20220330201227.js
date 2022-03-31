@@ -38,7 +38,6 @@ const Listings = () => {
   function resetPage() {
       setCurrentPage(0);
       const offset = (currentPage) * perPage;
-   return currentPage;   
   }
 
   const fish2 = new FishBasic("value.fishMatchID","value.fishMatchCommonName", "value.fishMatchScientificName", 'placeholder.png');  
@@ -131,28 +130,16 @@ const pageCount = Math.ceil(fishList.length / perPage);
           </tbody>
           </Table>
         </div>
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
       </section>
-      <ReactPaginate
-            containerClassName="pagination"
-            breakLabel="..."
-            nextLabel="next >"
-            onPageChange={handlePageClick}
-            pageRangeDisplayed={5}
-            marginPagesDisplayed={2}
-            pageCount={pageCount}
-            previousLabel="< previous"
-            renderOnZeroPageCount={null}
-            pageClassName="page-item"
-            pageLinkClassName="page-link"
-            previousClassName="page-item"
-            previousLinkClassName="page-link"
-            nextClassName="page-item"
-            nextLinkClassName="page-link"
-            breakClassName="page-item"
-            breakLinkClassName="page-link"
-            activeClassName="active"
-            forcePage={currentPage}
-          />
+
       <section className="darkSection">
         <br />
         <br />

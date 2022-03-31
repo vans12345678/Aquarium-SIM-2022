@@ -38,7 +38,6 @@ const Listings = () => {
   function resetPage() {
       setCurrentPage(0);
       const offset = (currentPage) * perPage;
-   return currentPage;   
   }
 
   const fish2 = new FishBasic("value.fishMatchID","value.fishMatchCommonName", "value.fishMatchScientificName", 'placeholder.png');  
@@ -151,7 +150,6 @@ const pageCount = Math.ceil(fishList.length / perPage);
             breakClassName="page-item"
             breakLinkClassName="page-link"
             activeClassName="active"
-            forcePage={currentPage}
           />
       <section className="darkSection">
         <br />
