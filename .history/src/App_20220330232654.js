@@ -39,12 +39,12 @@ function App() {
               <Listings />
             </Route>
           </Switch>
-
+       
           <BackToTop />
-          <Footer />
         </div>
       </div>
     </Router>
+       <Footer />
   );
 }
 

@@ -36,8 +36,6 @@ const Home = () => {
         <br />
         <br />
         <br />
-        <br />
-        <br />
       </section>
       <section className="homeMiddle">
         <br />
@@ -132,11 +130,11 @@ const Home = () => {
         <div className="bubbles bubble-4"></div>
         <div className="bubbles bubble-8"></div>
       </section>
-      {/* <section className="darkBlueSection">
+      <section className="darkBlueSection">
         <footer className="footer">
           <p>Some footer nonsense!</p>
         </footer>
-      </section> */}
+      </section>
       {/* {showButton && (
         <button onClick={scrollToTop} className="back-to-top ">
           <img className="arrowimg" src={arrow} alt="submit" />

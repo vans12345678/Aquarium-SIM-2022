@@ -147,6 +147,16 @@ body {
   font-weight: bold;
 }
 
+/* .home:before
+{
+  content:"";
+  background-color:#AEB8FE;
+  position: absolute;
+  height: 100%;
+  width: 4000px;
+  left: -2000px;
+  z-index: -1;
+} */
 
 /***IMAGES***/
 
@@ -408,11 +418,4 @@ figcaption {
   justify-content: center;
   align-items: center;
 }
-/**************FOOTER**********/
-.footerColor{
-  background-color:#27187E
 
-}
-.footerColor a{
-  color:#FF8600
-}

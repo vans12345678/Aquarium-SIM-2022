@@ -1,148 +1,122 @@
-import "bootstrap/dist/css/bootstrap.min.css";
+var React = require('react');
+//You need this npm package to do createReactClass
+var createReactClass = require('create-react-class');
 
-import React from "react";
-import ReactDOM from "react-dom";
-import aquarium from "./images/fishtank.png";
-import swordtail from "./images/swordtail.png";
-import commonPleco from "./images/common-pleco.png";
-import { ListGroup, Button, Card } from "react-bootstrap";
-import Axios from "axios";
-import { useState, useEffect } from "react";
-import { Fish, FishBasic } from "./classes/FishBasic";
 
-const Aquarium = () => {
-  const [fishList, setFishList] = useState([]);
-  const getFish = () => {
-    Axios.get("http://localhost:3001/fishGet").then((response) => {
-      setFishList(response.data);
-    });
-  };
-
-  useEffect(() => {
-    getFish();
-  }, []);
-
-  var [userList, setUserList] = useState([]);
-
-  const addFish = (value) => {
-    //console.log(value.fishMatchID);
-    let fish = new FishBasic(
-      value.fishID,
-      value.fishCommonName,
-      value.fishScientificName,
-      "placeholder.png"
-    );
-    userList.push(fish);
-    setUserList(userList);
-
-    window.sessionStorage.setItem("fishNames", JSON.stringify(userList));
-    var test = JSON.parse(sessionStorage.getItem("fishNames"));
-
-    alert("Added fish to list");
-  };
-
-  function fishNameChange(commonName, ScientificName) {
-    if (commonName != "N/A") {
-      var pageTitleName = commonName;
-    } else {
-      var pageTitleName = ScientificName;
-    }
-
-    return pageTitleName;
-  }
-
-  function clearSession() {
-    userList = [];
-  }
-
-  let name = "";
-
-  return (
-    <div>
-      <section className="home">
-        <br />
-        <br />
-
-        <h1 className="orangeText">Aquarium</h1>
-        <p className="text-center ">Check out fish prices here!</p>
-        {
-          <button
-            type="button"
-            className="btn btn-primary"
-          >
-            Get All Rainbow
-          </button>
+var Aquarium = createReactClass({
+  getInitialState : function() {
+    return (
+      {
+        fruits : {
+          'fruit-1' : 'orange',
+          'fruit-2' : 'apple'
         }
-
-        <br />
-        <br />
-      </section>
-      <section className="homeMiddle">
-        <br />
-        <br />
-
-        <div className="row row-cols-1 row-cols-sm-2 row-cols-md-2 g-3 mt-1">
-          <img
-            className=""
-            src={aquarium}
-            width="1200px"
-            height="700px"
-            alt=""
-          />
-          <div className="">
-            <Card className="list" style={{ width: "40rem" }}>
-              <ListGroup variant="flush">
-                {fishList.map((item) => {
-                  return (
-                    <ListGroup.Item key={item.fishID}>
-                      <img
-                        className="listImg"
-                        src={require("./images/" + item.fishImage)}
-                        width="100px"
-                        height="50px"
-                        alt=""
-                      />
-
-                      {
-                        (name = fishNameChange(
-                          item.fishCommonName,
-                          item.fishScientificName
-                        ))
-                      }
-
-                      <Button
-                        className="listBtn"
-                        variant="success"
-                        onClick={function () {
-                          addFish(item);
-                        }}
-                      >
-                        Add
-                      </Button>
-                    </ListGroup.Item>
-                  );
-                })}
-              </ListGroup>
-            </Card>
-            <Button
-              className="listBtn"
-              variant="danger"
-              onClick={function () {
-                clearSession();
-              }}
-            >
-              Clear
-            </Button>
-          </div>
+      }
+     )
+    },
+    addFruit : function(fruit) {
+      //create a unike key for each new fruit item
+      var timestamp = (new Date()).getTime();
+      // update the state object
+      this.state.fruits['fruit-' + timestamp ] = fruit;
+      // set the state
+      this.setState({ fruits : this.state.fruits });
+     },
+     removeFruit : function(fruitKey) {
+      // update the state object
+      delete this.state.fruits[fruitKey];
+      // set the state
+      this.setState({ fruits : this.state.fruits });
+      //alert(fruitKey);
+     },
+     render: function() {
+      return (
+        <div className="component-wrapper">
+          <FruitList fruits={this.state.fruits} />
+          <AddFruitForm addFruit={this.addFruit} />
+          <RemoveFruitForm removeFruit={this.removeFruit} fruits={this.state.fruits} />
         </div>
+       );
+      }
+     });
 
-        <br />
-        <br />
-        <br />
-        <br />
-      </section>
-    </div>
-  );
-};
+     var FruitList = createReactClass({
+      render : function() {
+        return (
+          <div className="container">
+            <ul className="list-group text-center">
+              {
+                Object.keys(this.props.fruits).map(function(key) {
+                  return <li className="list-group-item list-group-item-info">{this.props.fruits[key]}</li>
+                }.bind(this))
+              }
+            </ul>
+           </div>
+          );
+        }
+      });
 
-export default Aquarium;
+      var AddFruitForm = createReactClass({
+        createFruit : function(e) {
+          e.preventDefault();
+          //get the fruit object name from the form
+          var fruit = this.refs.fruitName.value;
+          //call the addFruit method of the App component
+          //to change the state of the fruit list by adding an new item
+          if(fruit.length > 0) {
+            this.props.addFruit(fruit);
+          }
+          //reset the form
+          this.refs.fruitForm.reset();
+        },
+        render : function() {
+          return(
+            <form className="form-inline" ref="fruitForm" onSubmit={this.createFruit}>
+              <div className="form-group">
+                <label for="fruitItem">
+                  Fruit Name
+                  <input type="text" id="fruitItem" className="form-control" placeholder="e.x.lemmon" ref="fruitName" />
+                </label>
+              </div>
+              <button type="submit" className="btn btn-primary">Add Fruit</button>
+            </form>
+          )
+
+        }
+      });
+
+      var RemoveFruitForm = createReactClass({
+        selectFruittoRemove : function(e) {
+          var fruit = e.target.value;
+          //get the fruit object name from the form
+          //var fruit = this.refs.removeFruitSelect.value;
+          //call the addFruit method of the App component
+          //to change the state of the fruit list by adding an new item
+          this.props.removeFruit(fruit);
+          //reset the form
+          this.refs.removeFruitForm.reset();
+        },
+        render : function() {
+          return(
+            <form className="form-inline" ref="removeFruitForm" onChange={this.selectFruittoRemove}>
+             <div className="form-group">
+              <label for="selectFruit">
+                List of Fruits
+                <select id="selectFruit" className="form-control">
+                  <option value="">Remove a fruit</option>
+                  {
+                    Object.keys(this.props.fruits).map(function(key) {
+                      return <option value={key}>{this.props.fruits[key]}</option>
+                    }.bind(this))
+                  }
+                </select>
+              </label>
+              </div>
+            </form>
+          )
+
+        }
+      });
+
+
+      export default Aquarium;

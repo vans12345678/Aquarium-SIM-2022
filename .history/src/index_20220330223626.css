@@ -147,6 +147,16 @@ body {
   font-weight: bold;
 }
 
+/* .home:before
+{
+  content:"";
+  background-color:#AEB8FE;
+  position: absolute;
+  height: 100%;
+  width: 4000px;
+  left: -2000px;
+  z-index: -1;
+} */
 
 /***IMAGES***/
 
@@ -202,11 +212,8 @@ figcaption {
 
  
 
-
      0% {
-       /* margin-left:99%; */
-       left: 99%;
-        /* transform: translateX(0px); */
+       margin-left:99%;
       transform: rotate(0deg);
      }
      30%{
@@ -218,7 +225,6 @@ figcaption {
      }
 
      70% {
-       
        transform: rotate(-10deg);
      }
 
@@ -226,22 +232,13 @@ figcaption {
        transform: rotate(10deg);
      }
      100% {
-       /* margin-left: -20%; */
-       left: -20%;
-        /* transform: translateX(100vw); */
+       margin-left: -20%;
        transform: rotate(10deg) ; 
       
      }
 
 }
-.container{
-    position: relative;
-    max-width: 100vh;
-    max-height: 100%;
-    margin: 0 auto;
-    overflow: hidden;
-    cursor: pointer;
-}
+
 
 .fishanim {
   animation-name: fish ;
@@ -262,8 +259,8 @@ figcaption {
 
 #sword{
   animation-direction:reverse;
-  position:absolute;
-  top: 65%;
+  position:fixed;
+  top: -1%;
     /* transform: scaleX(-1); */
   
 }
@@ -408,11 +405,4 @@ figcaption {
   justify-content: center;
   align-items: center;
 }
-/**************FOOTER**********/
-.footerColor{
-  background-color:#27187E
 
-}
-.footerColor a{
-  color:#FF8600
-}

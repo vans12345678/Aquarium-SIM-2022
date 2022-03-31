@@ -39,9 +39,8 @@ function App() {
               <Listings />
             </Route>
           </Switch>
-
-          <BackToTop />
           <Footer />
+          <BackToTop />
         </div>
       </div>
     </Router>

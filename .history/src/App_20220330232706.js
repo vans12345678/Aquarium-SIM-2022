@@ -41,8 +41,8 @@ function App() {
           </Switch>
 
           <BackToTop />
-          <Footer />
         </div>
+        <Footer />
       </div>
     </Router>
   );

@@ -4,10 +4,10 @@ import Aquarium from "./Aquarium";
 import Compendium from "./Compendium";
 import Listings from "./Listings";
 import FishProfile from "./FishProfile";
+
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { Button } from "react-bootstrap";
 import BackToTop from "./BackToTop";
-import Footer from "./Footer";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
@@ -17,7 +17,6 @@ function App() {
     <Router>
       <div className="App">
         <NavBar />
-
         <div className="content">
           <Switch>
             <Route exact path="/">
@@ -39,9 +38,7 @@ function App() {
               <Listings />
             </Route>
           </Switch>
-
           <BackToTop />
-          <Footer />
         </div>
       </div>
     </Router>

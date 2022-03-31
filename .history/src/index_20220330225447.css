@@ -147,6 +147,16 @@ body {
   font-weight: bold;
 }
 
+/* .home:before
+{
+  content:"";
+  background-color:#AEB8FE;
+  position: absolute;
+  height: 100%;
+  width: 4000px;
+  left: -2000px;
+  z-index: -1;
+} */
 
 /***IMAGES***/
 
@@ -205,43 +215,37 @@ figcaption {
 
      0% {
        /* margin-left:99%; */
-       left: 99%;
-        /* transform: translateX(0px); */
+        transform: translateX(0px);
       transform: rotate(0deg);
      }
      30%{
+        transform: translateX(30vw);
        transform: rotate(-10deg);
      }
 
      50% {
+        transform: translateX(50vw);
        transform: rotate(10deg);
      }
 
      70% {
-       
+        transform: translateX(70vw);
        transform: rotate(-10deg);
      }
 
      90% {
+        transform: translateX(90vw);
        transform: rotate(10deg);
      }
      100% {
        /* margin-left: -20%; */
-       left: -20%;
-        /* transform: translateX(100vw); */
+        transform: translateX(100vw);
        transform: rotate(10deg) ; 
       
      }
 
 }
-.container{
-    position: relative;
-    max-width: 100vh;
-    max-height: 100%;
-    margin: 0 auto;
-    overflow: hidden;
-    cursor: pointer;
-}
+
 
 .fishanim {
   animation-name: fish ;
@@ -257,6 +261,7 @@ figcaption {
 
 #fish1{
    position:absolute;
+   
    top: 75%;
 }
 
@@ -408,11 +413,4 @@ figcaption {
   justify-content: center;
   align-items: center;
 }
-/**************FOOTER**********/
-.footerColor{
-  background-color:#27187E
 
-}
-.footerColor a{
-  color:#FF8600
-}
