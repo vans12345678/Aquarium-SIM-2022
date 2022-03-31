@@ -45,8 +45,8 @@ app.post('/fish', urlencodedParser, (req, res) => {
 app.post('/fishComp', urlencodedParser, (req, res) => {
 
     const search = req.body.search;
-    const searchTemp = ["%"+search+"%", "%"+search+"%"];
-    const sqlSelect = "SELECT * FROM tblfish WHERE fishCommonName LIKE ? OR fishScientificName LIKE ?";
+    const searchTemp = ["%"+search+"%, %"+search+"%"];
+    const sqlSelect = "SELECT * FROM tblfish WHERE fishCommonName LIKE ? OR WHERE fishScientificName LIKE ?";
 
     console.log(search);
 
