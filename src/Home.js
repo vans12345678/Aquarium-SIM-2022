@@ -21,8 +21,6 @@ const Home = () => {
       <section className="home">
         <br />
         <br />
-        <br />
-        <br />
         <h1 className="orangeText">WELCOME TO AQUARIUM SIM 2022 </h1>
 
         <p className="text-center ">
@@ -37,9 +35,7 @@ const Home = () => {
         <br />
         <br />
         <br />
-        <br />
-        <br />
-        <br />
+
       </section>
       <section className="homeMiddle">
         <br />
@@ -49,14 +45,21 @@ const Home = () => {
         <h1>ABOUT THIS PROJECT</h1>
         <div className="container">
           <p className="text-center boldText">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat. Duis aute irure dolor in
-            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-            culpa qui officia deserunt mollit anim id est laborum.
+          Many people may have childhood memories of keeping goldfish as a pet. 
+          According to the US Census Bureau in 1993, over 10% of households have kept ornamental fish. 
+          With the fishkeeping hobby being a multibillion-dollar industry with huge markets in the US, Europe and Asia. 
+          In 2012, the value ornamental fish imports into the US was approximately 60 million USD. 
+          The value imported into the EU was triple this number at almost 140 million USD. 
+          Fish keeping is an extremely popular hobby worldwide.
           </p>
+          <p className="text-center boldText">
+          However, newcomers to this hobby face many pitfalls and mistakes that can cost them money and resulting in inhuman living conditions for the fish or invasive species that gets release into the environment. 
+          Our goal is for this application to help enthusiasts and beginners alike avoid making such mistakes and to help ensure the fish can live healthy lives. 
+          </p>
+          <p className="text-center boldText">
+          For this capstone project, we utilized our all our programming skills to work in a  language we have never developed in, ReactJS. 
+          The application will provide users with the ability to check fish compatibility, look up fish profiles and check fish prices on the web.
+         </p>
         </div>
         <div id="fish1" className="fishanim">
           <img width="150px" height="100px" src={betta} alt="" />
@@ -80,13 +83,8 @@ const Home = () => {
         <h1 className="darkBlueText">ABOUT US</h1>
         <div className="container">
           <p className="text-center darkBlueText boldText">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat. Duis aute irure dolor in
-            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-            culpa qui officia deserunt mollit anim id est laborum.
+          We are currently final year students of the Durham College's Computer Programming and Analysis program.
+          Having gained experience from the college in many areas of programming, ranging from working in mainframes to creating web applications, this project is a culmination of some of the knowledge and skills we have learned from the college. 
           </p>
           <br />
           <br />

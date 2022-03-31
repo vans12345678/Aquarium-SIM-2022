@@ -96,6 +96,12 @@ app.post('/fishAll', (req, res) => {
         }
     })
 });
+app.get('/fishAdd', (req, res) => {
+
+    
+
+    
+});
 
 app.get('/fishGet', (req, res) => {
 
