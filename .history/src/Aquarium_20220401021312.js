@@ -11,43 +11,28 @@ import { useState, useEffect } from "react";
 import { Fish, } from "./classes/Fish";
 import { FishBasic } from "./classes/FishBasic";
 import Toast from 'react-bootstrap/Toast'
-import ToastContainer from 'react-bootstrap/ToastContainer'
-import Alert from 'react-bootstrap/Alert';
 
 const Aquarium = () => {
 
   const [fishList, setFishList] = useState([]);
   const [showA, setShowA] = useState(false);
-  const [search, setSearch] = useState("");
   const toggleShowA = () => setShowA(!showA);
-  
 
   const getFish = () => {
     Axios.get("http://localhost:3001/fishGet").then((response) => {
       setFishList(response.data);
     });
-
-  };  //function for retrieving specific fish entries using search
-  const searchFishAll = () => {
-    Axios.post("http://localhost:3001/fishComp", { search: search }).then(
-      (response) => {
-        setFishList(response.data);
-      }
-    );
   };
-
   useEffect(() => {
     getFish();
-    getUserList();
+    localStorage.setItem("fishNames", JSON.stringify(userList));
   }, []);
 
-
+  localStorage.setItem("temp", 1);
   let [userList, setUserList] = useState([]);
-
   let arrFish = "";
   const addFish = (value) => {
     //console.log(value.fishMatchID);
-
     let fish = new Fish
     (value.fishID, value.fishScientificName, value.fishCommonName,value.fishAverageSize, value.fishLowerPH, value.fishUpperPH, value.fishLowerTemp, 
       value.fishUpperTemp, value.fishAggrSameSpecies, value.fishAggrOtherSpecies, value.fishLocationTank, value.fishImage);
@@ -55,8 +40,9 @@ const Aquarium = () => {
     userList.push(fish);
     setUserList(userList);
 
-    sessionStorage.setItem("fishNames", JSON.stringify(userList));
-    arrFish = JSON.parse(sessionStorage.getItem("fishNames"));
+    localStorage.setItem("fishNames", JSON.stringify(userList));
+    
+    arrFish = JSON.parse(localStorage.getItem("fishNames"));
     
 
     // let names = [];
@@ -69,15 +55,6 @@ const Aquarium = () => {
     toggleShowA();
     
   };
-
-  const getUserList = () =>{
-    if (sessionStorage.length > 0)
-    {
-      arrFish = JSON.parse(sessionStorage.getItem("fishNames"));
-      setUserList(arrFish);
-    }
-  }
-
   const removeFish = (value) => {
 
     const index = userList.indexOf(value);
@@ -85,7 +62,7 @@ const Aquarium = () => {
     
     userList.splice(index, 1);
     setUserList(userList);
-    sessionStorage.setItem("fishNames", JSON.stringify(userList));
+    
     toggleShowA();
     
   };
@@ -102,7 +79,8 @@ const Aquarium = () => {
 
   function clearSession() {
     userList = [];
-    sessionStorage.clear();
+    //localStorage.clear();
+    localStorage.removeItem("fishNames");
     setUserList(userList);
   }
 
@@ -112,29 +90,10 @@ const Aquarium = () => {
     let ms = d.getMilliseconds();
 
     id = id.toString() + "_" + ms;
-    //console.log(id);
+    console.log(id);
     
     return id;
   }
-  function AlertDismissible() {  
-    return (
-      <>
-        <ToastContainer position="bottom-end">
-          <Toast onClose={() => setShowA(false)} show={showA} delay={2000} autohide>
-            <Toast.Header>
-              <img src="holder.js/20x20?text=%20" className="rounded me-2" alt="" />
-              <strong className="me-auto">Aquarium SIM</strong>
-              <small className="text-muted">just now</small>
-            </Toast.Header>
-            <Toast.Body>Updated List</Toast.Body>
-          </Toast>
-        </ToastContainer>
-      </>
-      
-        
-    );
-  }
-
 
   return (
     <div>
@@ -142,13 +101,13 @@ const Aquarium = () => {
         <br />
         <br />
         <h1 className="orangeText">Aquarium</h1>
+        <p className="text-center ">Check out fish prices here!</p>
         <br />
         <br />
       </section>
       <section className="homeMiddle">
         <br />
         <br />
-        <AlertDismissible/>
         <div className="row row-cols-1 row-cols-sm-2 row-cols-md-2 g-3 mt-1">
           <img
             className=""
@@ -157,34 +116,7 @@ const Aquarium = () => {
             height="700px"
             alt=""
           />
-          
           <div className="">
-          <div className="searchCenter">
-          <button
-            onClick={(event) => {
-              searchFishAll();
-            }}
-          >
-            Search Fish Names
-          </button>
-          <input
-            id="search"
-            type="search"
-            placeholder="Ex. Betta splendens"
-            onChange={(event) => {
-              setSearch(event.target.value);
-            }}
-            onKeyPress={(event) => {
-              if (event.key === "Enter") {
-                event.preventDefault();
-                console.log("Click");
-                searchFishAll();
-              }
-            }}
-          />
-          <br/>
-          <br/>
-        </div>
             <Card className="list" style={{ width: "40rem" }}>
               <ListGroup variant="flush">
                 {fishList.map((item) => {

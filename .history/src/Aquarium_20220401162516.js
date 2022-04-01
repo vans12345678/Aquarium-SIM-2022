@@ -20,7 +20,6 @@ const Aquarium = () => {
   const [showA, setShowA] = useState(false);
   const [search, setSearch] = useState("");
   const toggleShowA = () => setShowA(!showA);
-  
 
   const getFish = () => {
     Axios.get("http://localhost:3001/fishGet").then((response) => {
@@ -47,6 +46,7 @@ const Aquarium = () => {
   let arrFish = "";
   const addFish = (value) => {
     //console.log(value.fishMatchID);
+    setShowA(false);
 
     let fish = new Fish
     (value.fishID, value.fishScientificName, value.fishCommonName,value.fishAverageSize, value.fishLowerPH, value.fishUpperPH, value.fishLowerTemp, 
@@ -66,7 +66,7 @@ const Aquarium = () => {
     //   console.log(arrFish[i].commonName);
     // }
 
-    toggleShowA();
+    //toggleShowA();
     
   };
 
@@ -112,21 +112,21 @@ const Aquarium = () => {
     let ms = d.getMilliseconds();
 
     id = id.toString() + "_" + ms;
-    //console.log(id);
+    console.log(id);
     
     return id;
   }
   function AlertDismissible() {  
     return (
       <>
-        <ToastContainer position="bottom-end">
-          <Toast onClose={() => setShowA(false)} show={showA} delay={2000} autohide>
+        <ToastContainer position="middle-end">
+          <Toast show={showA} onClose={toggleShowA} delay={2000} autohide >
             <Toast.Header>
               <img src="holder.js/20x20?text=%20" className="rounded me-2" alt="" />
-              <strong className="me-auto">Aquarium SIM</strong>
+              <strong className="me-auto">Bootstrap</strong>
               <small className="text-muted">just now</small>
             </Toast.Header>
-            <Toast.Body>Updated List</Toast.Body>
+            <Toast.Body>See? Just like this.</Toast.Body>
           </Toast>
         </ToastContainer>
       </>

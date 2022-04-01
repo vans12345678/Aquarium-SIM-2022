@@ -120,7 +120,7 @@ const Aquarium = () => {
     return (
       <>
         <ToastContainer position="bottom-end">
-          <Toast onClose={() => setShowA(false)} show={showA} delay={2000} autohide>
+          <Toast onClose={() => setShow(false)} show={show} delay={3000} autohide>
             <Toast.Header>
               <img src="holder.js/20x20?text=%20" className="rounded me-2" alt="" />
               <strong className="me-auto">Aquarium SIM</strong>

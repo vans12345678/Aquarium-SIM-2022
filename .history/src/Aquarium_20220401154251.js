@@ -11,7 +11,6 @@ import { useState, useEffect } from "react";
 import { Fish, } from "./classes/Fish";
 import { FishBasic } from "./classes/FishBasic";
 import Toast from 'react-bootstrap/Toast'
-import ToastContainer from 'react-bootstrap/ToastContainer'
 import Alert from 'react-bootstrap/Alert';
 
 const Aquarium = () => {
@@ -20,7 +19,7 @@ const Aquarium = () => {
   const [showA, setShowA] = useState(false);
   const [search, setSearch] = useState("");
   const toggleShowA = () => setShowA(!showA);
-  
+  const [show, setShow] = useState(false);
 
   const getFish = () => {
     Axios.get("http://localhost:3001/fishGet").then((response) => {
@@ -47,7 +46,6 @@ const Aquarium = () => {
   let arrFish = "";
   const addFish = (value) => {
     //console.log(value.fishMatchID);
-
     let fish = new Fish
     (value.fishID, value.fishScientificName, value.fishCommonName,value.fishAverageSize, value.fishLowerPH, value.fishUpperPH, value.fishLowerTemp, 
       value.fishUpperTemp, value.fishAggrSameSpecies, value.fishAggrOtherSpecies, value.fishLocationTank, value.fishImage);
@@ -66,7 +64,7 @@ const Aquarium = () => {
     //   console.log(arrFish[i].commonName);
     // }
 
-    toggleShowA();
+    setShow(true);
     
   };
 
@@ -112,26 +110,23 @@ const Aquarium = () => {
     let ms = d.getMilliseconds();
 
     id = id.toString() + "_" + ms;
-    //console.log(id);
+    console.log(id);
     
     return id;
   }
   function AlertDismissible() {  
     return (
       <>
-        <ToastContainer position="bottom-end">
-          <Toast onClose={() => setShowA(false)} show={showA} delay={2000} autohide>
-            <Toast.Header>
-              <img src="holder.js/20x20?text=%20" className="rounded me-2" alt="" />
-              <strong className="me-auto">Aquarium SIM</strong>
-              <small className="text-muted">just now</small>
-            </Toast.Header>
-            <Toast.Body>Updated List</Toast.Body>
-          </Toast>
-        </ToastContainer>
+        <Alert show={show} variant="success">
+          <Alert.Heading>How's it going?!</Alert.Heading>
+          <p>
+            Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget
+            lacinia odio sem nec elit. Cras mattis consectetur purus sit amet
+            fermentum.
+          </p>
+          <hr />
+        </Alert>
       </>
-      
-        
     );
   }
 
@@ -148,7 +143,6 @@ const Aquarium = () => {
       <section className="homeMiddle">
         <br />
         <br />
-        <AlertDismissible/>
         <div className="row row-cols-1 row-cols-sm-2 row-cols-md-2 g-3 mt-1">
           <img
             className=""
@@ -257,6 +251,7 @@ const Aquarium = () => {
               Clear
             </Button>
           </div>
+          <AlertDismissible/>
         </div>
         <br />
         <br />
