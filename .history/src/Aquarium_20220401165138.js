@@ -10,16 +10,24 @@ import Axios from "axios";
 import { useState, useEffect } from "react";
 import { Fish } from "./classes/Fish";
 import { FishBasic } from "./classes/FishBasic";
+<<<<<<< HEAD
 import Toast from 'react-bootstrap/Toast'
 import ToastContainer from 'react-bootstrap/ToastContainer'
 import Alert from 'react-bootstrap/Alert';
+=======
+import Toast from "react-bootstrap/Toast";
+>>>>>>> c79aa46d9223b4c666ab8c7fdaf0fc391340a72b
 
 const Aquarium = () => {
   const [fishList, setFishList] = useState([]);
   const [showA, setShowA] = useState(false);
   const [search, setSearch] = useState("");
   const toggleShowA = () => setShowA(!showA);
+<<<<<<< HEAD
+  
+=======
   const [show, setShow] = useState(false);
+>>>>>>> c79aa46d9223b4c666ab8c7fdaf0fc391340a72b
 
   const getFish = () => {
     Axios.get("http://localhost:3001/fishGet").then((response) => {
@@ -44,6 +52,12 @@ const Aquarium = () => {
   let arrFish = "";
   const addFish = (value) => {
     //console.log(value.fishMatchID);
+<<<<<<< HEAD
+
+    let fish = new Fish
+    (value.fishID, value.fishScientificName, value.fishCommonName,value.fishAverageSize, value.fishLowerPH, value.fishUpperPH, value.fishLowerTemp, 
+      value.fishUpperTemp, value.fishAggrSameSpecies, value.fishAggrOtherSpecies, value.fishLocationTank, value.fishImage);
+=======
     let fish = new Fish(
       value.fishID,
       value.fishScientificName,
@@ -58,6 +72,7 @@ const Aquarium = () => {
       value.fishLocationTank,
       value.fishImage
     );
+>>>>>>> c79aa46d9223b4c666ab8c7fdaf0fc391340a72b
 
     userList.push(fish);
     setUserList(userList);

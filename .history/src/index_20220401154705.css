@@ -375,7 +375,9 @@ figcaption {
 
 
 .aquarium{
-  padding-left: 2%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 
 
 }
@@ -440,29 +442,4 @@ button{
 
 .externalLinks{
   font-size: x-large;
-}
-
-.aquariumCols{
-  column-count: 2;
-  
-}
-
-.listStyle{
-  float:right;
-  padding-right: 2%;
-  /* display:inline-block; */
-}
-.searchAquarium{
-  text-align: center;
- padding-left: 5%;
-}
-
-
-
-
-.sizeCarou{
-  width: 70%;
-  height: 500px;
-  margin-left: auto;
-  margin-right: auto;
 }
