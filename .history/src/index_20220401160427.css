@@ -441,3 +441,7 @@ button{
 .externalLinks{
   font-size: x-large;
 }
+
+.carousel-style {
+  height: 500px;
+}

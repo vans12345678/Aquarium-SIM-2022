@@ -28,8 +28,8 @@ const Home = () => {
         <h1 className="orangeText">WELCOME TO AQUARIUM SIM 2022 </h1>
 
         <p className="text-center ">
-          <div>
-        <Carousel>
+          <div className="carousel-div">
+        <Carousel className="carousel-style">
   <Carousel.Item>
     <img
       className="d-block w-100"
@@ -44,6 +44,8 @@ const Home = () => {
   <Carousel.Item>
     <img
       className="d-block w-100"
+      width="80%"
+      height="80%"
       src= {carousel2}
       alt="Second slide"
     />
@@ -56,7 +58,8 @@ const Home = () => {
   <Carousel.Item>
     <img
       className="d-block w-100"
-      height="100%"
+      width="300px"
+      height="500px"
       src={carousel3}
       alt="Third slide"
     />

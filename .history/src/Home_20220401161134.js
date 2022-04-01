@@ -28,8 +28,8 @@ const Home = () => {
         <h1 className="orangeText">WELCOME TO AQUARIUM SIM 2022 </h1>
 
         <p className="text-center ">
-          <div>
-        <Carousel>
+          <div className="carousel-div">
+        <Carousel className="carousel-style">
   <Carousel.Item>
     <img
       className="d-block w-100"

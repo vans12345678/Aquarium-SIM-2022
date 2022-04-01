@@ -8,11 +8,8 @@ import zebraDanio from "./images/zebra-danio.png";
 import commonPleco from "./images/common-pleco.png";
 import guppy from "./images/guppy.png";
 import pearlGourami from "./images/pearl-gourami.png";
-import carousel3 from "./images/carousel3.png";
-import carousel2 from "./images/carousel2.png";
 import "bootstrap/dist/css/bootstrap.min.css";
 import BackToTop from "./BackToTop";
-import { Carousel } from "react-bootstrap";
 
 import React from "react";
 
@@ -28,7 +25,6 @@ const Home = () => {
         <h1 className="orangeText">WELCOME TO AQUARIUM SIM 2022 </h1>
 
         <p className="text-center ">
-          <div>
         <Carousel>
   <Carousel.Item>
     <img
@@ -44,7 +40,7 @@ const Home = () => {
   <Carousel.Item>
     <img
       className="d-block w-100"
-      src= {carousel2}
+      src="holder.js/800x400?text=Second slide&bg=282c34"
       alt="Second slide"
     />
 
@@ -56,8 +52,7 @@ const Home = () => {
   <Carousel.Item>
     <img
       className="d-block w-100"
-      height="100%"
-      src={carousel3}
+      src="holder.js/800x400?text=Third slide&bg=20232a"
       alt="Third slide"
     />
 
@@ -67,7 +62,6 @@ const Home = () => {
     </Carousel.Caption>
   </Carousel.Item>
 </Carousel>
-</div>
         </p>
 
         <div id="sword" className="fishanim">
