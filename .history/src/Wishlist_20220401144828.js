@@ -44,10 +44,10 @@ const Wishlist = () => {
         onHide={handleClose}
       >
         <Offcanvas.Header closeButton>
-          <Offcanvas.Title>Aquarium List</Offcanvas.Title>
+          <Offcanvas.Title>Offcanvas</Offcanvas.Title>
         </Offcanvas.Header>
         <Offcanvas.Body>
-          <Table striped bordered>
+          <table>
             <thead>
               <tr>
                 <th>Fish Common Name</th>
@@ -64,7 +64,7 @@ const Wishlist = () => {
                 );
               })}
             </tbody>
-          </Table>
+          </table>
         </Offcanvas.Body>
       </Offcanvas>
     </>

@@ -44,10 +44,10 @@ const Wishlist = () => {
         onHide={handleClose}
       >
         <Offcanvas.Header closeButton>
-          <Offcanvas.Title>Aquarium List</Offcanvas.Title>
+          <Offcanvas.Title>Offcanvas</Offcanvas.Title>
         </Offcanvas.Header>
         <Offcanvas.Body>
-          <Table striped bordered>
+          <table>
             <thead>
               <tr>
                 <th>Fish Common Name</th>
@@ -59,12 +59,12 @@ const Wishlist = () => {
                 return (
                   <tr key={setTimeout(getKey(item.id), 1)}>
                     <td>{item.commonName}</td>
-                    <td>{item.scientificName}</td>
+                    <td>{item.commonName}</td>
                   </tr>
                 );
               })}
             </tbody>
-          </Table>
+          </table>
         </Offcanvas.Body>
       </Offcanvas>
     </>

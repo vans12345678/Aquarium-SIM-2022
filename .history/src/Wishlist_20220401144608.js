@@ -44,10 +44,10 @@ const Wishlist = () => {
         onHide={handleClose}
       >
         <Offcanvas.Header closeButton>
-          <Offcanvas.Title>Aquarium List</Offcanvas.Title>
+          <Offcanvas.Title>Offcanvas</Offcanvas.Title>
         </Offcanvas.Header>
         <Offcanvas.Body>
-          <Table striped bordered>
+          <table>
             <thead>
               <tr>
                 <th>Fish Common Name</th>
@@ -55,16 +55,16 @@ const Wishlist = () => {
               </tr>
             </thead>
             <tbody>
-              {userList.map((item) => {
+              {userList.map((val, key) => {
                 return (
-                  <tr key={setTimeout(getKey(item.id), 1)}>
-                    <td>{item.commonName}</td>
-                    <td>{item.scientificName}</td>
+                  <tr key={getKey(val.fishMatchID)}>
+                    <td>{val.fishMatchCommonName}</td>
+                    <td>{val.fishMatchScientificName}</td>
                   </tr>
                 );
               })}
             </tbody>
-          </Table>
+          </table>
         </Offcanvas.Body>
       </Offcanvas>
     </>
