@@ -455,12 +455,20 @@ button{
  padding-left: 5%;
 }
 
-
-
+/* @media (max-width: 900px) {
+    .carousel {
+      width:auto;
+      height:auto;
+    }
+} */
+.carousel-inner > .item > img {
+  width:640px;
+  height:360px;
+}
 
 .sizeCarou{
   width: 70%;
-  height: 500px;
+  height: 50%;
   margin-left: auto;
   margin-right: auto;
 }

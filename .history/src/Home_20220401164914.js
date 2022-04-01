@@ -35,8 +35,7 @@ const Home = () => {
         <div id="sword" className="fishanim">
           <img width="200px" height="100px" src={swordtail} alt="" />
         </div>
-        <br />
-        <br />
+
         <div className="sizeCarou">
           <Carousel>
             <Carousel.Item>
@@ -83,6 +82,10 @@ const Home = () => {
               </Carousel.Caption>
             </Carousel.Item>
           </Carousel>
+          <br />
+          <br />
+          <br />
+          <br />
         </div>
 
         <br />
