@@ -452,12 +452,5 @@ button{
 }
 .searchAquarium{
   text-align: center;
- padding-left: 5%;
-}
-
-@media (max-width: 900px) {
-    .carousel {
-      width:auto;
-      height:auto;
-    }
+ margin-left: 4%;
 }

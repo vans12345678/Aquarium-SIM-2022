@@ -392,7 +392,7 @@ figcaption {
   margin-right: 15px;
 }
 .listBtn {
-  /* float: left; */
+   float: right; 
   margin-left: 15px;
 
   border-top: 1em solid transparent;
@@ -454,10 +454,6 @@ button{
   text-align: center;
  padding-left: 5%;
 }
-
-@media (max-width: 900px) {
-    .carousel {
-      width:auto;
-      height:auto;
-    }
+.addBtn{
+  float:right;
 }

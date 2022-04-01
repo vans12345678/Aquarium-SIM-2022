@@ -227,6 +227,7 @@ const Aquarium = () => {
                 </ListGroup>
               </Card>
               <Button
+                className="addBtn"
                 variant="danger"
                 onClick={function () {
                   clearSession();

@@ -129,13 +129,7 @@ const Aquarium = () => {
         <br />
         <br />
         <div className="aquariumCols">
-          <img
-            className="aquarium"
-            src={aquarium}
-            width="1200"
-            height="713px"
-            alt=""
-          />
+          <img className="" src={aquarium} width="800" height="700px" alt="" />
 
           <div className="">
             <div className="searchAquarium ">
@@ -182,7 +176,7 @@ const Aquarium = () => {
                           item.fishScientificName
                         )}
                         <Button
-                          className="listBtn addBtn"
+                          className="listBtn"
                           variant="success"
                           onClick={function () {
                             addFish(item);
@@ -226,15 +220,16 @@ const Aquarium = () => {
                   })}
                 </ListGroup>
               </Card>
-              <Button
-                variant="danger"
-                onClick={function () {
-                  clearSession();
-                }}
-              >
-                Clear
-              </Button>
             </div>
+            <Button
+              className="listBtn"
+              variant="danger"
+              onClick={function () {
+                clearSession();
+              }}
+            >
+              Clear
+            </Button>
           </div>
         </div>
         <br />

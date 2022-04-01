@@ -213,7 +213,7 @@ const Aquarium = () => {
                         />
                         {fishNameChange(item.commonName, item.scientificName)}
                         <Button
-                          className="listBtn"
+                          className="listBtn addBtn"
                           variant="warning"
                           onClick={function () {
                             removeFish(item);

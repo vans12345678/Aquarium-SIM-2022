@@ -375,7 +375,9 @@ figcaption {
 
 
 .aquarium{
-  padding-left: 2%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 
 
 }
@@ -447,17 +449,5 @@ button{
 
 .listStyle{
   float:right;
-  padding-right: 2%;
-  /* display:inline-block; */
-}
-.searchAquarium{
-  text-align: center;
- padding-left: 5%;
-}
-
-@media (max-width: 900px) {
-    .carousel {
-      width:auto;
-      height:auto;
-    }
+  margin-right: 3%;
 }

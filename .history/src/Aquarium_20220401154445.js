@@ -182,7 +182,7 @@ const Aquarium = () => {
                           item.fishScientificName
                         )}
                         <Button
-                          className="listBtn addBtn"
+                          className="listBtn"
                           variant="success"
                           onClick={function () {
                             addFish(item);

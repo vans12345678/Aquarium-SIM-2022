@@ -17,7 +17,6 @@ const Aquarium = () => {
   const [showA, setShowA] = useState(false);
   const [search, setSearch] = useState("");
   const toggleShowA = () => setShowA(!showA);
-  const [show, setShow] = useState(false);
 
   const getFish = () => {
     Axios.get("http://localhost:3001/fishGet").then((response) => {
@@ -69,6 +68,17 @@ const Aquarium = () => {
     //   names[i] = i+1 + ". " + arrFish[i].commonName + " ";
     //   console.log(arrFish[i].commonName);
     // }
+
+    <Toast className="d-inline-block m-1" bg={variant.toLowerCase()}>
+      <Toast.Header>
+        <img src="holder.js/20x20?text=%20" className="rounded me-2" alt="" />
+        <strong className="me-auto">Bootstrap</strong>
+        <small>11 mins ago</small>
+      </Toast.Header>
+      <Toast.Body className={variant === "Dark" && "text-white"}>
+        Hello, world! This is a toast message.
+      </Toast.Body>
+    </Toast>;
 
     toggleShowA();
   };
@@ -128,17 +138,17 @@ const Aquarium = () => {
       <section className="homeMiddle">
         <br />
         <br />
-        <div className="aquariumCols">
+        <div className="row row-cols-1 row-cols-sm-2 row-cols-md-2 g-3 mt-1">
           <img
-            className="aquarium"
+            className=""
             src={aquarium}
-            width="1200"
-            height="713px"
+            width="1200px"
+            height="700px"
             alt=""
           />
 
           <div className="">
-            <div className="searchAquarium ">
+            <div className="searchCenter">
               <button
                 onClick={(event) => {
                   searchFishAll();
@@ -164,77 +174,72 @@ const Aquarium = () => {
               <br />
               <br />
             </div>
-            <div className="listStyle">
-              <Card className="list" style={{ width: "40rem" }}>
-                <ListGroup variant="flush">
-                  {fishList.map((item) => {
-                    return (
-                      <ListGroup.Item key={item.fishID}>
-                        <img
-                          className="listImg"
-                          src={require("./images/" + item.fishImage)}
-                          width="100px"
-                          height="50px"
-                          alt=""
-                        />
-                        {fishNameChange(
-                          item.fishCommonName,
-                          item.fishScientificName
-                        )}
-                        <Button
-                          className="listBtn addBtn"
-                          variant="success"
-                          onClick={function () {
-                            addFish(item);
-                          }}
-                        >
-                          Add
-                        </Button>
-                      </ListGroup.Item>
-                    );
-                  })}
-                </ListGroup>
-              </Card>
-
-              <Card
-                className="list"
-                style={{ width: "40rem", height: "40rem" }}
-              >
-                <ListGroup variant="flush">
-                  {userList.map((item) => {
-                    return (
-                      <ListGroup.Item key={setTimeout(getKey(item.id), 1)}>
-                        <img
-                          className="listImg"
-                          src={require("./images/" + item.image)}
-                          width="100px"
-                          height="50px"
-                          alt=""
-                        />
-                        {fishNameChange(item.commonName, item.scientificName)}
-                        <Button
-                          className="listBtn"
-                          variant="warning"
-                          onClick={function () {
-                            removeFish(item);
-                          }}
-                        >
-                          Remove
-                        </Button>
-                      </ListGroup.Item>
-                    );
-                  })}
-                </ListGroup>
-              </Card>
-              <Button
-                variant="danger"
-                onClick={function () {
-                  clearSession();
-                }}
-              >
-                Clear
-              </Button>
-            </div>
+            <Card className="list" style={{ width: "40rem" }}>
+              <ListGroup variant="flush">
+                {fishList.map((item) => {
+                  return (
+                    <ListGroup.Item key={item.fishID}>
+                      <img
+                        className="listImg"
+                        src={require("./images/" + item.fishImage)}
+                        width="100px"
+                        height="50px"
+                        alt=""
+                      />
+                      {fishNameChange(
+                        item.fishCommonName,
+                        item.fishScientificName
+                      )}
+                      <Button
+                        className="listBtn"
+                        variant="success"
+                        onClick={function () {
+                          addFish(item);
+                        }}
+                      >
+                        Add
+                      </Button>
+                    </ListGroup.Item>
+                  );
+                })}
+              </ListGroup>
+            </Card>
+            <Card className="list" style={{ width: "40rem", height: "40rem" }}>
+              <ListGroup variant="flush">
+                {userList.map((item) => {
+                  return (
+                    <ListGroup.Item key={setTimeout(getKey(item.id), 1)}>
+                      <img
+                        className="listImg"
+                        src={require("./images/" + item.image)}
+                        width="100px"
+                        height="50px"
+                        alt=""
+                      />
+                      {fishNameChange(item.commonName, item.scientificName)}
+                      <Button
+                        className="listBtn"
+                        variant="warning"
+                        onClick={function () {
+                          removeFish(item);
+                        }}
+                      >
+                        Remove
+                      </Button>
+                    </ListGroup.Item>
+                  );
+                })}
+              </ListGroup>
+            </Card>
+            <Button
+              className="listBtn"
+              variant="danger"
+              onClick={function () {
+                clearSession();
+              }}
+            >
+              Clear
+            </Button>
           </div>
         </div>
         <br />

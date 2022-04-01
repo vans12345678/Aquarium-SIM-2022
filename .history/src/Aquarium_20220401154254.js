@@ -133,13 +133,14 @@ const Aquarium = () => {
             className="aquarium"
             src={aquarium}
             width="1200"
-            height="713px"
+            height="700px"
             alt=""
           />
 
           <div className="">
             <div className="searchAquarium ">
               <button
+                className="rounded"
                 onClick={(event) => {
                   searchFishAll();
                 }}
@@ -182,7 +183,7 @@ const Aquarium = () => {
                           item.fishScientificName
                         )}
                         <Button
-                          className="listBtn addBtn"
+                          className="listBtn"
                           variant="success"
                           onClick={function () {
                             addFish(item);

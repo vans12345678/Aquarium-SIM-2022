@@ -2,7 +2,6 @@ import { useState } from "react";
 
 import { useEffect } from "react";
 import betta from "./images/betta.png";
-import carousel3 from "./images/carousel3.png";
 import arrow from "./images/arrow.jpg";
 import swordtail from "./images/swordtail-border.png";
 import zebraDanio from "./images/zebra-danio.png";
@@ -21,7 +20,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 const Home = () => {
   return (
     <div>
-      <section className="home">
+      <section className="">
         <br />
         <br />
         <h1 className="orangeText">WELCOME TO AQUARIUM SIM 2022 </h1>
@@ -34,18 +33,24 @@ const Home = () => {
           <img width="200px" height="100px" src={swordtail} alt="" />
         </div>
 
-        <br />
-        <br />
-        <Carousel className="carousel">
+        <Carousel>
           <Carousel.Item>
-            <img className="d-block w-100" src={carousel3} alt="First slide" />
+            <img
+              className="d-block w-100"
+              src="holder.js/800x400?text=First slide&bg=373940"
+              alt="First slide"
+            />
             <Carousel.Caption>
               <h3>First slide label</h3>
               <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
             </Carousel.Caption>
           </Carousel.Item>
           <Carousel.Item>
-            <img className="d-block w-100" src={carousel3} alt="Second slide" />
+            <img
+              className="d-block w-100"
+              src="holder.js/800x400?text=Second slide&bg=282c34"
+              alt="Second slide"
+            />
 
             <Carousel.Caption>
               <h3>Second slide label</h3>
@@ -53,7 +58,11 @@ const Home = () => {
             </Carousel.Caption>
           </Carousel.Item>
           <Carousel.Item>
-            <img className="d-block w-100" src={carousel3} alt="Second slide" />
+            <img
+              className="d-block w-100"
+              src="holder.js/800x400?text=Third slide&bg=20232a"
+              alt="Third slide"
+            />
 
             <Carousel.Caption>
               <h3>Third slide label</h3>
@@ -65,13 +74,15 @@ const Home = () => {
         </Carousel>
         <br />
         <br />
+
+        <br />
+        <br />
         <br />
         <br />
         <br />
       </section>
       <section className="homeMiddle">
         <br />
-
         <br />
         <br />
         <br />
