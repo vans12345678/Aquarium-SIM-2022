@@ -2,7 +2,6 @@ import { useState } from "react";
 
 import { useEffect } from "react";
 import betta from "./images/betta.png";
-import carousel3 from "./images/carousel3.png";
 import arrow from "./images/arrow.jpg";
 import swordtail from "./images/swordtail-border.png";
 import zebraDanio from "./images/zebra-danio.png";
@@ -10,10 +9,10 @@ import commonPleco from "./images/common-pleco.png";
 import guppy from "./images/guppy.png";
 import pearlGourami from "./images/pearl-gourami.png";
 import carousel3 from "./images/carousel3.png";
-import carousel2 from "./images/carousel2.png";
+import carousel2 from "./images/carousel2-2.png";
 import "bootstrap/dist/css/bootstrap.min.css";
 import BackToTop from "./BackToTop";
-import Carousel from "react-bootstrap/Carousel";
+import { Carousel } from "react-bootstrap";
 
 import React from "react";
 
@@ -29,53 +28,43 @@ const Home = () => {
         <h1 className="orangeText">WELCOME TO AQUARIUM SIM 2022 </h1>
 
         <p className="text-center ">
-          <div>
-            <Carousel>
-              <Carousel.Item>
-                <img
-                  className="d-block w-100"
-                  src="holder.js/800x400?text=First slide&bg=373940"
-                  alt="First slide"
-                />
-                <Carousel.Caption>
-                  <h3>First slide label</h3>
-                  <p>
-                    Nulla vitae elit libero, a pharetra augue mollis interdum.
-                  </p>
-                </Carousel.Caption>
-              </Carousel.Item>
-              <Carousel.Item>
-                <img
-                  className="d-block w-100"
-                  src={carousel2}
-                  alt="Second slide"
-                />
+        <Carousel>
+  <Carousel.Item>
+    <img
+      className="d-block w-100"
+      src="holder.js/800x400?text=First slide&bg=373940"
+      alt="First slide"
+    />
+    <Carousel.Caption>
+      <h3>First slide label</h3>
+      <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+    </Carousel.Caption>
+  </Carousel.Item>
+  <Carousel.Item>
+    <img
+      className="d-block w-100"
+      src= {carousel2}
+      alt="Second slide"
+    />
 
-                <Carousel.Caption>
-                  <h3>Second slide label</h3>
-                  <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  </p>
-                </Carousel.Caption>
-              </Carousel.Item>
-              <Carousel.Item>
-                <img
-                  className="d-block w-100"
-                  height="100%"
-                  src={carousel3}
-                  alt="Third slide"
-                />
+    <Carousel.Caption>
+      <h3>Second slide label</h3>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+    </Carousel.Caption>
+  </Carousel.Item>
+  <Carousel.Item>
+    <img
+      className="d-block w-100"
+      src={carousel3}
+      alt="Third slide"
+    />
 
-                <Carousel.Caption>
-                  <h3>Third slide label</h3>
-                  <p>
-                    Praesent commodo cursus magna, vel scelerisque nisl
-                    consectetur.
-                  </p>
-                </Carousel.Caption>
-              </Carousel.Item>
-            </Carousel>
-          </div>
+    <Carousel.Caption>
+      <h3>Third slide label</h3>
+      <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+    </Carousel.Caption>
+  </Carousel.Item>
+</Carousel>
         </p>
 
         <div id="sword" className="fishanim">
@@ -84,33 +73,6 @@ const Home = () => {
 
         <br />
         <br />
-        <Carousel className="carousel">
-          <Carousel.Item>
-            <img className="d-block w-100" src={carousel3} alt="First slide" />
-            <Carousel.Caption>
-              <h3>First slide label</h3>
-              <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-            </Carousel.Caption>
-          </Carousel.Item>
-          <Carousel.Item>
-            <img className="d-block w-100" src={carousel3} alt="Second slide" />
-
-            <Carousel.Caption>
-              <h3>Second slide label</h3>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-            </Carousel.Caption>
-          </Carousel.Item>
-          <Carousel.Item>
-            <img className="d-block w-100" src={carousel3} alt="Second slide" />
-
-            <Carousel.Caption>
-              <h3>Third slide label</h3>
-              <p>
-                Praesent commodo cursus magna, vel scelerisque nisl consectetur.
-              </p>
-            </Carousel.Caption>
-          </Carousel.Item>
-        </Carousel>
         <br />
         <br />
         <br />
@@ -119,7 +81,6 @@ const Home = () => {
       </section>
       <section className="homeMiddle">
         <br />
-
         <br />
         <br />
         <br />
