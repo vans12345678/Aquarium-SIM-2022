@@ -1,25 +1,29 @@
 import { useState, useEffect } from "react";
-import { Table } from "react-bootstrap";
+import { Table, Button } from "react-bootstrap";
 import Axios from "axios";
-import { Fish, FishBasic } from "./classes/FishBasic";
+import { NavLink } from "react-router-dom";
+import { Route } from "react-router-dom";
+import { useRouteMatch } from "react-router-dom";
 import ReactPaginate from "react-paginate";
-import Wishlist from "./Wishlist";
+import Example from "./Wishlist";
 
 const perPage = 10;
 
-const Listings = () => {
+const Compendium = () => {
   const [fishList, setFishList] = useState([]);
-  const [userList, setUserList] = useState([]);
   const [search, setSearch] = useState("");
   const [currentPage, setCurrentPage] = useState(0);
 
-  const getAllFish = () => {
-    Axios.post("http://localhost:3001/fishAll").then((response) => {
+  //function for retrieving all fish entries
+  const getFish = () => {
+    Axios.get("http://localhost:3001/fishGet").then((response) => {
       setFishList(response.data);
     });
   };
-  const searchFish = () => {
-    Axios.post("http://localhost:3001/fish", { search: search }).then(
+
+  //function for retrieving specific fish entries using search
+  const searchFishAll = () => {
+    Axios.post("http://localhost:3001/fishComp", { search: search }).then(
       (response) => {
         setFishList(response.data);
       }
@@ -27,9 +31,8 @@ const Listings = () => {
     resetPage();
   };
 
-  //initially grabs all the entries
   useEffect(() => {
-    getAllFish();
+    getFish();
   }, []);
 
   function handlePageClick({ selected: selectedPage }) {
@@ -40,35 +43,7 @@ const Listings = () => {
   function resetPage() {
     setCurrentPage(0);
     const offset = currentPage * perPage;
-    return currentPage;
   }
-
-  const fish2 = new FishBasic(
-    "value.fishMatchID",
-    "value.fishMatchCommonName",
-    "value.fishMatchScientificName",
-    "placeholder.png"
-  );
-  const addFish = (value) => {
-    //console.log(value.fishMatchID);
-    let fish = new FishBasic(
-      value.fishMatchID,
-      value.fishMatchCommonName,
-      value.fishMatchScientificName,
-      "placeholder.png"
-    );
-    userList.push(fish);
-    setUserList(userList);
-    //console.log(userList[0].commonName);
-
-    window.sessionStorage.setItem("fishName", JSON.stringify(userList));
-  };
-  const wrapperFunction = (value) => {
-    addFish(value);
-    alert("Added fish to list");
-
-    let listValues = JSON.parse(sessionStorage.fishList);
-  };
 
   const offset = currentPage * perPage;
   console.log(offset);
@@ -77,17 +52,26 @@ const Listings = () => {
 
   const pageCount = Math.ceil(fishList.length / perPage);
 
+  //sets the route URLs
+  const { path, url } = useRouteMatch();
+
   return (
     <div>
-      <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
       <section className="home">
         <br />
         <br />
-        <h1 className="orangeText">Listings</h1>
-        <p className="text-center ">{userList}</p>
+
+        <h1 className="orangeText">Fish Data</h1>
         <div className="searchCenter">
-          <button onClick={searchFish}>Search Fish Names</button>
+          <button
+            onClick={(event) => {
+              searchFishAll();
+            }}
+          >
+            Search Fish Names
+          </button>
           <input
+            id="search"
             type="search"
             placeholder="Ex. Betta splendens"
             onChange={(event) => {
@@ -97,7 +81,7 @@ const Listings = () => {
               if (event.key === "Enter") {
                 event.preventDefault();
                 console.log("Click");
-                searchFish();
+                searchFishAll();
               }
             }}
           />
@@ -121,21 +105,21 @@ const Listings = () => {
           >
             <thead>
               <tr>
-                <th>Fish Common Name</th>
-                <th>Fish Scientific Name</th>
-                <th>Fish Price</th>
-                <th>Store URL</th>
+                <th>Common name</th>
+                <th>Scientific name</th>
+                <th>View Details</th>
               </tr>
             </thead>
             <tbody>
               {currentPageData.map((val, key) => {
                 return (
-                  <tr key={val.fishMatchID}>
-                    <td>{val.fishMatchCommonName}</td>
-                    <td>{val.fishMatchScientificName}</td>
-                    <td>${val.fishMatchPrice}</td>
+                  <tr key={val.fishID}>
+                    <td>{val.fishCommonName}</td>
+                    <td>{val.fishScientificName}</td>
                     <td>
-                      <a href={val.fishMatchURL}>{val.fishMatchStoreName}</a>
+                      <NavLink to={`/Fishprofile/${val.fishScientificName}`}>
+                        Details
+                      </NavLink>
                     </td>
                   </tr>
                 );
@@ -167,9 +151,9 @@ const Listings = () => {
         <br />
         <br />
       </section>
-      <Wishlist />
+      <Example />
     </div>
   );
 };
 
-export default Listings;
+export default Compendium;

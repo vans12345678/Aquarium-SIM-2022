@@ -366,7 +366,13 @@ figcaption {
      width: 50px;
 }
 
-
+.wishlistimg{
+   position: fixed;
+   bottom: 20px;
+   right: 20px;
+     height: 70px;
+     width: 70px;
+}
 
 .table{
    margin-left: auto;
