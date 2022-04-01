@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { NavLink } from "react-router-dom";
-import logo from "./images/aquarium_logo2.png";
+import logo from "./images/aquarium_logo.png";
 import { Navbar, Container, Nav, NavDropdown } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 

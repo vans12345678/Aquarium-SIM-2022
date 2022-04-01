@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { NavLink } from "react-router-dom";
-import logo from "./images/aquarium_logo2.png";
+import logo from "./images/aquarium_logo.png";
 import { Navbar, Container, Nav, NavDropdown } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 
@@ -8,7 +8,7 @@ const NavBar = () => {
   return (
     <nav id="navbar" className="navbar links ">
       <a className="navbar-brand" href="/">
-        <img className="imageLogo" src={logo} alt="logo" />
+        <img className="img-imageLogo" src={logo} alt="logo" />
       </a>
       <div className="links">
         <NavLink to="/" activeClassName="active" exact={true}>

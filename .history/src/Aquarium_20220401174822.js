@@ -174,7 +174,6 @@ const Aquarium = () => {
             alt=""
           />
 
-
           <div className="">
             <div className="searchAquarium ">
               <button

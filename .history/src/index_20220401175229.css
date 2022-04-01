@@ -19,27 +19,19 @@ body {
 }
 /********NAVBAR**********/
 .navbar {
-  padding: 15px;
+  padding: 20px;
   overflow: hidden;
   display: flex;
   align-items: center;
  background-color:#3c3aaa;
  /* background-color:#4d3da8; */
-  height: 70
-  px;
+  height: 100px;
 }
-
 .orangeText{
   color: #FF8600;
   font-weight: bold;
   font-size: 3em;
 }
-.orangeTextSmall{
-  color: #FF8600;
-  font-weight: bold;
-  font-size: 2em;
-}
-
 .navbar h2 {
   color: #27187E;
 }
@@ -106,10 +98,9 @@ body {
 {
   width: 150px;
   height: auto;
-  vertical-align: top;
   position:absolute;
   left:15px;
-  top:2px;
+  top:15px;
 
 }
 
@@ -385,7 +376,8 @@ figcaption {
 
 .aquarium{
   padding-left: 2%;
-  width: 100%;
+  width: 120%;
+
 
 }
 .alert {
@@ -465,6 +457,7 @@ button{
   text-align: center;
  padding-left: 5%;
 }
+
 
 
 

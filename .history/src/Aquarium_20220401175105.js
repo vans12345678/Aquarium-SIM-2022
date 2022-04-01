@@ -169,11 +169,10 @@ const Aquarium = () => {
           <img
             className="aquarium"
             src={aquarium}
-            width="100%"
+            width="150%"
             height="713px"
             alt=""
           />
-
 
           <div className="">
             <div className="searchAquarium ">

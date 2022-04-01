@@ -166,6 +166,7 @@ const Aquarium = () => {
         <br />
         <AlertDismissible/>
         <div className="aquariumCols">
+          <div className="aquariumColProperties">
           <img
             className="aquarium"
             src={aquarium}
@@ -173,6 +174,7 @@ const Aquarium = () => {
             height="713px"
             alt=""
           />
+          </div>
 
 
           <div className="">

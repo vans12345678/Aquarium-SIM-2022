@@ -174,7 +174,6 @@ const Aquarium = () => {
             alt=""
           />
 
-
           <div className="">
             <div className="searchAquarium ">
               <button
@@ -236,7 +235,7 @@ const Aquarium = () => {
 
               <Card
                 className="list"
-                style={{ width: useWindowSize(0), height: "40rem" }}
+                style={{ width: useWindowSize(0)*1.7, height: "40rem" }}
               >
                 <ListGroup variant="flush">
                   {userList.map((item) => {

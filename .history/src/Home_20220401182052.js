@@ -25,9 +25,13 @@ const Home = () => {
     <div>
       <section className="home">
         <br />
+        <br />
         <h1 className="orangeText">WELCOME TO AQUARIUM SIM 2022 </h1>
 
-        <br/>
+        <p className="text-center ">
+          <div></div>
+        </p>
+
         <div id="sword" className="fishanim">
           <img width="200px" height="100px" src={swordtail} alt="" />
         </div>
@@ -131,6 +135,7 @@ const Home = () => {
         <br />
       </section>
       <section className="darkSection">
+        <br />
         <br />
         <br />
         <br />

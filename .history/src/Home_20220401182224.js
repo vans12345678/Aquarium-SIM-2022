@@ -25,6 +25,7 @@ const Home = () => {
     <div>
       <section className="home">
         <br />
+        <br />
         <h1 className="orangeText">WELCOME TO AQUARIUM SIM 2022 </h1>
 
         <br/>

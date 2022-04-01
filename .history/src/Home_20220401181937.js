@@ -25,12 +25,18 @@ const Home = () => {
     <div>
       <section className="home">
         <br />
+        <br />
         <h1 className="orangeText">WELCOME TO AQUARIUM SIM 2022 </h1>
 
-        <br/>
+        <p className="text-center ">
+          <div></div>
+        </p>
+
         <div id="sword" className="fishanim">
           <img width="200px" height="100px" src={swordtail} alt="" />
         </div>
+        <br />
+        <br />
         <div className="sizeCarou">
           <Carousel>
             <Carousel.Item>
@@ -57,7 +63,7 @@ const Home = () => {
 
               <Carousel.Caption>
                 <h3 className="orangeTextSmall">FISH COMPENDIUM</h3>
-                <p>Find out information about aquarium fish species in our fish compendium.</p>
+                <p>Find out information about aquarium fish species in our fish compendium page.</p>
               </Carousel.Caption>
             </Carousel.Item>
             <Carousel.Item>
@@ -77,6 +83,10 @@ const Home = () => {
             </Carousel.Item>
           </Carousel>
         </div>
+
+        <br />
+        <br />
+
         <br />
         <br />
         <br />
@@ -131,6 +141,7 @@ const Home = () => {
         <br />
       </section>
       <section className="darkSection">
+        <br />
         <br />
         <br />
         <br />

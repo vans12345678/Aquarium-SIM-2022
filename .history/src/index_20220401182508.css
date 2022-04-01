@@ -19,16 +19,14 @@ body {
 }
 /********NAVBAR**********/
 .navbar {
-  padding: 15px;
+  padding: 5px;
   overflow: hidden;
   display: flex;
   align-items: center;
  background-color:#3c3aaa;
  /* background-color:#4d3da8; */
-  height: 70
-  px;
+  height: 90px;
 }
-
 .orangeText{
   color: #FF8600;
   font-weight: bold;
@@ -106,10 +104,9 @@ body {
 {
   width: 150px;
   height: auto;
-  vertical-align: top;
   position:absolute;
   left:15px;
-  top:2px;
+  top:15px;
 
 }
 

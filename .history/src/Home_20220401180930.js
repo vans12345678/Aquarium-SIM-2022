@@ -25,12 +25,18 @@ const Home = () => {
     <div>
       <section className="home">
         <br />
+        <br />
         <h1 className="orangeText">WELCOME TO AQUARIUM SIM 2022 </h1>
 
-        <br/>
+        <p className="text-center ">
+          <div></div>
+        </p>
+
         <div id="sword" className="fishanim">
           <img width="200px" height="100px" src={swordtail} alt="" />
         </div>
+        <br />
+        <br />
         <div className="sizeCarou">
           <Carousel>
             <Carousel.Item>
@@ -41,9 +47,9 @@ const Home = () => {
                 alt="First slide"
               />
               <Carousel.Caption>
-                <h3 className="orangeTextSmall">AQUARIUM FISH PICKER</h3>
+                <h3>First slide label</h3>
                 <p>
-                  Try out our aquarium fish picker to check for compatibility and more.
+                  Nulla vitae elit libero, a pharetra augue mollis interdum.
                 </p>
               </Carousel.Caption>
             </Carousel.Item>
@@ -56,8 +62,8 @@ const Home = () => {
               />
 
               <Carousel.Caption>
-                <h3 className="orangeTextSmall">FISH COMPENDIUM</h3>
-                <p>Find out information about aquarium fish species in our fish compendium.</p>
+                <h3>Second slide label</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
               </Carousel.Caption>
             </Carousel.Item>
             <Carousel.Item>
@@ -69,7 +75,7 @@ const Home = () => {
               />
 
               <Carousel.Caption>
-                <h3 className="orangeTextSmall">SHOP FOR THE BEST PRICES</h3>
+                <h3 className="orangeText">SHOP FOR THE BEST PRICES</h3>
                 <p>
                   Use our listings page to find the best prices for the fish you want.
                 </p>
@@ -77,6 +83,10 @@ const Home = () => {
             </Carousel.Item>
           </Carousel>
         </div>
+
+        <br />
+        <br />
+
         <br />
         <br />
         <br />
@@ -131,6 +141,7 @@ const Home = () => {
         <br />
       </section>
       <section className="darkSection">
+        <br />
         <br />
         <br />
         <br />

@@ -25,8 +25,11 @@ body {
   align-items: center;
  background-color:#3c3aaa;
  /* background-color:#4d3da8; */
-  height: 70
-  px;
+  height: 90px;
+}
+
+.img-responsive-imageLogo{
+  
 }
 
 .orangeText{
@@ -106,10 +109,9 @@ body {
 {
   width: 150px;
   height: auto;
-  vertical-align: top;
   position:absolute;
   left:15px;
-  top:2px;
+  top:15px;
 
 }
 

@@ -77,7 +77,7 @@ const Aquarium = () => {
     toggleShowA();
   };
 
-  function useWindowSize() {
+  function useWindowWidth() {
     const [size, setSize] = useState([0, 0]);
     useLayoutEffect(() => {
       function updateSize() {
@@ -174,7 +174,6 @@ const Aquarium = () => {
             alt=""
           />
 
-
           <div className="">
             <div className="searchAquarium ">
               <button
@@ -203,7 +202,7 @@ const Aquarium = () => {
               <br />
             </div>
             <div className="listStyle">
-              <Card className="list" style={{ width: useWindowSize(0)}}>
+              <Card className="list" style={{ width: window.innerWidth*0.4 }}>
                 <ListGroup variant="flush">
                   {fishList.map((item) => {
                     return (
@@ -236,7 +235,7 @@ const Aquarium = () => {
 
               <Card
                 className="list"
-                style={{ width: useWindowSize(0), height: "40rem" }}
+                style={{ width: window.innerWidth*0.4, height: "40rem" }}
               >
                 <ListGroup variant="flush">
                   {userList.map((item) => {

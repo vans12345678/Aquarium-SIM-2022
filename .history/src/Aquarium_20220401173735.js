@@ -3,9 +3,11 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import React from "react";
 import ReactDOM from "react-dom";
 import aquarium from "./images/fishtank.png";
+import swordtail from "./images/swordtail.png";
+import commonPleco from "./images/common-pleco.png";
 import { ListGroup, Button, Card } from "react-bootstrap";
 import Axios from "axios";
-import { useState, useEffect, useLayoutEffect } from "react";
+import { useState, useEffect } from "react";
 import { Fish } from "./classes/Fish";
 import { FishBasic } from "./classes/FishBasic";
 import Toast from 'react-bootstrap/Toast'
@@ -18,7 +20,10 @@ const Aquarium = () => {
   const [search, setSearch] = useState("");
   const toggleShowA = () => setShowA(!showA);
   const [show, setShow] = useState(false);
-
+  const [dimensions, setDimensions] = React.useState({ 
+    height: window.innerHeight,
+    width: window.innerWidth
+  })
 
   const getFish = () => {
     Axios.get("http://localhost:3001/fishGet").then((response) => {
@@ -33,12 +38,21 @@ const Aquarium = () => {
     );
   };
   
+  function handleResize() {
+
+    setDimensions({
+
+      height: window.innerHeight,
+
+      width: window.innerWidth
+
+    })
 
 
-  
   useEffect(() => {
     getFish();
     getUserList();
+    handleResize();
   }, []);
 
   let [userList, setUserList] = useState([]);
@@ -76,19 +90,6 @@ const Aquarium = () => {
 
     toggleShowA();
   };
-
-  function useWindowSize() {
-    const [size, setSize] = useState([0, 0]);
-    useLayoutEffect(() => {
-      function updateSize() {
-        setSize([window.innerWidth, window.innerHeight]);
-      }
-      window.addEventListener('resize', updateSize);
-      updateSize();
-      return () => window.removeEventListener('resize', updateSize);
-    }, []);
-    return size;
-  }
 
   const getUserList = () => {
     if (sessionStorage.length > 0) {
@@ -174,7 +175,6 @@ const Aquarium = () => {
             alt=""
           />
 
-
           <div className="">
             <div className="searchAquarium ">
               <button
@@ -203,7 +203,7 @@ const Aquarium = () => {
               <br />
             </div>
             <div className="listStyle">
-              <Card className="list" style={{ width: useWindowSize(0)}}>
+              <Card className="list" style={{ width: window.innerWidth*0.4 }}>
                 <ListGroup variant="flush">
                   {fishList.map((item) => {
                     return (
@@ -236,7 +236,7 @@ const Aquarium = () => {
 
               <Card
                 className="list"
-                style={{ width: useWindowSize(0), height: "40rem" }}
+                style={{ width: window.innerWidth*0.4, height: "40rem" }}
               >
                 <ListGroup variant="flush">
                   {userList.map((item) => {
