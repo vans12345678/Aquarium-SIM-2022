@@ -187,7 +187,7 @@ const Aquarium = () => {
               <br />
             </div>
             <div className="listStyle">
-              <Card className="list" style={{ width: window.innerWidth*0.4 }}>
+              <Card className="list" style={{ width: window.innerWidth*0.29 }}>
                 <ListGroup variant="flush">
                   {fishList.map((item) => {
                     return (
@@ -220,7 +220,7 @@ const Aquarium = () => {
 
               <Card
                 className="list"
-                style={{ width: window.innerWidth*0.4, height: "40rem" }}
+                style={{ width: "40rem", height: "40rem" }}
               >
                 <ListGroup variant="flush">
                   {userList.map((item) => {

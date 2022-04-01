@@ -383,6 +383,7 @@ figcaption {
   width:40%;    
 }
 .list{
+  width: 2%;
      max-height: 300px;
      margin-bottom: 10px;
      overflow-y:auto;

@@ -383,7 +383,8 @@ figcaption {
   width:40%;    
 }
 .list{
-     max-height: 300px;
+  width: 5%;
+     max-height: 25%;
      margin-bottom: 10px;
      overflow-y:auto;
      -webkit-overflow-scrolling: touch;
