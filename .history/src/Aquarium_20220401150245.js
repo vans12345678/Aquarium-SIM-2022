@@ -115,17 +115,7 @@ const Aquarium = () => {
 
   return (
     <div>
-      <section className="home">
-        <br />
-        <br />
-        <h1 className="orangeText">Aquarium</h1>
-        <br />
-        <br />
-      </section>
-      <section className="homeMiddle">
-        <br />
-        <br />
-        <div className="row row-cols-1 row-cols-sm-2 row-cols-md-2 g-3 mt-1">
+      <div>
           <img
             className=""
             src={aquarium}
@@ -133,8 +123,6 @@ const Aquarium = () => {
             height="700px"
             alt=""
           />
-          
-          <div className="">
           <div className="searchCenter">
           <button
             onClick={(event) => {
@@ -158,9 +146,19 @@ const Aquarium = () => {
               }
             }}
           />
-          <br/>
-          <br/>
         </div>
+      <section className="home">
+        <br />
+        <br />
+        <h1 className="orangeText">Aquarium</h1>
+        <br />
+        <br />
+      </section>
+      <section className="homeMiddle">
+        <br />
+        <br />
+        
+          <div className="">
             <Card className="list" style={{ width: "40rem" }}>
               <ListGroup variant="flush">
                 {fishList.map((item) => {

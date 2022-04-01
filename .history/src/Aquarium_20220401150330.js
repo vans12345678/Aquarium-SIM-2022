@@ -159,7 +159,6 @@ const Aquarium = () => {
             }}
           />
           <br/>
-          <br/>
         </div>
             <Card className="list" style={{ width: "40rem" }}>
               <ListGroup variant="flush">

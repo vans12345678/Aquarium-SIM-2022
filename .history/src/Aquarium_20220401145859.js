@@ -16,7 +16,6 @@ const Aquarium = () => {
 
   const [fishList, setFishList] = useState([]);
   const [showA, setShowA] = useState(false);
-  const [search, setSearch] = useState("");
   const toggleShowA = () => setShowA(!showA);
 
   const getFish = () => {
@@ -119,6 +118,7 @@ const Aquarium = () => {
         <br />
         <br />
         <h1 className="orangeText">Aquarium</h1>
+        <p className="text-center ">Check out fish prices here!</p>
         <br />
         <br />
       </section>
@@ -133,34 +133,7 @@ const Aquarium = () => {
             height="700px"
             alt=""
           />
-          
           <div className="">
-          <div className="searchCenter">
-          <button
-            onClick={(event) => {
-              searchFishAll();
-            }}
-          >
-            Search Fish Names
-          </button>
-          <input
-            id="search"
-            type="search"
-            placeholder="Ex. Betta splendens"
-            onChange={(event) => {
-              setSearch(event.target.value);
-            }}
-            onKeyPress={(event) => {
-              if (event.key === "Enter") {
-                event.preventDefault();
-                console.log("Click");
-                searchFishAll();
-              }
-            }}
-          />
-          <br/>
-          <br/>
-        </div>
             <Card className="list" style={{ width: "40rem" }}>
               <ListGroup variant="flush">
                 {fishList.map((item) => {
