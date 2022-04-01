@@ -23,15 +23,13 @@ const Aquarium = () => {
       setFishList(response.data);
     });
   };
-
   useEffect(() => {
     getFish();
-    getUserList();
+    setUserList(userList);
   }, []);
 
 
   let [userList, setUserList] = useState([]);
-
   let arrFish = "";
   const addFish = (value) => {
     //console.log(value.fishMatchID);
@@ -42,8 +40,8 @@ const Aquarium = () => {
     userList.push(fish);
     setUserList(userList);
 
-    sessionStorage.setItem("fishNames", JSON.stringify(userList));
-    arrFish = JSON.parse(sessionStorage.getItem("fishNames"));
+    localStorage.setItem("fishNames", JSON.stringify(userList));
+    arrFish = JSON.parse(localStorage.getItem("fishNames"));
     
 
     // let names = [];
@@ -56,15 +54,6 @@ const Aquarium = () => {
     toggleShowA();
     
   };
-
-  const getUserList = () =>{
-    if (sessionStorage.length > 0)
-    {
-      arrFish = JSON.parse(sessionStorage.getItem("fishNames"));
-      setUserList(arrFish);
-    }
-  }
-
   const removeFish = (value) => {
 
     const index = userList.indexOf(value);
@@ -72,7 +61,7 @@ const Aquarium = () => {
     
     userList.splice(index, 1);
     setUserList(userList);
-    sessionStorage.setItem("fishNames", JSON.stringify(userList));
+    
     toggleShowA();
     
   };
@@ -89,7 +78,7 @@ const Aquarium = () => {
 
   function clearSession() {
     userList = [];
-    sessionStorage.clear();
+    localStorage.clear();
     setUserList(userList);
   }
 
