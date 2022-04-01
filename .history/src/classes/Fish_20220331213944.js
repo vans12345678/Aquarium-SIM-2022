@@ -14,8 +14,8 @@ export class Fish {
     image
   ) {
     this.id = id;
+    this.commonName = commonName;
     this.scientificName = scientificName;
-    this.commonName = commonName;   
     this.averageSize = averageSize;
     this.lowerPH = lowerPH;
     this.upperPH = upperPH;

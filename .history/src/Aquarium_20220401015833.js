@@ -78,7 +78,6 @@ const Aquarium = () => {
   function clearSession() {
     userList = [];
     localStorage.clear();
-    setUserList(userList);
   }
 
   function getKey(id)

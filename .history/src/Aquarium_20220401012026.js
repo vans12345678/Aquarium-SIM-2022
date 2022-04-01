@@ -13,16 +13,13 @@ import { FishBasic } from "./classes/FishBasic";
 import Toast from 'react-bootstrap/Toast'
 
 const Aquarium = () => {
-
   const [fishList, setFishList] = useState([]);
-  const [showA, setShowA] = useState(false);
-  const toggleShowA = () => setShowA(!showA);
-
   const getFish = () => {
     Axios.get("http://localhost:3001/fishGet").then((response) => {
       setFishList(response.data);
     });
   };
+
   useEffect(() => {
     getFish();
   }, []);
@@ -38,32 +35,36 @@ const Aquarium = () => {
 
     userList.push(fish);
     setUserList(userList);
-
-    localStorage.setItem("fishNames", JSON.stringify(userList));
-    arrFish = JSON.parse(localStorage.getItem("fishNames"));
-    
-
-    // let names = [];
-    // for (var i=0;i<arrFish.length;i++) 
-    // {
-    //   names[i] = i+1 + ". " + arrFish[i].commonName + " ";
-    //   console.log(arrFish[i].commonName);
-    // }
-
+    getName();
     toggleShowA();
     
   };
   const removeFish = (value) => {
 
     const index = userList.indexOf(value);
-    //console.log(index);
+    console.log(index);
     
     userList.splice(index, 1);
     setUserList(userList);
-    
+
     toggleShowA();
     
   };
+  function getName()
+  {
+    localStorage.setItem("fishNames", JSON.stringify(userList));
+    arrFish = JSON.parse(localStorage.getItem("fishNames"));
+      
+    let names = [];
+    for (var i=0;i<arrFish.length;i++) 
+    {
+      names[i] = i+1 + ". " + arrFish[i].commonName + " ";
+      console.log(arrFish[i].commonName);
+    }
+
+    return names;
+    
+  }
 
   function fishNameChange(commonName, ScientificName) {
     if (commonName != "N/A") {
@@ -78,25 +79,33 @@ const Aquarium = () => {
   function clearSession() {
     userList = [];
     localStorage.clear();
-    setUserList(userList);
   }
 
-  function getKey(id)
+  function getObjectValues()
   {
-    const d = new Date();
-    let ms = d.getMilliseconds();
+    let arrFishID = [];
+    arrFishID = localStorage.getItem("fishNames").split(":");
 
-    id = id.toString() + "_" + ms;
-    console.log(id);
-    
-    return id;
+    return arrFishID[1];
+  }
+  function getKey()
+  {
+    let length = localStorage.length + 1;
+    console.log(length);
+    return length;
   }
 
+  const [showA, setShowA] = useState(false);
+  
+  const toggleShowA = () => setShowA(!showA);
+
+  let x = [];
   return (
     <div>
       <section className="home">
         <br />
         <br />
+
         <h1 className="orangeText">Aquarium</h1>
         <p className="text-center ">Check out fish prices here!</p>
         <br />
@@ -105,6 +114,7 @@ const Aquarium = () => {
       <section className="homeMiddle">
         <br />
         <br />
+
         <div className="row row-cols-1 row-cols-sm-2 row-cols-md-2 g-3 mt-1">
           <img
             className=""
@@ -126,18 +136,21 @@ const Aquarium = () => {
                         height="50px"
                         alt=""
                       />
+
                       {
                         (fishNameChange(
                           item.fishCommonName,
                           item.fishScientificName
                         ))
                       }
+
                       <Button
                         className="listBtn"
                         variant="success"
                         onClick={function () {
                           addFish(item);
-                        }}>
+                        }}
+                      >
                         Add
                       </Button>
                     </ListGroup.Item>
@@ -145,11 +158,12 @@ const Aquarium = () => {
                 })}
               </ListGroup>
             </Card>
-            <Card className="list" style={{ width: "40rem", height: "40rem" }}>
+            <Card className="list" style={{ width: "40rem" , height: "40rem" }}>
               <ListGroup variant="flush">
                 {userList.map((item) => {
                   return (
-                    <ListGroup.Item key={setTimeout(getKey(item.id), 1)}>
+                    
+                    <ListGroup.Item key={getKey()}>
                       <img
                         className="listImg"
                         src={require("./images/" + item.image)}
@@ -168,7 +182,8 @@ const Aquarium = () => {
                         variant="warning"
                         onClick={function () {
                           removeFish(item);
-                        }}>
+                        }}
+                      >
                         Remove
                       </Button>
                     </ListGroup.Item>
@@ -187,6 +202,7 @@ const Aquarium = () => {
             </Button>
           </div>
         </div>
+
         <br />
         <br />
         <br />

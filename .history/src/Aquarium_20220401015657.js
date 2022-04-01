@@ -15,14 +15,12 @@ import Toast from 'react-bootstrap/Toast'
 const Aquarium = () => {
 
   const [fishList, setFishList] = useState([]);
-  const [showA, setShowA] = useState(false);
-  const toggleShowA = () => setShowA(!showA);
-
   const getFish = () => {
     Axios.get("http://localhost:3001/fishGet").then((response) => {
       setFishList(response.data);
     });
   };
+
   useEffect(() => {
     getFish();
   }, []);
@@ -78,7 +76,6 @@ const Aquarium = () => {
   function clearSession() {
     userList = [];
     localStorage.clear();
-    setUserList(userList);
   }
 
   function getKey(id)
@@ -92,11 +89,17 @@ const Aquarium = () => {
     return id;
   }
 
+  const [showA, setShowA] = useState(false);
+  
+  const toggleShowA = () => setShowA(!showA);
+
+  let x = [];
   return (
     <div>
       <section className="home">
         <br />
         <br />
+
         <h1 className="orangeText">Aquarium</h1>
         <p className="text-center ">Check out fish prices here!</p>
         <br />
@@ -105,6 +108,7 @@ const Aquarium = () => {
       <section className="homeMiddle">
         <br />
         <br />
+
         <div className="row row-cols-1 row-cols-sm-2 row-cols-md-2 g-3 mt-1">
           <img
             className=""
@@ -126,18 +130,21 @@ const Aquarium = () => {
                         height="50px"
                         alt=""
                       />
+
                       {
                         (fishNameChange(
                           item.fishCommonName,
                           item.fishScientificName
                         ))
                       }
+
                       <Button
                         className="listBtn"
                         variant="success"
                         onClick={function () {
                           addFish(item);
-                        }}>
+                        }}
+                      >
                         Add
                       </Button>
                     </ListGroup.Item>
@@ -157,18 +164,21 @@ const Aquarium = () => {
                         height="50px"
                         alt=""
                       />
+
                       {
                         (fishNameChange(
                           item.commonName,
                           item.scientificName
                         ))
                       }
+
                       <Button
                         className="listBtn"
                         variant="warning"
                         onClick={function () {
                           removeFish(item);
-                        }}>
+                        }}
+                      >
                         Remove
                       </Button>
                     </ListGroup.Item>
@@ -187,6 +197,7 @@ const Aquarium = () => {
             </Button>
           </div>
         </div>
+
         <br />
         <br />
         <br />
