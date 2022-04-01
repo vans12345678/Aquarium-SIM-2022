@@ -109,7 +109,7 @@ body {
    background-color:#758BFD;
     height: 100%;
         width: 100%;
-    position: relative;
+    /* position: relative; */
  
 }
 .homeMiddle
@@ -379,9 +379,7 @@ figcaption {
 
 
 }
-.alert {
-  width:40%;    
-}
+
 .list{
   width: 5%;
      max-height: 300px;

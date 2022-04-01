@@ -379,9 +379,7 @@ figcaption {
 
 
 }
-.alert {
-  width:40%;    
-}
+
 .list{
   width: 5%;
      max-height: 300px;
@@ -394,10 +392,11 @@ figcaption {
   margin-right: 15px;
 }
 .listBtn {
-  /* float: left; */
-  margin-left: 15px;
+   float: right; 
+   display: inline;
+  /* margin-left: 15px; */
 
-  border-top: 1em solid transparent;
+  /* border-top: 1em solid transparent; */
 }
 
 .center{
@@ -456,10 +455,6 @@ button{
   text-align: center;
  padding-left: 5%;
 }
-
-@media (max-width: 900px) {
-    .carousel {
-      width:auto;
-      height:auto;
-    }
-}
+/* .addBtn{
+  float:right;
+} */

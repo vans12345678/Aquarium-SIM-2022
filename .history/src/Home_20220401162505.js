@@ -2,6 +2,7 @@ import { useState } from "react";
 
 import { useEffect } from "react";
 import betta from "./images/betta.png";
+import carousel3 from "./images/carousel3.png";
 import arrow from "./images/arrow.jpg";
 import swordtail from "./images/swordtail-border.png";
 import zebraDanio from "./images/zebra-danio.png";

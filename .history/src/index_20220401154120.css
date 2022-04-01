@@ -379,9 +379,7 @@ figcaption {
 
 
 }
-.alert {
-  width:40%;    
-}
+
 .list{
   width: 5%;
      max-height: 300px;
@@ -454,12 +452,5 @@ button{
 }
 .searchAquarium{
   text-align: center;
- padding-left: 5%;
-}
-
-@media (max-width: 900px) {
-    .carousel {
-      width:auto;
-      height:auto;
-    }
+ margin-left: 5%;
 }

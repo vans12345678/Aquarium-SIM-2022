@@ -107,8 +107,8 @@ body {
 .home{
   
    background-color:#758BFD;
-    height: 100%;
-        width: 100%;
+    /* height: 100%;
+        width: 100%; */
     position: relative;
  
 }
@@ -379,9 +379,7 @@ figcaption {
 
 
 }
-.alert {
-  width:40%;    
-}
+
 .list{
   width: 5%;
      max-height: 300px;

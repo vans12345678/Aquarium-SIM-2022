@@ -10,9 +10,7 @@ import Axios from "axios";
 import { useState, useEffect } from "react";
 import { Fish } from "./classes/Fish";
 import { FishBasic } from "./classes/FishBasic";
-import Toast from 'react-bootstrap/Toast'
-import ToastContainer from 'react-bootstrap/ToastContainer'
-import Alert from 'react-bootstrap/Alert';
+import Toast from "react-bootstrap/Toast";
 
 const Aquarium = () => {
   const [fishList, setFishList] = useState([]);
@@ -113,29 +111,10 @@ const Aquarium = () => {
     let ms = d.getMilliseconds();
 
     id = id.toString() + "_" + ms;
-    //console.log(id);
-    
+    console.log(id);
+
     return id;
   }
-  function AlertDismissible() {  
-    return (
-      <>
-        <ToastContainer position="bottom-end">
-          <Toast onClose={() => setShowA(false)} show={showA} delay={2000} autohide>
-            <Toast.Header>
-              <img src="holder.js/20x20?text=%20" className="rounded me-2" alt="" />
-              <strong className="me-auto">Aquarium SIM</strong>
-              <small className="text-muted">just now</small>
-            </Toast.Header>
-            <Toast.Body>Updated List</Toast.Body>
-          </Toast>
-        </ToastContainer>
-      </>
-      
-        
-    );
-  }
-
 
   return (
     <div>
@@ -149,18 +128,11 @@ const Aquarium = () => {
       <section className="homeMiddle">
         <br />
         <br />
-        <AlertDismissible/>
         <div className="aquariumCols">
-          <img
-            className="aquarium"
-            src={aquarium}
-            width="1200"
-            height="713px"
-            alt=""
-          />
+          <img className="" src={aquarium} width="800" height="700px" alt="" />
 
           <div className="">
-            <div className="searchAquarium ">
+            <div className="searchCenter listStyle">
               <button
                 onClick={(event) => {
                   searchFishAll();
@@ -204,7 +176,7 @@ const Aquarium = () => {
                           item.fishScientificName
                         )}
                         <Button
-                          className="listBtn addBtn"
+                          className="listBtn"
                           variant="success"
                           onClick={function () {
                             addFish(item);
@@ -249,6 +221,7 @@ const Aquarium = () => {
                 </ListGroup>
               </Card>
               <Button
+                className="listBtn"
                 variant="danger"
                 onClick={function () {
                   clearSession();
