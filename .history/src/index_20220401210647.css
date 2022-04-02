@@ -403,7 +403,7 @@ figcaption {
 }
 .listBtn {
   /* float: left; */
-  margin-right: 4%;
+  margin-left: 15px;
   float: right;
   overflow: hidden;
   border-top: 1em solid transparent;
