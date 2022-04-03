@@ -8,23 +8,18 @@ import Axios from "axios";
 import { useState, useEffect, useLayoutEffect } from "react";
 import { Fish } from "./classes/Fish";
 import { FishBasic } from "./classes/FishBasic";
-import Toast from "react-bootstrap/Toast";
-import ToastContainer from "react-bootstrap/ToastContainer";
-import Alert from "react-bootstrap/Alert";
-import { testTemperature } from "./AquariumFunc";
-import { Tank } from "./classes/Tank";
-import { faUserLock } from "@fortawesome/free-solid-svg-icons";
-import { json } from "body-parser";
+import Toast from 'react-bootstrap/Toast'
+import ToastContainer from 'react-bootstrap/ToastContainer'
+import Alert from 'react-bootstrap/Alert';
+import AquariumFunc
 
 const Aquarium = () => {
-  //fish tank obj
-  // let fishTank = new Tank(0, 0, 0, 0, 0, 0, 0);
-  const [fishTank, setFishTank] = useState(new Tank(0, 0, 0, 0, 0, 0, 0));
   const [fishList, setFishList] = useState([]);
   const [showA, setShowA] = useState(false);
   const [search, setSearch] = useState("");
   const toggleShowA = () => setShowA(!showA);
   const [show, setShow] = useState(false);
+
 
   const getFish = () => {
     Axios.get("http://localhost:3001/fishGet").then((response) => {
@@ -38,7 +33,10 @@ const Aquarium = () => {
       }
     );
   };
+  
 
+
+  
   useEffect(() => {
     getFish();
     getUserList();
@@ -63,10 +61,6 @@ const Aquarium = () => {
       value.fishLocationTank,
       value.fishImage
     );
-    console.log(fishTank);
-
-    testTemperature(fishTank, userList, fish);
-    sessionStorage.setItem("tank", JSON.stringify(fishTank));
 
     userList.push(fish);
     setUserList(userList);
@@ -90,9 +84,9 @@ const Aquarium = () => {
       function updateSize() {
         setSize([window.innerWidth, window.innerHeight]);
       }
-      window.addEventListener("resize", updateSize);
+      window.addEventListener('resize', updateSize);
       updateSize();
-      return () => window.removeEventListener("resize", updateSize);
+      return () => window.removeEventListener('resize', updateSize);
     }, []);
     return size;
   }
@@ -136,25 +130,16 @@ const Aquarium = () => {
 
     id = id.toString() + "_" + ms;
     //console.log(id);
-
+    
     return id;
   }
-  function AlertDismissible() {
+  function AlertDismissible() {  
     return (
       <>
         <ToastContainer position="bottom-end">
-          <Toast
-            onClose={() => setShowA(false)}
-            show={showA}
-            delay={2000}
-            autohide
-          >
+          <Toast onClose={() => setShowA(false)} show={showA} delay={2000} autohide>
             <Toast.Header>
-              <img
-                src="holder.js/20x20?text=%20"
-                className="rounded me-2"
-                alt=""
-              />
+              <img src="holder.js/20x20?text=%20" className="rounded me-2" alt="" />
               <strong className="me-auto">Aquarium SIM</strong>
               <small className="text-muted">just now</small>
             </Toast.Header>
@@ -162,8 +147,11 @@ const Aquarium = () => {
           </Toast>
         </ToastContainer>
       </>
+      
+        
     );
   }
+
 
   return (
     <div>
@@ -177,7 +165,7 @@ const Aquarium = () => {
       <section className="homeMiddle">
         <br />
         <br />
-        <AlertDismissible />
+        <AlertDismissible/>
         <div className="aquariumCols">
           <img
             className="aquarium"
@@ -186,6 +174,7 @@ const Aquarium = () => {
             height="713px"
             alt=""
           />
+
 
           <div className="">
             <div className="searchAquarium ">
@@ -215,7 +204,7 @@ const Aquarium = () => {
               <br />
             </div>
             <div className="listStyle">
-              <Card className="list" style={{ width: useWindowSize(0) }}>
+              <Card className="list" style={{ width: useWindowSize(0)}}>
                 <ListGroup variant="flush">
                   {fishList.map((item) => {
                     return (

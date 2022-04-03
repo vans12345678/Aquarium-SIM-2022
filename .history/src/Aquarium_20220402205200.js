@@ -14,12 +14,10 @@ import Alert from "react-bootstrap/Alert";
 import { testTemperature } from "./AquariumFunc";
 import { Tank } from "./classes/Tank";
 import { faUserLock } from "@fortawesome/free-solid-svg-icons";
-import { json } from "body-parser";
 
 const Aquarium = () => {
   //fish tank obj
-  // let fishTank = new Tank(0, 0, 0, 0, 0, 0, 0);
-  const [fishTank, setFishTank] = useState(new Tank(0, 0, 0, 0, 0, 0, 0));
+  let fishTank = new Tank(0, 0, 0, 0, 0, 0, 0);
   const [fishList, setFishList] = useState([]);
   const [showA, setShowA] = useState(false);
   const [search, setSearch] = useState("");
@@ -64,9 +62,7 @@ const Aquarium = () => {
       value.fishImage
     );
     console.log(fishTank);
-
     testTemperature(fishTank, userList, fish);
-    sessionStorage.setItem("tank", JSON.stringify(fishTank));
 
     userList.push(fish);
     setUserList(userList);
