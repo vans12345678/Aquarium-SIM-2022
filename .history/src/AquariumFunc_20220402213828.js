@@ -1,25 +1,16 @@
+import { Tank } from "./classes/Tank";
+import { Fish } from "./classes/Fish";
 export const testTemperature = (tank, fishes, newFish) => {
-  if (tank.lowerTemp == 0 || tank.upperTemp == 0) {
+  if (tank.minTemp == 0 || tank.maxTemp == 0) {
     //set the first fish in the tanks temps as the tanks temps
-    tank.upperTemp = newFish.upperTemp;
-    tank.lowerTemp = newFish.lowerTemp;
+    tank.maxTemp = newFish.upperTemp;
+    tank.minTemp = newFish.lowerTemp;
     //console.log("HEEEJEJ");
   }
   //When there's more than 1 fish
   else
   {
-    if(newFish.upperTemp < tank.lowerTemp || newFish.lowerTemp > tank.upperTemp)
-    {
-      //Invalid temp range
-      console.log("Invalid fish temp");
-    }
-    
-    else
-    {
-      //Temp range ok
-      console.log("Fish temp ok");
-    }
-
+    if(newFish.upperTemp <= tank.maxTemp && newFish.lowerTemp >= tank.minTemp)
   }
 
   //console.log(tank);

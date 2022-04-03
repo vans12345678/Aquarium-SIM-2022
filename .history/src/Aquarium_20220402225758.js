@@ -122,9 +122,8 @@ const Aquarium = () => {
 
     if(userList.length <= 0)
     {
-      sessionStorage.setItem("tank", JSON.stringify(new Tank(0, 0, 0, 0, 0, 0, 0)));
-      setFishTank(new Tank(0, 0, 0, 0, 0, 0, 0));
-      
+      tempTank = new Tank(0, 0, 0, 0, 0, 0, 0);
+      sessionStorage.setItem("tank", JSON.stringify(tempTank));
     }
 
     toggleShowA();

@@ -106,8 +106,8 @@ const Aquarium = () => {
 
     //If tank session variable has stuff in it
     if (temp != null) {
-      tempTank = JSON.parse(sessionStorage.getItem("tank"));
-      setFishTank(tempTank);
+      fishTank = JSON.parse(sessionStorage.getItem("tank"));
+      setFishTank(fishTank);
       console.log("Fish tank present");     
     }
   }
@@ -122,9 +122,8 @@ const Aquarium = () => {
 
     if(userList.length <= 0)
     {
-      sessionStorage.setItem("tank", JSON.stringify(new Tank(0, 0, 0, 0, 0, 0, 0)));
-      setFishTank(new Tank(0, 0, 0, 0, 0, 0, 0));
-      
+      tempTank = new Tank(0, 0, 0, 0, 0, 0, 0);
+      sessionStorage.setItem("tank", JSON.stringify(tempTank));
     }
 
     toggleShowA();

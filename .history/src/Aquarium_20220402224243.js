@@ -49,7 +49,7 @@ const Aquarium = () => {
 
   let arrFish = "";
   let tempTank = new Tank(0, 0, 0, 0, 0, 0, 0);
-  //sessionStorage.setItem("tank", JSON.stringify(fishTank));
+
   const addFish = (value) => {
     //console.log(value.fishMatchID);
     let fish = new Fish(
@@ -66,14 +66,12 @@ const Aquarium = () => {
       value.fishLocationTank,
       value.fishImage
     );
-
+    //console.log(fishTank);
     testTemperature(fishTank, userList, fish);
     sessionStorage.setItem("tank", JSON.stringify(fishTank));
 
     userList.push(fish);
-
     setUserList(userList);
-    setFishTank(fishTank);
 
     sessionStorage.setItem("fishNames", JSON.stringify(userList));
     arrFish = JSON.parse(sessionStorage.getItem("fishNames"));
@@ -113,20 +111,12 @@ const Aquarium = () => {
   }
 
   const removeFish = (value) => {
-
     const index = userList.indexOf(value);
-    
+    //console.log(index);
+
     userList.splice(index, 1);
     setUserList(userList);
     sessionStorage.setItem("fishNames", JSON.stringify(userList));
-
-    if(userList.length <= 0)
-    {
-      sessionStorage.setItem("tank", JSON.stringify(new Tank(0, 0, 0, 0, 0, 0, 0)));
-      setFishTank(new Tank(0, 0, 0, 0, 0, 0, 0));
-      
-    }
-
     toggleShowA();
   };
 
@@ -142,13 +132,11 @@ const Aquarium = () => {
 
   function clearSession() {
     userList = [];
-    fishTank = new Tank(0, 0, 0, 0, 0, 0, 0);
+    fishTank = new Tank();
 
     sessionStorage.clear();
     setUserList(userList);
     setFishTank(fishTank);
-
-    sessionStorage.setItem("tank", JSON.stringify(fishTank));
   }
 
   function getKey(id) {

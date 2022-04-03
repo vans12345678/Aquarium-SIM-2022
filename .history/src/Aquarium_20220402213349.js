@@ -19,6 +19,7 @@ import { faUserLock } from "@fortawesome/free-solid-svg-icons";
 const Aquarium = () => {
   //fish tank obj
   // let fishTank = new Tank(0, 0, 0, 0, 0, 0, 0);
+  let [fishTank, setFishTank] = useState(new Tank(0, 0, 0, 0, 0, 0, 0));
   const [fishList, setFishList] = useState([]);
   const [showA, setShowA] = useState(false);
   const [search, setSearch] = useState("");
@@ -45,11 +46,8 @@ const Aquarium = () => {
   }, []);
 
   let [userList, setUserList] = useState([]);
-  let [fishTank, setFishTank] = useState(new Tank(0, 0, 0, 0, 0, 0, 0));
 
   let arrFish = "";
-  let tempTank = new Tank(0, 0, 0, 0, 0, 0, 0);
-  //sessionStorage.setItem("tank", JSON.stringify(fishTank));
   const addFish = (value) => {
     //console.log(value.fishMatchID);
     let fish = new Fish(
@@ -66,19 +64,24 @@ const Aquarium = () => {
       value.fishLocationTank,
       value.fishImage
     );
+    //console.log(fishTank);
 
     testTemperature(fishTank, userList, fish);
     sessionStorage.setItem("tank", JSON.stringify(fishTank));
 
     userList.push(fish);
-
     setUserList(userList);
-    setFishTank(fishTank);
 
     sessionStorage.setItem("fishNames", JSON.stringify(userList));
     arrFish = JSON.parse(sessionStorage.getItem("fishNames"));
 
-    console.log(fishTank);
+    // let names = [];
+    // for (var i=0;i<arrFish.length;i++)
+    // {
+    //   names[i] = i+1 + ". " + arrFish[i].commonName + " ";
+    //   console.log(arrFish[i].commonName);
+    // }
+
     toggleShowA();
   };
 
@@ -106,27 +109,21 @@ const Aquarium = () => {
 
     //If tank session variable has stuff in it
     if (temp != null) {
-      tempTank = JSON.parse(sessionStorage.getItem("tank"));
-      setFishTank(tempTank);
-      console.log("Fish tank present");     
+      fishTank = JSON.parse(sessionStorage.getItem("tank"));
+      setFishTank(fishTank);
+      console.log("Fish tank present");
+      
     }
+    console.log(fishTank);
   }
 
   const removeFish = (value) => {
-
     const index = userList.indexOf(value);
-    
+    //console.log(index);
+
     userList.splice(index, 1);
     setUserList(userList);
     sessionStorage.setItem("fishNames", JSON.stringify(userList));
-
-    if(userList.length <= 0)
-    {
-      sessionStorage.setItem("tank", JSON.stringify(new Tank(0, 0, 0, 0, 0, 0, 0)));
-      setFishTank(new Tank(0, 0, 0, 0, 0, 0, 0));
-      
-    }
-
     toggleShowA();
   };
 
@@ -142,13 +139,8 @@ const Aquarium = () => {
 
   function clearSession() {
     userList = [];
-    fishTank = new Tank(0, 0, 0, 0, 0, 0, 0);
-
     sessionStorage.clear();
     setUserList(userList);
-    setFishTank(fishTank);
-
-    sessionStorage.setItem("tank", JSON.stringify(fishTank));
   }
 
   function getKey(id) {
@@ -167,7 +159,7 @@ const Aquarium = () => {
           <Toast
             onClose={() => setShowA(false)}
             show={showA}
-            delay={1800}
+            delay={2000}
             autohide
           >
             <Toast.Header>

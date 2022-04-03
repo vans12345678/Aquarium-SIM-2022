@@ -49,7 +49,7 @@ const Aquarium = () => {
 
   let arrFish = "";
   let tempTank = new Tank(0, 0, 0, 0, 0, 0, 0);
-  //sessionStorage.setItem("tank", JSON.stringify(fishTank));
+
   const addFish = (value) => {
     //console.log(value.fishMatchID);
     let fish = new Fish(
@@ -122,9 +122,8 @@ const Aquarium = () => {
 
     if(userList.length <= 0)
     {
-      sessionStorage.setItem("tank", JSON.stringify(new Tank(0, 0, 0, 0, 0, 0, 0)));
-      setFishTank(new Tank(0, 0, 0, 0, 0, 0, 0));
-      
+      tempTank = new Tank(0, 0, 0, 0, 0, 0, 0);
+      sessionStorage.setItem("tank", JSON.stringify(tempTank));
     }
 
     toggleShowA();
@@ -142,13 +141,11 @@ const Aquarium = () => {
 
   function clearSession() {
     userList = [];
-    fishTank = new Tank(0, 0, 0, 0, 0, 0, 0);
+    fishTank = new Tank();
 
     sessionStorage.clear();
     setUserList(userList);
     setFishTank(fishTank);
-
-    sessionStorage.setItem("tank", JSON.stringify(fishTank));
   }
 
   function getKey(id) {

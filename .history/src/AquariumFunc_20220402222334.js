@@ -10,13 +10,13 @@ export const testTemperature = (tank, fishes, newFish) => {
   {
     if(newFish.upperTemp < tank.lowerTemp || newFish.lowerTemp > tank.upperTemp)
     {
-      //Invalid temp range
+      //Temp range ok
       console.log("Invalid fish temp");
+
     }
-    
+    //Invalid temp range
     else
     {
-      //Temp range ok
       console.log("Fish temp ok");
     }
 

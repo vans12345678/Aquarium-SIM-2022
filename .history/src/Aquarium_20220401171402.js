@@ -3,22 +3,18 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import React from "react";
 import ReactDOM from "react-dom";
 import aquarium from "./images/fishtank.png";
+import swordtail from "./images/swordtail.png";
+import commonPleco from "./images/common-pleco.png";
 import { ListGroup, Button, Card } from "react-bootstrap";
 import Axios from "axios";
-import { useState, useEffect, useLayoutEffect } from "react";
+import { useState, useEffect } from "react";
 import { Fish } from "./classes/Fish";
 import { FishBasic } from "./classes/FishBasic";
-import Toast from "react-bootstrap/Toast";
-import ToastContainer from "react-bootstrap/ToastContainer";
-import Alert from "react-bootstrap/Alert";
-import { testTemperature } from "./AquariumFunc";
-import { Tank } from "./classes/Tank";
-import { faUserLock } from "@fortawesome/free-solid-svg-icons";
-// import { json } from "body-parser";
+import Toast from 'react-bootstrap/Toast'
+import ToastContainer from 'react-bootstrap/ToastContainer'
+import Alert from 'react-bootstrap/Alert';
 
 const Aquarium = () => {
-  //fish tank obj
-  // let fishTank = new Tank(0, 0, 0, 0, 0, 0, 0);
   const [fishList, setFishList] = useState([]);
   const [showA, setShowA] = useState(false);
   const [search, setSearch] = useState("");
@@ -41,15 +37,11 @@ const Aquarium = () => {
   useEffect(() => {
     getFish();
     getUserList();
-    getFishTank();
   }, []);
 
   let [userList, setUserList] = useState([]);
-  let [fishTank, setFishTank] = useState(new Tank(0, 0, 0, 0, 0, 0, 0));
 
   let arrFish = "";
-  let tempTank = new Tank(0, 0, 0, 0, 0, 0, 0);
-  //sessionStorage.setItem("tank", JSON.stringify(fishTank));
   const addFish = (value) => {
     //console.log(value.fishMatchID);
     let fish = new Fish(
@@ -66,34 +58,32 @@ const Aquarium = () => {
       value.fishLocationTank,
       value.fishImage
     );
-
-    testTemperature(fishTank, userList, fish);
-    sessionStorage.setItem("tank", JSON.stringify(fishTank));
-
+    for(let i = 0; i < userList.length; i ++)
+    {
+      if(userList[i].locationTank == fish.locationTank)
+      {
+        console.log("same location in tank!");
+      }
+      else
+      {
+        console.log("Invalid location in tank!");
+      }
+    }
     userList.push(fish);
-
     setUserList(userList);
-    setFishTank(fishTank);
 
     sessionStorage.setItem("fishNames", JSON.stringify(userList));
     arrFish = JSON.parse(sessionStorage.getItem("fishNames"));
 
-    console.log(fishTank);
+    // let names = [];
+    // for (var i=0;i<arrFish.length;i++)
+    // {
+    //   names[i] = i+1 + ". " + arrFish[i].commonName + " ";
+    //   console.log(arrFish[i].commonName);
+    // }
+
     toggleShowA();
   };
-
-  function useWindowSize() {
-    const [size, setSize] = useState([0, 0]);
-    useLayoutEffect(() => {
-      function updateSize() {
-        setSize([window.innerWidth, window.innerHeight]);
-      }
-      window.addEventListener("resize", updateSize);
-      updateSize();
-      return () => window.removeEventListener("resize", updateSize);
-    }, []);
-    return size;
-  }
 
   const getUserList = () => {
     if (sessionStorage.length > 0) {
@@ -101,32 +91,14 @@ const Aquarium = () => {
       setUserList(arrFish);
     }
   };
-  const getFishTank = () => {
-    let temp = JSON.parse(sessionStorage.getItem("tank"));
-
-    //If tank session variable has stuff in it
-    if (temp != null) {
-      tempTank = JSON.parse(sessionStorage.getItem("tank"));
-      setFishTank(tempTank);
-      console.log("Fish tank present");     
-    }
-  }
 
   const removeFish = (value) => {
-
     const index = userList.indexOf(value);
-    
+    //console.log(index);
+
     userList.splice(index, 1);
     setUserList(userList);
     sessionStorage.setItem("fishNames", JSON.stringify(userList));
-
-    if(userList.length <= 0)
-    {
-      sessionStorage.setItem("tank", JSON.stringify(new Tank(0, 0, 0, 0, 0, 0, 0)));
-      setFishTank(new Tank(0, 0, 0, 0, 0, 0, 0));
-      
-    }
-
     toggleShowA();
   };
 
@@ -142,13 +114,8 @@ const Aquarium = () => {
 
   function clearSession() {
     userList = [];
-    fishTank = new Tank(0, 0, 0, 0, 0, 0, 0);
-
     sessionStorage.clear();
     setUserList(userList);
-    setFishTank(fishTank);
-
-    sessionStorage.setItem("tank", JSON.stringify(fishTank));
   }
 
   function getKey(id) {
@@ -157,25 +124,16 @@ const Aquarium = () => {
 
     id = id.toString() + "_" + ms;
     //console.log(id);
-
+    
     return id;
   }
-  function AlertDismissible() {
+  function AlertDismissible() {  
     return (
       <>
         <ToastContainer position="bottom-end">
-          <Toast
-            onClose={() => setShowA(false)}
-            show={showA}
-            delay={1800}
-            autohide
-          >
+          <Toast onClose={() => setShowA(false)} show={showA} delay={2000} autohide>
             <Toast.Header>
-              <img
-                src="holder.js/20x20?text=%20"
-                className="rounded me-2"
-                alt=""
-              />
+              <img src="holder.js/20x20?text=%20" className="rounded me-2" alt="" />
               <strong className="me-auto">Aquarium SIM</strong>
               <small className="text-muted">just now</small>
             </Toast.Header>
@@ -183,8 +141,11 @@ const Aquarium = () => {
           </Toast>
         </ToastContainer>
       </>
+      
+        
     );
   }
+
 
   return (
     <div>
@@ -198,12 +159,12 @@ const Aquarium = () => {
       <section className="homeMiddle">
         <br />
         <br />
-        <AlertDismissible />
+        <AlertDismissible/>
         <div className="aquariumCols">
           <img
             className="aquarium"
             src={aquarium}
-            width="100%"
+            width="1200"
             height="713px"
             alt=""
           />
@@ -236,7 +197,7 @@ const Aquarium = () => {
               <br />
             </div>
             <div className="listStyle">
-              <Card className="list" style={{ width: useWindowSize(0) }}>
+              <Card className="list" style={{ width: "40rem" }}>
                 <ListGroup variant="flush">
                   {fishList.map((item) => {
                     return (
@@ -269,7 +230,7 @@ const Aquarium = () => {
 
               <Card
                 className="list"
-                style={{ width: useWindowSize(0), height: "40rem" }}
+                style={{ width: "40rem", height: "40rem" }}
               >
                 <ListGroup variant="flush">
                   {userList.map((item) => {
