@@ -67,23 +67,19 @@ const Aquarium = () => {
       value.fishImage
     );
 
-    if(testTemperature(fishTank, userList, fish) == true)
-    {
-      sessionStorage.setItem("tank", JSON.stringify(fishTank));
+    testTemperature(fishTank, userList, fish);
+    sessionStorage.setItem("tank", JSON.stringify(fishTank));
 
-      userList.push(fish);
+    userList.push(fish);
 
-      setUserList(userList);
-      setFishTank(fishTank);
+    setUserList(userList);
+    setFishTank(fishTank);
 
-      sessionStorage.setItem("fishNames", JSON.stringify(userList));
-      arrFish = JSON.parse(sessionStorage.getItem("fishNames"));
-
-      toggleShowA();
-    }
-
+    sessionStorage.setItem("fishNames", JSON.stringify(userList));
+    arrFish = JSON.parse(sessionStorage.getItem("fishNames"));
 
     console.log(fishTank);
+    toggleShowA();
   };
 
   function useWindowSize() {
@@ -121,29 +117,9 @@ const Aquarium = () => {
     const index = userList.indexOf(value);
     
     userList.splice(index, 1);
-
     setUserList(userList);
-    fishTank = new Tank(0, 0, 0, 0, 0, 0, 0);
-    setFishTank(fishTank);
-    sessionStorage.setItem("tank", JSON.stringify(fishTank));
-
-    userList.forEach(element => {
-      if(testTemperature(fishTank, userList, element) == true)
-      {
-        sessionStorage.setItem("tank", JSON.stringify(fishTank));
-
-        setFishTank(fishTank);
-      }
-    });
-    
-
     sessionStorage.setItem("fishNames", JSON.stringify(userList));
-   
 
-
-    
-
-    
     if(userList.length <= 0)
     {
       sessionStorage.setItem("tank", JSON.stringify(new Tank(0, 0, 0, 0, 0, 0, 0)));

@@ -381,14 +381,9 @@ figcaption {
    margin-right: auto;
 }
 
-.customA a:link {
-  color: #FF8600;
-}
-.customA a:hover {
-  color: #FF8600;
-}
-.customA a:visited {
-  color: #FF8600;
+a
+{
+  color:#FF8600;
 }
 
 

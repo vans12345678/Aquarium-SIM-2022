@@ -42,7 +42,8 @@ const Home = () => {
               />
               <Carousel.Caption>
                 <h3 className="orangeTextSmall">AQUARIUM FISH PICKER</h3>
-                <p className="customA">
+                
+                <p>
                   Try out our <a href="/aquarium">aquarium fish picker</a> to check for compatibility and more.
                 </p>
               </Carousel.Caption>
@@ -57,7 +58,7 @@ const Home = () => {
 
               <Carousel.Caption>
                 <h3 className="orangeTextSmall">FISH COMPENDIUM</h3>
-                <p className="customA">Find out information about aquarium fish species in our <a href="/compendium">fish compendium.</a></p>
+                <p>Find out information about aquarium fish species in our fish compendium.</p>
               </Carousel.Caption>
             </Carousel.Item>
             <Carousel.Item>
@@ -70,8 +71,8 @@ const Home = () => {
 
               <Carousel.Caption>
                 <h3 className="orangeTextSmall">SHOP FOR THE BEST PRICES</h3>
-                <p className="customA">
-                  Use our <a href="/listings">listings page</a> to find the best prices for the fish you want.
+                <p>
+                  Use our listings page to find the best prices for the fish you want.
                 </p>
               </Carousel.Caption>
             </Carousel.Item>

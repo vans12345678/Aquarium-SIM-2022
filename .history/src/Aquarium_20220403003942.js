@@ -123,18 +123,17 @@ const Aquarium = () => {
     userList.splice(index, 1);
 
     setUserList(userList);
-    fishTank = new Tank(0, 0, 0, 0, 0, 0, 0);
-    setFishTank(fishTank);
-    sessionStorage.setItem("tank", JSON.stringify(fishTank));
+    sessionStorage.setItem("fishNames", JSON.stringify(userList));
 
-    userList.forEach(element => {
-      if(testTemperature(fishTank, userList, element) == true)
-      {
-        sessionStorage.setItem("tank", JSON.stringify(fishTank));
-
-        setFishTank(fishTank);
-      }
-    });
+    let tempList = userList;
+    
+    clearSession();
+    
+    setTimeout(
+      tempList.forEach(element => {
+      addFish(element);
+      })    
+      , 1);
     
 
     sessionStorage.setItem("fishNames", JSON.stringify(userList));

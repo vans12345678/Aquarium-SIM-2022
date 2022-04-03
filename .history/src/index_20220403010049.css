@@ -381,14 +381,17 @@ figcaption {
    margin-right: auto;
 }
 
-.customA a:link {
-  color: #FF8600;
+.customA a {
+  margin-left: 16px;
+  text-decoration: none;
+  padding: 6px;
+  color:rgb(216, 212, 212);
+  font-weight: bold;
 }
 .customA a:hover {
   color: #FF8600;
-}
-.customA a:visited {
-  color: #FF8600;
+  border-bottom: 3px solid #FF8600;
+    text-shadow: 2px 2px black;
 }
 
 
