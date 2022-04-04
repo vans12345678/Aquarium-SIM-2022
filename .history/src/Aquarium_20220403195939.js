@@ -93,13 +93,13 @@ const Aquarium = () => {
 
   const setTankDimensions = () =>
   {
+    
 
-    fishTank.length = parseInt(inputLength);
-    fishTank.width = parseInt(inputWidth);
-    fishTank.height = parseInt(inputHeight);
-
-    if(testTankSize() == true)
+    if(testTankSize(length, width, height) == true)
     {
+      fishTank.length = parseInt(inputLength);
+      fishTank.width = parseInt(inputWidth);
+      fishTank.height = parseInt(inputHeight);
       setFishTank(fishTank);
     }
     

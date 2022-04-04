@@ -11,7 +11,7 @@ import { FishBasic } from "./classes/FishBasic";
 import Toast from "react-bootstrap/Toast";
 import ToastContainer from "react-bootstrap/ToastContainer";
 import Alert from "react-bootstrap/Alert";
-import { testTankSize, testTemperature } from "./AquariumFunc";
+import { testTemperature } from "./AquariumFunc";
 import { Tank } from "./classes/Tank";
 import { faUserLock } from "@fortawesome/free-solid-svg-icons";
 // import { json } from "body-parser";
@@ -91,21 +91,18 @@ const Aquarium = () => {
     console.log(fishTank);
   };
 
-  const setTankDimensions = () =>
+  const setTankDimensions = (length, width, height) =>
   {
 
-    fishTank.length = parseInt(inputLength);
-    fishTank.width = parseInt(inputWidth);
-    fishTank.height = parseInt(inputHeight);
+    setLength(length);
+    setWidth(width);
+    setHeight(height);
 
-    if(testTankSize() == true)
-    {
-      setFishTank(fishTank);
-    }
-    
-    
-    
-    sessionStorage.setItem("tank", JSON.stringify(fishTank));
+    fishTank.length = length;
+    fishTank.width = width;
+    fishTank.height = height;
+
+    setFishTank(fishTank);
 
     
 
@@ -244,38 +241,31 @@ const Aquarium = () => {
         <br />
         <AlertDismissible />
         <div className="aquariumCols">
-          <form action={ setTankDimensions(inputLength, inputWidth, inputHeight)}>
-            <input
+        <input
             type="number"
             placeholder="Length"
-            required
             value={inputLength}
             onChange={e => setLength(e.target.value)}
           />
           <input
             type="number"
             placeholder="Width"
-            required
             value={inputWidth}
             onChange={e => setWidth(e.target.value)}
           />
           <input
             type="number"
             placeholder="Height"
-            required
             value={inputHeight}
-            onChange={e => setHeight(e.target.value)
-            }
+            onChange={e => setHeight(e.target.value)}
           />
           <button
-            type="button"
+            onClick={(event) => {
+              setTankDimensions(inputLength, inputWidth, inputHeight);
+            }}
           >
             Set Tank Dimensions
           </button>
-            
-            
-            </form>
-        
           <img
             className="aquarium"
             src={aquarium}

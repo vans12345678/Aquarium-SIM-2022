@@ -268,7 +268,7 @@ const Aquarium = () => {
             }
           />
           <button
-            type="button"
+            type="submit"
           >
             Set Tank Dimensions
           </button>

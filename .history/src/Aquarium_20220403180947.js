@@ -11,7 +11,7 @@ import { FishBasic } from "./classes/FishBasic";
 import Toast from "react-bootstrap/Toast";
 import ToastContainer from "react-bootstrap/ToastContainer";
 import Alert from "react-bootstrap/Alert";
-import { testTankSize, testTemperature } from "./AquariumFunc";
+import { testTemperature } from "./AquariumFunc";
 import { Tank } from "./classes/Tank";
 import { faUserLock } from "@fortawesome/free-solid-svg-icons";
 // import { json } from "body-parser";
@@ -24,10 +24,6 @@ const Aquarium = () => {
   const [search, setSearch] = useState("");
   const toggleShowA = () => setShowA(!showA);
   const [show, setShow] = useState(false);
-
-  let [inputLength, setLength] = useState(0);
-  let [inputWidth, setWidth] = useState(0);
-  let [inputHeight, setHeight] = useState(0);
 
   const getFish = () => {
     Axios.get("http://localhost:3001/fishGet").then((response) => {
@@ -46,11 +42,10 @@ const Aquarium = () => {
     getFish();
     getUserList();
     getFishTank();
-    
   }, []);
 
   let [userList, setUserList] = useState([]);
-  let [fishTank, setFishTank] = useState(new Tank(inputLength, inputWidth, inputHeight, 0, 0, 0, 0));
+  let [fishTank, setFishTank] = useState(new Tank(0, 0, 0, 0, 0, 0, 0));
 
   let arrFish = "";
   let tempTank = new Tank(0, 0, 0, 0, 0, 0, 0);
@@ -90,26 +85,6 @@ const Aquarium = () => {
 
     console.log(fishTank);
   };
-
-  const setTankDimensions = () =>
-  {
-
-    fishTank.length = parseInt(inputLength);
-    fishTank.width = parseInt(inputWidth);
-    fishTank.height = parseInt(inputHeight);
-
-    if(testTankSize() == true)
-    {
-      setFishTank(fishTank);
-    }
-    
-    
-    
-    sessionStorage.setItem("tank", JSON.stringify(fishTank));
-
-    
-
-  }
 
   function useWindowSize() {
     const [size, setSize] = useState([0, 0]);
@@ -160,9 +135,15 @@ const Aquarium = () => {
         setFishTank(fishTank);
       }
     });
+    
 
     sessionStorage.setItem("fishNames", JSON.stringify(userList));
-  
+   
+
+
+    
+
+    
     if(userList.length <= 0)
     {
       sessionStorage.setItem("tank", JSON.stringify(new Tank(0, 0, 0, 0, 0, 0, 0)));
@@ -187,11 +168,10 @@ const Aquarium = () => {
     userList = [];
     fishTank = new Tank(0, 0, 0, 0, 0, 0, 0);
 
-    
+    sessionStorage.clear();
     setUserList(userList);
     setFishTank(fishTank);
 
-    sessionStorage.setItem("fishNames", JSON.stringify(userList));
     sessionStorage.setItem("tank", JSON.stringify(fishTank));
   }
 
@@ -244,38 +224,19 @@ const Aquarium = () => {
         <br />
         <AlertDismissible />
         <div className="aquariumCols">
-          <form action={ setTankDimensions(inputLength, inputWidth, inputHeight)}>
-            <input
-            type="number"
+        <input
+            type="search"
             placeholder="Length"
-            required
-            value={inputLength}
-            onChange={e => setLength(e.target.value)}
+            onChange={(event) => {
+              setSearch(event.target.value);
+            }}
+            onKeyPress={(event) => {
+              if (event.key === "Enter") {
+                event.preventDefault();
+                console.log("Click");
+              }
+            }}
           />
-          <input
-            type="number"
-            placeholder="Width"
-            required
-            value={inputWidth}
-            onChange={e => setWidth(e.target.value)}
-          />
-          <input
-            type="number"
-            placeholder="Height"
-            required
-            value={inputHeight}
-            onChange={e => setHeight(e.target.value)
-            }
-          />
-          <button
-            type="button"
-          >
-            Set Tank Dimensions
-          </button>
-            
-            
-            </form>
-        
           <img
             className="aquarium"
             src={aquarium}

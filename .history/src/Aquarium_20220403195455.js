@@ -25,9 +25,9 @@ const Aquarium = () => {
   const toggleShowA = () => setShowA(!showA);
   const [show, setShow] = useState(false);
 
-  let [inputLength, setLength] = useState(0);
-  let [inputWidth, setWidth] = useState(0);
-  let [inputHeight, setHeight] = useState(0);
+  let [inputLength, setLength] = useState();
+  let [inputWidth, setWidth] = useState();
+  let [inputHeight, setHeight] = useState();
 
   const getFish = () => {
     Axios.get("http://localhost:3001/fishGet").then((response) => {
@@ -244,7 +244,9 @@ const Aquarium = () => {
         <br />
         <AlertDismissible />
         <div className="aquariumCols">
-          <form action={ setTankDimensions(inputLength, inputWidth, inputHeight)}>
+          <form action={(event) => {
+              setTankDimensions(inputLength, inputWidth, inputHeight);
+            }}>
             <input
             type="number"
             placeholder="Length"
@@ -268,7 +270,9 @@ const Aquarium = () => {
             }
           />
           <button
-            type="button"
+            onClick={(event) => {
+              setTankDimensions(inputLength, inputWidth, inputHeight);
+            }}
           >
             Set Tank Dimensions
           </button>
