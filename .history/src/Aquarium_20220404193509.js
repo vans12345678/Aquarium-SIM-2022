@@ -83,8 +83,7 @@ const Aquarium = () => {
   const renderFish = () => {
     //add fish image to tank
     let aquariumImg = document.getElementById("aquarium");
-    console.log(userList);
-    arrFish.forEach((fish) => {
+    userList.forEach((fish) => {
       // console.log(fish);
       var $img = $("<img />", {
         src: require("./images/" + fish.image),
@@ -221,6 +220,7 @@ const Aquarium = () => {
     if (sessionStorage.length > 0) {
       arrFish = JSON.parse(sessionStorage.getItem("fishNames"));
       setUserList(arrFish);
+      console.log(userList);
     }
   };
 
