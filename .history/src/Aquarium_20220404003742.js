@@ -50,10 +50,10 @@ const Aquarium = () => {
   }, []);
 
   let [userList, setUserList] = useState([]);
-  let [fishTank, setFishTank] = useState(new Tank(inputLength, inputWidth, inputHeight, 0, 0, 0, 0, 0));
+  let [fishTank, setFishTank] = useState(new Tank(inputLength, inputWidth, inputHeight, 0, 0, 0, 0, 0, 0));
 
   let arrFish = "";
-  let tempTank = new Tank(0, 0, 0, 0, 0, 0, 0, 0);
+  let tempTank = new Tank(0, 0, 0, 0, 0, 0, 0, 0, 0);
 
   const setTankDimensions = () =>
   {
@@ -170,7 +170,7 @@ const Aquarium = () => {
     userList.splice(index, 1);
 
     setUserList(userList);
-    fishTank = new Tank(0, 0, 0, 0, 0, 0, 0, 0);
+    fishTank = new Tank(0, 0, 0, 0, 0, 0, 0, 0, 0);
     setFishTank(fishTank);
     sessionStorage.setItem("tank", JSON.stringify(fishTank));
 
@@ -187,8 +187,8 @@ const Aquarium = () => {
   
     if(userList.length <= 0)
     {
-      sessionStorage.setItem("tank", JSON.stringify(new Tank(0, 0, 0, 0, 0, 0, 0, 0)));
-      setFishTank(new Tank(0, 0, 0, 0, 0, 0, 0, 0));  
+      sessionStorage.setItem("tank", JSON.stringify(new Tank(0, 0, 0, 0, 0, 0, 0, 0, 0)));
+      setFishTank(new Tank(0, 0, 0, 0, 0, 0, 0, 0, 0));  
     }
 
     setMessage("Removed: " + fishNameChange(value.commonName, value.scientificName));
@@ -207,7 +207,7 @@ const Aquarium = () => {
 
   function clearSession() {
     userList = [];
-    fishTank = new Tank(0, 0, 0, 0, 0, 0, 0, 0);
+    fishTank = new Tank(0, 0, 0, 0, 0, 0, 0, 0, 0);
     
     setUserList(userList);
     setFishTank(fishTank);

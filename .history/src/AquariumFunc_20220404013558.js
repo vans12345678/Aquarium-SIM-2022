@@ -111,7 +111,8 @@ export const testFishSize = (userList, newFish, tank) => {
    
     tank.averageFishSize = (tank.averageFishSize * userList.length + newFish.averageSize) / (userList.length + 1);
 
-    console.log("Upper Size: " + tank.averageFishSize);
+
+    console.log("Upper Size: " + tank.upperFishSize);
     console.log(userList);
     
     return true;

@@ -93,25 +93,30 @@ export const testPH = (tank, newFish) => {
 export const testFishSize = (userList, newFish, tank) => {
 
   //Check to see if the new fish being added has a valid size
-  if(tank.averageFishSize == 0)
-  {
-    tank.averageFishSize = newFish.averageSize;
-
-    console.log("Upper Size: " + tank.averageFishSize);
-    return true;
-  }
-  else if(newFish.averageSize > tank.averageFishSize + 25 || newFish.averageSize < tank.averageFishSize - 25 && newFish.averageSize != tank.averageFishSize)
+  if(tank.lowerFishSize == 0 && tank.upperFishSize == 0)
   {
     console.log("Fish size invalid");
-    console.log("Upper Size: " + tank.averageFishSize);
+    console.log("Upper Size: " + tank.upperFishSize + "\nLower Size: " + tank.lowerFishSize);
     return false;
+  }
+  else if(newFish.averageSize * 4 < tank.lowerFishSize || newFish.averageSize / 4 > tank.upperFishSize)
+  {
+    console.log("Upper Size: " + tank.upperFishSize + "\nLower Size: " + tank.lowerFishSize);
+    return true;
   }
   else
   {
-   
-    tank.averageFishSize = (tank.averageFishSize * userList.length + newFish.averageSize) / (userList.length + 1);
-
-    console.log("Upper Size: " + tank.averageFishSize);
+    //Test for lower range
+    if(newFish.averageSize < tank.lowerFishSize)
+    {
+      tank.lowerFishSize = newFish.averageSize;
+    }
+    //Tet for upper range
+    if(newFish.averageSize > tank.upperFishSize)
+    {
+      tank.upperFishSize = newFish.averageSize;
+    }
+    console.log("Upper Size: " + tank.upperFishSize + "\nLower Size: " + tank.lowerFishSize);
     console.log(userList);
     
     return true;

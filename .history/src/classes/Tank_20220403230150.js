@@ -1,5 +1,5 @@
 export class Tank {
-  constructor(length, width, height, upperTemp, lowerTemp, lowerPH, upperPH, averageFishSize) {
+  constructor(length, width, height, upperTemp, lowerTemp, lowerPH, upperPH) {
     this.length = length;
     this.width = width;
     this.height = height;
@@ -7,6 +7,7 @@ export class Tank {
     this.lowerTemp = lowerTemp;
     this.lowerPH = lowerPH;
     this.upperPH = upperPH;
-    this.averageFishSize = averageFishSize;
+    this.lowerFishSize = this.lowerFishSize;
+    this.upperFishSize = this.upperFishSize;
   }
 }

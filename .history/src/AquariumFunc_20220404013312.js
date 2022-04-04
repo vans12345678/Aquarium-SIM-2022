@@ -100,7 +100,7 @@ export const testFishSize = (userList, newFish, tank) => {
     console.log("Upper Size: " + tank.averageFishSize);
     return true;
   }
-  else if(newFish.averageSize > tank.averageFishSize + 25 || newFish.averageSize < tank.averageFishSize - 25 && newFish.averageSize != tank.averageFishSize)
+  else if(newFish.averageSize > tank.averageFishSize + 25 || newFish.averageSize  > tank.averageFishSize - 25)
   {
     console.log("Fish size invalid");
     console.log("Upper Size: " + tank.averageFishSize);
@@ -111,7 +111,8 @@ export const testFishSize = (userList, newFish, tank) => {
    
     tank.averageFishSize = (tank.averageFishSize * userList.length + newFish.averageSize) / (userList.length + 1);
 
-    console.log("Upper Size: " + tank.averageFishSize);
+
+    console.log("Upper Size: " + tank.upperFishSize);
     console.log(userList);
     
     return true;

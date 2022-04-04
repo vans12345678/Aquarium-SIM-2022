@@ -90,32 +90,35 @@ export const testPH = (tank, newFish) => {
   }
 }
 
-export const testFishSize = (userList, newFish, tank) => {
+export const testFishSize = (userList, newFish) => {
+  let flag = true;
+
+  let lowerSize = userList[0].averageSize;
+  let upperSize = userList[0].averageSize;
+
+  
+  userList.forEach(element => {
+
+    //Test for lower range
+    if(element.averageSize < lowerSize)
+    {
+      lowerSize = element.averageSize;
+    }
+    //Tet for upper range
+    if(element.averageSize > upperSize)
+    {
+      upperSize = element.averageSize;
+    }
+  });
 
   //Check to see if the new fish being added has a valid size
-  if(tank.averageFishSize == 0)
-  {
-    tank.averageFishSize = newFish.averageSize;
-
-    console.log("Upper Size: " + tank.averageFishSize);
-    return true;
-  }
-  else if(newFish.averageSize > tank.averageFishSize + 25 || newFish.averageSize < tank.averageFishSize - 25 && newFish.averageSize != tank.averageFishSize)
+  if(newFish.averageSize < lowerSize || newFish.averageSize > upperSize)
   {
     console.log("Fish size invalid");
-    console.log("Upper Size: " + tank.averageFishSize);
-    return false;
   }
-  else
-  {
-   
-    tank.averageFishSize = (tank.averageFishSize * userList.length + newFish.averageSize) / (userList.length + 1);
 
-    console.log("Upper Size: " + tank.averageFishSize);
-    console.log(userList);
-    
-    return true;
-  }
+  console.log("Upper Size: " + upperSize + "\nLower Size: " + lowerSize);
+  console.log(userList);
 }
 
 

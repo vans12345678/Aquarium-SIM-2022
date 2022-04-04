@@ -50,10 +50,10 @@ const Aquarium = () => {
   }, []);
 
   let [userList, setUserList] = useState([]);
-  let [fishTank, setFishTank] = useState(new Tank(inputLength, inputWidth, inputHeight, 0, 0, 0, 0, 0));
+  let [fishTank, setFishTank] = useState(new Tank(inputLength, inputWidth, inputHeight, 0, 0, 0, 0));
 
   let arrFish = "";
-  let tempTank = new Tank(0, 0, 0, 0, 0, 0, 0, 0);
+  let tempTank = new Tank(0, 0, 0, 0, 0, 0, 0);
 
   const setTankDimensions = () =>
   {
@@ -92,26 +92,20 @@ const Aquarium = () => {
   {
     if(testPH(fishTank, fish) == true)
     {
-      if(testFishSize(userList, fish, fishTank) == true)
-      {
-        sessionStorage.setItem("tank", JSON.stringify(fishTank));
+      sessionStorage.setItem("tank", JSON.stringify(fishTank));
+  
+      userList.push(fish);
     
-        userList.push(fish);
-      
-        setUserList(userList);
-        setFishTank(fishTank);
-      
-        sessionStorage.setItem("fishNames", JSON.stringify(userList));
-        arrFish = JSON.parse(sessionStorage.getItem("fishNames"));
-        
+      setUserList(userList);
+      setFishTank(fishTank);
+    
+      sessionStorage.setItem("fishNames", JSON.stringify(userList));
+      arrFish = JSON.parse(sessionStorage.getItem("fishNames"));
 
-        setMessage("Added: " + fishNameChange(fish.commonName, fish.scientificName))
-        toggleShowA();
-      }
-      else{
-        setMessage("Fish size is invalid");
-        toggleShowA();
-      }      
+      testFishSize(userList);
+
+      setMessage("Added: " + fishNameChange(fish.commonName, fish.scientificName))
+      toggleShowA();
     }
     else{
       setMessage("Invalid fish PH on: " + fishNameChange(fish.commonName, fish.scientificName) + " | upperPH: " + fish.upperPH + " | lowerPH: " + fish.lowerPH);
@@ -170,14 +164,14 @@ const Aquarium = () => {
     userList.splice(index, 1);
 
     setUserList(userList);
-    fishTank = new Tank(0, 0, 0, 0, 0, 0, 0, 0);
+    fishTank = new Tank(0, 0, 0, 0, 0, 0, 0);
     setFishTank(fishTank);
     sessionStorage.setItem("tank", JSON.stringify(fishTank));
 
     userList.forEach(element => {
       if(testTemperature(fishTank, element) == true && testPH(fishTank, element) == true)
       {
-        //testFishSize(userList)
+        testFishSize(userList);
         sessionStorage.setItem("tank", JSON.stringify(fishTank));
         setFishTank(fishTank);
       }
@@ -187,8 +181,8 @@ const Aquarium = () => {
   
     if(userList.length <= 0)
     {
-      sessionStorage.setItem("tank", JSON.stringify(new Tank(0, 0, 0, 0, 0, 0, 0, 0)));
-      setFishTank(new Tank(0, 0, 0, 0, 0, 0, 0, 0));  
+      sessionStorage.setItem("tank", JSON.stringify(new Tank(0, 0, 0, 0, 0, 0, 0)));
+      setFishTank(new Tank(0, 0, 0, 0, 0, 0, 0));  
     }
 
     setMessage("Removed: " + fishNameChange(value.commonName, value.scientificName));
@@ -207,7 +201,7 @@ const Aquarium = () => {
 
   function clearSession() {
     userList = [];
-    fishTank = new Tank(0, 0, 0, 0, 0, 0, 0, 0);
+    fishTank = new Tank(0, 0, 0, 0, 0, 0, 0);
     
     setUserList(userList);
     setFishTank(fishTank);
