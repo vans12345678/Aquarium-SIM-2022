@@ -510,7 +510,7 @@ button{
   position :absolute; 
  top: 5%;
   left: 10%;
-  width: 10%;
+  width: 15%;
   /* height: 2%; */
   z-index: 2;
 }
@@ -519,16 +519,7 @@ button{
   position :absolute; 
  top: 50%;
   left: 7%;
-  width: 10%;
-  /* height: 2%; */
-  z-index: 2;
-}
-
-.aquariumFishBottom{
-  position :absolute; 
- top: 85%;
-  left: 7%;
-  width: 10%;
+  width: 15%;
   /* height: 2%; */
   z-index: 2;
 }
@@ -550,7 +541,7 @@ button{
        /* margin-left:99%; */
        left: 90%;
         /* transform: translateX(0px); */
-      transform: rotate(10deg);
+      transform: rotate(0deg);
      }
      30%{
        transform: rotate(-10deg);
@@ -617,67 +608,3 @@ button{
 {
   margin-left:2%;
 }
-/*AQUARIUM BUBBLES*/
-@keyframes aquariumUp {
-  
-
-  100% {
-    bottom: 99%;
-    /* transform: translateY(90%); */
-  }
-}
-
-
-.aquariumBubbles {
-  position: absolute;
-  bottom: 0;
-  z-index: 5;
-  margin-right: 50px;
-  background-color: white;
-  border-radius: 50%;
-  opacity: .50;
-  /* width: 1%;
-  height: 1.5%; */
-  width: 15px;
-  height: 15px;
-  animation: aquariumUp 8s infinite;
-}
-
-.aquariumBubble-2 {
-  left: 50%;
-  animation: aquariumUp 6s infinite;
-}
-
-.aquariumBubble-3 {
-  left: 30%;
-  opacity: .30;
-  animation: aquariumUp 9s infinite;
-}
-
-.aquariumBubble-4 {
-  left: 80%;
-  animation: aquariumUp 5s infinite;
-}
-
-.aquariumBubble-5 {
-  left: 90%;
-  animation: aquariumUp 7s infinite;
-}
-
-.aquariumBubble-6 {
-  left: 10%;
-  opacity: .30;
-  animation: aquariumUp 6s infinite;
-}
-
-.aquariumBubble-7 {
-  left: 60%;
-  animation: aquariumUp 8s infinite;
-}
-
-.aquariumBubble-8 {
-  left: 70%;
-  opacity: .30;
-  animation: aquariumUp 6s infinite;
-}
-

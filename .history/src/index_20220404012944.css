@@ -622,7 +622,7 @@ button{
   
 
   100% {
-    bottom: 99%;
+    bottom: 90%;
     /* transform: translateY(90%); */
   }
 }
@@ -636,8 +636,6 @@ button{
   background-color: white;
   border-radius: 50%;
   opacity: .50;
-  /* width: 1%;
-  height: 1.5%; */
   width: 15px;
   height: 15px;
   animation: aquariumUp 8s infinite;

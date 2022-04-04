@@ -378,11 +378,6 @@ const Aquarium = () => {
               width="100%"
               alt=""
             />
-            <div className="aquariumBubbles aquariumBubble-1"></div>
-            <div className="aquariumBubbles aquariumBubble-5"></div>
-            <div className="aquariumBubbles aquariumBubble-2"></div>
-            <div className="aquariumBubbles aquariumBubble-6"></div>
-            <div className="aquariumBubbles aquariumBubble-3"></div>
           </div>
 
           <div className="">

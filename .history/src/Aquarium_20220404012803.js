@@ -383,6 +383,9 @@ const Aquarium = () => {
             <div className="aquariumBubbles aquariumBubble-2"></div>
             <div className="aquariumBubbles aquariumBubble-6"></div>
             <div className="aquariumBubbles aquariumBubble-3"></div>
+            <div className="aquariumBubbles aquariumBubble-7"></div>
+            <div className="aquariumBubbles aquariumBubble-4"></div>
+            <div className="aquariumBubbles aquariumBubble-8"></div>
           </div>
 
           <div className="">

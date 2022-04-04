@@ -123,7 +123,7 @@ const Aquarium = () => {
               src: require("./images/" + fish.image),
             });
 
-            //check the fish's location in the tank and add the appropriate class
+            //check the fish's location in the tank and add the appropriate tank
             if (fish.locationTank == "Top levels") {
               $img.addClass("aquariumFish");
             } else if (fish.locationTank == "Middle levels") {
@@ -378,11 +378,6 @@ const Aquarium = () => {
               width="100%"
               alt=""
             />
-            <div className="aquariumBubbles aquariumBubble-1"></div>
-            <div className="aquariumBubbles aquariumBubble-5"></div>
-            <div className="aquariumBubbles aquariumBubble-2"></div>
-            <div className="aquariumBubbles aquariumBubble-6"></div>
-            <div className="aquariumBubbles aquariumBubble-3"></div>
           </div>
 
           <div className="">
