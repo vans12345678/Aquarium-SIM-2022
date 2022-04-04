@@ -56,7 +56,6 @@ const Aquarium = () => {
     getFish();
     getUserList();
     getFishTank();
-    renderFish();
   }, []);
 
   let [userList, setUserList] = useState([]);
@@ -80,31 +79,28 @@ const Aquarium = () => {
     }
   };
 
-  const renderFish = () => {
-    //add fish image to tank
-    let aquariumImg = document.getElementById("aquarium");
-    console.log(userList);
-    userList.forEach((fish) => {
-      // console.log(fish);
-      var $img = $("<img />", {
-        src: require("./images/" + fish.image),
-        id: fish.fishKey,
-      });
+  const renderFish()
+  {
+             //add fish image to tank
+              let aquariumImg = document.getElementById("aquarium");
+              var $img = $("<img />", {
+                src: require("./images/" + fish.image),
+                id: fish.fishKey,
+              });
 
-      //check the fish's location in the tank and add the appropriate class
-      if (fish.locationTank == "Top levels") {
-        $img.addClass("aquariumFish");
-      } else if (fish.locationTank == "Middle levels") {
-        $img.addClass("aquariumFishMiddle");
-      } else if (fish.locationTank == "Bottom levels") {
-        $img.addClass("aquariumFishBottom");
-      }
+              //check the fish's location in the tank and add the appropriate class
+              if (fish.locationTank == "Top levels") {
+                $img.addClass("aquariumFish");
+              } else if (fish.locationTank == "Middle levels") {
+                $img.addClass("aquariumFishMiddle");
+              } else if (fish.locationTank == "Bottom levels") {
+                $img.addClass("aquariumFishBottom");
+              }
 
-      $img.addClass("fishAnimAquarium");
+              $img.addClass("fishAnimAquarium");
 
-      $($img).insertAfter(aquariumImg);
-    });
-  };
+              $($img).insertAfter(aquariumImg);
+  }
 
   //sessionStorage.setItem("tank", JSON.stringify(fishTank));
   const addFish = (value) => {
