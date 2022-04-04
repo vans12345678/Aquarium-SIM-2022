@@ -12,7 +12,7 @@ import Toast from "react-bootstrap/Toast";
 import { ProgressBar } from "react-bootstrap";
 import ToastContainer from "react-bootstrap/ToastContainer";
 import Alert from "react-bootstrap/Alert";
-import { testTankSize, testTemperature, testPH, testCapacity } from "./AquariumFunc";
+import { testTankSize, testTemperature, testPH } from "./AquariumFunc";
 import { Tank } from "./classes/Tank";
 import { faUserLock } from "@fortawesome/free-solid-svg-icons";
 // import { json } from "body-parser";
@@ -65,7 +65,7 @@ const Aquarium = () => {
       fishTank.length = parseInt(inputLength);
       fishTank.width = parseInt(inputWidth);
       fishTank.height = parseInt(inputHeight);
-      fishTank.size = Math.round(parseInt(inputLength)*parseInt(inputWidth)*parseInt(inputHeight)/1000);
+      fishTank.size = Math.round(parseInt(inputLength)*parseInt(inputWidth)*parseInt(inputHeight)*0.004329);
       sessionStorage.setItem("tank", JSON.stringify(fishTank));
     } 
 
@@ -90,45 +90,40 @@ const Aquarium = () => {
     value.fishLocationTank,
     value.fishImage
   );
-  if (testCapacity(fishTank, fish) == true)
+  
+  if(testTemperature(fishTank, fish) == true)
   {
-    if(testTemperature(fishTank, fish) == true)
+    if(testPH(fishTank, fish) == true)
     {
-      if(testPH(fishTank, fish) == true)
-      {
-        //calculates tank capacity occupied
-        fishTank.capacity = (fishTank.capacity+(1-((fishTank.size - (fish.averageSize))/fishTank.size))*100);
-        setTankCapacity(Math.round(fishTank.capacity));
+       //calculates tank capacity occupied
+      fishTank.capacity = (fishTank.capacity+(1-((fishTank.size - (fish.averageSize)*0.393701*1.5)/fishTank.size))*100);
+      console.log(fishTank.size);
+      console.log(((fishTank.size - fish.averageSize*1.5)/fishTank.size)*100)
+  
+      userList.push(fish);
     
-        userList.push(fish);
-      
-        setUserList(userList);
-        setFishTank(fishTank);
-        sessionStorage.setItem("tank", JSON.stringify(fishTank));
-      
-        sessionStorage.setItem("fishNames", JSON.stringify(userList));
-        arrFish = JSON.parse(sessionStorage.getItem("fishNames"));
-      
-        setMessage("Added: " + fishNameChange(fish.commonName, fish.scientificName))
-        toggleShowA();
-      }
-      else{
-        setMessage("Invalid fish PH on: " + fishNameChange(fish.commonName, fish.scientificName) + " | upperPH: " + fish.upperPH + " | lowerPH: " + fish.lowerPH);
-        toggleShowA();
-      }
+      setUserList(userList);
+      setFishTank(fishTank);
+      sessionStorage.setItem("tank", JSON.stringify(fishTank));
+    
+      sessionStorage.setItem("fishNames", JSON.stringify(userList));
+      arrFish = JSON.parse(sessionStorage.getItem("fishNames"));
+    
+      setMessage("Added: " + fishNameChange(fish.commonName, fish.scientificName))
+      toggleShowA();
     }
     else{
-      setMessage("Invalid fish temperature on fish: " + fishNameChange(fish.commonName, fish.scientificName) + " | upperTemp: " + fish.upperTemp + " | lowerTemp: " + fish.lowerTemp);
+      setMessage("Invalid fish PH on: " + fishNameChange(fish.commonName, fish.scientificName) + " | upperPH: " + fish.upperPH + " | lowerPH: " + fish.lowerPH);
       toggleShowA();
-    }     
+    }
   }
   else{
-    setMessage("Exceeds tank capacity");
+    setMessage("Invalid fish temperature on fish: " + fishNameChange(fish.commonName, fish.scientificName) + " | upperTemp: " + fish.upperTemp + " | lowerTemp: " + fish.lowerTemp);
     toggleShowA();
-  }
+  } 
  }
  else{
-    setMessage("Please set a valid tank size");
+    setMessage("Please set a valid tank size")
     toggleShowA();
  }
 };
@@ -163,7 +158,6 @@ const Aquarium = () => {
       setLength(tempTank.length);
       setWidth(tempTank.width);
       setHeight(tempTank.height);
-      setTankCapacity(Math.round(tempTank.capacity));
       console.log("Fish tank present");     
     }
   }
@@ -178,20 +172,14 @@ const Aquarium = () => {
     fishTank = new Tank(0, 0, 0, 0, 0, 0, 0, 0, 0);
     setFishTank(fishTank);
     sessionStorage.setItem("tank", JSON.stringify(fishTank));
-    setTankDimensions();
+
     userList.forEach(element => {
       if(testTemperature(fishTank, element) == true && testPH(fishTank, element) == true)
       {
-        
         sessionStorage.setItem("tank", JSON.stringify(fishTank));
 
         setFishTank(fishTank);
       }
-      fishTank.capacity = (fishTank.capacity+(1-((fishTank.size - (element.averageSize))/fishTank.size))*100);
-      setFishTank(fishTank);
-      sessionStorage.setItem("tank", JSON.stringify(fishTank));
-      setTankCapacity(Math.round(fishTank.capacity));
-
     });
 
     sessionStorage.setItem("fishNames", JSON.stringify(userList));
@@ -199,10 +187,7 @@ const Aquarium = () => {
     if(userList.length <= 0)
     {
       sessionStorage.setItem("tank", JSON.stringify(new Tank(0, 0, 0, 0, 0, 0, 0, 0, 0)));
-      setFishTank(new Tank(0, 0, 0, 0, 0, 0, 0, 0, 0)); 
-
-      fishTank.capacity = 0;
-      setTankCapacity(Math.round(fishTank.capacity));
+      setFishTank(new Tank(0, 0, 0, 0, 0, 0, 0, 0, 0));  
     }
 
     setMessage("Removed: " + fishNameChange(value.commonName, value.scientificName));
@@ -283,7 +268,7 @@ const Aquarium = () => {
         <div className="aquariumCols">
           <form action={ setTankDimensions(inputLength, inputWidth, inputHeight)}>
           <div className="inlineblock">
-            <label htmlFor="lengthInput">length (cm)</label>
+            <label htmlFor="lengthInput">length (inches)</label>
             <br/>
             <input
             type="number"
@@ -294,7 +279,7 @@ const Aquarium = () => {
             onChange={e => setLength(e.target.value)}/>
           </div>
           <div className="inlineblock">      
-          <label htmlFor="widthInput">Width (cm)</label>
+          <label htmlFor="widthInput">Width (inches)</label>
           <br/>
           <input
             type="number"
@@ -305,7 +290,7 @@ const Aquarium = () => {
             onChange={e => setWidth(e.target.value)}/>
           </div>
           <div className="inlineblock"> 
-          <label htmlFor="inputHeight">Height (cm)</label>
+          <label htmlFor="inputHeight">Height (inches)</label>
           <br/>
           <input
             type="number"
@@ -316,15 +301,14 @@ const Aquarium = () => {
             onChange={e => setHeight(e.target.value)}/>    
           </div>       
             </form>
-            <br/>
-            <div className="capacityBar">
-            <ProgressBar variant="primary" now={tankCapacity} label={`${tankCapacity}%`} />
+            <div>
+            <ProgressBar now={tankCapacity} label={`${tankCapacity}%`} />
             </div>
-            <br/>
           <img
             className="aquarium"
             src={aquarium}
             width="100%"
+            height="713px"
             alt=""
           />
           <div className="">

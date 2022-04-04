@@ -325,6 +325,7 @@ const Aquarium = () => {
             className="aquarium"
             src={aquarium}
             width="100%"
+            height="713px"
             alt=""
           />
           <div className="">

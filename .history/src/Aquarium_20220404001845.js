@@ -163,7 +163,6 @@ const Aquarium = () => {
       setLength(tempTank.length);
       setWidth(tempTank.width);
       setHeight(tempTank.height);
-      setTankCapacity(Math.round(tempTank.capacity));
       console.log("Fish tank present");     
     }
   }
@@ -199,10 +198,7 @@ const Aquarium = () => {
     if(userList.length <= 0)
     {
       sessionStorage.setItem("tank", JSON.stringify(new Tank(0, 0, 0, 0, 0, 0, 0, 0, 0)));
-      setFishTank(new Tank(0, 0, 0, 0, 0, 0, 0, 0, 0)); 
-
-      fishTank.capacity = 0;
-      setTankCapacity(Math.round(fishTank.capacity));
+      setFishTank(new Tank(0, 0, 0, 0, 0, 0, 0, 0, 0));  
     }
 
     setMessage("Removed: " + fishNameChange(value.commonName, value.scientificName));
@@ -316,15 +312,14 @@ const Aquarium = () => {
             onChange={e => setHeight(e.target.value)}/>    
           </div>       
             </form>
-            <br/>
             <div className="capacityBar">
-            <ProgressBar variant="primary" now={tankCapacity} label={`${tankCapacity}%`} />
+            <ProgressBar now={tankCapacity} label={`${tankCapacity}%`} />
             </div>
-            <br/>
           <img
             className="aquarium"
             src={aquarium}
             width="100%"
+            height="713px"
             alt=""
           />
           <div className="">

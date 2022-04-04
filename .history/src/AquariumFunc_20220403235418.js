@@ -93,18 +93,38 @@ export const testPH = (tank, newFish) => {
 export const testCapacity = (tank, newFish) => {
   let flag = true;
 
-  if ((tank.capacity+(1-((tank.size - (newFish.averageSize))/tank.size))*100) <= 100){
+  if ((tank.capacity+(1-((fishTank.size - (newFish.averageSize))/fishTank.size))*100) > 100){
     return flag;
   }
-  //When capacity is too high
+  //When there's more than 1 fish
   else
   {
-    flag = false;
-    console.log("tank full");
-  }
+    if(newFish.upperPH < tank.lowerPH || newFish.lowerPH > tank.upperPH)
+    {
+      //Invalid temp range
+      console.log("Invalid fish PH");
+      flag = false;
+    }
+    
+    else
+    {
+      //Temp range ok
+
+      if(newFish.upperPH < tank.upperPH)
+      {
+        tank.upperPH = newFish.upperPH;
+      }
+      if(newFish.lowerPH > tank.lowerPH)
+      {
+        tank.lowerPH = newFish.lowerPH; 
+      }
+
+
+      console.log("PH ok");
+    }
     
     return flag;
-  
+  }
 }
 
 

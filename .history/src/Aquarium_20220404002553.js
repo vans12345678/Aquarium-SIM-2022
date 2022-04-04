@@ -163,7 +163,6 @@ const Aquarium = () => {
       setLength(tempTank.length);
       setWidth(tempTank.width);
       setHeight(tempTank.height);
-      setTankCapacity(Math.round(tempTank.capacity));
       console.log("Fish tank present");     
     }
   }
@@ -325,6 +324,7 @@ const Aquarium = () => {
             className="aquarium"
             src={aquarium}
             width="100%"
+            height="713px"
             alt=""
           />
           <div className="">

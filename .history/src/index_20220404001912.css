@@ -395,7 +395,7 @@ figcaption {
 .aquarium{
   padding-left: 2%;
   width: 100%;
-  height: 600px;
+
 }
 .alert {
   width:40%;    
@@ -502,5 +502,5 @@ button{
 
 .capacityBar
 {
-  margin-left:2%;
+  margin-left:55;
 }
