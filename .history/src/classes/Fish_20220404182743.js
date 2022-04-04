@@ -26,7 +26,7 @@ export class Fish {
     this.aggressiveOtherSpecies = aggressiveOtherSpecies;
     this.locationTank = locationTank;
     this.image = image;
-    this.fishKey = fishKey;
+    this.fishKey = key;
   }
   toString() {
     return (

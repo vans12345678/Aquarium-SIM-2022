@@ -212,8 +212,7 @@ const Aquarium = () => {
     const index = userList.indexOf(value);
 
     userList.splice(index, 1);
-    console.log(value.fishKey);
-    $("#" + value.fishKey).remove();
+    $(value.fishKey).remove();
     setUserList(userList);
     fishTank = new Tank(0, 0, 0, 0, 0, 0, 0, 0, 0);
     setFishTank(fishTank);

@@ -123,7 +123,7 @@ const Aquarium = () => {
             let aquariumImg = document.getElementById("aquarium");
             var $img = $("<img />", {
               src: require("./images/" + fish.image),
-              id: fish.fishKey,
+              id: "",
             });
 
             //check the fish's location in the tank and add the appropriate class
@@ -212,8 +212,7 @@ const Aquarium = () => {
     const index = userList.indexOf(value);
 
     userList.splice(index, 1);
-    console.log(value.fishKey);
-    $("#" + value.fishKey).remove();
+
     setUserList(userList);
     fishTank = new Tank(0, 0, 0, 0, 0, 0, 0, 0, 0);
     setFishTank(fishTank);
