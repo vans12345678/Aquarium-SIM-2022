@@ -299,14 +299,8 @@ const Aquarium = () => {
   }
 
   function clearSession() {
-
-    userList.forEach(element => {
-      $("#" + element.fishKey).remove();
-    });
-
     userList = [];
     fishTank = new Tank(0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
-
 
     setUserList(userList);
     setFishTank(fishTank);
@@ -314,8 +308,7 @@ const Aquarium = () => {
     sessionStorage.setItem("fishNames", JSON.stringify(userList));
     sessionStorage.setItem("tank", JSON.stringify(fishTank));
 
-    setTankCapacity(Math.round(fishTank.capacity));
-
+    renderFish();
   }
 
   function getKey(id) {

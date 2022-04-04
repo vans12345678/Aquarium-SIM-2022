@@ -303,18 +303,15 @@ const Aquarium = () => {
     userList.forEach(element => {
       $("#" + element.fishKey).remove();
     });
-
+    
     userList = [];
     fishTank = new Tank(0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
-
 
     setUserList(userList);
     setFishTank(fishTank);
 
     sessionStorage.setItem("fishNames", JSON.stringify(userList));
     sessionStorage.setItem("tank", JSON.stringify(fishTank));
-
-    setTankCapacity(Math.round(fishTank.capacity));
 
   }
 
