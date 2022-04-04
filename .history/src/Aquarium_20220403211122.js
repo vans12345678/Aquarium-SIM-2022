@@ -110,6 +110,7 @@ const Aquarium = () => {
   toggleShow();
   console.log(show);
  }
+ toggleShow();
 
     console.log(fishTank);
   };
@@ -215,7 +216,7 @@ const Aquarium = () => {
   function AlertDismissible() {
     return (
       <>
-        <ToastContainer position="top-center">
+        <ToastContainer position="bottom-end">
           <Toast
             onClose={() => setShowA(false)}
             show={showA}
@@ -241,11 +242,11 @@ const Aquarium = () => {
   function AlertDismissible2() {
     return (
       <>
-        <ToastContainer position="top-center">
+        <ToastContainer position="bottom-end">
           <Toast
             onClose={() => setShow(false)}
             show={show}
-            delay={3000}
+            delay={1800}
             autohide
           >
             <Toast.Header>
@@ -257,7 +258,7 @@ const Aquarium = () => {
               <strong className="me-auto">Aquarium SIM</strong>
               <small className="text-muted">just now</small>
             </Toast.Header>
-            <Toast.Body>Please set a tank size before adding fish!</Toast.Body>
+            <Toast.Body>Please set tank size before adding fish!</Toast.Body>
           </Toast>
         </ToastContainer>
       </>

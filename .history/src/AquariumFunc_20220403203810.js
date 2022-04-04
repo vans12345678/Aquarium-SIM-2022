@@ -55,13 +55,5 @@ export const testTemperature = (tank, fishes, newFish) => {
 
 export const testTankSize = (length, width, height) =>
 {
-  if(length > 0 && width > 0 && height > 0)
-  {
-    
-    return true;
-  }
-  else
-  {
-    return false;
-  }
+  return true;
 }

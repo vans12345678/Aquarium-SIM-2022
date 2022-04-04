@@ -24,7 +24,6 @@ const Aquarium = () => {
   const [search, setSearch] = useState("");
   const toggleShowA = () => setShowA(!showA);
   const [show, setShow] = useState(false);
-  const toggleShow = () => setShow(!show);
 
   let [inputLength, setLength] = useState(0);
   let [inputWidth, setWidth] = useState(0);
@@ -55,64 +54,65 @@ const Aquarium = () => {
 
   let arrFish = "";
   let tempTank = new Tank(0, 0, 0, 0, 0, 0, 0);
+  //sessionStorage.setItem("tank", JSON.stringify(fishTank));
+  const addFish = (value) => {
+    //console.log(value.fishMatchID);
+    let fish = new Fish(
+      value.fishID,
+      value.fishScientificName,
+      value.fishCommonName,
+      value.fishAverageSize,
+      value.fishLowerPH,
+      value.fishUpperPH,
+      value.fishLowerTemp,
+      value.fishUpperTemp,
+      value.fishAggrSameSpecies,
+      value.fishAggrOtherSpecies,
+      value.fishLocationTank,
+      value.fishImage
+    );
+
+    if(testTemperature(fishTank, userList, fish) == true)
+    {
+      sessionStorage.setItem("tank", JSON.stringify(fishTank));
+
+      userList.push(fish);
+
+      setUserList(userList);
+      setFishTank(fishTank);
+
+      sessionStorage.setItem("fishNames", JSON.stringify(userList));
+      arrFish = JSON.parse(sessionStorage.getItem("fishNames"));
+
+      toggleShowA();
+    }
+
+
+    console.log(fishTank);
+  };
 
   const setTankDimensions = () =>
   {
+    
 
     if(testTankSize(inputLength, inputWidth, inputHeight) == true)
     {
       fishTank.length = parseInt(inputLength);
       fishTank.width = parseInt(inputWidth);
       fishTank.height = parseInt(inputHeight);
+
+      setFishTank(fishTank);
       sessionStorage.setItem("tank", JSON.stringify(fishTank));
-    } 
+    }
+    
+    s
+    // fishTank.length = parseInt(inputLength);
+    // fishTank.width = parseInt(inputWidth);
+    // fishTank.height = parseInt(inputHeight);
+
+    
 
   }
-
-  //sessionStorage.setItem("tank", JSON.stringify(fishTank));
-  const addFish = (value) => {
- //console.log(value.fishMatchID);
- if (testTankSize(inputLength, inputWidth, inputHeight) == true)
- {
-  let fish = new Fish(
-    value.fishID,
-    value.fishScientificName,
-    value.fishCommonName,
-    value.fishAverageSize,
-    value.fishLowerPH,
-    value.fishUpperPH,
-    value.fishLowerTemp,
-    value.fishUpperTemp,
-    value.fishAggrSameSpecies,
-    value.fishAggrOtherSpecies,
-    value.fishLocationTank,
-    value.fishImage
-  );
-  
-  if(testTemperature(fishTank, userList, fish) == true)
-  {
-    sessionStorage.setItem("tank", JSON.stringify(fishTank));
-  
-    userList.push(fish);
-  
-    setUserList(userList);
-    setFishTank(fishTank);
-  
-    sessionStorage.setItem("fishNames", JSON.stringify(userList));
-    arrFish = JSON.parse(sessionStorage.getItem("fishNames"));
-  
-    toggleShowA();
-  }
-  
- }
- else
- {
-  toggleShow();
-  console.log(show);
- }
-
-    console.log(fishTank);
-  };
 
   function useWindowSize() {
     const [size, setSize] = useState([0, 0]);
@@ -133,7 +133,6 @@ const Aquarium = () => {
       setUserList(arrFish);
     }
   };
-
   const getFishTank = () => {
     let temp = JSON.parse(sessionStorage.getItem("tank"));
 
@@ -141,9 +140,6 @@ const Aquarium = () => {
     if (temp != null) {
       tempTank = JSON.parse(sessionStorage.getItem("tank"));
       setFishTank(tempTank);
-      setLength(tempTank.length);
-      setWidth(tempTank.width);
-      setHeight(tempTank.height);
       console.log("Fish tank present");     
     }
   }
@@ -211,11 +207,10 @@ const Aquarium = () => {
 
     return id;
   }
-
   function AlertDismissible() {
     return (
       <>
-        <ToastContainer position="top-center">
+        <ToastContainer position="bottom-end">
           <Toast
             onClose={() => setShowA(false)}
             show={showA}
@@ -238,32 +233,6 @@ const Aquarium = () => {
     );
   }
 
-  function AlertDismissible2() {
-    return (
-      <>
-        <ToastContainer position="top-center">
-          <Toast
-            onClose={() => setShow(false)}
-            show={show}
-            delay={3000}
-            autohide
-          >
-            <Toast.Header>
-              <img
-                src="holder.js/20x20?text=%20"
-                className="rounded me-2"
-                alt=""
-              />
-              <strong className="me-auto">Aquarium SIM</strong>
-              <small className="text-muted">just now</small>
-            </Toast.Header>
-            <Toast.Body>Please set a tank size before adding fish!</Toast.Body>
-          </Toast>
-        </ToastContainer>
-      </>
-    );
-  }
-
   return (
     <div>
       <section className="home">
@@ -277,7 +246,6 @@ const Aquarium = () => {
         <br />
         <br />
         <AlertDismissible />
-        <AlertDismissible2 />
         <div className="aquariumCols">
           <form action={ setTankDimensions(inputLength, inputWidth, inputHeight)}>
             <input
@@ -301,7 +269,14 @@ const Aquarium = () => {
             value={inputHeight}
             onChange={e => setHeight(e.target.value)
             }
-          />           
+          />
+          <button
+            type="button"
+          >
+            Set Tank Dimensions
+          </button>
+            
+            
             </form>
         
           <img

@@ -215,7 +215,7 @@ const Aquarium = () => {
   function AlertDismissible() {
     return (
       <>
-        <ToastContainer position="top-center">
+        <ToastContainer position="bottom-end">
           <Toast
             onClose={() => setShowA(false)}
             show={showA}
@@ -257,7 +257,7 @@ const Aquarium = () => {
               <strong className="me-auto">Aquarium SIM</strong>
               <small className="text-muted">just now</small>
             </Toast.Header>
-            <Toast.Body>Please set a tank size before adding fish!</Toast.Body>
+            <Toast.Body>Please set tank size before adding fish!</Toast.Body>
           </Toast>
         </ToastContainer>
       </>

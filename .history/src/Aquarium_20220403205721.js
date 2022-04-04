@@ -24,7 +24,6 @@ const Aquarium = () => {
   const [search, setSearch] = useState("");
   const toggleShowA = () => setShowA(!showA);
   const [show, setShow] = useState(false);
-  const toggleShow = () => setShow(!show);
 
   let [inputLength, setLength] = useState(0);
   let [inputWidth, setWidth] = useState(0);
@@ -105,10 +104,8 @@ const Aquarium = () => {
   }
   
  }
- else
- {
-  toggleShow();
-  console.log(show);
+ else{
+  AlertDismissible2(); 
  }
 
     console.log(fishTank);
@@ -215,7 +212,7 @@ const Aquarium = () => {
   function AlertDismissible() {
     return (
       <>
-        <ToastContainer position="top-center">
+        <ToastContainer position="bottom-end">
           <Toast
             onClose={() => setShowA(false)}
             show={showA}
@@ -241,11 +238,11 @@ const Aquarium = () => {
   function AlertDismissible2() {
     return (
       <>
-        <ToastContainer position="top-center">
+        <ToastContainer position="bottom-end">
           <Toast
-            onClose={() => setShow(false)}
-            show={show}
-            delay={3000}
+            onClose={() => setShowA(false)}
+            show={showA}
+            delay={1800}
             autohide
           >
             <Toast.Header>
@@ -257,7 +254,7 @@ const Aquarium = () => {
               <strong className="me-auto">Aquarium SIM</strong>
               <small className="text-muted">just now</small>
             </Toast.Header>
-            <Toast.Body>Please set a tank size before adding fish!</Toast.Body>
+            <Toast.Body>Please set tank size before adding fish!</Toast.Body>
           </Toast>
         </ToastContainer>
       </>
@@ -277,7 +274,6 @@ const Aquarium = () => {
         <br />
         <br />
         <AlertDismissible />
-        <AlertDismissible2 />
         <div className="aquariumCols">
           <form action={ setTankDimensions(inputLength, inputWidth, inputHeight)}>
             <input
