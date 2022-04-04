@@ -40,6 +40,10 @@ export const testTemperature = (tank, newFish) => {
 
   //console.log(tank);
   //loop through the fish and check if the values
+  for (let i = 0; i < fishes.length; i++) 
+  {
+
+  }
 
   //within the tanks temp range
   //if the new fish's min temp if greater or less than the previous fishes

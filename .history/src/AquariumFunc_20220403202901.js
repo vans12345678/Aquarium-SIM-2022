@@ -1,4 +1,4 @@
-export const testTemperature = (tank, newFish) => {
+export const testTemperature = (tank, fishes, newFish) => {
   let flag = true;
 
   if (tank.lowerTemp == 0 || tank.upperTemp == 0) {
@@ -40,6 +40,10 @@ export const testTemperature = (tank, newFish) => {
 
   //console.log(tank);
   //loop through the fish and check if the values
+  for (let i = 0; i < fishes.length; i++) 
+  {
+
+  }
 
   //within the tanks temp range
   //if the new fish's min temp if greater or less than the previous fishes
@@ -49,57 +53,7 @@ export const testTemperature = (tank, newFish) => {
   
 };
 
-export const testPH = (tank, newFish) => {
-  let flag = true;
-
-  if (tank.lowerPH == 0 || tank.upperPH == 0) {
-    //set the first fish in the tanks temps as the tanks temps
-    tank.upperPH = newFish.upperPH;
-    tank.lowerPH = newFish.lowerPH;
-    //console.log("HEEEJEJ");
-    return flag;
-  }
-  //When there's more than 1 fish
-  else
-  {
-    if(newFish.upperPH < tank.lowerPH || newFish.lowerPH > tank.upperPH)
-    {
-      //Invalid temp range
-      console.log("Invalid fish PH");
-      flag = false;
-    }
-    
-    else
-    {
-      //Temp range ok
-
-      if(newFish.upperPH < tank.upperPH)
-      {
-        tank.upperPH = newFish.upperPH;
-      }
-      if(newFish.lowerPH > tank.lowerPH)
-      {
-        tank.lowerPH = newFish.lowerPH; 
-      }
-
-
-      console.log("PH ok");
-    }
-    
-    return flag;
-  }
-}
-
-
 export const testTankSize = (length, width, height) =>
 {
-  if(length > 0 && width > 0 && height > 0)
-  {
-    
-    return true;
-  }
-  else
-  {
-    return false;
-  }
+  
 }

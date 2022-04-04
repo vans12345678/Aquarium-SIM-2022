@@ -106,12 +106,12 @@ const Aquarium = () => {
       toggleShowA();
     }
     else{
-      setMessage("Invalid fish PH on: " + fishNameChange(fish.commonName, fish.scientificName) + " | upperPH: " + fish.upperPH + " | lowerPH: " + fish.lowerPH);
+      setMessage("Invalid fish PH: " + fishNameChange(fish.commonName, fish.scientificName) + " | upperPH: " + fish.upperPH + " | lowerPH: " + fish.lowerPH);
       toggleShowA();
     }
   }
   else{
-    setMessage("Invalid fish temperature on fish: " + fishNameChange(fish.commonName, fish.scientificName) + " | upperTemp: " + fish.upperTemp + " | lowerTemp: " + fish.lowerTemp);
+    setMessage("Invalid fish Temperature: " + fishNameChange(fish.commonName, fish.scientificName) + " | upperTemp: " + fish.upperTemp + " | lowerTemp: " + fish.lowerTemp);
     toggleShowA();
   } 
  }
@@ -225,7 +225,7 @@ const Aquarium = () => {
           <Toast
             onClose={() => setShowA(false)}
             show={showA}
-            delay={2000}
+            delay={1600}
             autohide
           >
             <Toast.Header>

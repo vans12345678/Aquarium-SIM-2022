@@ -225,7 +225,7 @@ const Aquarium = () => {
           <Toast
             onClose={() => setShowA(false)}
             show={showA}
-            delay={2000}
+            delay={1450}
             autohide
           >
             <Toast.Header>

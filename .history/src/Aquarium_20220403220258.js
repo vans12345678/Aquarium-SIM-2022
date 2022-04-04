@@ -111,7 +111,7 @@ const Aquarium = () => {
     }
   }
   else{
-    setMessage("Invalid fish temperature on fish: " + fishNameChange(fish.commonName, fish.scientificName) + " | upperTemp: " + fish.upperTemp + " | lowerTemp: " + fish.lowerTemp);
+    setMessage("Invalid fish Temperature on fish: " + fishNameChange(fish.commonName, fish.scientificName) + " | upperTemp: " + fish.upperTemp + " | lowerTemp: " + fish.lowerTemp);
     toggleShowA();
   } 
  }
@@ -225,7 +225,7 @@ const Aquarium = () => {
           <Toast
             onClose={() => setShowA(false)}
             show={showA}
-            delay={2000}
+            delay={4500}
             autohide
           >
             <Toast.Header>
