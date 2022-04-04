@@ -106,9 +106,8 @@ const Aquarium = () => {
     }
     
     
-    fishTank.length = 0;
-    fishTank.width = parseInt(inputWidth);
-    fishTank.height = parseInt(inputHeight);
+    
+    
 
     
 

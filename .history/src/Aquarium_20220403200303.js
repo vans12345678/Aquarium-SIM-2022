@@ -100,15 +100,12 @@ const Aquarium = () => {
       fishTank.length = parseInt(inputLength);
       fishTank.width = parseInt(inputWidth);
       fishTank.height = parseInt(inputHeight);
-
       setFishTank(fishTank);
-      sessionStorage.setItem("tank", JSON.stringify(fishTank));
     }
     
     
-    fishTank.length = 0;
-    fishTank.width = parseInt(inputWidth);
-    fishTank.height = parseInt(inputHeight);
+    
+    sessionStorage.setItem("tank", JSON.stringify(fishTank));
 
     
 
