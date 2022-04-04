@@ -14,8 +14,6 @@ import Alert from "react-bootstrap/Alert";
 import { testTankSize, testTemperature } from "./AquariumFunc";
 import { Tank } from "./classes/Tank";
 import { faUserLock } from "@fortawesome/free-solid-svg-icons";
-import $ from "jquery";
-import pearlGourami from "./images/pearl-gourami.png";
 // import { json } from "body-parser";
 
 const Aquarium = () => {
@@ -98,15 +96,7 @@ const Aquarium = () => {
         sessionStorage.setItem("fishNames", JSON.stringify(userList));
         arrFish = JSON.parse(sessionStorage.getItem("fishNames"));
         let aquariumImg = document.getElementById("aquarium");
-        var $img = $("<img />", {
-          src: require("./images/" + fish.image),
-        });
-
-        $img.addClass("aquariumFish");
-        $img.addClass("fishanimAuqarium");
-
-        $($img).insertAfter(aquariumImg);
-
+        $(aquariumImg).insertAfter(value.fishImage);
         toggleShowA();
       }
     } else {
@@ -305,18 +295,16 @@ const Aquarium = () => {
               onChange={(e) => setHeight(e.target.value)}
             />
           </form>
-          <div className="aquaDiv">
-            <img
-              id="aquarium"
-              className="aquarium"
-              src={aquarium}
-              width="100%"
-              height="713px"
-              alt=""
-            />
-          </div>
 
-          <div>
+          <img
+            id="aquarium"
+            className="aquarium"
+            src={aquarium}
+            width="100%"
+            height="713px"
+            alt=""
+          />
+          <div className="">
             <div className="searchAquarium ">
               <button
                 onClick={(event) => {

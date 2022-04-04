@@ -503,7 +503,7 @@ button{
   position :absolute; 
  top: 5%;
   left: 10%;
-  width: 15%;
+  width: 10%;
   /* height: 2%; */
   z-index: 2;
 }
@@ -531,45 +531,29 @@ button{
        transform: rotate(-10deg);
      }
 
-      49% {
-        
-       transform: rotate(10deg);
-       
-     
-     }
-
      50% {
         left: 0%;
        transform: rotate(10deg);
-       transform:rotateY(180deg);
      
      }
      60%{
-       transform:rotateY(180deg);
+       transform:rotateY(360deg);
      }
 
 
      70% {
        
        transform: rotate(-10deg);
-       transform:rotateY(180deg);
      }
 
      90% {
        
        transform: rotate(10deg);
-       transform:rotateY(180deg);
-     }
-      99% {
-       
-       /* transform: rotate(10deg); */
-       transform:rotateY(180deg);
      }
      100% {
        
        /* margin-left: -20%; */
          left: 90%;
-         transform:rotateY(180deg);
         /* transform: translateX(100vw); */
        transform: rotate(10deg) ; 
       
@@ -580,7 +564,7 @@ button{
 
 .fishanimAuqarium {
   animation-name: aquariumFish ;
-  animation-duration: 30s;
+  animation-duration: 8s;
     animation-iteration-count: infinite;
   animation-timing-function: linear;
   animation-direction: normal;

@@ -100,10 +100,8 @@ const Aquarium = () => {
         let aquariumImg = document.getElementById("aquarium");
         var $img = $("<img />", {
           src: require("./images/" + fish.image),
+          className: "aquariumFish",
         });
-
-        $img.addClass("aquariumFish");
-        $img.addClass("fishanimAuqarium");
 
         $($img).insertAfter(aquariumImg);
 

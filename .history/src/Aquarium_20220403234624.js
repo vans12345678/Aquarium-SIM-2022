@@ -103,7 +103,7 @@ const Aquarium = () => {
         });
 
         $img.addClass("aquariumFish");
-        $img.addClass("fishanimAuqarium");
+        $img.addClass("fishanim");
 
         $($img).insertAfter(aquariumImg);
 

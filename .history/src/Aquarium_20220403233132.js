@@ -98,12 +98,7 @@ const Aquarium = () => {
         sessionStorage.setItem("fishNames", JSON.stringify(userList));
         arrFish = JSON.parse(sessionStorage.getItem("fishNames"));
         let aquariumImg = document.getElementById("aquarium");
-        var $img = $("<img />", {
-          src: require("./images/" + fish.image),
-        });
-
-        $img.addClass("aquariumFish");
-        $img.addClass("fishanimAuqarium");
+        var $img = $("<img />", { src: fish.value.fishImage });
 
         $($img).insertAfter(aquariumImg);
 

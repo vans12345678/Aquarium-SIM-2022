@@ -102,9 +102,6 @@ const Aquarium = () => {
           src: require("./images/" + fish.image),
         });
 
-        $img.addClass("aquariumFish");
-        $img.addClass("fishanimAuqarium");
-
         $($img).insertAfter(aquariumImg);
 
         toggleShowA();

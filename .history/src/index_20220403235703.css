@@ -503,7 +503,7 @@ button{
   position :absolute; 
  top: 5%;
   left: 10%;
-  width: 15%;
+  width: 10%;
   /* height: 2%; */
   z-index: 2;
 }

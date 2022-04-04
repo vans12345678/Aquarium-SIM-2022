@@ -330,6 +330,7 @@ const Aquarium = () => {
                 type="search"
                 placeholder="Ex. Betta splendens"
                 onChange={(event) => {
+                  // setTimeout(1);
                   setSearch(event.target.value);
                 }}
                 onKeyPress={(event) => {
