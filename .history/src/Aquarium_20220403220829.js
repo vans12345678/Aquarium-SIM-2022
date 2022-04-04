@@ -225,7 +225,7 @@ const Aquarium = () => {
           <Toast
             onClose={() => setShowA(false)}
             show={showA}
-            delay={2000}
+            delay={1450}
             autohide
           >
             <Toast.Header>
@@ -260,39 +260,30 @@ const Aquarium = () => {
         <AlertDismissible />
         <div className="aquariumCols">
           <form action={ setTankDimensions(inputLength, inputWidth, inputHeight)}>
-          <div className="inlineblock">
-            <label for="lengthInput">length (inches)</label>
-            <br/>
             <input
             type="number"
-            id="lengthInput"
             placeholder="Length"
             required
             value={inputLength}
-            onChange={e => setLength(e.target.value)}/>
-          </div>
-          <div className="inlineblock">      
-          <label>Width (inches)</label>
-          <br/>
+            onChange={e => setLength(e.target.value)}
+          />
           <input
             type="number"
             placeholder="Width"
             required
             value={inputWidth}
-            onChange={e => setWidth(e.target.value)}/>
-          </div>
-          <div className="inlineblock"> 
-          <label>Height (inches)</label>
-          <br/>
+            onChange={e => setWidth(e.target.value)}
+          />
           <input
             type="number"
             placeholder="Height"
             required
             value={inputHeight}
-            onChange={e => setHeight(e.target.value)}/>    
-          </div>       
+            onChange={e => setHeight(e.target.value)
+            }
+          />           
             </form>
-            <br/>
+        
           <img
             className="aquarium"
             src={aquarium}
@@ -324,7 +315,6 @@ const Aquarium = () => {
                   }
                 }}
               />
-               <br/>
               <br />
               <br />
             </div>

@@ -19,10 +19,12 @@ import { faUserLock } from "@fortawesome/free-solid-svg-icons";
 const Aquarium = () => {
   //fish tank obj
   // let fishTank = new Tank(0, 0, 0, 0, 0, 0, 0);
-  const [fishList, setFishList] = useState([]); 
-  const [search, setSearch] = useState(""); 
+  const [fishList, setFishList] = useState([]);
   const [showA, setShowA] = useState(false);
+  const [search, setSearch] = useState("");
   const toggleShowA = () => setShowA(!showA);
+  const [show, setShow] = useState(false);
+  const toggleShow = () => setShow(!show);
 
   let [inputLength, setLength] = useState(0);
   let [inputWidth, setWidth] = useState(0);
@@ -102,24 +104,29 @@ const Aquarium = () => {
       sessionStorage.setItem("fishNames", JSON.stringify(userList));
       arrFish = JSON.parse(sessionStorage.getItem("fishNames"));
     
-      setMessage("Added: " + fishNameChange(fish.commonName, fish.scientificName))
       toggleShowA();
     }
-    else{
-      setMessage("Invalid fish PH on: " + fishNameChange(fish.commonName, fish.scientificName) + " | upperPH: " + fish.upperPH + " | lowerPH: " + fish.lowerPH);
+    else
+    {
+      setMessage("Invalid fish PH");
       toggleShowA();
     }
+
   }
-  else{
-    setMessage("Invalid fish temperature on fish: " + fishNameChange(fish.commonName, fish.scientificName) + " | upperTemp: " + fish.upperTemp + " | lowerTemp: " + fish.lowerTemp);
+  else
+  {
+    setMessage("Invalid fish temperature")
     toggleShowA();
   } 
  }
- else{
-    setMessage("Please set a valid tank size")
-    toggleShowA();
+ else
+ {
+  
+  console.log(show);
  }
-};
+
+    console.log(fishTank);
+  };
 
   function useWindowSize() {
     const [size, setSize] = useState([0, 0]);
@@ -180,10 +187,10 @@ const Aquarium = () => {
     if(userList.length <= 0)
     {
       sessionStorage.setItem("tank", JSON.stringify(new Tank(0, 0, 0, 0, 0, 0, 0)));
-      setFishTank(new Tank(0, 0, 0, 0, 0, 0, 0));  
+      setFishTank(new Tank(0, 0, 0, 0, 0, 0, 0));
+      
     }
 
-    setMessage("Removed: " + fishNameChange(value.commonName, value.scientificName));
     toggleShowA();
   };
 
@@ -225,7 +232,33 @@ const Aquarium = () => {
           <Toast
             onClose={() => setShowA(false)}
             show={showA}
-            delay={2000}
+            delay={1800}
+            autohide
+          >
+            <Toast.Header>
+              <img
+                src="holder.js/20x20?text=%20"
+                className="rounded me-2"
+                alt=""
+              />
+              <strong className="me-auto">Aquarium SIM</strong>
+              <small className="text-muted">just now</small>
+            </Toast.Header>
+            <Toast.Body>Updated List</Toast.Body>
+          </Toast>
+        </ToastContainer>
+      </>
+    );
+  }
+
+  function AlertDismissible2() {
+    return (
+      <>
+        <ToastContainer position="top-center">
+          <Toast
+            onClose={() => setShow(false)}
+            show={show}
+            delay={3000}
             autohide
           >
             <Toast.Header>
@@ -244,7 +277,6 @@ const Aquarium = () => {
     );
   }
 
-
   return (
     <div>
       <section className="home">
@@ -258,41 +290,33 @@ const Aquarium = () => {
         <br />
         <br />
         <AlertDismissible />
+        <AlertDismissible2 />
         <div className="aquariumCols">
           <form action={ setTankDimensions(inputLength, inputWidth, inputHeight)}>
-          <div className="inlineblock">
-            <label for="lengthInput">length (inches)</label>
-            <br/>
             <input
             type="number"
-            id="lengthInput"
             placeholder="Length"
             required
             value={inputLength}
-            onChange={e => setLength(e.target.value)}/>
-          </div>
-          <div className="inlineblock">      
-          <label>Width (inches)</label>
-          <br/>
+            onChange={e => setLength(e.target.value)}
+          />
           <input
             type="number"
             placeholder="Width"
             required
             value={inputWidth}
-            onChange={e => setWidth(e.target.value)}/>
-          </div>
-          <div className="inlineblock"> 
-          <label>Height (inches)</label>
-          <br/>
+            onChange={e => setWidth(e.target.value)}
+          />
           <input
             type="number"
             placeholder="Height"
             required
             value={inputHeight}
-            onChange={e => setHeight(e.target.value)}/>    
-          </div>       
+            onChange={e => setHeight(e.target.value)
+            }
+          />           
             </form>
-            <br/>
+        
           <img
             className="aquarium"
             src={aquarium}
@@ -324,7 +348,6 @@ const Aquarium = () => {
                   }
                 }}
               />
-               <br/>
               <br />
               <br />
             </div>
