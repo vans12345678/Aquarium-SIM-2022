@@ -344,7 +344,6 @@ const Aquarium = () => {
                   }
                 }}
               />
-               <br/>
               <br />
               <br />
             </div>

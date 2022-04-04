@@ -293,7 +293,6 @@ const Aquarium = () => {
           </div>
           <div className="inlineblock">      
           <label>Width (inches)</label>
-          <br/>
           <input
             type="number"
             placeholder="Width"
@@ -303,7 +302,6 @@ const Aquarium = () => {
           </div>
           <div className="inlineblock"> 
           <label>Height (inches)</label>
-          <br/>
           <input
             type="number"
             placeholder="Height"
@@ -312,7 +310,6 @@ const Aquarium = () => {
             onChange={e => setHeight(e.target.value)}/>    
           </div>       
             </form>
-            <br/>
           <img
             className="aquarium"
             src={aquarium}
@@ -344,7 +341,6 @@ const Aquarium = () => {
                   }
                 }}
               />
-               <br/>
               <br />
               <br />
             </div>

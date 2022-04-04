@@ -280,39 +280,34 @@ const Aquarium = () => {
         <AlertDismissible2 />
         <div className="aquariumCols">
           <form action={ setTankDimensions(inputLength, inputWidth, inputHeight)}>
-          <div className="inlineblock">
-            <label for="lengthInput">length (inches)</label>
-            <br/>
+            <label>length (inches)</label>
+            <label>Width (inches)</label>
             <input
             type="number"
-            id="lengthInput"
             placeholder="Length"
             required
             value={inputLength}
-            onChange={e => setLength(e.target.value)}/>
-          </div>
-          <div className="inlineblock">      
-          <label>Width (inches)</label>
-          <br/>
+            onChange={e => setLength(e.target.value)}
+          />
+          
           <input
             type="number"
             placeholder="Width"
             required
             value={inputWidth}
-            onChange={e => setWidth(e.target.value)}/>
-          </div>
-          <div className="inlineblock"> 
+            onChange={e => setWidth(e.target.value)}
+          />
           <label>Height (inches)</label>
-          <br/>
           <input
             type="number"
             placeholder="Height"
             required
             value={inputHeight}
-            onChange={e => setHeight(e.target.value)}/>    
-          </div>       
+            onChange={e => setHeight(e.target.value)
+            }
+          />           
             </form>
-            <br/>
+        
           <img
             className="aquarium"
             src={aquarium}
@@ -344,7 +339,6 @@ const Aquarium = () => {
                   }
                 }}
               />
-               <br/>
               <br />
               <br />
             </div>

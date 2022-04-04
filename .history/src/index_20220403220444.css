@@ -499,3 +499,7 @@ button{
   margin-left: auto;
   margin-right: auto;
 }
+
+.dimensionInput{
+  width: 30%
+}

@@ -281,6 +281,7 @@ const Aquarium = () => {
         <div className="aquariumCols">
           <form action={ setTankDimensions(inputLength, inputWidth, inputHeight)}>
           <div className="inlineblock">
+            <p>Tank</p>
             <label for="lengthInput">length (inches)</label>
             <br/>
             <input

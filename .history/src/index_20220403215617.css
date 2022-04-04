@@ -477,10 +477,9 @@ button{
 }
 
 .inlineblock{
-  display: inline-block;
+  padding-right: 5%;
+  display: inline-flex;
   text-align: center;
-  margin-left: auto;
-  margin-right: auto;
 }
 
 

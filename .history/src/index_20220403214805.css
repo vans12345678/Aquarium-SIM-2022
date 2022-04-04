@@ -476,11 +476,9 @@ button{
  padding-left: 5%;
 }
 
-.inlineblock{
+.block{
   display: inline-block;
   text-align: center;
-  margin-left: auto;
-  margin-right: auto;
 }
 
 

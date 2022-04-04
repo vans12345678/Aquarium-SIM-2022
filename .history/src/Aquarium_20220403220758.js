@@ -312,7 +312,6 @@ const Aquarium = () => {
             onChange={e => setHeight(e.target.value)}/>    
           </div>       
             </form>
-            <br/>
           <img
             className="aquarium"
             src={aquarium}
@@ -344,7 +343,6 @@ const Aquarium = () => {
                   }
                 }}
               />
-               <br/>
               <br />
               <br />
             </div>
