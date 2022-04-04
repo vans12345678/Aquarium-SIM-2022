@@ -119,23 +119,6 @@ export const testFishSize = (userList, newFish, tank) => {
 }
 
 
-export const testCapacity = (tank, newFish) => {
-  let flag = true;
-
-  if ((tank.capacity+(1-((tank.size - (newFish.averageSize))/tank.size))*100) <= 100){
-    return flag;
-  }
-  //When capacity is too high
-  else
-  {
-    flag = false;
-    console.log("tank full");
-  }
-    
-    return flag;
-  
-}
-
 
 export const testTankSize = (length, width, height) =>
 {

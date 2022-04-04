@@ -111,30 +111,14 @@ export const testFishSize = (userList, newFish, tank) => {
    
     tank.averageFishSize = (tank.averageFishSize * userList.length + newFish.averageSize) / (userList.length + 1);
 
-    console.log("Upper Size: " + tank.averageFishSize);
+
+    console.log("Upper Size: " + tank.upperFishSize);
     console.log(userList);
     
     return true;
   }
 }
 
-
-export const testCapacity = (tank, newFish) => {
-  let flag = true;
-
-  if ((tank.capacity+(1-((tank.size - (newFish.averageSize))/tank.size))*100) <= 100){
-    return flag;
-  }
-  //When capacity is too high
-  else
-  {
-    flag = false;
-    console.log("tank full");
-  }
-    
-    return flag;
-  
-}
 
 
 export const testTankSize = (length, width, height) =>

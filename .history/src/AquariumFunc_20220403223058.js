@@ -90,51 +90,39 @@ export const testPH = (tank, newFish) => {
   }
 }
 
-export const testFishSize = (userList, newFish, tank) => {
-
-  //Check to see if the new fish being added has a valid size
-  if(tank.averageFishSize == 0)
-  {
-    tank.averageFishSize = newFish.averageSize;
-
-    console.log("Upper Size: " + tank.averageFishSize);
-    return true;
-  }
-  else if(newFish.averageSize > tank.averageFishSize + 25 || newFish.averageSize < tank.averageFishSize - 25 && newFish.averageSize != tank.averageFishSize)
-  {
-    console.log("Fish size invalid");
-    console.log("Upper Size: " + tank.averageFishSize);
-    return false;
-  }
-  else
-  {
-   
-    tank.averageFishSize = (tank.averageFishSize * userList.length + newFish.averageSize) / (userList.length + 1);
-
-    console.log("Upper Size: " + tank.averageFishSize);
-    console.log(userList);
-    
-    return true;
-  }
-}
-
-
-export const testCapacity = (tank, newFish) => {
+export const testFishSize = (tank, userList, newFish) => {
   let flag = true;
 
-  if ((tank.capacity+(1-((tank.size - (newFish.averageSize))/tank.size))*100) <= 100){
-    return flag;
+
+  //When there's more than 1 fish
+
+  if(newFish.upperPH < tank.lowerPH || newFish.lowerPH > tank.upperPH)
+  {
+    //Invalid temp range
+    console.log("Invalid fish PH");
+    flag = false;
   }
-  //When capacity is too high
+  
   else
   {
-    flag = false;
-    console.log("tank full");
+    //Temp range ok
+
+    if(newFish.upperPH < tank.upperPH)
+    {
+      tank.upperPH = newFish.upperPH;
+    }
+    if(newFish.lowerPH > tank.lowerPH)
+    {
+      tank.lowerPH = newFish.lowerPH; 
+    }
+
+
+    console.log("PH ok");
   }
-    
-    return flag;
   
+  return flag;
 }
+
 
 
 export const testTankSize = (length, width, height) =>

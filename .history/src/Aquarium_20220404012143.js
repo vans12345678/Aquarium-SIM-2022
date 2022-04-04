@@ -9,34 +9,24 @@ import { useState, useEffect, useLayoutEffect } from "react";
 import { Fish } from "./classes/Fish";
 import { FishBasic } from "./classes/FishBasic";
 import Toast from "react-bootstrap/Toast";
-import { ProgressBar } from "react-bootstrap";
 import ToastContainer from "react-bootstrap/ToastContainer";
 import Alert from "react-bootstrap/Alert";
-import {
-  testTankSize,
-  testTemperature,
-  testPH,
-  testFishSize,
-  testCapacity,
-} from "./AquariumFunc";
+import { testTankSize, testTemperature, testPH, testFishSize } from "./AquariumFunc";
 import { Tank } from "./classes/Tank";
 import { faUserLock } from "@fortawesome/free-solid-svg-icons";
-import $ from "jquery";
-import pearlGourami from "./images/pearl-gourami.png";
 // import { json } from "body-parser";
-var key1;
+
 const Aquarium = () => {
   //fish tank obj
   // let fishTank = new Tank(0, 0, 0, 0, 0, 0, 0);
-  const [fishList, setFishList] = useState([]);
-  const [search, setSearch] = useState("");
+  const [fishList, setFishList] = useState([]); 
+  const [search, setSearch] = useState(""); 
   const [showA, setShowA] = useState(false);
   const toggleShowA = () => setShowA(!showA);
 
   let [inputLength, setLength] = useState(0);
   let [inputWidth, setWidth] = useState(0);
   let [inputHeight, setHeight] = useState(0);
-  let [tankCapacity, setTankCapacity] = useState(0);
   let [message, setMessage] = useState("");
 
   const getFish = () => {
@@ -56,135 +46,88 @@ const Aquarium = () => {
     getFish();
     getUserList();
     getFishTank();
+    
   }, []);
 
   let [userList, setUserList] = useState([]);
-  let [fishTank, setFishTank] = useState(
-    new Tank(inputLength, inputWidth, inputHeight, 0, 0, 0, 0, 0, 0, 0)
-  );
+  let [fishTank, setFishTank] = useState(new Tank(inputLength, inputWidth, inputHeight, 0, 0, 0, 0, 0));
 
   let arrFish = "";
-  let tempTank = new Tank(0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+  let tempTank = new Tank(0, 0, 0, 0, 0, 0, 0, 0);
 
-  const setTankDimensions = () => {
-    if (testTankSize(inputLength, inputWidth, inputHeight) == true) {
+  const setTankDimensions = () =>
+  {
+
+    if(testTankSize(inputLength, inputWidth, inputHeight) == true)
+    {
       fishTank.length = parseInt(inputLength);
       fishTank.width = parseInt(inputWidth);
       fishTank.height = parseInt(inputHeight);
-      fishTank.size = Math.round(
-        (parseInt(inputLength) * parseInt(inputWidth) * parseInt(inputHeight)) /
-          1000
-      );
       sessionStorage.setItem("tank", JSON.stringify(fishTank));
-    }
-  };
+    } 
+
+  }
 
   //sessionStorage.setItem("tank", JSON.stringify(fishTank));
   const addFish = (value) => {
-    if (testTankSize(inputLength, inputWidth, inputHeight) == true) {
-      setTimeout(getKey(value.fishID), 1).toString();
-      let fish = new Fish(
-        value.fishID,
-        value.fishScientificName,
-        value.fishCommonName,
-        value.fishAverageSize,
-        value.fishLowerPH,
-        value.fishUpperPH,
-        value.fishLowerTemp,
-        value.fishUpperTemp,
-        value.fishAggrSameSpecies,
-        value.fishAggrOtherSpecies,
-        value.fishLocationTank,
-        value.fishImage,
-        key1
-      );
-      if (testCapacity(fishTank, fish) == true) {
-        if (testTemperature(fishTank, fish) == true) {
-          if (testPH(fishTank, fish) == true) {
-            if (testFishSize(userList, fish, fishTank) == true) {
-              //calculates tank capacity occupied
-              fishTank.capacity =
-                fishTank.capacity +
-                (1 - (fishTank.size - fish.averageSize) / fishTank.size) * 100;
-              setTankCapacity(Math.round(fishTank.capacity));
+ //console.log(value.fishMatchID);
+ if (testTankSize(inputLength, inputWidth, inputHeight) == true)
+ {
+  let fish = new Fish(
+    value.fishID,
+    value.fishScientificName,
+    value.fishCommonName,
+    value.fishAverageSize,
+    value.fishLowerPH,
+    value.fishUpperPH,
+    value.fishLowerTemp,
+    value.fishUpperTemp,
+    value.fishAggrSameSpecies,
+    value.fishAggrOtherSpecies,
+    value.fishLocationTank,
+    value.fishImage
+  );
+  
+  if(testTemperature(fishTank, fish) == true)
+  {
+    if(testPH(fishTank, fish) == true)
+    {
+      if(testFishSize(userList, fish, fishTank) == true)
+      {
+        sessionStorage.setItem("tank", JSON.stringify(fishTank));
+    
+        userList.push(fish);
+      
+        setUserList(userList);
+        setFishTank(fishTank);
+      
+        sessionStorage.setItem("fishNames", JSON.stringify(userList));
+        arrFish = JSON.parse(sessionStorage.getItem("fishNames"));
+        
 
-              userList.push(fish);
-
-              setUserList(userList);
-              setFishTank(fishTank);
-              sessionStorage.setItem("tank", JSON.stringify(fishTank));
-
-              sessionStorage.setItem("fishNames", JSON.stringify(userList));
-              arrFish = JSON.parse(sessionStorage.getItem("fishNames"));
-
-              setMessage(
-                "Added: " + fishNameChange(fish.commonName, fish.scientificName)
-              );
-              //add fish image to tank
-              let aquariumImg = document.getElementById("aquarium");
-              var $img = $("<img />", {
-                src: require("./images/" + fish.image),
-                id: fish.fishKey,
-              });
-
-              //check the fish's location in the tank and add the appropriate class
-              if (fish.locationTank == "Top levels") {
-                $img.addClass("aquariumFish");
-              } else if (fish.locationTank == "Middle levels") {
-                $img.addClass("aquariumFishMiddle");
-              } else if (fish.locationTank == "Bottom levels") {
-                $img.addClass("aquariumFishBottom");
-              }
-
-              //check the fish's location in the tank and add the appropriate class
-              if (fish.locationTank == "Top levels") {
-                $img.addClass("aquariumFish");
-              } else if (fish.locationTank == "Middle levels") {
-                $img.addClass("aquariumFishMiddle");
-              } else if (fish.locationTank == "Bottom levels") {
-                $img.addClass("aquariumFishBottom");
-              }
-
-              $img.addClass("fishAnimAquarium");
-
-              $($img).insertAfter(aquariumImg);
-
-              toggleShowA();
-            } else {
-              setMessage("Fish size is invalid");
-              toggleShowA();
-            }
-          } else {
-            setMessage(
-              "Invalid fish PH on: " +
-                fishNameChange(fish.commonName, fish.scientificName) +
-                " | upperPH: " +
-                fish.upperPH +
-                " | lowerPH: " +
-                fish.lowerPH
-            );
-            toggleShowA();
-          }
-        } else {
-          setMessage(
-            "Invalid fish temperature on fish: " +
-              fishNameChange(fish.commonName, fish.scientificName) +
-              " | upperTemp: " +
-              fish.upperTemp +
-              " | lowerTemp: " +
-              fish.lowerTemp
-          );
-          toggleShowA();
-        }
-      } else {
-        setMessage("Exceeds tank capacity");
+        setMessage("Added: " + fishNameChange(fish.commonName, fish.scientificName))
         toggleShowA();
       }
-    } else {
-      setMessage("Please set a valid tank size");
+      else{
+        setMessage("Fish size is invalid");
+        toggleShowA();
+      }      
+    }
+    else{
+      setMessage("Invalid fish PH on: " + fishNameChange(fish.commonName, fish.scientificName) + " | upperPH: " + fish.upperPH + " | lowerPH: " + fish.lowerPH);
       toggleShowA();
     }
-  };
+  }
+  else{
+    setMessage("Invalid fish temperature on fish: " + fishNameChange(fish.commonName, fish.scientificName) + " | upperTemp: " + fish.upperTemp + " | lowerTemp: " + fish.lowerTemp);
+    toggleShowA();
+  } 
+ }
+ else{
+    setMessage("Please set a valid tank size")
+    toggleShowA();
+ }
+};
 
   function useWindowSize() {
     const [size, setSize] = useState([0, 0]);
@@ -216,54 +159,39 @@ const Aquarium = () => {
       setLength(tempTank.length);
       setWidth(tempTank.width);
       setHeight(tempTank.height);
-      setTankCapacity(Math.round(tempTank.capacity));
-      console.log("Fish tank present");
+      console.log("Fish tank present");     
     }
-  };
+  }
 
   const removeFish = (value) => {
-    const index = userList.indexOf(value);
 
+    const index = userList.indexOf(value);
+    
     userList.splice(index, 1);
-    console.log(value.fishKey);
-    $("#" + value.fishKey).remove();
+
     setUserList(userList);
-    fishTank = new Tank(0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+    fishTank = new Tank(0, 0, 0, 0, 0, 0, 0, 0);
     setFishTank(fishTank);
     sessionStorage.setItem("tank", JSON.stringify(fishTank));
-    setTankDimensions();
-    userList.forEach((element) => {
-      if (
-        testTemperature(fishTank, element) == true &&
-        testPH(fishTank, element) == true
-      ) {
+
+    userList.forEach(element => {
+      if(testTemperature(fishTank, element) == true && testPH(fishTank, element) == true)
+      {
+        //testFishSize(userList)
         sessionStorage.setItem("tank", JSON.stringify(fishTank));
         setFishTank(fishTank);
       }
-      fishTank.capacity =
-        fishTank.capacity +
-        (1 - (fishTank.size - element.averageSize) / fishTank.size) * 100;
-      setFishTank(fishTank);
-      sessionStorage.setItem("tank", JSON.stringify(fishTank));
-      setTankCapacity(Math.round(fishTank.capacity));
     });
 
     sessionStorage.setItem("fishNames", JSON.stringify(userList));
-
-    if (userList.length <= 0) {
-      sessionStorage.setItem(
-        "tank",
-        JSON.stringify(new Tank(0, 0, 0, 0, 0, 0, 0, 0, 0, 0))
-      );
-      setFishTank(new Tank(0, 0, 0, 0, 0, 0, 0, 0, 0, 0));
-
-      fishTank.capacity = 0;
-      setTankCapacity(Math.round(fishTank.capacity));
+  
+    if(userList.length <= 0)
+    {
+      sessionStorage.setItem("tank", JSON.stringify(new Tank(0, 0, 0, 0, 0, 0, 0, 0)));
+      setFishTank(new Tank(0, 0, 0, 0, 0, 0, 0, 0));  
     }
 
-    setMessage(
-      "Removed: " + fishNameChange(value.commonName, value.scientificName)
-    );
+    setMessage("Removed: " + fishNameChange(value.commonName, value.scientificName));
     toggleShowA();
   };
 
@@ -279,8 +207,8 @@ const Aquarium = () => {
 
   function clearSession() {
     userList = [];
-    fishTank = new Tank(0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
-
+    fishTank = new Tank(0, 0, 0, 0, 0, 0, 0, 0);
+    
     setUserList(userList);
     setFishTank(fishTank);
 
@@ -292,12 +220,10 @@ const Aquarium = () => {
     const d = new Date();
     let ms = d.getMilliseconds();
 
-    key1 = id.toString() + "_" + ms;
-    // console.log(id);
-    // key1 = id;
-    console.log(key1);
+    id = id.toString() + "_" + ms;
+    //console.log(id);
 
-    // return id;
+    return id;
   }
 
   function AlertDismissible() {
@@ -326,6 +252,7 @@ const Aquarium = () => {
     );
   }
 
+
   return (
     <div>
       <section className="home">
@@ -340,70 +267,49 @@ const Aquarium = () => {
         <br />
         <AlertDismissible />
         <div className="aquariumCols">
-          <form
-            action={setTankDimensions(inputLength, inputWidth, inputHeight)}
-          >
-            <div className="inlineblock">
-              <label htmlFor="lengthInput">length (cm)</label>
-              <br />
-              <input
-                type="number"
-                id="lengthInput"
-                placeholder="Length"
-                required
-                value={inputLength}
-                onChange={(e) => setLength(e.target.value)}
-              />
-            </div>
-            <div className="inlineblock">
-              <label htmlFor="widthInput">Width (cm)</label>
-              <br />
-              <input
-                type="number"
-                id="widthInput"
-                placeholder="Width"
-                required
-                value={inputWidth}
-                onChange={(e) => setWidth(e.target.value)}
-              />
-            </div>
-            <div className="inlineblock">
-              <label htmlFor="inputHeight">Height (cm)</label>
-              <br />
-              <input
-                type="number"
-                id="inputHeight"
-                placeholder="Height"
-                required
-                value={inputHeight}
-                onChange={(e) => setHeight(e.target.value)}
-              />
-            </div>
-          </form>
-          <br />
-          <div className="capacityBar">
-            <ProgressBar
-              variant="primary"
-              now={tankCapacity}
-              label={`${tankCapacity}%`}
-            />
+          <form action={ setTankDimensions(inputLength, inputWidth, inputHeight)}>
+          <div className="inlineblock">
+            <label htmlFor="lengthInput">length (inches)</label>
+            <br/>
+            <input
+            type="number"
+            id="lengthInput"
+            placeholder="Length"
+            required
+            value={inputLength}
+            onChange={e => setLength(e.target.value)}/>
           </div>
-          <br />
-          <div className="aquaDiv">
-            <img
-              id="aquarium"
-              className="aquarium"
-              src={aquarium}
-              width="100%"
-              alt=""
-            />
-            <div className="aquariumBubbles aquariumBubble-1"></div>
-            <div className="aquariumBubbles aquariumBubble-5"></div>
-            <div className="aquariumBubbles aquariumBubble-2"></div>
-            <div className="aquariumBubbles aquariumBubble-6"></div>
-            <div className="aquariumBubbles aquariumBubble-3"></div>
+          <div className="inlineblock">      
+          <label htmlFor="widthInput">Width (inches)</label>
+          <br/>
+          <input
+            type="number"
+            id="widthInput"
+            placeholder="Width"
+            required
+            value={inputWidth}
+            onChange={e => setWidth(e.target.value)}/>
           </div>
-
+          <div className="inlineblock"> 
+          <label htmlFor="inputHeight">Height (inches)</label>
+          <br/>
+          <input
+            type="number"
+            id="inputHeight"
+            placeholder="Height"
+            required
+            value={inputHeight}
+            onChange={e => setHeight(e.target.value)}/>    
+          </div>       
+            </form>
+            <br/>
+          <img
+            className="aquarium"
+            src={aquarium}
+            width="100%"
+            height="713px"
+            alt=""
+          />
           <div className="">
             <div className="searchAquarium ">
               <button
@@ -428,7 +334,7 @@ const Aquarium = () => {
                   }
                 }}
               />
-              <br />
+               <br/>
               <br />
               <br />
             </div>
@@ -471,10 +377,8 @@ const Aquarium = () => {
                 <ListGroup variant="flush">
                   {userList.map((item) => {
                     return (
-                      <ListGroup.Item key={item.fishKey}>
-                        {/* key={setTimeout(getKey(item.id), 1)} */}
+                      <ListGroup.Item key={setTimeout(getKey(item.id), 1)}>
                         <img
-                          // id={key}
                           className="listImg"
                           src={require("./images/" + item.image)}
                           width="100px"
