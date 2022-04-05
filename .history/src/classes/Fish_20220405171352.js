@@ -14,7 +14,6 @@ export class Fish {
     image,
     fishKey,
     fishScale
-    
   ) {
     this.id = id;
     this.scientificName = scientificName;

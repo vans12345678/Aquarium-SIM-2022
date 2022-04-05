@@ -196,7 +196,7 @@ const Aquarium = () => {
                 
               setTankCapacity(Math.round(fishTank.capacity));
 
-              var maxDimension = Math.max(fishTank.length, fishTank.width, fishTank.height);
+              var maxDimension = Math.max(fishTank.length, fishTank.width);
               fish.fishScale = (((fish.averageSize/maxDimension)*40).toString()+"%");
               console.log(fish.fishScale);
 

@@ -71,22 +71,6 @@ const Aquarium = () => {
   let tempTank = new Tank(0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
 
   const setTankDimensions = () => {
-    if (testTankSize(inputLength, inputWidth, inputHeight) == true) {
-      if(parseInt(inputLength) != fishTank.length || parseInt(inputWidth) != fishTank.width || parseInt(inputHeight) != fishTank.height)
-      {
-        fishTank.length = parseInt(inputLength);
-        fishTank.width = parseInt(inputWidth);
-        fishTank.height = parseInt(inputHeight);
-        fishTank.size = Math.round(
-          (parseInt(inputLength) * parseInt(inputWidth) * parseInt(inputHeight)) /
-            1000
-        );
-        sessionStorage.setItem("tank", JSON.stringify(fishTank));
-      }
-    }
-  };
-
-  const updateTankDimensions = () => {
 
     if (testTankSize(inputLength, inputWidth, inputHeight) == true) {
       if(parseInt(inputLength) != fishTank.length || parseInt(inputWidth) != fishTank.width || parseInt(inputHeight) != fishTank.height)
@@ -111,7 +95,7 @@ const Aquarium = () => {
         fishTank.capacity +
         (1 - (fishTank.size - element.averageSize) / fishTank.size) * 100;
       setFishTank(fishTank);
-      var maxDimension = Math.max(fishTank.length, fishTank.width, fishTank.height);
+      var maxDimension = Math.max(fishTank.length, fishTank.width);
       element.fishScale = (((element.averageSize/maxDimension)*40).toString()+"%");
       console.log(element.fishScale);
       sessionStorage.setItem("fishNames", JSON.stringify(userList));
@@ -196,7 +180,7 @@ const Aquarium = () => {
                 
               setTankCapacity(Math.round(fishTank.capacity));
 
-              var maxDimension = Math.max(fishTank.length, fishTank.width, fishTank.height);
+              var maxDimension = Math.max(fishTank.length, fishTank.width);
               fish.fishScale = (((fish.averageSize/maxDimension)*40).toString()+"%");
               console.log(fish.fishScale);
 
@@ -487,7 +471,7 @@ const Aquarium = () => {
             </div>
             <button
             type="submit"
-            onSubmit={updateTankDimensions(inputLength, inputWidth, inputHeight, userList)}>
+            onSubmit={setTankDimensions(inputLength, inputWidth, inputHeight, userList)}>
             Update Dimensions
             </button>
           </form>
