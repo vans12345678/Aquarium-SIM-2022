@@ -543,103 +543,10 @@ button{
   --animation-delay: -2s ;
 }
 
-@keyframes aquariumFishSmall {
+@keyframes aquariumFish {
 
-     0% {
-       /* margin-left:99%; */
-       left: 85%;
-        /* transform: translateX(0px); */
-      transform: rotate(10deg);
-     }
-     30%{
-       transform: rotate(-10deg);
-     }
-
-      49% {
-       transform: rotate(10deg);
-     }
-
-     50% {
-        left: 5%;
-       transform: rotate(10deg);
-       transform:rotateY(180deg);
-     
-     }
-     60%{
-       transform: rotate(-10deg);
-       transform:rotateY(180deg);
-     }
-
-     70% {
-       transform: rotate(10deg);
-       transform:rotateY(180deg);
-     }
-
-     90% {
-       transform: rotate(-10deg);
-       transform:rotateY(180deg);
-     }
-      99% {
  
-       transform:rotateY(180deg);
-     }
-     100% {
-   
-         left: 85%;
-         transform:rotateY(180deg);
-       transform: rotate(10deg) ; 
-     }
-}
 
-@keyframes aquariumFishMedium {
-
-     0% {
-       /* margin-left:99%; */
-       left: 80%;
-        /* transform: translateX(0px); */
-      transform: rotate(10deg);
-     }
-     30%{
-       transform: rotate(-10deg);
-     }
-
-      49% {
-       transform: rotate(10deg);
-     }
-
-     50% {
-        left: 5%;
-       transform: rotate(10deg);
-       transform:rotateY(180deg);
-     
-     }
-     60%{
-       transform: rotate(-10deg);
-       transform:rotateY(180deg);
-     }
-
-     70% {
-       transform: rotate(10deg);
-       transform:rotateY(180deg);
-     }
-
-     90% {
-       transform: rotate(-10deg);
-       transform:rotateY(180deg);
-     }
-      99% {
- 
-       transform:rotateY(180deg);
-     }
-     100% {
-   
-         left: 80%;
-         transform:rotateY(180deg);
-       transform: rotate(10deg) ; 
-     }
-}
-
-@keyframes aquariumFishLarge {
 
      0% {
        /* margin-left:99%; */
@@ -652,11 +559,14 @@ button{
      }
 
       49% {
+        
        transform: rotate(10deg);
+       
+     
      }
 
      50% {
-        left: 5%;
+        left: 10%;
        transform: rotate(10deg);
        transform:rotateY(180deg);
      
@@ -666,102 +576,38 @@ button{
        transform:rotateY(180deg);
      }
 
+
      70% {
+       
        transform: rotate(10deg);
        transform:rotateY(180deg);
      }
 
      90% {
+       
        transform: rotate(-10deg);
        transform:rotateY(180deg);
      }
       99% {
- 
+       
+       /* transform: rotate(10deg); */
        transform:rotateY(180deg);
      }
      100% {
-   
+       
+       /* margin-left: -20%; */
          left: 75%;
          transform:rotateY(180deg);
+        /* transform: translateX(100vw); */
        transform: rotate(10deg) ; 
+      
      }
+
+
 }
 
-@keyframes aquariumFishXLarge {
-
-     0% {
- 
-      left: 20%;
-      top: 20%;
-      /* bottom:50%; */
-      transform: rotate(10deg);
-     }
-     30%{
-       transform: rotate(-10deg);
-     }
-
-     50% {
- 
-       transform: rotate(10deg);
- 
-     
-     }
-     60%{
-       transform: rotate(-10deg);
-  
-     }
-
-     70% {
-       transform: rotate(10deg);
-
-     }
-
-     90% {
-       transform: rotate(-10deg);
-
-     }
-     
-     100% {
-        left: 20%;
-      top: 20%;
-      /* bottom:50%; */
-       transform: rotate(10deg) ; 
-     }
-}
-
-/******************************************/
-.fishAnimAquariumSmall {
-  animation-name: aquariumFishSmall;
-  animation-delay: var(--animation-delay);
-  animation-duration: 30s;
-    animation-iteration-count: infinite;
-  animation-timing-function: linear;
-  animation-direction: normal;
-  overflow: hidden;
-  
-}
-.fishAnimAquariumMedium {
-  animation-name: aquariumFishMedium;
-  animation-delay: var(--animation-delay);
-  animation-duration: 30s;
-    animation-iteration-count: infinite;
-  animation-timing-function: linear;
-  animation-direction: normal;
-  overflow: hidden;
-  
-}
-.fishAnimAquariumLarge {
-  animation-name: aquariumFishLarge;
-  animation-delay: var(--animation-delay);
-  animation-duration: 30s;
-    animation-iteration-count: infinite;
-  animation-timing-function: linear;
-  animation-direction: normal;
-  overflow: hidden;
-  
-}
-.fishAnimAquariumXLarge {
-  animation-name: aquariumFishXLarge;
+.fishAnimAquarium {
+  animation-name: aquariumFish ;
   animation-delay: var(--animation-delay);
   animation-duration: 30s;
     animation-iteration-count: infinite;

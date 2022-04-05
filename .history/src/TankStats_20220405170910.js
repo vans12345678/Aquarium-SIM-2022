@@ -75,7 +75,7 @@ const TankStats = () => {
             </thead>
             <tbody>
               <tr>
-                <td>{fishTank.lowerTemp}&#8451;</td>
+                <td>{fishTank.lowerTemp}&#x2103;</td>
                 <td>{fishTank.upperTemp}&#8451;</td>
               </tr>
             </tbody>

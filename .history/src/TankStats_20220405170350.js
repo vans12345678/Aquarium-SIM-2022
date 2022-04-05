@@ -96,24 +96,6 @@ const TankStats = () => {
               </tr>
             </tbody>
           </Table>
-          <Table striped bordered>
-            <thead>
-              <tr>
-                {/* this.upperTemp = upperTemp; this.lowerTemp = lowerTemp;
-                this.lowerPH = lowerPH; this.upperPH = upperPH; */}
-                <th>Tank Size (Litres)</th>
-                <th>Tank Dimensions</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>{fishTank.size} L</td>
-                <td>
-                  {fishTank.length}cm x {fishTank.width}cm x {fishTank.height}cm
-                </td>
-              </tr>
-            </tbody>
-          </Table>
         </Offcanvas.Body>
       </Offcanvas>
     </>

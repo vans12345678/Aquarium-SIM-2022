@@ -8,7 +8,7 @@ import Axios from "axios";
 import { useState, useEffect, useLayoutEffect } from "react";
 import { Fish } from "./classes/Fish";
 import { FixedSizeList } from "react-window";
-import InfiniteScroll from "react-infinite-scroll-component";
+
 import Toast from "react-bootstrap/Toast";
 import { ProgressBar } from "react-bootstrap";
 import ToastContainer from "react-bootstrap/ToastContainer";
@@ -526,7 +526,7 @@ const Aquarium = () => {
                 id="search"
                 type="search"
                 placeholder="Ex. Betta splendens"
-                onBlur={(event) => {
+                onChange={(event) => {
                   setSearch(event.target.value);
                 }}
                 onKeyPress={(event) => {
@@ -544,44 +544,46 @@ const Aquarium = () => {
             <div className="listStyle">
               <Card className="list" style={{ width: useWindowSize(0) }}>
                 <ListGroup variant="flush">
-                  {fishList.map((item) => {
-                    return (
-                      <ListGroup.Item key={item.fishID}>
-                        <img
-                          className="listImg"
-                          src={require("./images/" + item.fishImage)}
-                          width="100px"
-                          height="50px"
-                          alt=""
-                        />
-                        {fishNameChange(
-                          item.fishCommonName,
-                          item.fishScientificName
-                        )}
-                        <FishInfoModal
-                          scientificName={item.fishScientificName}
-                          commonName={item.fishCommonName}
-                          fishAverageSize={item.fishAverageSize}
-                          lowerPH={item.fishLowerPH}
-                          upperPH={item.fishUpperPH}
-                          lowerTemp={item.fishLowerTemp}
-                          upperTemp={item.fishUpperTemp}
-                          aggressiveSameSpecies={item.fishAggrSameSpecies}
-                          aggressiveOtherSpecies={item.fishAggrOtherSpecies}
-                          fishLocationTank={item.fishLocationTank}
-                        />
-                        <Button
-                          className="listBtn addBtn"
-                          variant="success"
-                          onClick={function () {
-                            addFish(item);
-                          }}
-                        >
-                          Add
-                        </Button>
-                      </ListGroup.Item>
-                    );
-                  })}
+                  <FixedSizeList height={300} width={useWindowSize(0)}>
+                    {fishList.map((item) => {
+                      return (
+                        <ListGroup.Item key={item.fishID}>
+                          <img
+                            className="listImg"
+                            src={require("./images/" + item.fishImage)}
+                            width="100px"
+                            height="50px"
+                            alt=""
+                          />
+                          {fishNameChange(
+                            item.fishCommonName,
+                            item.fishScientificName
+                          )}
+                          <FishInfoModal
+                            scientificName={item.fishScientificName}
+                            commonName={item.fishCommonName}
+                            fishAverageSize={item.fishAverageSize}
+                            lowerPH={item.fishLowerPH}
+                            upperPH={item.fishUpperPH}
+                            lowerTemp={item.fishLowerTemp}
+                            upperTemp={item.fishUpperTemp}
+                            aggressiveSameSpecies={item.fishAggrSameSpecies}
+                            aggressiveOtherSpecies={item.fishAggrOtherSpecies}
+                            fishLocationTank={item.fishLocationTank}
+                          />
+                          <Button
+                            className="listBtn addBtn"
+                            variant="success"
+                            onClick={function () {
+                              addFish(item);
+                            }}
+                          >
+                            Add
+                          </Button>
+                        </ListGroup.Item>
+                      );
+                    })}
+                  </FixedSizeList>
                 </ListGroup>
               </Card>
 

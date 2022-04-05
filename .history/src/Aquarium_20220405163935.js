@@ -36,6 +36,30 @@ const Aquarium = () => {
   const [showA, setShowA] = useState(false);
   const toggleShowA = () => setShowA(!showA);
 
+  const [count, setCount] = useState({
+    prev: 0,
+    next: 10,
+  });
+  const [hasMore, setHasMore] = useState(true);
+  const [current, setCurrent] = useState(
+    fishList.slice(count.prev, count.next)
+  );
+  const getMoreData = () => {
+    if (current.length === fishList.length) {
+      setHasMore(false);
+      return;
+    }
+    setTimeout(() => {
+      setCurrent(
+        current.concat(fishList.slice(count.prev + 10, count.next + 10))
+      );
+    }, 1000);
+    setCount((prevState) => ({
+      prev: prevState.prev + 10,
+      next: prevState.next + 10,
+    }));
+  };
+
   let [inputLength, setLength] = useState(0);
   let [inputWidth, setWidth] = useState(0);
   let [inputHeight, setHeight] = useState(0);
@@ -526,9 +550,9 @@ const Aquarium = () => {
                 id="search"
                 type="search"
                 placeholder="Ex. Betta splendens"
-                onBlur={(event) => {
-                  setSearch(event.target.value);
-                }}
+                // onChange={(event) => {
+                //   setSearch(event.target.value);
+                // }}
                 onKeyPress={(event) => {
                   if (event.key === "Enter") {
                     event.preventDefault();

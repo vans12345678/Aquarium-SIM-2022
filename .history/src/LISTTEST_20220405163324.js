@@ -28,13 +28,90 @@ import $ from "jquery";
 
 // import { json } from "body-parser";
 var key1;
-const Aquarium = () => {
+const LISTTEST = () => {
+  function CardList() {
+    return (
+      <FixedSizeList
+        height={300}
+        itemCount={fishList.length}
+        itemSize={10}
+        width={useWindowSize(0)}
+      >
+        {/* {({ index, style }) => <Card p={dataList[index]} style={style} />} */}
+      </FixedSizeList>
+    );
+  }
+
+  function Lists() {
+    {
+      fishList.map((item) => {
+        return (
+          <ListGroup.Item key={item.fishID}>
+            <img
+              className="listImg"
+              src={require("./images/" + item.fishImage)}
+              width="100px"
+              height="50px"
+              alt=""
+            />
+            {fishNameChange(item.fishCommonName, item.fishScientificName)}
+            <FishInfoModal
+              scientificName={item.fishScientificName}
+              commonName={item.fishCommonName}
+              fishAverageSize={item.fishAverageSize}
+              lowerPH={item.fishLowerPH}
+              upperPH={item.fishUpperPH}
+              lowerTemp={item.fishLowerTemp}
+              upperTemp={item.fishUpperTemp}
+              aggressiveSameSpecies={item.fishAggrSameSpecies}
+              aggressiveOtherSpecies={item.fishAggrOtherSpecies}
+              fishLocationTank={item.fishLocationTank}
+            />
+            <Button
+              className="listBtn addBtn"
+              variant="success"
+              onClick={function () {
+                addFish(item);
+              }}
+            >
+              Add
+            </Button>
+          </ListGroup.Item>
+        );
+      });
+    }
+  }
+
   //fish tank obj
   // let fishTank = new Tank(0, 0, 0, 0, 0, 0, 0);
   const [fishList, setFishList] = useState([]);
   const [search, setSearch] = useState("");
   const [showA, setShowA] = useState(false);
   const toggleShowA = () => setShowA(!showA);
+
+  const [count, setCount] = useState({
+    prev: 0,
+    next: 10,
+  });
+  const [hasMore, setHasMore] = useState(true);
+  const [current, setCurrent] = useState(
+    fishList.slice(count.prev, count.next)
+  );
+  const getMoreData = () => {
+    if (current.length === fishList.length) {
+      setHasMore(false);
+      return;
+    }
+    setTimeout(() => {
+      setCurrent(
+        current.concat(fishList.slice(count.prev + 10, count.next + 10))
+      );
+    }, 1000);
+    setCount((prevState) => ({
+      prev: prevState.prev + 10,
+      next: prevState.next + 10,
+    }));
+  };
 
   let [inputLength, setLength] = useState(0);
   let [inputWidth, setWidth] = useState(0);
@@ -435,7 +512,7 @@ const Aquarium = () => {
       <section className="home">
         <br />
         <br />
-        <h1 className="orangeText">Aquarium</h1>
+        <h1 className="orangeText">Aquarium TESTER</h1>
         <br />
         <br />
       </section>
@@ -526,7 +603,7 @@ const Aquarium = () => {
                 id="search"
                 type="search"
                 placeholder="Ex. Betta splendens"
-                onBlur={(event) => {
+                onChange={(event) => {
                   setSearch(event.target.value);
                 }}
                 onKeyPress={(event) => {
@@ -544,44 +621,51 @@ const Aquarium = () => {
             <div className="listStyle">
               <Card className="list" style={{ width: useWindowSize(0) }}>
                 <ListGroup variant="flush">
-                  {fishList.map((item) => {
-                    return (
-                      <ListGroup.Item key={item.fishID}>
-                        <img
-                          className="listImg"
-                          src={require("./images/" + item.fishImage)}
-                          width="100px"
-                          height="50px"
-                          alt=""
-                        />
-                        {fishNameChange(
-                          item.fishCommonName,
-                          item.fishScientificName
-                        )}
-                        <FishInfoModal
-                          scientificName={item.fishScientificName}
-                          commonName={item.fishCommonName}
-                          fishAverageSize={item.fishAverageSize}
-                          lowerPH={item.fishLowerPH}
-                          upperPH={item.fishUpperPH}
-                          lowerTemp={item.fishLowerTemp}
-                          upperTemp={item.fishUpperTemp}
-                          aggressiveSameSpecies={item.fishAggrSameSpecies}
-                          aggressiveOtherSpecies={item.fishAggrOtherSpecies}
-                          fishLocationTank={item.fishLocationTank}
-                        />
-                        <Button
-                          className="listBtn addBtn"
-                          variant="success"
-                          onClick={function () {
-                            addFish(item);
-                          }}
-                        >
-                          Add
-                        </Button>
-                      </ListGroup.Item>
-                    );
-                  })}
+                  <InfiniteScroll
+                    dataLength={current.length}
+                    next={getMoreData}
+                    hasMore={hasMore}
+                    loader={<h4>Loading...</h4>}
+                  >
+                    {fishList.map((item) => {
+                      return (
+                        <ListGroup.Item key={item.fishID}>
+                          <img
+                            className="listImg"
+                            src={require("./images/" + item.fishImage)}
+                            width="100px"
+                            height="50px"
+                            alt=""
+                          />
+                          {fishNameChange(
+                            item.fishCommonName,
+                            item.fishScientificName
+                          )}
+                          <FishInfoModal
+                            scientificName={item.fishScientificName}
+                            commonName={item.fishCommonName}
+                            fishAverageSize={item.fishAverageSize}
+                            lowerPH={item.fishLowerPH}
+                            upperPH={item.fishUpperPH}
+                            lowerTemp={item.fishLowerTemp}
+                            upperTemp={item.fishUpperTemp}
+                            aggressiveSameSpecies={item.fishAggrSameSpecies}
+                            aggressiveOtherSpecies={item.fishAggrOtherSpecies}
+                            fishLocationTank={item.fishLocationTank}
+                          />
+                          <Button
+                            className="listBtn addBtn"
+                            variant="success"
+                            onClick={function () {
+                              addFish(item);
+                            }}
+                          >
+                            Add
+                          </Button>
+                        </ListGroup.Item>
+                      );
+                    })}
+                  </InfiniteScroll>
                 </ListGroup>
               </Card>
 
@@ -650,4 +734,4 @@ const Aquarium = () => {
   );
 };
 
-export default Aquarium;
+export default LISTTEST;

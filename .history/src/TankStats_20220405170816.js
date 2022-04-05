@@ -107,7 +107,7 @@ const TankStats = () => {
             </thead>
             <tbody>
               <tr>
-                <td>{fishTank.size} L</td>
+                <td>{fishTank.size}L</td>
                 <td>
                   {fishTank.length}cm x {fishTank.width}cm x {fishTank.height}cm
                 </td>

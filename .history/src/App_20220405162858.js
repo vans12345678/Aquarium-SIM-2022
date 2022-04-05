@@ -3,7 +3,7 @@ import Home from "./Home";
 import Aquarium from "./Aquarium";
 import Compendium from "./Compendium";
 import Listings from "./Listings";
-
+import LISTTEST from "./LISTTEST";
 import FishProfile from "./FishProfile";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { Button } from "react-bootstrap";
@@ -38,6 +38,9 @@ function App() {
             </Route>
             <Route path="/listings">
               <Listings />
+            </Route>
+            <Route path="/test">
+              <LISTTEST />
             </Route>
           </Switch>
 

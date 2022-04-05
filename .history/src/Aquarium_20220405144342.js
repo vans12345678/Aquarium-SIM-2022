@@ -1,18 +1,17 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 
 import React from "react";
-
+import ReactDOM from "react-dom";
 import aquarium from "./images/fishtank.png";
 import { ListGroup, Button, Card } from "react-bootstrap";
 import Axios from "axios";
 import { useState, useEffect, useLayoutEffect } from "react";
 import { Fish } from "./classes/Fish";
-import { FixedSizeList } from "react-window";
-import InfiniteScroll from "react-infinite-scroll-component";
+
 import Toast from "react-bootstrap/Toast";
 import { ProgressBar } from "react-bootstrap";
 import ToastContainer from "react-bootstrap/ToastContainer";
-
+import Alert from "react-bootstrap/Alert";
 import TankStats from "./TankStats";
 import FishInfoModal from "./FishInfoModal";
 import {
@@ -23,9 +22,9 @@ import {
   testCapacity,
 } from "./AquariumFunc";
 import { Tank } from "./classes/Tank";
-
+import { faUserLock } from "@fortawesome/free-solid-svg-icons";
 import $ from "jquery";
-
+import pearlGourami from "./images/pearl-gourami.png";
 // import { json } from "body-parser";
 var key1;
 const Aquarium = () => {
@@ -124,6 +123,9 @@ const Aquarium = () => {
         $img.addClass("fishAnimAquariumSmall");
       }
 
+      // $img.addClass("fishAnimAquariumSmall");
+
+      // $img.addClass("fishAnimAquarium");
       //////////////////
       var elements = document.querySelectorAll(
         ".fishAnimAquariumSmall, .fishAnimAquariumMedium, .fishAnimAquariumLarge, .fishAnimAquariumXLarge"
@@ -526,7 +528,7 @@ const Aquarium = () => {
                 id="search"
                 type="search"
                 placeholder="Ex. Betta splendens"
-                onBlur={(event) => {
+                onChange={(event) => {
                   setSearch(event.target.value);
                 }}
                 onKeyPress={(event) => {

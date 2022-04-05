@@ -8,7 +8,7 @@ import Axios from "axios";
 import { useState, useEffect, useLayoutEffect } from "react";
 import { Fish } from "./classes/Fish";
 import { FixedSizeList } from "react-window";
-import InfiniteScroll from "react-infinite-scroll-component";
+
 import Toast from "react-bootstrap/Toast";
 import { ProgressBar } from "react-bootstrap";
 import ToastContainer from "react-bootstrap/ToastContainer";
@@ -35,6 +35,30 @@ const Aquarium = () => {
   const [search, setSearch] = useState("");
   const [showA, setShowA] = useState(false);
   const toggleShowA = () => setShowA(!showA);
+
+  // const [count, setCount] = useState({
+  //   prev: 0,
+  //   next: 10,
+  // });
+  // const [hasMore, setHasMore] = useState(true);
+  // const [current, setCurrent] = useState(
+  //   fishList.slice(count.prev, count.next)
+  // );
+  // const getMoreData = () => {
+  //   if (current.length === fishList.length) {
+  //     setHasMore(false);
+  //     return;
+  //   }
+  //   setTimeout(() => {
+  //     setCurrent(
+  //       current.concat(fishList.slice(count.prev + 10, count.next + 10))
+  //     );
+  //   }, 2000);
+  //   setCount((prevState) => ({
+  //     prev: prevState.prev + 10,
+  //     next: prevState.next + 10,
+  //   }));
+  // };
 
   let [inputLength, setLength] = useState(0);
   let [inputWidth, setWidth] = useState(0);
@@ -526,7 +550,7 @@ const Aquarium = () => {
                 id="search"
                 type="search"
                 placeholder="Ex. Betta splendens"
-                onBlur={(event) => {
+                onChange={(event) => {
                   setSearch(event.target.value);
                 }}
                 onKeyPress={(event) => {

@@ -547,7 +547,7 @@ button{
 
      0% {
        /* margin-left:99%; */
-       left: 85%;
+       left: 75%;
         /* transform: translateX(0px); */
       transform: rotate(10deg);
      }
@@ -585,7 +585,7 @@ button{
      }
      100% {
    
-         left: 85%;
+         left: 75%;
          transform:rotateY(180deg);
        transform: rotate(10deg) ; 
      }
@@ -595,7 +595,7 @@ button{
 
      0% {
        /* margin-left:99%; */
-       left: 80%;
+       left: 75%;
         /* transform: translateX(0px); */
       transform: rotate(10deg);
      }
@@ -633,7 +633,7 @@ button{
      }
      100% {
    
-         left: 80%;
+         left: 75%;
          transform:rotateY(180deg);
        transform: rotate(10deg) ; 
      }
@@ -691,8 +691,7 @@ button{
 
      0% {
  
-      left: 20%;
-      top: 20%;
+      left: 50%;
       /* bottom:50%; */
       transform: rotate(10deg);
      }
@@ -722,8 +721,7 @@ button{
      }
      
      100% {
-        left: 20%;
-      top: 20%;
+          left: 50%;
       /* bottom:50%; */
        transform: rotate(10deg) ; 
      }

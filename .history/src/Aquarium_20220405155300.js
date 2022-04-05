@@ -8,7 +8,7 @@ import Axios from "axios";
 import { useState, useEffect, useLayoutEffect } from "react";
 import { Fish } from "./classes/Fish";
 import { FixedSizeList } from "react-window";
-import InfiniteScroll from "react-infinite-scroll-component";
+
 import Toast from "react-bootstrap/Toast";
 import { ProgressBar } from "react-bootstrap";
 import ToastContainer from "react-bootstrap/ToastContainer";
@@ -526,7 +526,7 @@ const Aquarium = () => {
                 id="search"
                 type="search"
                 placeholder="Ex. Betta splendens"
-                onBlur={(event) => {
+                onChange={(event) => {
                   setSearch(event.target.value);
                 }}
                 onKeyPress={(event) => {
@@ -543,6 +543,7 @@ const Aquarium = () => {
             </div>
             <div className="listStyle">
               <Card className="list" style={{ width: useWindowSize(0) }}>
+                \
                 <ListGroup variant="flush">
                   {fishList.map((item) => {
                     return (
