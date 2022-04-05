@@ -177,21 +177,12 @@ export const testFishAggression = (userList, newFish, tank) =>
         console.log("The different fish are aggressive/territorial to each other");
         flag = false;
       }
-      else if(newFish.aggressiveOtherSpecies == "aggressive to smaller")
+      else if(newFish.aggressiveOtherSpecies == "aggressive to smaller" && newFish.averageSize * 0.85 < element.averageSize)
       {
-        console.log("aggressive to smaller1")
 
-        //Check so see if the size of the new fish is bigger than any fish in list
-        if(newFish.averageSize * 0.85 < element.averageSize)
-        {
-          console.log("new fish (aggressive to smaller) is smaller than fishes in tank, meaning it won't be aggressive to others");
-          flag = true;
-        }  
-        else
-        {
-          console.log("new fish (aggressive to smaller) is not smaller than fishes in tank, meaning it will be aggressive to others");
-          flag = false;
-        }
+        console.log("new fish (aggressive to smaller) is smaller than fishes in tank, meaning it won't be aggressive to others");
+        flag = true;
+
       }
       // else if(element.aggressiveOtherSpecies == "aggressive to smaller")
       // {

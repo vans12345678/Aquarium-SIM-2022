@@ -150,7 +150,7 @@ export const testTankSize = (length, width, height) =>
   }
 }
 
-export const testFishAggression = (userList, newFish, tank) =>
+export const testFishAggression = (userList, newFish) =>
 {
   let flag = true;
   userList.forEach((element) => {
@@ -168,46 +168,11 @@ export const testFishAggression = (userList, newFish, tank) =>
     //Otherwise they are different fish
     else
     {    
-      if(newFish.aggressiveOtherSpecies == "peaceful" && element.aggressiveOtherSpecies == "peaceful" )
-      {
-        flag = true;
-      }
-      else if(newFish.aggressiveOtherSpecies == "peaceful" && element.aggressiveOtherSpecies == "aggressive/territorial" || newFish.aggressiveOtherSpecies == "aggressive/territorial" && element.aggressiveOtherSpecies == "peaceful")
+      if(newFish.aggressiveOtherSpecies == "aggressive/territorial" && element.aggressiveOtherSpecies == "aggressive/territorial")
       {
         console.log("The different fish are aggressive/territorial to each other");
         flag = false;
       }
-      else if(newFish.aggressiveOtherSpecies == "aggressive to smaller")
-      {
-        console.log("aggressive to smaller1")
-
-        //Check so see if the size of the new fish is bigger than any fish in list
-        if(newFish.averageSize * 0.85 < element.averageSize)
-        {
-          console.log("new fish (aggressive to smaller) is smaller than fishes in tank, meaning it won't be aggressive to others");
-          flag = true;
-        }  
-        else
-        {
-          console.log("new fish (aggressive to smaller) is not smaller than fishes in tank, meaning it will be aggressive to others");
-          flag = false;
-        }
-      }
-      // else if(element.aggressiveOtherSpecies == "aggressive to smaller")
-      // {
-      //   console.log("aggressive to smaller")
-      //   //Check so see if the size of the new fish is bigger than any fish in list
-      //   if(element.averageSize * 0.85 < newFish.averageSize)
-      //   {
-      //     console.log("new fish (aggressive to smaller) is smaller than fishes in tank, meaning it won't be aggressive to others");
-      //     flag = true;
-      //   }
-      //   else
-      //   {
-      //     console.log("new fish (aggressive to smaller) is not smaller than fishes in tank, meaning it will be aggressive to others");
-      //     flag = false;
-      //   }
-      // }
     }
   });
 

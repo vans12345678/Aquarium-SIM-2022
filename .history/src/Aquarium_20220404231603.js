@@ -5,20 +5,31 @@ import ReactDOM from "react-dom";
 import aquarium from "./images/fishtank.png";
 import { ListGroup, Button, Card } from "react-bootstrap";
 import Axios from "axios";
+<<<<<<< HEAD
+import { useState, useEffect, useLayoutEffect} from "react";
+=======
 import { useState, useEffect, useLayoutEffect } from "react";
+>>>>>>> 131672864a9ce70e284f2fbef6c75133e80ea96a
 import { Fish } from "./classes/Fish";
 import { FishBasic } from "./classes/FishBasic";
 import Toast from "react-bootstrap/Toast";
 import { ProgressBar } from "react-bootstrap";
 import ToastContainer from "react-bootstrap/ToastContainer";
 import Alert from "react-bootstrap/Alert";
+<<<<<<< HEAD
+=======
 import TankStats from "./TankStats";
+>>>>>>> 131672864a9ce70e284f2fbef6c75133e80ea96a
 import {
   testTankSize,
   testTemperature,
   testPH,
   testFishSize,
   testCapacity,
+<<<<<<< HEAD
+  testFishAggression
+=======
+>>>>>>> 131672864a9ce70e284f2fbef6c75133e80ea96a
 } from "./AquariumFunc";
 import { Tank } from "./classes/Tank";
 import { faUserLock } from "@fortawesome/free-solid-svg-icons";
@@ -102,6 +113,16 @@ const Aquarium = () => {
       }
 
       $img.addClass("fishAnimAquarium");
+<<<<<<< HEAD
+
+      $($img).insertAfter(aquariumImg);
+    });
+  };
+
+  
+  
+
+=======
       //////////////////
       var elements = document.querySelectorAll(".fishAnimAquarium");
       var animationDuration = 30000; // in milliseconds
@@ -117,6 +138,7 @@ const Aquarium = () => {
     });
   };
 
+>>>>>>> 131672864a9ce70e284f2fbef6c75133e80ea96a
   //sessionStorage.setItem("tank", JSON.stringify(fishTank));
   const addFish = (value) => {
     if (testTankSize(inputLength, inputWidth, inputHeight) == true) {
@@ -140,6 +162,55 @@ const Aquarium = () => {
         if (testTemperature(fishTank, fish) == true) {
           if (testPH(fishTank, fish) == true) {
             if (testFishSize(userList, fish, fishTank) == true) {
+<<<<<<< HEAD
+              if(testFishAggression(userList, fish) = true)
+              {
+                //calculates tank capacity occupied
+                fishTank.capacity =
+                fishTank.capacity + (1 - (fishTank.size - fish.averageSize) / fishTank.size) * 100;
+                setTankCapacity(Math.round(fishTank.capacity));
+
+                userList.push(fish);
+
+                setUserList(userList);
+                setFishTank(fishTank);
+                sessionStorage.setItem("tank", JSON.stringify(fishTank));
+
+                sessionStorage.setItem("fishNames", JSON.stringify(userList));
+                arrFish = JSON.parse(sessionStorage.getItem("fishNames"));
+
+                setMessage(
+                  "Added: " + fishNameChange(fish.commonName, fish.scientificName)
+                );
+                //add fish image to tank
+                let aquariumImg = document.getElementById("aquarium");
+                var $img = $("<img />", {
+                  src: require("./images/" + fish.image),
+                  id: fish.fishKey,
+                });
+
+                //check the fish's location in the tank and add the appropriate class
+                if (fish.locationTank == "Top levels") {
+                  $img.addClass("aquariumFish");
+                } else if (fish.locationTank == "Middle levels") {
+                  $img.addClass("aquariumFishMiddle");
+                } else if (fish.locationTank == "Bottom levels") {
+                  $img.addClass("aquariumFishBottom");
+                }
+
+                $img.addClass("fishAnimAquarium");
+
+                $($img).insertAfter(aquariumImg);
+
+                toggleShowA();
+              }
+              else
+              {
+                setMessage("Fish Aggression issue");
+                toggleShowA();                
+              }
+              
+=======
               //calculates tank capacity occupied
               fishTank.capacity =
                 fishTank.capacity +
@@ -199,6 +270,7 @@ const Aquarium = () => {
               // $($img).insertAfter(aquariumImg);
 
               toggleShowA();
+>>>>>>> 131672864a9ce70e284f2fbef6c75133e80ea96a
             } else {
               setMessage("Fish size is invalid");
               toggleShowA();
@@ -274,7 +346,11 @@ const Aquarium = () => {
     const index = userList.indexOf(value);
 
     userList.splice(index, 1);
+<<<<<<< HEAD
+    //console.log(document.getElementById(value.fishKey));
+=======
     console.log(document.getElementById(value.fishKey));
+>>>>>>> 131672864a9ce70e284f2fbef6c75133e80ea96a
     $("#" + value.fishKey).remove();
     setUserList(userList);
     fishTank = new Tank(0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
@@ -327,13 +403,22 @@ const Aquarium = () => {
   }
 
   function clearSession() {
+<<<<<<< HEAD
+
+    userList.forEach(element => {
+=======
     userList.forEach((element) => {
+>>>>>>> 131672864a9ce70e284f2fbef6c75133e80ea96a
       $("#" + element.fishKey).remove();
     });
 
     userList = [];
     fishTank = new Tank(0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
 
+<<<<<<< HEAD
+
+=======
+>>>>>>> 131672864a9ce70e284f2fbef6c75133e80ea96a
     setUserList(userList);
     setFishTank(fishTank);
 
@@ -341,6 +426,10 @@ const Aquarium = () => {
     sessionStorage.setItem("tank", JSON.stringify(fishTank));
 
     setTankCapacity(Math.round(fishTank.capacity));
+<<<<<<< HEAD
+
+=======
+>>>>>>> 131672864a9ce70e284f2fbef6c75133e80ea96a
   }
 
   function getKey(id) {
@@ -350,7 +439,11 @@ const Aquarium = () => {
     key1 = id.toString() + "_" + ms;
     // console.log(id);
     // key1 = id;
+<<<<<<< HEAD
+    //console.log(key1);
+=======
     console.log(key1);
+>>>>>>> 131672864a9ce70e284f2fbef6c75133e80ea96a
 
     // return id;
   }
@@ -567,7 +660,10 @@ const Aquarium = () => {
         <br />
         <br />
       </section>
+<<<<<<< HEAD
+=======
       <TankStats />
+>>>>>>> 131672864a9ce70e284f2fbef6c75133e80ea96a
     </div>
   );
 };
