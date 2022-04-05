@@ -58,7 +58,6 @@ const Aquarium = () => {
     getUserList();
     getFishTank();
     renderFish();
-    setTankCapacity(Math.round(fishTank.capacity));
   }, []);
 
   let [userList, setUserList] = useState([]);
@@ -391,7 +390,7 @@ const Aquarium = () => {
                 placeholder="Length"
                 required
                 value={inputLength}
-                onChange={(e) => setLength(e.target.value) }
+                onChange="setLength(e.target.value);setTankCapacity(Math.round(fishTank.capacity))"
               />
             </div>
             <div className="inlineblock">
@@ -403,7 +402,7 @@ const Aquarium = () => {
                 placeholder="Width"
                 required
                 value={inputWidth}
-                onChange={(e) => setWidth(e.target.value)}
+                onChange="setLength(e.target.value);setTankCapacity(Math.round(fishTank.capacity));"
               />
             </div>
             <div className="inlineblock">
@@ -415,7 +414,7 @@ const Aquarium = () => {
                 placeholder="Height"
                 required
                 value={inputHeight}
-                onChange={(e) => setHeight(e.target.value)}
+                onChange="setLength(e.target.value);setTankCapacity(Math.round(fishTank.capacity))"
               />
             </div>
           </form>

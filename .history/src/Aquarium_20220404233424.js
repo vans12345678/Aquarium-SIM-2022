@@ -58,7 +58,6 @@ const Aquarium = () => {
     getUserList();
     getFishTank();
     renderFish();
-    setTankCapacity(Math.round(fishTank.capacity));
   }, []);
 
   let [userList, setUserList] = useState([]);
@@ -391,7 +390,7 @@ const Aquarium = () => {
                 placeholder="Length"
                 required
                 value={inputLength}
-                onChange={(e) => setLength(e.target.value) }
+                onChange={(e) => setLength(e.target.value)}
               />
             </div>
             <div className="inlineblock">

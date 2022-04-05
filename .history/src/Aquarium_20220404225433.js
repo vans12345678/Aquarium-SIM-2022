@@ -58,7 +58,6 @@ const Aquarium = () => {
     getUserList();
     getFishTank();
     renderFish();
-    setTankCapacity(Math.round(fishTank.capacity));
   }, []);
 
   let [userList, setUserList] = useState([]);
@@ -134,52 +133,46 @@ const Aquarium = () => {
         if (testTemperature(fishTank, fish) == true) {
           if (testPH(fishTank, fish) == true) {
             if (testFishSize(userList, fish, fishTank) == true) {
-              if(testFishAggression(userList, fish, fishTank) == true)
-              {
-                //calculates tank capacity occupied
-                fishTank.capacity = fishTank.capacity + (1 - (fishTank.size - fish.averageSize) / fishTank.size) * 100;
-                setTankCapacity(Math.round(fishTank.capacity));
+              testFishAggression(userList, fish);
+              //calculates tank capacity occupied
+              fishTank.capacity =
+                fishTank.capacity +
+                (1 - (fishTank.size - fish.averageSize) / fishTank.size) * 100;
+              setTankCapacity(Math.round(fishTank.capacity));
 
-                userList.push(fish);
+              userList.push(fish);
 
-                setUserList(userList);
-                setFishTank(fishTank);
-                sessionStorage.setItem("tank", JSON.stringify(fishTank));
+              setUserList(userList);
+              setFishTank(fishTank);
+              sessionStorage.setItem("tank", JSON.stringify(fishTank));
 
-                sessionStorage.setItem("fishNames", JSON.stringify(userList));
-                arrFish = JSON.parse(sessionStorage.getItem("fishNames"));
+              sessionStorage.setItem("fishNames", JSON.stringify(userList));
+              arrFish = JSON.parse(sessionStorage.getItem("fishNames"));
 
-                setMessage(
-                  "Added: " + fishNameChange(fish.commonName, fish.scientificName)
-                );
-                //add fish image to tank
-                let aquariumImg = document.getElementById("aquarium");
-                var $img = $("<img />", {
-                  src: require("./images/" + fish.image),
-                  id: fish.fishKey,
-                });
+              setMessage(
+                "Added: " + fishNameChange(fish.commonName, fish.scientificName)
+              );
+              //add fish image to tank
+              let aquariumImg = document.getElementById("aquarium");
+              var $img = $("<img />", {
+                src: require("./images/" + fish.image),
+                id: fish.fishKey,
+              });
 
-                //check the fish's location in the tank and add the appropriate class
-                if (fish.locationTank == "Top levels") {
-                  $img.addClass("aquariumFish");
-                } else if (fish.locationTank == "Middle levels") {
-                  $img.addClass("aquariumFishMiddle");
-                } else if (fish.locationTank == "Bottom levels") {
-                  $img.addClass("aquariumFishBottom");
-                }
-
-                $img.addClass("fishAnimAquarium");
-
-                $($img).insertAfter(aquariumImg);
-
-                toggleShowA();
+              //check the fish's location in the tank and add the appropriate class
+              if (fish.locationTank == "Top levels") {
+                $img.addClass("aquariumFish");
+              } else if (fish.locationTank == "Middle levels") {
+                $img.addClass("aquariumFishMiddle");
+              } else if (fish.locationTank == "Bottom levels") {
+                $img.addClass("aquariumFishBottom");
               }
-              else
-              {
-                setMessage("Fish Aggression issue");
-                toggleShowA();                
-              }
-              
+
+              $img.addClass("fishAnimAquarium");
+
+              $($img).insertAfter(aquariumImg);
+
+              toggleShowA();
             } else {
               setMessage("Fish size is invalid");
               toggleShowA();
@@ -334,7 +327,7 @@ const Aquarium = () => {
     key1 = id.toString() + "_" + ms;
     // console.log(id);
     // key1 = id;
-    //console.log(key1);
+    console.log(key1);
 
     // return id;
   }
@@ -391,7 +384,7 @@ const Aquarium = () => {
                 placeholder="Length"
                 required
                 value={inputLength}
-                onChange={(e) => setLength(e.target.value) }
+                onChange={(e) => setLength(e.target.value)}
               />
             </div>
             <div className="inlineblock">

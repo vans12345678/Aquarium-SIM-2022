@@ -58,7 +58,6 @@ const Aquarium = () => {
     getUserList();
     getFishTank();
     renderFish();
-    setTankCapacity(Math.round(fishTank.capacity));
   }, []);
 
   let [userList, setUserList] = useState([]);
@@ -134,7 +133,7 @@ const Aquarium = () => {
         if (testTemperature(fishTank, fish) == true) {
           if (testPH(fishTank, fish) == true) {
             if (testFishSize(userList, fish, fishTank) == true) {
-              if(testFishAggression(userList, fish, fishTank) == true)
+              if(testFishAggression(userList, fish) == true)
               {
                 //calculates tank capacity occupied
                 fishTank.capacity = fishTank.capacity + (1 - (fishTank.size - fish.averageSize) / fishTank.size) * 100;
@@ -391,7 +390,7 @@ const Aquarium = () => {
                 placeholder="Length"
                 required
                 value={inputLength}
-                onChange={(e) => setLength(e.target.value) }
+                onChange={(e) => setLength(e.target.value)}
               />
             </div>
             <div className="inlineblock">
