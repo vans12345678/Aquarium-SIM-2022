@@ -17,9 +17,8 @@ const FishInfoModal = (props) => {
 
       <Modal size="lg" show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>{props.commonName} Information</Modal.Title>
+          <Modal.Title>Modal heading</Modal.Title>
         </Modal.Header>
-
         <Modal.Body>
           <Table
             striped

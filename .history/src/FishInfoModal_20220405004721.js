@@ -15,11 +15,10 @@ const FishInfoModal = (props) => {
         Fish Info
       </Button>
 
-      <Modal size="lg" show={show} onHide={handleClose}>
+      <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>{props.commonName} Information</Modal.Title>
+          <Modal.Title>Modal heading</Modal.Title>
         </Modal.Header>
-
         <Modal.Body>
           <Table
             striped
@@ -67,9 +66,24 @@ const FishInfoModal = (props) => {
               </tr>
             </tbody>
           </Table>
+          <p>Scientific Name: {props.scientificName}</p>
+          <p>Common Name: {props.commonName}</p>
+          <p>Lower Ph: {props.lowerPH}</p>
+          <p>Upper Ph: {props.upperPH}</p>
+          <p>Rec. Temp Low: {props.lowerTemp}</p>
+          <p>Rec. Temp Upper: {props.upperTemp}</p>
+          <p>Aggression to Other Species: {props.aggressiveOtherSpecies}</p>
+          <p>Aggression to Same Species: {props.aggressiveSameSpecies}</p>
         </Modal.Body>
 
-        <Modal.Footer></Modal.Footer>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleClose}>
+            Close
+          </Button>
+          <Button variant="primary" onClick={handleClose}>
+            Save Changes
+          </Button>
+        </Modal.Footer>
       </Modal>
     </>
   );

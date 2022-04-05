@@ -19,7 +19,6 @@ const FishInfoModal = (props) => {
         <Modal.Header closeButton>
           <Modal.Title>{props.commonName} Information</Modal.Title>
         </Modal.Header>
-
         <Modal.Body>
           <Table
             striped

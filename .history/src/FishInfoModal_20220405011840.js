@@ -19,7 +19,7 @@ const FishInfoModal = (props) => {
         <Modal.Header closeButton>
           <Modal.Title>{props.commonName} Information</Modal.Title>
         </Modal.Header>
-
+        <img src="./images/" alt="" />
         <Modal.Body>
           <Table
             striped

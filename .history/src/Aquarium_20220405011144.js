@@ -507,8 +507,10 @@ const Aquarium = () => {
                           upperPH={item.fishUpperPH}
                           lowerTemp={item.fishLowerTemp}
                           upperTemp={item.fishUpperTemp}
-                          aggressiveSameSpecies={item.fishAggrSameSpecies}
-                          aggressiveOtherSpecies={item.fishAggrOtherSpecies}
+                          aggressiveSameSpecies={item.fishAggressiveSameSpecies}
+                          aggressiveOtherSpecies={
+                            item.fishAggressiveOtherSpecies
+                          }
                           fishLocationTank={item.fishLocationTank}
                         />
                         <Button

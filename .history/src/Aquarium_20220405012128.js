@@ -555,6 +555,7 @@ const Aquarium = () => {
                           aggressiveSameSpecies={item.aggressiveSameSpecies}
                           aggressiveOtherSpecies={item.aggressiveOtherSpecies}
                           fishLocationTank={item.locationTank}
+                          image={item.fishImage}
                         />
                         <Button
                           className="listBtn"

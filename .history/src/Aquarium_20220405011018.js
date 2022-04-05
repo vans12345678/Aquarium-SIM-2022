@@ -500,16 +500,16 @@ const Aquarium = () => {
                           item.fishScientificName
                         )}
                         <FishInfoModal
-                          scientificName={item.fishScientificName}
-                          commonName={item.fishCommonName}
-                          fishAverageSize={item.fishAverageSize}
-                          lowerPH={item.fishLowerPH}
-                          upperPH={item.fishUpperPH}
-                          lowerTemp={item.fishLowerTemp}
-                          upperTemp={item.fishUpperTemp}
-                          aggressiveSameSpecies={item.fishAggrSameSpecies}
-                          aggressiveOtherSpecies={item.fishAggrOtherSpecies}
-                          fishLocationTank={item.fishLocationTank}
+                          scientificName={item.scientificName}
+                          commonName={item.commonName}
+                          fishAverageSize={item.averageSize}
+                          lowerPH={item.lowerPH}
+                          upperPH={item.upperPH}
+                          lowerTemp={item.lowerTemp}
+                          upperTemp={item.upperTemp}
+                          aggressiveSameSpecies={item.aggressiveSameSpecies}
+                          aggressiveOtherSpecies={item.aggressiveOtherSpecies}
+                          fishLocationTank={item.locationTank}
                         />
                         <Button
                           className="listBtn addBtn"
