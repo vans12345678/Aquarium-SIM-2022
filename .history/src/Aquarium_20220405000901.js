@@ -13,7 +13,6 @@ import { ProgressBar } from "react-bootstrap";
 import ToastContainer from "react-bootstrap/ToastContainer";
 import Alert from "react-bootstrap/Alert";
 import TankStats from "./TankStats";
-import FishInfoModal from "./FishInfoModal";
 import {
   testTankSize,
   testTemperature,
@@ -177,7 +176,7 @@ const Aquarium = () => {
 
               $img.addClass("fishAnimAquarium");
 
-              //////////////////SETS THE FISH ANIMATION DELAY TO A RANDOM NUMBER
+              //////////////////
 
               $($img).insertAfter(aquariumImg);
               var animationDuration = 30;
@@ -192,6 +191,8 @@ const Aquarium = () => {
               })();
 
               /////////////////
+
+              // $($img).insertAfter(aquariumImg);
 
               toggleShowA();
             } else {
@@ -532,7 +533,6 @@ const Aquarium = () => {
                           alt=""
                         />
                         {fishNameChange(item.commonName, item.scientificName)}
-                        <FishInfoModal />
                         <Button
                           className="listBtn"
                           variant="warning"

@@ -509,7 +509,7 @@ button{
 .aquariumFish{
   position :absolute; 
  top: 5%;
-  left: 9%;
+  left: 0%;
   width: 10%;
   /* height: 2%; */
   z-index: 2;
@@ -539,9 +539,7 @@ button{
   top: 0;
 }
 
-:root{
-  --animation-delay: -2s ;
-}
+
 
 @keyframes aquariumFish {
 
@@ -608,7 +606,6 @@ button{
 
 .fishAnimAquarium {
   animation-name: aquariumFish ;
-  animation-delay: var(--animation-delay);
   animation-duration: 30s;
     animation-iteration-count: infinite;
   animation-timing-function: linear;

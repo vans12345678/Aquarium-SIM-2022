@@ -532,7 +532,7 @@ const Aquarium = () => {
                           alt=""
                         />
                         {fishNameChange(item.commonName, item.scientificName)}
-                        <FishInfoModal />
+                        <FishInfoModal {item}/>
                         <Button
                           className="listBtn"
                           variant="warning"

@@ -12,8 +12,6 @@ import Toast from "react-bootstrap/Toast";
 import { ProgressBar } from "react-bootstrap";
 import ToastContainer from "react-bootstrap/ToastContainer";
 import Alert from "react-bootstrap/Alert";
-import TankStats from "./TankStats";
-import FishInfoModal from "./FishInfoModal";
 import {
   testTankSize,
   testTemperature,
@@ -66,7 +64,7 @@ const Aquarium = () => {
     new Tank(inputLength, inputWidth, inputHeight, 0, 0, 0, 0, 0, 0, 0)
   );
 
-  let arrFish = [];
+  let arrFish = "";
   let tempTank = new Tank(0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
 
   const setTankDimensions = () => {
@@ -86,8 +84,8 @@ const Aquarium = () => {
     //add fish image to tank
     let aquariumImg = document.getElementById("aquarium");
     console.log(userList);
-    arrFish.forEach((fish) => {
-      // console.log(fish);
+    userList.forEach((fish) => {
+      console.log(fish.commonName);
       var $img = $("<img />", {
         src: require("./images/" + fish.image),
         id: fish.fishKey,
@@ -103,18 +101,8 @@ const Aquarium = () => {
       }
 
       $img.addClass("fishAnimAquarium");
-      //////////////////
-      var elements = document.querySelectorAll(".fishAnimAquarium");
-      var animationDuration = 30000; // in milliseconds
 
-      // Set the animationDelay of each element to a random value
-      // between 0 and animationDuration:
-      for (var i = 0; i < elements.length; i++) {
-        var randomDuration = Math.floor(Math.random() * animationDuration * -1);
-        elements[i].style.animationDelay = randomDuration + "ms";
-      }
       $($img).insertAfter(aquariumImg);
-      /////////////////
     });
   };
 
@@ -177,21 +165,7 @@ const Aquarium = () => {
 
               $img.addClass("fishAnimAquarium");
 
-              //////////////////SETS THE FISH ANIMATION DELAY TO A RANDOM NUMBER
-
               $($img).insertAfter(aquariumImg);
-              var animationDuration = 30;
-              var randomDuration = Math.floor(
-                Math.random() * animationDuration * -1
-              );
-
-              (function () {
-                document
-                  .getElementById(fish.fishKey)
-                  .style.setProperty("--animation-delay", randomDuration + "s");
-              })();
-
-              /////////////////
 
               toggleShowA();
             } else {
@@ -322,10 +296,6 @@ const Aquarium = () => {
   }
 
   function clearSession() {
-    userList.forEach((element) => {
-      $("#" + element.fishKey).remove();
-    });
-
     userList = [];
     fishTank = new Tank(0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
 
@@ -334,8 +304,6 @@ const Aquarium = () => {
 
     sessionStorage.setItem("fishNames", JSON.stringify(userList));
     sessionStorage.setItem("tank", JSON.stringify(fishTank));
-
-    setTankCapacity(Math.round(fishTank.capacity));
   }
 
   function getKey(id) {
@@ -532,7 +500,6 @@ const Aquarium = () => {
                           alt=""
                         />
                         {fishNameChange(item.commonName, item.scientificName)}
-                        <FishInfoModal />
                         <Button
                           className="listBtn"
                           variant="warning"
@@ -563,7 +530,6 @@ const Aquarium = () => {
         <br />
         <br />
       </section>
-      <TankStats />
     </div>
   );
 };

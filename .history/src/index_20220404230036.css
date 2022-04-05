@@ -540,7 +540,7 @@ button{
 }
 
 :root{
-  --animation-delay: -2s ;
+  --animation-delay: 4s ;
 }
 
 @keyframes aquariumFish {
@@ -608,7 +608,6 @@ button{
 
 .fishAnimAquarium {
   animation-name: aquariumFish ;
-  animation-delay: var(--animation-delay);
   animation-duration: 30s;
     animation-iteration-count: infinite;
   animation-timing-function: linear;

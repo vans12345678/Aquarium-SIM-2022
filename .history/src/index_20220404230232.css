@@ -608,7 +608,7 @@ button{
 
 .fishAnimAquarium {
   animation-name: aquariumFish ;
-  animation-delay: var(--animation-delay);
+  animation: var(--animation-delay);
   animation-duration: 30s;
     animation-iteration-count: infinite;
   animation-timing-function: linear;
