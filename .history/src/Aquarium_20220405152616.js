@@ -82,7 +82,7 @@ const Aquarium = () => {
           (parseInt(inputLength) * parseInt(inputWidth) * parseInt(inputHeight)) /
             1000
         );
-        //updateTankCapacity(userList);
+        updateTankCapacity(userList);
         sessionStorage.setItem("tank", JSON.stringify(fishTank));
       }
     }
@@ -98,7 +98,7 @@ const Aquarium = () => {
       setFishTank(fishTank);
       sessionStorage.setItem("tank", JSON.stringify(fishTank));
       setTankCapacity(Math.round(fishTank.capacity));
-  })
+  }
 }
 
   const renderFish = () => {

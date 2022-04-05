@@ -92,14 +92,14 @@ const Aquarium = () => {
     let tempCapacity = 0; 
     fishTank.capacity = 0;
     userList.forEach(element => {
-      fishTank.capacity =
-        fishTank.capacity +
-        (1 - (fishTank.size - element.averageSize) / fishTank.size) * 100;
-      setFishTank(fishTank);
-      sessionStorage.setItem("tank", JSON.stringify(fishTank));
-      setTankCapacity(Math.round(fishTank.capacity));
-  })
-}
+       //calculates tank capacity occupied
+    tempCapacity =
+    tempCapacity +
+    (1 - (fishTank.size - element.averageSize) / fishTank.size) * 100;
+    });  
+    fishTank.capacity = tempCapacity;
+    setTankCapacity(Math.round(tempCapacity));
+  }
 
   const renderFish = () => {
     //add fish image to tank

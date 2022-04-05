@@ -72,6 +72,7 @@ const Aquarium = () => {
 
   const setTankDimensions = () => {
 
+    setTimeout(50);
     if (testTankSize(inputLength, inputWidth, inputHeight) == true) {
       if(parseInt(inputLength) != fishTank.length || parseInt(inputWidth) != fishTank.width || parseInt(inputHeight) != fishTank.height)
       {
@@ -82,7 +83,7 @@ const Aquarium = () => {
           (parseInt(inputLength) * parseInt(inputWidth) * parseInt(inputHeight)) /
             1000
         );
-        //updateTankCapacity(userList);
+        updateTankCapacity(userList);
         sessionStorage.setItem("tank", JSON.stringify(fishTank));
       }
     }
@@ -90,16 +91,15 @@ const Aquarium = () => {
 
   const updateTankCapacity = (userList) => {
     let tempCapacity = 0; 
-    fishTank.capacity = 0;
     userList.forEach(element => {
-      fishTank.capacity =
-        fishTank.capacity +
-        (1 - (fishTank.size - element.averageSize) / fishTank.size) * 100;
-      setFishTank(fishTank);
-      sessionStorage.setItem("tank", JSON.stringify(fishTank));
-      setTankCapacity(Math.round(fishTank.capacity));
-  })
-}
+       //calculates tank capacity occupied
+    tempCapacity =
+    tempCapacity +
+    (1 - (fishTank.size - element.averageSize) / fishTank.size) * 100;
+    });  
+    fishTank.capacity = tempCapacity;
+    setTankCapacity(Math.round(tempCapacity));
+  }
 
   const renderFish = () => {
     //add fish image to tank

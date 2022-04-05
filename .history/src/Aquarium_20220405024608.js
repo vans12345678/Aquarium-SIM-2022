@@ -25,7 +25,6 @@ import { Tank } from "./classes/Tank";
 import { faUserLock } from "@fortawesome/free-solid-svg-icons";
 import $ from "jquery";
 import pearlGourami from "./images/pearl-gourami.png";
-
 // import { json } from "body-parser";
 var key1;
 const Aquarium = () => {
@@ -71,35 +70,17 @@ const Aquarium = () => {
   let tempTank = new Tank(0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
 
   const setTankDimensions = () => {
-
     if (testTankSize(inputLength, inputWidth, inputHeight) == true) {
-      if(parseInt(inputLength) != fishTank.length || parseInt(inputWidth) != fishTank.width || parseInt(inputHeight) != fishTank.height)
-      {
-        fishTank.length = parseInt(inputLength);
-        fishTank.width = parseInt(inputWidth);
-        fishTank.height = parseInt(inputHeight);
-        fishTank.size = Math.round(
-          (parseInt(inputLength) * parseInt(inputWidth) * parseInt(inputHeight)) /
-            1000
-        );
-        //updateTankCapacity(userList);
-        sessionStorage.setItem("tank", JSON.stringify(fishTank));
-      }
+      fishTank.length = parseInt(inputLength);
+      fishTank.width = parseInt(inputWidth);
+      fishTank.height = parseInt(inputHeight);
+      fishTank.size = Math.round(
+        (parseInt(inputLength) * parseInt(inputWidth) * parseInt(inputHeight)) /
+          1000
+      );
+      sessionStorage.setItem("tank", JSON.stringify(fishTank));
     }
   };
-
-  const updateTankCapacity = (userList) => {
-    let tempCapacity = 0; 
-    fishTank.capacity = 0;
-    userList.forEach(element => {
-      fishTank.capacity =
-        fishTank.capacity +
-        (1 - (fishTank.size - element.averageSize) / fishTank.size) * 100;
-      setFishTank(fishTank);
-      sessionStorage.setItem("tank", JSON.stringify(fishTank));
-      setTankCapacity(Math.round(fishTank.capacity));
-  })
-}
 
   const renderFish = () => {
     //add fish image to tank
@@ -194,6 +175,10 @@ const Aquarium = () => {
                 $img.addClass("aquariumFishBottom");
               }
 
+              if (((fish.averageSize/maxDimension)*40)   ){
+                
+              }
+
               $img.addClass("fishAnimAquarium");
 
               //////////////////SETS THE FISH ANIMATION DELAY TO A RANDOM NUMBER
@@ -203,7 +188,7 @@ const Aquarium = () => {
               var maxDimension = Math.max(fishTank.length, fishTank.width);
               document.getElementById(fish.fishKey).style.width=((fish.averageSize/maxDimension)*40).toString()+"%";
               // document.getElementById(fish.fishKey).style.width="100%";
-              console.log(((fish.averageSize/maxDimension)*40).toString()+"%");
+              console.log(((fish.averageSize/maxDimension)*100).toString()+"%");
               console.log(document.getElementById(fish.fishKey).style.width);
 
               var animationDuration = 30;
@@ -417,7 +402,7 @@ const Aquarium = () => {
         <AlertDismissible />
         <div className="aquariumCols">
           <form
-            action={setTankDimensions(inputLength, inputWidth, inputHeight)}
+            action={setTankDimensions(inputLength, inputWidth, inputHeight, userList)}
           >
             <div className="inlineblock">
               <label htmlFor="lengthInput">length (cm)</label>
