@@ -186,7 +186,8 @@ export const testFishAggression = (userList, newFish, tank) =>
         {
           console.log("new fish (aggressive to smaller) is smaller than fishes in tank, meaning it won't be aggressive to others");
           flag = true;
-        }  
+        }
+        
         else
         {
           console.log("new fish (aggressive to smaller) is not smaller than fishes in tank, meaning it will be aggressive to others");
