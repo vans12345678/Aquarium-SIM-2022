@@ -458,7 +458,7 @@ const Aquarium = () => {
                 }}
                 onKeyPress={(event) => {
                   if (event.key === "Enter") {
-                    event.preventDefault();
+                    //event.preventDefault();
                     console.log("Click");
                     searchFishAll();
                   }

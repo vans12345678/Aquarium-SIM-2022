@@ -68,6 +68,12 @@ const Aquarium = () => {
   let tempTank = new Tank(0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
 
   const setTankDimensions = () => {
+    for (let i =0; i< userList.length; i++)
+    {
+      fishTank.capacity = fishTank.capacity +
+      (1 - (fishTank.size - userList[i].averageSize) / fishTank.size) * 100;
+    setTankCapacity(Math.round(fishTank.capacity));
+    }
     if (testTankSize(inputLength, inputWidth, inputHeight) == true) {
       fishTank.length = parseInt(inputLength);
       fishTank.width = parseInt(inputWidth);

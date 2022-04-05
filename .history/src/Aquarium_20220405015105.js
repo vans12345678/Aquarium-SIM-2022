@@ -76,6 +76,12 @@ const Aquarium = () => {
         (parseInt(inputLength) * parseInt(inputWidth) * parseInt(inputHeight)) /
           1000
       );
+      for (let i =0; i< userList.length; i++)
+      {
+        fishTank.capacity = fishTank.capacity +
+        (1 - (fishTank.size - userList[i].averageSize) / fishTank.size) * 100;
+      setTankCapacity(Math.round(fishTank.capacity));
+      }
       sessionStorage.setItem("tank", JSON.stringify(fishTank));
     }
   };

@@ -160,6 +160,7 @@ const Aquarium = () => {
               //check the fish's location in the tank and add the appropriate class
               if (fish.locationTank == "Top levels") {
                 $img.addClass("aquariumFish");
+                aquariumImg.style.top = "\""+(Math.floor(Math.random() * 10) + 1).toString()+"%\"";
               } else if (fish.locationTank == "Middle levels") {
                 $img.addClass("aquariumFishMiddle");
               } else if (fish.locationTank == "Bottom levels") {
@@ -168,13 +169,8 @@ const Aquarium = () => {
 
               $img.addClass("fishAnimAquarium");
 
+
               $($img).insertAfter(aquariumImg);
-                           
-              var maxDimension = Math.max(fishTank.length, fishTank.width);
-              document.getElementById(fish.fishKey).style.width=((fish.averageSize/maxDimension)*40).toString()+"%";
-              // document.getElementById(fish.fishKey).style.width="100%";
-              console.log(((fish.averageSize/maxDimension)*100).toString()+"%");
-              console.log(document.getElementById(fish.fishKey).style.width);
 
               toggleShowA();
             } else {
@@ -377,7 +373,7 @@ const Aquarium = () => {
         <AlertDismissible />
         <div className="aquariumCols">
           <form
-            action={setTankDimensions(inputLength, inputWidth, inputHeight, userList)}
+            action={setTankDimensions(inputLength, inputWidth, inputHeight)}
           >
             <div className="inlineblock">
               <label htmlFor="lengthInput">length (cm)</label>

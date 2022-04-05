@@ -526,7 +526,7 @@ button{
 
 .aquariumFishBottom{
   position :absolute; 
- top: 75%;
+ top: 85%;
   left: 7%;
   width: 10%;
   /* height: 2%; */
@@ -594,7 +594,7 @@ button{
      100% {
        
        /* margin-left: -20%; */
-         left: 75%;
+         left: 90%;
          transform:rotateY(180deg);
         /* transform: translateX(100vw); */
        transform: rotate(10deg) ; 
