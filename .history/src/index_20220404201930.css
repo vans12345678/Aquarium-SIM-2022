@@ -509,7 +509,7 @@ button{
 .aquariumFish{
   position :absolute; 
  top: 5%;
-  left: 9%;
+  left: 90%;
   width: 10%;
   /* height: 2%; */
   z-index: 2;
@@ -526,7 +526,7 @@ button{
 
 .aquariumFishBottom{
   position :absolute; 
- top: 75%;
+ top: 85%;
   left: 7%;
   width: 10%;
   /* height: 2%; */
@@ -539,9 +539,7 @@ button{
   top: 0;
 }
 
-:root{
-  --animation-delay: -2s ;
-}
+
 
 @keyframes aquariumFish {
 
@@ -550,7 +548,7 @@ button{
 
      0% {
        /* margin-left:99%; */
-       left: 75%;
+       left: 90%;
         /* transform: translateX(0px); */
       transform: rotate(10deg);
      }
@@ -596,7 +594,7 @@ button{
      100% {
        
        /* margin-left: -20%; */
-         left: 75%;
+         left: 90%;
          transform:rotateY(180deg);
         /* transform: translateX(100vw); */
        transform: rotate(10deg) ; 
@@ -608,7 +606,6 @@ button{
 
 .fishAnimAquarium {
   animation-name: aquariumFish ;
-  animation-delay: var(--animation-delay);
   animation-duration: 30s;
     animation-iteration-count: infinite;
   animation-timing-function: linear;

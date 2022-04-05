@@ -14,7 +14,6 @@ import ToastContainer from "react-bootstrap/ToastContainer";
 import Alert from "react-bootstrap/Alert";
 import TankStats from "./TankStats";
 import FishInfoModal from "./FishInfoModal";
-
 import {
   testTankSize,
   testTemperature,
@@ -178,14 +177,9 @@ const Aquarium = () => {
 
               $img.addClass("fishAnimAquarium");
 
-              $($img).insertAfter(aquariumImg);
-                           
-              document.getElementById(fish.fishKey).style.width=((fish.averageSize/Math.Max(fishTank.length, fishTank.width,fishTank.Height))*80).toString()+"%";
-              // document.getElementById(fish.fishKey).style.width="100%";
-              console.log(((fish.averageSize/fishTank.length)*100).toString()+"%");
-              console.log(document.getElementById(fish.fishKey).style.width);
               //////////////////SETS THE FISH ANIMATION DELAY TO A RANDOM NUMBER
 
+              $($img).insertAfter(aquariumImg);
               var animationDuration = 30;
               var randomDuration = Math.floor(
                 Math.random() * animationDuration * -1
@@ -328,7 +322,6 @@ const Aquarium = () => {
   }
 
   function clearSession() {
-
     userList.forEach((element) => {
       $("#" + element.fishKey).remove();
     });
