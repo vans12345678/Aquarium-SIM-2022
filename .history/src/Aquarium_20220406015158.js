@@ -149,11 +149,14 @@ const Aquarium = () => {
             ((element.averageSize / maxDimension) * 40).toString() + "%";
           console.log(element.fishScale);
           }
+          setTankCapacity(Math.round(tempCapacity));
           sessionStorage.setItem("fishNames", JSON.stringify(userList));
           sessionStorage.setItem("tank", JSON.stringify(fishTank));
-        });       
-        fishTank.capacity = tempCapacity;
-        setTankCapacity(Math.round(fishTank.capacity));
+        });
+        if (tempCapacity < 100)
+        {        
+          fishTank.capacity = tempCapacity;
+        }
 
   };
 

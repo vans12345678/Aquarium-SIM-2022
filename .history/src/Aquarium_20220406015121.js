@@ -151,9 +151,12 @@ const Aquarium = () => {
           }
           sessionStorage.setItem("fishNames", JSON.stringify(userList));
           sessionStorage.setItem("tank", JSON.stringify(fishTank));
-        });       
-        fishTank.capacity = tempCapacity;
-        setTankCapacity(Math.round(fishTank.capacity));
+        });
+        if (tempCapacity < 100)
+        {        
+          fishTank.capacity = tempCapacity;
+        }
+        setTankCapacity(Math.round(tempCapacity));
 
   };
 
