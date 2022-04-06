@@ -136,7 +136,11 @@ const Aquarium = () => {
 
   const updateTankCapacity = (userList) => {
     var tempCapacity = 0;
-    var maxDimension = (fishTank.length + fishTank.width + fishTank.height)/3;
+    var maxDimension = Math.max(
+      fishTank.length,
+      fishTank.width,
+      fishTank.height
+    );
     userList.forEach((element) => {
       tempCapacity =
         tempCapacity +
@@ -189,13 +193,13 @@ const Aquarium = () => {
         // doesn't move
         $img.addClass("fishAnimAquariumXLarge");
       } else if (
-        (fish.averageSize / maxDimension) * 40 <= 50 &&
+        (fish.averageSize / maxDimension) * 40 < 50 &&
         (fish.averageSize / maxDimension) * 40 > 20
       ) {
         //Big fish animation
         $img.addClass("fishAnimAquariumLarge");
       } else if (
-        (fish.averageSize / maxDimension) * 40 <= 20 &&
+        (fish.averageSize / maxDimension) * 40 < 20 &&
         (fish.averageSize / maxDimension) * 40 > 10
       ) {
         //medium fish animation
@@ -299,13 +303,13 @@ const Aquarium = () => {
                   // doesn't move
                   $img.addClass("fishAnimAquariumXLarge");
                 } else if (
-                  (fish.averageSize / maxDimension) * 40 <= 50 &&
+                  (fish.averageSize / maxDimension) * 40 < 50 &&
                   (fish.averageSize / maxDimension) * 40 > 20
                 ) {
                   //Big fish animation
                   $img.addClass("fishAnimAquariumLarge");
                 } else if (
-                  (fish.averageSize / maxDimension) * 40 <= 20 &&
+                  (fish.averageSize / maxDimension) * 40 < 20 &&
                   (fish.averageSize / maxDimension) * 40 > 10
                 ) {
                   //medium fish animation
