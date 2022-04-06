@@ -70,6 +70,31 @@ const Aquarium = () => {
   let arrFish = [];
   let tempTank = new Tank(0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
 
+  const [count, setCount] = useState({
+    prev: 0,
+    next: 10,
+  });
+  const [hasMore, setHasMore] = useState(true);
+  const [current, setCurrent] = useState(
+    fishList.slice(count.prev, count.next)
+  );
+  const getMoreData = () => {
+    if (current.length === fishList.length) {
+      console.log(fishList.length);
+      setHasMore(false);
+      return;
+    }
+    setTimeout(() => {
+      setCurrent(
+        current.concat(fishList.slice(count.prev + 10, count.next + 10))
+      );
+    }, 2000);
+    setCount((prevState) => ({
+      prev: prevState.prev + 10,
+      next: prevState.next + 10,
+    }));
+  };
+
   const setTankDimensions = () => {
     if (testTankSize(inputLength, inputWidth, inputHeight) == true) {
       if (
@@ -371,7 +396,7 @@ const Aquarium = () => {
   }
 
   const getUserList = () => {
-    if (sessionStorage.length > 1) {
+    if (sessionStorage.length > 0) {
       arrFish = JSON.parse(sessionStorage.getItem("fishNames"));
       setUserList(arrFish);
     }
@@ -605,20 +630,20 @@ const Aquarium = () => {
                 id="search"
                 type="search"
                 placeholder="Ex. Betta splendens"
-                onBlur={(event) => {
-                  // console.log(event.target.value);
-                  setSearch(event.target.value);
-                }}
-                // onKeyDown={(event) => {
+                // onBlur={(event) => {
+                //   console.log(event.target.value);
                 //   setSearch(event.target.value);
-                //   if (event.key === "Enter") {
-                //     // setSearch(event.target.value);
-                //     console.log(event.key);
-                //     // event.preventDefault();
-                //     console.log(event.target.value);
-                //     searchFishAll();
-                //   }
                 // }}
+                onKeyUp={(event) => {
+                  setSearch(event.target.value);
+                  if (event.key === "Enter") {
+                    // setSearch(event.target.value);
+                    console.log(event.key);
+                    // event.preventDefault();
+                    console.log(event.target.value);
+                    searchFishAll();
+                  }
+                }}
               />
 
               <br />
@@ -628,44 +653,51 @@ const Aquarium = () => {
             <div className="listStyle">
               <Card className="list" style={{ width: useWindowSize(0) }}>
                 <ListGroup variant="flush">
-                  {fishList.map((item) => {
-                    return (
-                      <ListGroup.Item key={item.fishID}>
-                        <img
-                          className="listImg"
-                          src={require("./images/" + item.fishImage)}
-                          width="100px"
-                          height="50px"
-                          alt=""
-                        />
-                        {fishNameChange(
-                          item.fishCommonName,
-                          item.fishScientificName
-                        )}
-                        <FishInfoModal
-                          scientificName={item.fishScientificName}
-                          commonName={item.fishCommonName}
-                          fishAverageSize={item.fishAverageSize}
-                          lowerPH={item.fishLowerPH}
-                          upperPH={item.fishUpperPH}
-                          lowerTemp={item.fishLowerTemp}
-                          upperTemp={item.fishUpperTemp}
-                          aggressiveSameSpecies={item.fishAggrSameSpecies}
-                          aggressiveOtherSpecies={item.fishAggrOtherSpecies}
-                          fishLocationTank={item.fishLocationTank}
-                        />
-                        <Button
-                          className="listBtn addBtn"
-                          variant="success"
-                          onClick={function () {
-                            addFish(item);
-                          }}
-                        >
-                          Add
-                        </Button>
-                      </ListGroup.Item>
-                    );
-                  })}
+                  <InfiniteScroll
+                    dataLength={current.length}
+                    next={getMoreData}
+                    hasMore={hasMore}
+                    loader={<h4>Loading...</h4>}
+                  >
+                    {fishList.map((item) => {
+                      return (
+                        <ListGroup.Item key={item.fishID}>
+                          <img
+                            className="listImg"
+                            src={require("./images/" + item.fishImage)}
+                            width="100px"
+                            height="50px"
+                            alt=""
+                          />
+                          {fishNameChange(
+                            item.fishCommonName,
+                            item.fishScientificName
+                          )}
+                          <FishInfoModal
+                            scientificName={item.fishScientificName}
+                            commonName={item.fishCommonName}
+                            fishAverageSize={item.fishAverageSize}
+                            lowerPH={item.fishLowerPH}
+                            upperPH={item.fishUpperPH}
+                            lowerTemp={item.fishLowerTemp}
+                            upperTemp={item.fishUpperTemp}
+                            aggressiveSameSpecies={item.fishAggrSameSpecies}
+                            aggressiveOtherSpecies={item.fishAggrOtherSpecies}
+                            fishLocationTank={item.fishLocationTank}
+                          />
+                          <Button
+                            className="listBtn addBtn"
+                            variant="success"
+                            onClick={function () {
+                              addFish(item);
+                            }}
+                          >
+                            Add
+                          </Button>
+                        </ListGroup.Item>
+                      );
+                    })}
+                  </InfiniteScroll>
                 </ListGroup>
               </Card>
 

@@ -528,7 +528,7 @@ const Aquarium = () => {
                 placeholder="Length"
                 required
                 value={inputLength}
-                onChange={(e) => setLength(e.target.value)}
+                onMouseMove={(e) => setLength(e.target.value)}
               />
             </div>
             <div className="inlineblock">
@@ -540,7 +540,7 @@ const Aquarium = () => {
                 placeholder="Width"
                 required
                 value={inputWidth}
-                onChange={(e) => setWidth(e.target.value)}
+                onMouseMove={(e) => setWidth(e.target.value)}
               />
             </div>
             <div className="inlineblock">
@@ -552,7 +552,7 @@ const Aquarium = () => {
                 placeholder="Height"
                 required
                 value={inputHeight}
-                onChange={(e) => setHeight(e.target.value)}
+                onMouseMove={(e) => setHeight(e.target.value)}
               />
             </div>
             <button

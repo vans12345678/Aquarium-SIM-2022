@@ -29,6 +29,30 @@ import $ from "jquery";
 // import { json } from "body-parser";
 var key1;
 const Aquarium = () => {
+  const [count, setCount] = useState({
+    prev: 0,
+    next: 10,
+  });
+  const [hasMore, setHasMore] = useState(true);
+  const [current, setCurrent] = useState(
+    fishList.slice(count.prev, count.next)
+  );
+  const getMoreData = () => {
+    if (current.length === fishList.length) {
+      setHasMore(false);
+      return;
+    }
+    setTimeout(() => {
+      setCurrent(
+        current.concat(fishList.slice(count.prev + 10, count.next + 10))
+      );
+    }, 2000);
+    setCount((prevState) => ({
+      prev: prevState.prev + 10,
+      next: prevState.next + 10,
+    }));
+  };
+
   //fish tank obj
   // let fishTank = new Tank(0, 0, 0, 0, 0, 0, 0);
   const [fishList, setFishList] = useState([]);
@@ -371,7 +395,7 @@ const Aquarium = () => {
   }
 
   const getUserList = () => {
-    if (sessionStorage.length > 1) {
+    if (sessionStorage.length > 0) {
       arrFish = JSON.parse(sessionStorage.getItem("fishNames"));
       setUserList(arrFish);
     }
@@ -605,20 +629,20 @@ const Aquarium = () => {
                 id="search"
                 type="search"
                 placeholder="Ex. Betta splendens"
-                onBlur={(event) => {
-                  // console.log(event.target.value);
-                  setSearch(event.target.value);
-                }}
-                // onKeyDown={(event) => {
+                // onBlur={(event) => {
+                //   console.log(event.target.value);
                 //   setSearch(event.target.value);
-                //   if (event.key === "Enter") {
-                //     // setSearch(event.target.value);
-                //     console.log(event.key);
-                //     // event.preventDefault();
-                //     console.log(event.target.value);
-                //     searchFishAll();
-                //   }
                 // }}
+                onKeyUp={(event) => {
+                  setSearch(event.target.value);
+                  if (event.key === "Enter") {
+                    // setSearch(event.target.value);
+                    console.log(event.key);
+                    // event.preventDefault();
+                    console.log(event.target.value);
+                    searchFishAll();
+                  }
+                }}
               />
 
               <br />

@@ -371,7 +371,7 @@ const Aquarium = () => {
   }
 
   const getUserList = () => {
-    if (sessionStorage.length > 1) {
+    if (sessionStorage.length > 0) {
       arrFish = JSON.parse(sessionStorage.getItem("fishNames"));
       setUserList(arrFish);
     }
@@ -594,7 +594,6 @@ const Aquarium = () => {
           <div className="">
             <div className="searchAquarium ">
               <button
-                id="searchBtn"
                 onClick={(event) => {
                   searchFishAll();
                 }}
@@ -606,21 +605,19 @@ const Aquarium = () => {
                 type="search"
                 placeholder="Ex. Betta splendens"
                 onBlur={(event) => {
-                  // console.log(event.target.value);
+                  console.log(event.target.value);
                   setSearch(event.target.value);
                 }}
-                // onKeyDown={(event) => {
-                //   setSearch(event.target.value);
-                //   if (event.key === "Enter") {
-                //     // setSearch(event.target.value);
-                //     console.log(event.key);
-                //     // event.preventDefault();
-                //     console.log(event.target.value);
-                //     searchFishAll();
-                //   }
-                // }}
-              />
+                onKeyUp={(event) => {
+                  if (event.key === "Enter") {
+                    setSearch(event.target.value);
 
+                    // event.preventDefault();
+                    console.log(event.target.value);
+                    searchFishAll();
+                  }
+                }}
+              />
               <br />
               <br />
               <br />

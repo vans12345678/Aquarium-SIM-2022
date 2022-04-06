@@ -552,7 +552,7 @@ const Aquarium = () => {
                 placeholder="Height"
                 required
                 value={inputHeight}
-                onChange={(e) => setHeight(e.target.value)}
+                onBlur={(e) => setHeight(e.target.value)}
               />
             </div>
             <button

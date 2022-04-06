@@ -605,20 +605,20 @@ const Aquarium = () => {
                 id="search"
                 type="search"
                 placeholder="Ex. Betta splendens"
-                onBlur={(event) => {
-                  // console.log(event.target.value);
-                  setSearch(event.target.value);
-                }}
-                // onKeyDown={(event) => {
+                // onBlur={(event) => {
+                //   // console.log(event.target.value);
                 //   setSearch(event.target.value);
-                //   if (event.key === "Enter") {
-                //     // setSearch(event.target.value);
-                //     console.log(event.key);
-                //     // event.preventDefault();
-                //     console.log(event.target.value);
-                //     searchFishAll();
-                //   }
                 // }}
+                onKeyUp={(event) => {
+                  if (event.key === "Enter") {
+                    setSearch(event.target.value);
+                    // setSearch(event.target.value);
+                    console.log(event.key);
+                    // event.preventDefault();
+                    console.log(event.target.value);
+                    searchFishAll();
+                  }
+                }}
               />
 
               <br />

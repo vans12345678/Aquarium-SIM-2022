@@ -523,36 +523,36 @@ const Aquarium = () => {
               <label htmlFor="lengthInput">length (cm)</label>
               <br />
               <input
-                type="number"
+                type="text"
                 id="lengthInput"
                 placeholder="Length"
                 required
                 value={inputLength}
-                onChange={(e) => setLength(e.target.value)}
+                onBlur={(e) => setLength(e.target.value)}
               />
             </div>
             <div className="inlineblock">
               <label htmlFor="widthInput">Width (cm)</label>
               <br />
               <input
-                type="number"
+                type="text"
                 id="widthInput"
                 placeholder="Width"
                 required
                 value={inputWidth}
-                onChange={(e) => setWidth(e.target.value)}
+                onBlur={(e) => setWidth(e.target.value)}
               />
             </div>
             <div className="inlineblock">
               <label htmlFor="inputHeight">Height (cm)</label>
               <br />
               <input
-                type="number"
+                type="text"
                 id="inputHeight"
                 placeholder="Height"
                 required
                 value={inputHeight}
-                onChange={(e) => setHeight(e.target.value)}
+                onBlur={(e) => setHeight(e.target.value)}
               />
             </div>
             <button

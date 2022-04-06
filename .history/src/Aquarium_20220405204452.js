@@ -609,16 +609,16 @@ const Aquarium = () => {
                   // console.log(event.target.value);
                   setSearch(event.target.value);
                 }}
-                // onKeyDown={(event) => {
-                //   setSearch(event.target.value);
-                //   if (event.key === "Enter") {
-                //     // setSearch(event.target.value);
-                //     console.log(event.key);
-                //     // event.preventDefault();
-                //     console.log(event.target.value);
-                //     searchFishAll();
-                //   }
-                // }}
+                onKeyDown={(event) => {
+                  if (event.key === "Enter") {
+                    setSearch(event.target.value);
+                    // setSearch(event.target.value);
+                    console.log(event.key);
+                    // event.preventDefault();
+                    console.log(event.target.value);
+                    searchFishAll();
+                  }
+                }}
               />
 
               <br />

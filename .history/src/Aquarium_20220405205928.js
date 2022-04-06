@@ -527,8 +527,9 @@ const Aquarium = () => {
                 id="lengthInput"
                 placeholder="Length"
                 required
+                defaultValue={inputLength}
                 value={inputLength}
-                onChange={(e) => setLength(e.target.value)}
+                onBlur={(e) => setLength(e.target.value)}
               />
             </div>
             <div className="inlineblock">
@@ -539,8 +540,9 @@ const Aquarium = () => {
                 id="widthInput"
                 placeholder="Width"
                 required
+                defaultValue={inputWidth}
                 value={inputWidth}
-                onChange={(e) => setWidth(e.target.value)}
+                onBlur={(e) => setWidth(e.target.value)}
               />
             </div>
             <div className="inlineblock">
@@ -551,8 +553,9 @@ const Aquarium = () => {
                 id="inputHeight"
                 placeholder="Height"
                 required
+                defaultValue={inputHeight}
                 value={inputHeight}
-                onChange={(e) => setHeight(e.target.value)}
+                onBlur={(e) => setHeight(e.target.value)}
               />
             </div>
             <button
