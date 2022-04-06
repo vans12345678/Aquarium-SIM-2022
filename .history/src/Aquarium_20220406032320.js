@@ -231,17 +231,9 @@ const Aquarium = () => {
       $($img).insertAfter(aquariumImg);
 
       document.getElementById(fish.fishKey).style.width = fish.fishScale;
-      var randomTop = Math.floor(Math.random() * (35 - 5 + 1) + 5);
-      var randomMid = Math.floor(Math.random() * (60 - 40 + 1) + 40);
-      var randomBot = Math.floor(Math.random() * (75 - 65 + 1) + 65);
 
-      if (fish.locationTank === "Top levels") {
-        document.getElementById(fish.fishKey).style.top = randomTop + "%";
-      } else if (fish.locationTank === "Middle levels") {
-        document.getElementById(fish.fishKey).style.top = randomMid + "%";
-      } else if (fish.locationTank === "Bottom levels") {
-        document.getElementById(fish.fishKey).style.top = randomBot + "%";
-      }
+      var randomTop = Math.floor(Math.random() * (75 - 5 + 1) + 5);
+      document.getElementById(fish.fishKey).style.top = randomTop + "%";
     });
   };
 
@@ -377,16 +369,15 @@ const Aquarium = () => {
                   var randomBot = Math.floor(
                     Math.random() * (75 - 65 + 1) + 65
                   );
+                  document.getElementById(fish.fishKey).style.top =
+                    randomTop + "%";
 
                   if (fish.locationTank === "Top levels") {
-                    document.getElementById(fish.fishKey).style.top =
-                      randomTop + "%";
+                    $img.addClass("aquariumFish");
                   } else if (fish.locationTank === "Middle levels") {
-                    document.getElementById(fish.fishKey).style.top =
-                      randomMid + "%";
+                    $img.addClass("aquariumFishMiddle");
                   } else if (fish.locationTank === "Bottom levels") {
-                    document.getElementById(fish.fishKey).style.top =
-                      randomBot + "%";
+                    $img.addClass("aquariumFishBottom");
                   }
                 })();
 
