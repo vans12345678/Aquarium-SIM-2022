@@ -1,7 +1,7 @@
 /*
 Name: Ashok Sasitharan 
 Student ID: 10075484
-Purpose: This component creates a modal that displays fish info when the button is clicked
+Purpose: This component creates an overlay that displays fish info when the button is clicked
 */
 import React, { useState, Component } from "react";
 import { Offcanvas, Table, Button, Modal } from "react-bootstrap";

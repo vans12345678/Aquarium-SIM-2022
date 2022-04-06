@@ -398,7 +398,7 @@ figcaption {
   z-index: 1;
   position: relative;
 
-  height: 750px;
+  height: 700px;
 }
 .alert {
   width:40%;    
@@ -504,7 +504,7 @@ button{
 }
 
 
-/*Aquarium Fish Images and Animations  */
+/*Aquarium Fish Images and Animations(TBD)   */
 
 .aquariumFish{
   position :absolute; 
@@ -643,7 +643,7 @@ button{
 
      0% {
        /* margin-left:99%; */
-       left: 65%;
+       left: 75%;
         /* transform: translateX(0px); */
       transform: rotate(10deg);
      }
@@ -681,7 +681,7 @@ button{
      }
      100% {
    
-         left: 65%;
+         left: 75%;
          transform:rotateY(180deg);
        transform: rotate(10deg) ; 
      }

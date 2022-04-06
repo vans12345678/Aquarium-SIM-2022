@@ -1,7 +1,7 @@
 /*
 Name: Ashok Sasitharan 
 Student ID: 10075484
-Purpose: This component creates a modal that displays fish info when the button is clicked
+Purpose: This component creates an overlay that displays fish info when the button is clicked
 */
 import React, { useState, Component } from "react";
 import { Offcanvas, Table, Button, Modal } from "react-bootstrap";
@@ -9,11 +9,10 @@ import wishlistIcon from "./images/wishlist.png";
 import { Fish } from "./classes/Tank";
 
 const FishInfoModal = (props) => {
-  //states
   const [show, setShow] = useState(false);
+
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-
   return (
     <>
       <Button className="listBtn" variant="primary" onClick={handleShow}>

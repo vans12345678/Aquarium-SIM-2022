@@ -2,6 +2,7 @@
 Name: Ashok Sasitharan 
 Student ID: 10075484
 Purpose: This component is a back to top button that takes the user back to the top of the page when clicked
+
 */
 import React, { useState } from "react";
 
@@ -19,7 +20,6 @@ const BackToTop = () => {
     }
   };
 
-  //set the scroll properties
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
@@ -27,7 +27,6 @@ const BackToTop = () => {
     });
   };
 
-  //create an event listener to toggle the visibility of the button
   window.addEventListener("scroll", toggleVisible);
 
   return (
