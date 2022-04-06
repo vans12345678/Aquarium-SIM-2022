@@ -4,12 +4,14 @@ Student ID: 10075484
 Purpose: This component is a button that creates an overlay with the stats of the tank
 */
 import React, { useState, Component } from "react";
+
 import { Offcanvas, Table } from "react-bootstrap";
 import wishlistIcon from "./images/wishlist.png";
 import { Tank } from "./classes/Tank";
 
 const TankStats = () => {
-  //states
+  // let arrFish = "";
+  // let [userList, setUserList] = useState([]);
   let [inputLength, setLength] = useState(0);
   let [inputWidth, setWidth] = useState(0);
   let [inputHeight, setHeight] = useState(0);
@@ -23,15 +25,25 @@ const TankStats = () => {
 
     //If tank session variable has stuff in it
     if (temp != null) {
-      //get the tank info from the session storage and call state functions
       tempTank = JSON.parse(sessionStorage.getItem("tank"));
       setFishTank(tempTank);
       setLength(tempTank.length);
       setWidth(tempTank.width);
       setHeight(tempTank.height);
       setTankCapacity(Math.round(tempTank.capacity));
+      // console.log("Fish tank present");
     }
   };
+
+  // function getKey(id) {
+  //   const d = new Date();
+  //   let ms = d.getMilliseconds();
+
+  //   id = id.toString() + "_" + ms;
+  //   console.log(id);
+
+  //   return id;
+  // }
 
   const [show, setShow] = useState(false);
 
@@ -60,6 +72,8 @@ const TankStats = () => {
           <Table striped bordered>
             <thead>
               <tr>
+                {/* this.upperTemp = upperTemp; this.lowerTemp = lowerTemp;
+                this.lowerPH = lowerPH; this.upperPH = upperPH; */}
                 <th>Tank Lower Temp</th>
                 <th>Tank Upper Temp</th>
               </tr>

@@ -145,21 +145,6 @@ const Aquarium = () => {
       tempCapacity =
         tempCapacity +
         (1 - (fishTank.size - element.averageSize) / fishTank.size) * 100;
-<<<<<<< HEAD
-          setFishTank(fishTank);
-          if (tempCapacity < 100)
-          {
-            element.fishScale =
-            ((element.averageSize / maxDimension) * 40).toString() + "%";
-          console.log(element.fishScale);
-          }
-          sessionStorage.setItem("fishNames", JSON.stringify(userList));
-          sessionStorage.setItem("tank", JSON.stringify(fishTank));
-        });       
-        fishTank.capacity = tempCapacity;
-        setTankCapacity(Math.round(fishTank.capacity));
-
-=======
       setFishTank(fishTank);
       if (tempCapacity < 100) {
         element.fishScale =
@@ -173,7 +158,6 @@ const Aquarium = () => {
       fishTank.capacity = tempCapacity;
       setTankCapacity(Math.round(fishTank.capacity));
     }
->>>>>>> ab2a2b1954eb685d1cf55e5473bc83c8f42df95d
   };
 
   const capacitySwitch = () => {

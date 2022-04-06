@@ -2,6 +2,7 @@
 Name: Ashok Sasitharan 
 Student ID: 10075484
 Purpose: This component is a back to top button that takes the user back to the top of the page when clicked
+
 */
 import React, { useState } from "react";
 
