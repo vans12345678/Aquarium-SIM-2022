@@ -1,16 +1,17 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 
 import React from "react";
-
+import ReactDOM from "react-dom";
 import aquarium from "./images/fishtank.png";
 import { ListGroup, Button, Card } from "react-bootstrap";
 import Axios from "axios";
 import { useState, useEffect, useLayoutEffect } from "react";
 import { Fish } from "./classes/Fish";
+import { FishBasic } from "./classes/FishBasic";
 import Toast from "react-bootstrap/Toast";
 import { ProgressBar } from "react-bootstrap";
 import ToastContainer from "react-bootstrap/ToastContainer";
-
+import Alert from "react-bootstrap/Alert";
 import TankStats from "./TankStats";
 import FishInfoModal from "./FishInfoModal";
 import {
@@ -18,12 +19,12 @@ import {
   testTemperature,
   testPH,
   testFishSize,
-  testFishAggression,
-  testCapacity
+  testCapacity,
 } from "./AquariumFunc";
 import { Tank } from "./classes/Tank";
-
+import { faUserLock } from "@fortawesome/free-solid-svg-icons";
 import $ from "jquery";
+import pearlGourami from "./images/pearl-gourami.png";
 
 // import { json } from "body-parser";
 var key1;
@@ -58,7 +59,10 @@ const Aquarium = () => {
     getFish();
     getUserList();
     getFishTank();
-    renderFish();
+    if(arrFish.length > 0)
+    {
+      renderFish();
+    }   
   }, []);
 
   let [userList, setUserList] = useState([]);
@@ -71,18 +75,13 @@ const Aquarium = () => {
 
   const setTankDimensions = () => {
     if (testTankSize(inputLength, inputWidth, inputHeight) == true) {
-      if (
-        parseInt(inputLength) != fishTank.length ||
-        parseInt(inputWidth) != fishTank.width ||
-        parseInt(inputHeight) != fishTank.height
-      ) {
+      if(parseInt(inputLength) != fishTank.length || parseInt(inputWidth) != fishTank.width || parseInt(inputHeight) != fishTank.height)
+      {
         fishTank.length = parseInt(inputLength);
         fishTank.width = parseInt(inputWidth);
         fishTank.height = parseInt(inputHeight);
         fishTank.size = Math.round(
-          (parseInt(inputLength) *
-            parseInt(inputWidth) *
-            parseInt(inputHeight)) /
+          (parseInt(inputLength) * parseInt(inputWidth) * parseInt(inputHeight)) /
             1000
         );
         sessionStorage.setItem("tank", JSON.stringify(fishTank));
@@ -91,15 +90,15 @@ const Aquarium = () => {
   };
 
   const updateTankDimensions = () => {
+
     if (testTankSize(inputLength, inputWidth, inputHeight) == true) {
-      if (parseInt(inputLength) != fishTank.length || parseInt(inputWidth) != fishTank.width || parseInt(inputHeight) != fishTank.height) {
+      if(parseInt(inputLength) != fishTank.length || parseInt(inputWidth) != fishTank.width || parseInt(inputHeight) != fishTank.height)
+      {
         fishTank.length = parseInt(inputLength);
         fishTank.width = parseInt(inputWidth);
         fishTank.height = parseInt(inputHeight);
         fishTank.size = Math.round(
-          (parseInt(inputLength) *
-            parseInt(inputWidth) *
-            parseInt(inputHeight)) /
+          (parseInt(inputLength) * parseInt(inputWidth) * parseInt(inputHeight)) /
             1000
         );
         updateTankCapacity(userList);
@@ -110,31 +109,27 @@ const Aquarium = () => {
 
   const updateTankCapacity = (userList) => {
     fishTank.capacity = 0;
-    userList.forEach((element) => {
+    userList.forEach(element => {
       fishTank.capacity =
         fishTank.capacity +
         (1 - (fishTank.size - element.averageSize) / fishTank.size) * 100;
       setFishTank(fishTank);
-      var maxDimension = Math.max(
-        fishTank.length,
-        fishTank.width,
-        fishTank.height
-      );
-      element.fishScale =
-        ((element.averageSize / maxDimension) * 40).toString() + "%";
+      var maxDimension = Math.max(fishTank.length, fishTank.width, fishTank.height);
+      element.fishScale = (((element.averageSize/maxDimension)*40).toString()+"%");
       console.log(element.fishScale);
       sessionStorage.setItem("fishNames", JSON.stringify(userList));
       sessionStorage.setItem("tank", JSON.stringify(fishTank));
       setTankCapacity(Math.round(fishTank.capacity));
-    });
-  };
+  })
+}
 
-  const overStockedMessage = () => {
-    if (fishTank.capacity > 100) {
+  const overStockedMessage = () =>{
+    if (fishTank.capacity > 100)
+    {
       setMessage("Tank is overstocked!");
       toggleShowA();
     }
-  };
+  } 
 
   const renderFish = () => {
     //add fish image to tank
@@ -148,39 +143,17 @@ const Aquarium = () => {
       });
 
       //check the fish's location in the tank and add the appropriate class
-      if (fish.locationTank === "Top levels") {
+      if (fish.locationTank == "Top levels") {
         $img.addClass("aquariumFish");
-      } else if (fish.locationTank === "Middle levels") {
+      } else if (fish.locationTank == "Middle levels") {
         $img.addClass("aquariumFishMiddle");
-      } else if (fish.locationTank === "Bottom levels") {
+      } else if (fish.locationTank == "Bottom levels") {
         $img.addClass("aquariumFishBottom");
       }
-      let maxDimension = Math.max(tempTank.length, tempTank.width);
 
-      if ((fish.averageSize / maxDimension) * 40 > 50) {
-        // doesn't move
-        $img.addClass("fishAnimAquariumXLarge");
-      } else if (
-        (fish.averageSize / maxDimension) * 40 < 50 &&
-        (fish.averageSize / maxDimension) * 40 > 20
-      ) {
-        //Big fish animation
-        $img.addClass("fishAnimAquariumLarge");
-      } else if (
-        (fish.averageSize / maxDimension) * 40 < 20 &&
-        (fish.averageSize / maxDimension) * 40 > 10
-      ) {
-        //medium fish animation
-        $img.addClass("fishAnimAquariumMedium");
-      } else {
-        // small fish animation
-        $img.addClass("fishAnimAquariumSmall");
-      }
-
+      $img.addClass("fishAnimAquarium");
       //////////////////
-      var elements = document.querySelectorAll(
-        ".fishAnimAquariumSmall, .fishAnimAquariumMedium, .fishAnimAquariumLarge, .fishAnimAquariumXLarge"
-      );
+      var elements = document.querySelectorAll(".fishAnimAquarium");
       var animationDuration = 30000; // in milliseconds
 
       // Set the animationDelay of each element to a random value
@@ -191,14 +164,14 @@ const Aquarium = () => {
       }
       $($img).insertAfter(aquariumImg);
 
-      document.getElementById(fish.fishKey).style.width = fish.fishScale;
+      document.getElementById(fish.fishKey).style.width=fish.fishScale;
       /////////////////
     });
   };
 
   //sessionStorage.setItem("tank", JSON.stringify(fishTank));
   const addFish = (value) => {
-    if (testTankSize(inputLength, inputWidth, inputHeight) === true) {
+    if (testTankSize(inputLength, inputWidth, inputHeight) == true) {
       setTimeout(getKey(value.fishID), 1).toString();
       let fish = new Fish(
         value.fishID,
@@ -215,115 +188,73 @@ const Aquarium = () => {
         value.fishImage,
         key1
       );
-      if (testCapacity(fishTank, fish) === true) {
-        if (testTemperature(fishTank, fish) === true) {
-          if (testPH(fishTank, fish) === true) {
-            if (testFishSize(userList, fish, fishTank) === true) {
-              if(testFishAggression(userList, fish) == true)
-              {
-                  //calculates tank capacity occupied
-                fishTank.capacity =
+      if (testCapacity(fishTank, fish) == true) {
+        if (testTemperature(fishTank, fish) == true) {
+          if (testPH(fishTank, fish) == true) {
+            if (testFishSize(userList, fish, fishTank) == true) {
+              //calculates tank capacity occupied
+              fishTank.capacity =
                 fishTank.capacity +
                 (1 - (fishTank.size - fish.averageSize) / fishTank.size) * 100;
+                
+              setTankCapacity(Math.round(fishTank.capacity));
 
-                setTankCapacity(Math.round(fishTank.capacity));
+              var maxDimension = Math.max(fishTank.length, fishTank.width, fishTank.height);
+              fish.fishScale = (((fish.averageSize/maxDimension)*40).toString()+"%");
+              console.log(fish.fishScale);
 
-                var maxDimension = Math.max(
-                  fishTank.length,
-                  fishTank.width,
-                  fishTank.height
-                );
-                fish.fishScale =
-                  ((fish.averageSize / maxDimension) * 40).toString() + "%";
-                console.log(fish.fishScale);
+              userList.push(fish);
 
-                userList.push(fish);
+              setUserList(userList);
+              setFishTank(fishTank);
+              sessionStorage.setItem("tank", JSON.stringify(fishTank));
 
-                setUserList(userList);
-                setFishTank(fishTank);
-                sessionStorage.setItem("tank", JSON.stringify(fishTank));
+              sessionStorage.setItem("fishNames", JSON.stringify(userList));
+              arrFish = JSON.parse(sessionStorage.getItem("fishNames"));
 
-                sessionStorage.setItem("fishNames", JSON.stringify(userList));
-                arrFish = JSON.parse(sessionStorage.getItem("fishNames"));
+              setMessage(
+                "Added: " + fishNameChange(fish.commonName, fish.scientificName)
+              );
+              //add fish image to tank
+              let aquariumImg = document.getElementById("aquarium");
+              var $img = $("<img />", {
+                src: require("./images/" + fish.image),
+                id: fish.fishKey,
+              });
 
-                setMessage(
-                  "Added: " + fishNameChange(fish.commonName, fish.scientificName)
-                );
-                //add fish image to tank
-                let aquariumImg = document.getElementById("aquarium");
-                var $img = $("<img />", {
-                  src: require("./images/" + fish.image),
-                  id: fish.fishKey,
-                });
-
-                //check the fish's location in the tank and add the appropriate class
-                if (fish.locationTank === "Top levels") {
-                  $img.addClass("aquariumFish");
-                } else if (fish.locationTank === "Middle levels") {
-                  $img.addClass("aquariumFishMiddle");
-                } else if (fish.locationTank === "Bottom levels") {
-                  $img.addClass("aquariumFishBottom");
-                }
-                var maxDimension = Math.max(fishTank.length, fishTank.width);
-                // console.log(maxDimension);
-                //Sets CSS animation based on Fish size
-                if ((fish.averageSize / maxDimension) * 40 > 50) {
-                  // doesn't move
-                  $img.addClass("fishAnimAquariumXLarge");
-                } else if (
-                  (fish.averageSize / maxDimension) * 40 < 50 &&
-                  (fish.averageSize / maxDimension) * 40 > 20
-                ) {
-                  //Big fish animation
-                  $img.addClass("fishAnimAquariumLarge");
-                } else if (
-                  (fish.averageSize / maxDimension) * 40 < 20 &&
-                  (fish.averageSize / maxDimension) * 40 > 10
-                ) {
-                  //medium fish animation
-                  $img.addClass("fishAnimAquariumMedium");
-                } else {
-                  // small fish animation
-                  $img.addClass("fishAnimAquariumSmall");
-                }
-                // $img.addClass("fishAnimAquariumSmall");
-
-                //////////////////SETS THE FISH ANIMATION DELAY TO A RANDOM NUMBER
-
-                $($img).insertAfter(aquariumImg);
-
-                document.getElementById(fish.fishKey).style.width =
-                  ((fish.averageSize / maxDimension) * 40).toString() + "%";
-                // document.getElementById(fish.fishKey).style.width="100%";
-                console.log(
-                  ((fish.averageSize / maxDimension) * 100).toString() + "%"
-                );
-                console.log(document.getElementById(fish.fishKey).style.width);
-
-                //dynamicly scales the fish size
-                document.getElementById(fish.fishKey).style.width =
-                  fish.fishScale;
-
-                var animationDuration = 30;
-                var randomDuration = Math.floor(
-                  Math.random() * animationDuration * -1
-                );
-
-                (function () {
-                  document
-                    .getElementById(fish.fishKey)
-                    .style.setProperty("--animation-delay", randomDuration + "s");
-                })();
-
-                /////////////////
-
-                toggleShowA();
+              //check the fish's location in the tank and add the appropriate class
+              if (fish.locationTank == "Top levels") {
+                $img.addClass("aquariumFish");
+              } else if (fish.locationTank == "Middle levels") {
+                $img.addClass("aquariumFishMiddle");
+              } else if (fish.locationTank == "Bottom levels") {
+                $img.addClass("aquariumFishBottom");
               }
-              else
-              {
-                setMessage("Fish aggression is invalid");
+
+              $img.addClass("fishAnimAquarium");
+
+              //////////////////SETS THE FISH ANIMATION DELAY TO A RANDOM NUMBER
+
+              $($img).insertAfter(aquariumImg);
+                       
+              //dynamicly scales the fish size
+              document.getElementById(fish.fishKey).style.width=fish.fishScale;
+             
+
+              var animationDuration = 30;
+              var randomDuration = Math.floor(
+                Math.random() * animationDuration * -1
+              );
+
+              (function () {
+                document
+                  .getElementById(fish.fishKey)
+                  .style.setProperty("--animation-delay", randomDuration + "s");
+              })();
+
+              /////////////////
+
               toggleShowA();
-              }
             } else {
               setMessage("Fish size is invalid");
               toggleShowA();
@@ -374,7 +305,7 @@ const Aquarium = () => {
   }
 
   const getUserList = () => {
-    if (sessionStorage.length > 1) {
+    if (sessionStorage.length > 0) {
       arrFish = JSON.parse(sessionStorage.getItem("fishNames"));
       setUserList(arrFish);
     }
@@ -408,8 +339,8 @@ const Aquarium = () => {
     setTankDimensions();
     userList.forEach((element) => {
       if (
-        testTemperature(fishTank, element) === true &&
-        testPH(fishTank, element) === true
+        testTemperature(fishTank, element) == true &&
+        testPH(fishTank, element) == true
       ) {
         sessionStorage.setItem("tank", JSON.stringify(fishTank));
         setFishTank(fishTank);
@@ -442,11 +373,10 @@ const Aquarium = () => {
   };
 
   function fishNameChange(commonName, ScientificName) {
-    if (commonName !== "N/A") {
+    if (commonName != "N/A") {
       var pageTitleName = commonName;
     } else {
-      //var pageTitleName = ScientificName;
-      pageTitleName = ScientificName;
+      var pageTitleName = ScientificName;
     }
 
     return pageTitleName;
@@ -559,15 +489,9 @@ const Aquarium = () => {
               />
             </div>
             <button
-              type="submit"
-              onSubmit={updateTankDimensions(
-                inputLength,
-                inputWidth,
-                inputHeight,
-                userList
-              )}
-            >
-              Update Dimensions
+            type="submit"
+            onSubmit={updateTankDimensions(inputLength, inputWidth, inputHeight, userList)}>
+            Update Dimensions
             </button>
           </form>
           <br />
@@ -597,7 +521,6 @@ const Aquarium = () => {
           <div className="">
             <div className="searchAquarium ">
               <button
-                id="searchBtn"
                 onClick={(event) => {
                   searchFishAll();
                 }}
@@ -608,22 +531,17 @@ const Aquarium = () => {
                 id="search"
                 type="search"
                 placeholder="Ex. Betta splendens"
-                onBlur={(event) => {
-                  // console.log(event.target.value);
+                onChange={(event) => {
                   setSearch(event.target.value);
                 }}
-                // onKeyDown={(event) => {
-                //   setSearch(event.target.value);
-                //   if (event.key === "Enter") {
-                //     // setSearch(event.target.value);
-                //     console.log(event.key);
-                //     // event.preventDefault();
-                //     console.log(event.target.value);
-                //     searchFishAll();
-                //   }
-                // }}
+                onKeyPress={(event) => {
+                  if (event.key === "Enter") {
+                    event.preventDefault();
+                    console.log("Click");
+                    searchFishAll();
+                  }
+                }}
               />
-
               <br />
               <br />
               <br />
