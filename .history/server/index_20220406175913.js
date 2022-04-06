@@ -119,6 +119,6 @@ app.get('/fishGet', (req, res) => {
     })
 });
 
-app.listen(process.env.REMOTE_PORT, ()=>{
-    console.log("Server running on port");
+app.listen(3001, ()=>{
+    console.log("Server running on port 3001");
 });
