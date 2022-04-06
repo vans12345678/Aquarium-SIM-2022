@@ -701,7 +701,7 @@ button{
      }
 
      50% {
-      top: 25%;
+ 
        transform: rotate(10deg);
  
      
@@ -723,7 +723,7 @@ button{
      
      100% {
         left: 20%;
-      top: 30%;
+      top: 20%;
       /* bottom:50%; */
        transform: rotate(10deg) ; 
      }

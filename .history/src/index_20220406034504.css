@@ -643,7 +643,7 @@ button{
 
      0% {
        /* margin-left:99%; */
-       left: 52%;
+       left: 54%;
         /* transform: translateX(0px); */
       transform: rotate(10deg);
      }
@@ -681,7 +681,7 @@ button{
      }
      100% {
    
-         left: 52%;
+         left: 54%;
          transform:rotateY(180deg);
        transform: rotate(10deg) ; 
      }
@@ -692,7 +692,7 @@ button{
      0% {
  
       left: 20%;
-      top: 30%;
+      top: 20%;
       /* bottom:50%; */
       transform: rotate(10deg);
      }
@@ -701,7 +701,7 @@ button{
      }
 
      50% {
-      top: 25%;
+ 
        transform: rotate(10deg);
  
      
@@ -723,7 +723,7 @@ button{
      
      100% {
         left: 20%;
-      top: 30%;
+      top: 20%;
       /* bottom:50%; */
        transform: rotate(10deg) ; 
      }

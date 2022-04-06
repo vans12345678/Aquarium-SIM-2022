@@ -150,20 +150,18 @@ const Home = () => {
           <figure>
             <div id="avatarAshok"></div>
             <figcaption className="boldText">Ashok Sasitharan</figcaption>
-            <figcaption>Front-end Developer</figcaption>
-            <figcaption>Lead Animator</figcaption>
+            <figcaption className="boldText">Front-end Developer</figcaption>
+            <figcaption className="boldText">Lead Animator</figcaption>
           </figure>
           <figure>
             <div id="avatarJacky"></div>
             <figcaption className="boldText">Jacky Yuan</figcaption>
-            <figcaption>Back-end Developer</figcaption>
-            <figcaption>Graphic Designer</figcaption>
+            <figcaption className="boldText">Project Analyst</figcaption>
           </figure>
           <figure>
             <div id="avatarAndre"></div>
             <figcaption className="boldText">Andre Agrippa</figcaption>
-            <figcaption>Back-end Developer</figcaption>
-            <figcaption>Database Admin</figcaption>
+            <figcaption className="boldText">Project Manager</figcaption>
           </figure>
         </div>
 
