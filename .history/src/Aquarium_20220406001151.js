@@ -664,16 +664,9 @@ const Aquarium = () => {
               >
                 <ListGroup variant="flush">
                   {userList.map((item) => {
-                    let quantity = 0;
-
-                    if (userList.includes(item.id)) {
-                      quantity++;
-                      console.log(quantity);
-                    }
                     return (
                       <ListGroup.Item key={item.fishKey}>
                         {/* key={setTimeout(getKey(item.id), 1)} */}
-                        {console.log(item.id)}
                         <img
                           className="listImg"
                           src={require("./images/" + item.image)}
@@ -681,9 +674,7 @@ const Aquarium = () => {
                           height="50px"
                           alt=""
                         />
-                        {fishNameChange(item.commonName, item.scientificName) +
-                          " x" +
-                          quantity}
+                        {fishNameChange(item.commonName, item.scientificName)}
                         <FishInfoModal
                           scientificName={item.scientificName}
                           commonName={item.commonName}

@@ -142,6 +142,7 @@ const Aquarium = () => {
 
   //function that renders the fish after the page has been refreshed
   const renderFish = () => {
+    //add fish image to tank
     let aquariumImg = document.getElementById("aquarium");
 
     arrFish.forEach((fish) => {
@@ -187,15 +188,12 @@ const Aquarium = () => {
       );
 
       /////////////Creates Random Animation delay//////////////////
-      var animationDuration = 30000;
-      //loops through all of the fish an applies a random delay too their animations
+      var animationDuration = 30000; // in milliseconds
       for (var i = 0; i < elements.length; i++) {
         var randomDuration = Math.floor(Math.random() * animationDuration * -1);
         elements[i].style.animationDelay = randomDuration + "ms";
       }
-      /////////////////////////////////////////////////////////////
-
-      //Add fish image to tank
+      /////////////Creates Random Animation delay//////////////////
       $($img).insertAfter(aquariumImg);
 
       document.getElementById(fish.fishKey).style.width = fish.fishScale;
@@ -315,7 +313,7 @@ const Aquarium = () => {
                   .style.setProperty("--animation-delay", randomDuration + "s");
               })();
 
-              /////////////////////////////////////////////////////////////
+              /////////////Creates Random Animation delay//////////////////
 
               toggleShowA();
             } else {
@@ -463,12 +461,16 @@ const Aquarium = () => {
     setTankCapacity(Math.round(fishTank.capacity));
   }
 
-  //creates a unique key with id and miliseconds
   function getKey(id) {
     const d = new Date();
     let ms = d.getMilliseconds();
 
     key1 = id.toString() + "_" + ms;
+    // console.log(id);
+    // key1 = id;
+    console.log(key1);
+
+    // return id;
   }
 
   function AlertDismissible() {
@@ -599,17 +601,21 @@ const Aquarium = () => {
                 type="search"
                 placeholder="Ex. Betta splendens"
                 onBlur={(event) => {
+                  // console.log(event.target.value);
                   setSearch(event.target.value);
                 }}
                 // onKeyDown={(event) => {
                 //   setSearch(event.target.value);
                 //   if (event.key === "Enter") {
                 //     // setSearch(event.target.value);
+                //     console.log(event.key);
                 //     // event.preventDefault();
+                //     console.log(event.target.value);
                 //     searchFishAll();
                 //   }
                 // }}
               />
+
               <br />
               <br />
               <br />
@@ -664,26 +670,18 @@ const Aquarium = () => {
               >
                 <ListGroup variant="flush">
                   {userList.map((item) => {
-                    let quantity = 0;
-
-                    if (userList.includes(item.id)) {
-                      quantity++;
-                      console.log(quantity);
-                    }
                     return (
                       <ListGroup.Item key={item.fishKey}>
                         {/* key={setTimeout(getKey(item.id), 1)} */}
-                        {console.log(item.id)}
                         <img
+                          // id={key}
                           className="listImg"
                           src={require("./images/" + item.image)}
                           width="100px"
                           height="50px"
                           alt=""
                         />
-                        {fishNameChange(item.commonName, item.scientificName) +
-                          " x" +
-                          quantity}
+                        {fishNameChange(item.commonName, item.scientificName)}
                         <FishInfoModal
                           scientificName={item.scientificName}
                           commonName={item.commonName}

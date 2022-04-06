@@ -673,7 +673,7 @@ const Aquarium = () => {
                     return (
                       <ListGroup.Item key={item.fishKey}>
                         {/* key={setTimeout(getKey(item.id), 1)} */}
-                        {console.log(item.id)}
+                        { console.log(item.id);}
                         <img
                           className="listImg"
                           src={require("./images/" + item.image)}

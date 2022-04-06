@@ -665,48 +665,46 @@ const Aquarium = () => {
                 <ListGroup variant="flush">
                   {userList.map((item) => {
                     let quantity = 0;
-
-                    if (userList.includes(item.id)) {
-                      quantity++;
-                      console.log(quantity);
-                    }
-                    return (
-                      <ListGroup.Item key={item.fishKey}>
-                        {/* key={setTimeout(getKey(item.id), 1)} */}
-                        {console.log(item.id)}
-                        <img
-                          className="listImg"
-                          src={require("./images/" + item.image)}
-                          width="100px"
-                          height="50px"
-                          alt=""
-                        />
-                        {fishNameChange(item.commonName, item.scientificName) +
-                          " x" +
-                          quantity}
-                        <FishInfoModal
-                          scientificName={item.scientificName}
-                          commonName={item.commonName}
-                          fishAverageSize={item.averageSize}
-                          lowerPH={item.lowerPH}
-                          upperPH={item.upperPH}
-                          lowerTemp={item.lowerTemp}
-                          upperTemp={item.upperTemp}
-                          aggressiveSameSpecies={item.aggressiveSameSpecies}
-                          aggressiveOtherSpecies={item.aggressiveOtherSpecies}
-                          fishLocationTank={item.locationTank}
-                        />
-                        <Button
-                          className="listBtn"
-                          variant="warning"
-                          onClick={function () {
-                            removeFish(item);
-                          }}
-                        >
-                          Remove
-                        </Button>
-                      </ListGroup.Item>
-                    );
+                    if (userList.includes(item.id))
+                      return (
+                        <ListGroup.Item key={item.fishKey}>
+                          {/* key={setTimeout(getKey(item.id), 1)} */}
+                          <img
+                            className="listImg"
+                            src={require("./images/" + item.image)}
+                            width="100px"
+                            height="50px"
+                            alt=""
+                          />
+                          {fishNameChange(
+                            item.commonName,
+                            item.scientificName
+                          ) +
+                            " x" +
+                            quantity}
+                          <FishInfoModal
+                            scientificName={item.scientificName}
+                            commonName={item.commonName}
+                            fishAverageSize={item.averageSize}
+                            lowerPH={item.lowerPH}
+                            upperPH={item.upperPH}
+                            lowerTemp={item.lowerTemp}
+                            upperTemp={item.upperTemp}
+                            aggressiveSameSpecies={item.aggressiveSameSpecies}
+                            aggressiveOtherSpecies={item.aggressiveOtherSpecies}
+                            fishLocationTank={item.locationTank}
+                          />
+                          <Button
+                            className="listBtn"
+                            variant="warning"
+                            onClick={function () {
+                              removeFish(item);
+                            }}
+                          >
+                            Remove
+                          </Button>
+                        </ListGroup.Item>
+                      );
                   })}
                 </ListGroup>
               </Card>

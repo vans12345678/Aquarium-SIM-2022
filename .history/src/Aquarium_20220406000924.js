@@ -469,6 +469,8 @@ const Aquarium = () => {
     let ms = d.getMilliseconds();
 
     key1 = id.toString() + "_" + ms;
+
+    console.log(key1);
   }
 
   function AlertDismissible() {
@@ -599,17 +601,21 @@ const Aquarium = () => {
                 type="search"
                 placeholder="Ex. Betta splendens"
                 onBlur={(event) => {
+                  // console.log(event.target.value);
                   setSearch(event.target.value);
                 }}
                 // onKeyDown={(event) => {
                 //   setSearch(event.target.value);
                 //   if (event.key === "Enter") {
                 //     // setSearch(event.target.value);
+                //     console.log(event.key);
                 //     // event.preventDefault();
+                //     console.log(event.target.value);
                 //     searchFishAll();
                 //   }
                 // }}
               />
+
               <br />
               <br />
               <br />
@@ -664,26 +670,18 @@ const Aquarium = () => {
               >
                 <ListGroup variant="flush">
                   {userList.map((item) => {
-                    let quantity = 0;
-
-                    if (userList.includes(item.id)) {
-                      quantity++;
-                      console.log(quantity);
-                    }
                     return (
                       <ListGroup.Item key={item.fishKey}>
                         {/* key={setTimeout(getKey(item.id), 1)} */}
-                        {console.log(item.id)}
                         <img
+                          // id={key}
                           className="listImg"
                           src={require("./images/" + item.image)}
                           width="100px"
                           height="50px"
                           alt=""
                         />
-                        {fishNameChange(item.commonName, item.scientificName) +
-                          " x" +
-                          quantity}
+                        {fishNameChange(item.commonName, item.scientificName)}
                         <FishInfoModal
                           scientificName={item.scientificName}
                           commonName={item.commonName}

@@ -663,6 +663,7 @@ const Aquarium = () => {
                 style={{ width: useWindowSize(0), height: "40rem" }}
               >
                 <ListGroup variant="flush">
+                  console.log(userList);
                   {userList.map((item) => {
                     let quantity = 0;
 
@@ -673,7 +674,6 @@ const Aquarium = () => {
                     return (
                       <ListGroup.Item key={item.fishKey}>
                         {/* key={setTimeout(getKey(item.id), 1)} */}
-                        {console.log(item.id)}
                         <img
                           className="listImg"
                           src={require("./images/" + item.image)}

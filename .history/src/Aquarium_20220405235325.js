@@ -7,7 +7,8 @@ import { ListGroup, Button, Card } from "react-bootstrap";
 import Axios from "axios";
 import { useState, useEffect, useLayoutEffect } from "react";
 import { Fish } from "./classes/Fish";
-
+import { FixedSizeList } from "react-window";
+import InfiniteScroll from "react-infinite-scroll-component";
 import Toast from "react-bootstrap/Toast";
 import { ProgressBar } from "react-bootstrap";
 import ToastContainer from "react-bootstrap/ToastContainer";
@@ -140,10 +141,10 @@ const Aquarium = () => {
     }
   };
 
-  //function that renders the fish after the page has been refreshed
   const renderFish = () => {
+    //add fish image to tank
     let aquariumImg = document.getElementById("aquarium");
-
+    console.log(userList);
     arrFish.forEach((fish) => {
       // console.log(fish);
       var $img = $("<img />", {
@@ -181,24 +182,22 @@ const Aquarium = () => {
         $img.addClass("fishAnimAquariumSmall");
       }
 
-      //select all elements with the listed classes
+      //////////////////
       var elements = document.querySelectorAll(
         ".fishAnimAquariumSmall, .fishAnimAquariumMedium, .fishAnimAquariumLarge, .fishAnimAquariumXLarge"
       );
+      var animationDuration = 30000; // in milliseconds
 
-      /////////////Creates Random Animation delay//////////////////
-      var animationDuration = 30000;
-      //loops through all of the fish an applies a random delay too their animations
+      // Set the animationDelay of each element to a random value
+      // between 0 and animationDuration:
       for (var i = 0; i < elements.length; i++) {
         var randomDuration = Math.floor(Math.random() * animationDuration * -1);
         elements[i].style.animationDelay = randomDuration + "ms";
       }
-      /////////////////////////////////////////////////////////////
-
-      //Add fish image to tank
       $($img).insertAfter(aquariumImg);
 
       document.getElementById(fish.fishKey).style.width = fish.fishScale;
+      /////////////////
     });
   };
 
@@ -303,7 +302,7 @@ const Aquarium = () => {
               document.getElementById(fish.fishKey).style.width =
                 fish.fishScale;
 
-              /////////////Creates Random Animation delay//////////////////
+              /////////////Function for random animation delay//////////////////
               var animationDuration = 30;
               var randomDuration = Math.floor(
                 Math.random() * animationDuration * -1
@@ -315,7 +314,7 @@ const Aquarium = () => {
                   .style.setProperty("--animation-delay", randomDuration + "s");
               })();
 
-              /////////////////////////////////////////////////////////////
+              /////////////Function for random animation delay//////////////////
 
               toggleShowA();
             } else {
@@ -463,12 +462,16 @@ const Aquarium = () => {
     setTankCapacity(Math.round(fishTank.capacity));
   }
 
-  //creates a unique key with id and miliseconds
   function getKey(id) {
     const d = new Date();
     let ms = d.getMilliseconds();
 
     key1 = id.toString() + "_" + ms;
+    // console.log(id);
+    // key1 = id;
+    console.log(key1);
+
+    // return id;
   }
 
   function AlertDismissible() {
@@ -599,17 +602,21 @@ const Aquarium = () => {
                 type="search"
                 placeholder="Ex. Betta splendens"
                 onBlur={(event) => {
+                  // console.log(event.target.value);
                   setSearch(event.target.value);
                 }}
                 // onKeyDown={(event) => {
                 //   setSearch(event.target.value);
                 //   if (event.key === "Enter") {
                 //     // setSearch(event.target.value);
+                //     console.log(event.key);
                 //     // event.preventDefault();
+                //     console.log(event.target.value);
                 //     searchFishAll();
                 //   }
                 // }}
               />
+
               <br />
               <br />
               <br />
@@ -664,26 +671,18 @@ const Aquarium = () => {
               >
                 <ListGroup variant="flush">
                   {userList.map((item) => {
-                    let quantity = 0;
-
-                    if (userList.includes(item.id)) {
-                      quantity++;
-                      console.log(quantity);
-                    }
                     return (
                       <ListGroup.Item key={item.fishKey}>
                         {/* key={setTimeout(getKey(item.id), 1)} */}
-                        {console.log(item.id)}
                         <img
+                          // id={key}
                           className="listImg"
                           src={require("./images/" + item.image)}
                           width="100px"
                           height="50px"
                           alt=""
                         />
-                        {fishNameChange(item.commonName, item.scientificName) +
-                          " x" +
-                          quantity}
+                        {fishNameChange(item.commonName, item.scientificName)}
                         <FishInfoModal
                           scientificName={item.scientificName}
                           commonName={item.commonName}

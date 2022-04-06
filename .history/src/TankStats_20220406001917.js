@@ -23,7 +23,6 @@ const TankStats = () => {
 
     //If tank session variable has stuff in it
     if (temp != null) {
-      //get the tank info from the session storage and call state functions
       tempTank = JSON.parse(sessionStorage.getItem("tank"));
       setFishTank(tempTank);
       setLength(tempTank.length);
