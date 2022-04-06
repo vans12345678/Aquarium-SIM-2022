@@ -1,7 +1,7 @@
 export const testTemperature = (tank, newFish) => {
   let flag = true;
 
-  if (tank.lowerTemp === 0 || tank.upperTemp === 0) {
+  if (tank.lowerTemp == 0 || tank.upperTemp == 0) {
     //set the first fish in the tanks temps as the tanks temps
     tank.upperTemp = newFish.upperTemp;
     tank.lowerTemp = newFish.lowerTemp;
@@ -46,7 +46,7 @@ export const testTemperature = (tank, newFish) => {
 export const testPH = (tank, newFish) => {
   let flag = true;
 
-  if (tank.lowerPH === 0 || tank.upperPH === 0) {
+  if (tank.lowerPH == 0 || tank.upperPH == 0) {
     //set the first fish in the tanks temps as the tanks temps
     tank.upperPH = newFish.upperPH;
     tank.lowerPH = newFish.lowerPH;
@@ -78,7 +78,7 @@ export const testPH = (tank, newFish) => {
 
 export const testFishSize = (userList, newFish, tank) => {
   //Check to see if the new fish being added has a valid size
-  if (tank.averageFishSize === 0) {
+  if (tank.averageFishSize == 0) {
     tank.averageFishSize = newFish.averageSize;
 
     // console.log("Upper Size: " + tank.averageFishSize);
@@ -86,7 +86,7 @@ export const testFishSize = (userList, newFish, tank) => {
   } else if (
     newFish.averageSize > tank.averageFishSize + 25 ||
     (newFish.averageSize < tank.averageFishSize - 25 &&
-      newFish.averageSize !== tank.averageFishSize)
+      newFish.averageSize != tank.averageFishSize)
   ) {
     // console.log("Fish size invalid");
     // console.log("Upper Size: " + tank.averageFishSize);
@@ -164,11 +164,11 @@ export const testFishAggression = (userList, newFish) => {
   let flag = true;
   userList.forEach((element) => {
     //Check to see if added fish is same as any fish in list
-    if (newFish.id === element.id) {
+    if (newFish.id == element.id) {
       //console.log("Same fish");
       if (
-        newFish.aggressiveSameSpecies === "aggressive/territorial" ||
-        element.aggressiveSameSpecies === "aggressive/territorial"
+        newFish.aggressiveSameSpecies == "aggressive/territorial" ||
+        element.aggressiveSameSpecies == "aggressive/territorial"
       ) {
         //console.log("They are aggressive/territorial to each other");
         flag = false;
@@ -177,30 +177,30 @@ export const testFishAggression = (userList, newFish) => {
     //Otherwise they are different fish
     else {
       if (
-        newFish.aggressiveOtherSpecies === "peaceful" &&
-        element.aggressiveOtherSpecies === "peaceful"
+        newFish.aggressiveOtherSpecies == "peaceful" &&
+        element.aggressiveOtherSpecies == "peaceful"
       ) {
         flag = true;
       } else if (
-        (newFish.aggressiveOtherSpecies === "peaceful" &&
-          element.aggressiveOtherSpecies === "aggressive/territorial") ||
-        (newFish.aggressiveOtherSpecies === "aggressive/territorial" &&
-          element.aggressiveOtherSpecies === "peaceful")
+        (newFish.aggressiveOtherSpecies == "peaceful" &&
+          element.aggressiveOtherSpecies == "aggressive/territorial") ||
+        (newFish.aggressiveOtherSpecies == "aggressive/territorial" &&
+          element.aggressiveOtherSpecies == "peaceful")
       ) {
         //console.log("The different fish are aggressive/territorial to each other");
         flag = false;
       }
       //If new fish is peaceful but there are aggressive to smaller in the tank
       else if (
-        newFish.aggressiveOtherSpecies === "peaceful" &&
-        element.aggressiveOtherSpecies === "aggressive to smaller"
+        newFish.aggressiveOtherSpecies == "peaceful" &&
+        element.aggressiveOtherSpecies == "aggressive to smaller"
       ) {
         //If the aggressive to smaller in the tank is bigger than new fish
         if (element.averageSize * 0.85 > newFish.averageSize) {
           // console.log("new fish is peaceful, but there is aggressive to smaller in fish list that is bigger");
           flag = false;
         }
-      } else if (newFish.aggressiveOtherSpecies === "aggressive to smaller") {
+      } else if (newFish.aggressiveOtherSpecies == "aggressive to smaller") {
         // console.log("aggressive to smaller1")
 
         //Check so see if the size of the new fish is bigger than any fish in list

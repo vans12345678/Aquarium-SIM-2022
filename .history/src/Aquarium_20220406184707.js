@@ -60,6 +60,7 @@ const Aquarium = () => {
   };
 
   function handlePageClick({ selected: selectedPage }) {
+    console.log("selected page", selectedPage);
     setCurrentPage(selectedPage);
   }
 
@@ -74,6 +75,7 @@ const Aquarium = () => {
     getUserList();
     getFishTank();
     renderFish();
+     eslint-disable-line react-hooks/exhaustive-deps
   }, []);
 
   let [userList, setUserList] = useState([]);
@@ -150,6 +152,7 @@ const Aquarium = () => {
       if (tempCapacity < 100) {
         element.fishScale =
           ((element.averageSize / maxDimension) * 40).toString() + "%";
+        console.log(element.fishScale);
       }
       sessionStorage.setItem("fishNames", JSON.stringify(userList));
       sessionStorage.setItem("tank", JSON.stringify(fishTank));
@@ -171,6 +174,7 @@ const Aquarium = () => {
     let aquariumImg = document.getElementById("aquarium");
 
     arrFish.forEach((fish) => {
+      // console.log(fish);
       var $img = $("<img />", {
         src: require("./images/" + fish.image),
         id: fish.fishKey,
@@ -279,6 +283,7 @@ const Aquarium = () => {
                   (fishTank.length + fishTank.width + fishTank.height) / 3;
                 fish.fishScale =
                   ((fish.averageSize / maxDimension) * 40).toString() + "%";
+                console.log(fish.fishScale);
 
                 userList.push(fish);
 
@@ -310,7 +315,7 @@ const Aquarium = () => {
                 }
                 maxDimension =
                   (fishTank.length + fishTank.width + fishTank.height) / 3;
-
+                // console.log(maxDimension);
                 //Sets CSS animation based on Fish size
                 if ((fish.averageSize / maxDimension) * 40 > 50) {
                   // doesn't move
@@ -339,6 +344,11 @@ const Aquarium = () => {
 
                 document.getElementById(fish.fishKey).style.width =
                   ((fish.averageSize / maxDimension) * 40).toString() + "%";
+                // document.getElementById(fish.fishKey).style.width="100%";
+                console.log(
+                  ((fish.averageSize / maxDimension) * 100).toString() + "%"
+                );
+                console.log(document.getElementById(fish.fishKey).style.width);
 
                 //dynamicly scales the fish size
                 document.getElementById(fish.fishKey).style.width =
@@ -450,6 +460,7 @@ const Aquarium = () => {
       setWidth(tempTank.width);
       setHeight(tempTank.height);
       setTankCapacity(Math.round(tempTank.capacity));
+      console.log("Fish tank present");
     }
   };
 
@@ -457,7 +468,7 @@ const Aquarium = () => {
     const index = userList.indexOf(value);
 
     userList.splice(index, 1);
-
+    console.log(document.getElementById(value.fishKey));
     $("#" + value.fishKey).remove();
     setUserList(userList);
     fishTank = new Tank(0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
@@ -668,7 +679,7 @@ const Aquarium = () => {
                 onKeyPress={(event) => {
                   if (event.key === "Enter") {
                     event.preventDefault();
-
+                    console.log("Click");
                     searchFishAll();
                   }
                 }}

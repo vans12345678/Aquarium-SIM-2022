@@ -60,6 +60,7 @@ const Aquarium = () => {
   };
 
   function handlePageClick({ selected: selectedPage }) {
+    console.log("selected page", selectedPage);
     setCurrentPage(selectedPage);
   }
 
@@ -92,13 +93,13 @@ const Aquarium = () => {
 
   const setTankDimensions = () => {
     if (
-      testTankSize(inputLength, inputWidth, inputHeight, fishTank, userList) ===
+      testTankSize(inputLength, inputWidth, inputHeight, fishTank, userList) ==
       true
     ) {
       if (
-        parseInt(inputLength) !== fishTank.length ||
-        parseInt(inputWidth) !== fishTank.width ||
-        parseInt(inputHeight) !== fishTank.height
+        parseInt(inputLength) != fishTank.length ||
+        parseInt(inputWidth) != fishTank.width ||
+        parseInt(inputHeight) != fishTank.height
       ) {
         fishTank.length = parseInt(inputLength);
         fishTank.width = parseInt(inputWidth);
@@ -116,13 +117,13 @@ const Aquarium = () => {
 
   const updateTankDimensions = () => {
     if (
-      testTankSize(inputLength, inputWidth, inputHeight, fishTank, userList) ===
+      testTankSize(inputLength, inputWidth, inputHeight, fishTank, userList) ==
       true
     ) {
       if (
-        parseInt(inputLength) !== fishTank.length ||
-        parseInt(inputWidth) !== fishTank.width ||
-        parseInt(inputHeight) !== fishTank.height
+        parseInt(inputLength) != fishTank.length ||
+        parseInt(inputWidth) != fishTank.width ||
+        parseInt(inputHeight) != fishTank.height
       ) {
         fishTank.length = parseInt(inputLength);
         fishTank.width = parseInt(inputWidth);
@@ -150,6 +151,7 @@ const Aquarium = () => {
       if (tempCapacity < 100) {
         element.fishScale =
           ((element.averageSize / maxDimension) * 40).toString() + "%";
+        console.log(element.fishScale);
       }
       sessionStorage.setItem("fishNames", JSON.stringify(userList));
       sessionStorage.setItem("tank", JSON.stringify(fishTank));
@@ -171,6 +173,7 @@ const Aquarium = () => {
     let aquariumImg = document.getElementById("aquarium");
 
     arrFish.forEach((fish) => {
+      // console.log(fish);
       var $img = $("<img />", {
         src: require("./images/" + fish.image),
         id: fish.fishKey,
@@ -266,7 +269,7 @@ const Aquarium = () => {
         if (testTemperature(fishTank, fish) === true) {
           if (testPH(fishTank, fish) === true) {
             if (testFishSize(userList, fish, fishTank) === true) {
-              if (testFishAggression(userList, fish) === true) {
+              if (testFishAggression(userList, fish) == true) {
                 //calculates tank capacity occupied
                 fishTank.capacity =
                   fishTank.capacity +
@@ -279,6 +282,7 @@ const Aquarium = () => {
                   (fishTank.length + fishTank.width + fishTank.height) / 3;
                 fish.fishScale =
                   ((fish.averageSize / maxDimension) * 40).toString() + "%";
+                console.log(fish.fishScale);
 
                 userList.push(fish);
 
@@ -308,9 +312,9 @@ const Aquarium = () => {
                 } else if (fish.locationTank === "Bottom levels") {
                   $img.addClass("aquariumFishBottom");
                 }
-                maxDimension =
+                var maxDimension =
                   (fishTank.length + fishTank.width + fishTank.height) / 3;
-
+                // console.log(maxDimension);
                 //Sets CSS animation based on Fish size
                 if ((fish.averageSize / maxDimension) * 40 > 50) {
                   // doesn't move
@@ -339,6 +343,11 @@ const Aquarium = () => {
 
                 document.getElementById(fish.fishKey).style.width =
                   ((fish.averageSize / maxDimension) * 40).toString() + "%";
+                // document.getElementById(fish.fishKey).style.width="100%";
+                console.log(
+                  ((fish.averageSize / maxDimension) * 100).toString() + "%"
+                );
+                console.log(document.getElementById(fish.fishKey).style.width);
 
                 //dynamicly scales the fish size
                 document.getElementById(fish.fishKey).style.width =
@@ -450,6 +459,7 @@ const Aquarium = () => {
       setWidth(tempTank.width);
       setHeight(tempTank.height);
       setTankCapacity(Math.round(tempTank.capacity));
+      console.log("Fish tank present");
     }
   };
 
@@ -457,7 +467,7 @@ const Aquarium = () => {
     const index = userList.indexOf(value);
 
     userList.splice(index, 1);
-
+    console.log(document.getElementById(value.fishKey));
     $("#" + value.fishKey).remove();
     setUserList(userList);
     fishTank = new Tank(0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
@@ -668,7 +678,7 @@ const Aquarium = () => {
                 onKeyPress={(event) => {
                   if (event.key === "Enter") {
                     event.preventDefault();
-
+                    console.log("Click");
                     searchFishAll();
                   }
                 }}
@@ -748,8 +758,15 @@ const Aquarium = () => {
               >
                 <ListGroup variant="flush">
                   {userList.map((item) => {
+                    let quantity = 0;
+                    console.log(item.id);
+                    if (userList.includes(item.id)) {
+                      quantity++;
+                    }
                     return (
                       <ListGroup.Item key={item.fishKey}>
+                        {/* key={setTimeout(getKey(item.id), 1)} */}
+                        {console.log(item.id)}
                         <img
                           className="listImg"
                           src={require("./images/" + item.image)}
@@ -757,7 +774,9 @@ const Aquarium = () => {
                           height="50px"
                           alt=""
                         />
-                        {fishNameChange(item.commonName, item.scientificName)}
+                        {fishNameChange(item.commonName, item.scientificName) +
+                          " x" +
+                          quantity}
                         <FishInfoModal
                           scientificName={item.scientificName}
                           commonName={item.commonName}

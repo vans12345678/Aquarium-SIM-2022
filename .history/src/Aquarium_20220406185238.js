@@ -65,7 +65,7 @@ const Aquarium = () => {
 
   function resetPage() {
     setCurrentPage(0);
-    const offset = currentPage * perPage;
+    offset = currentPage * perPage;
     return currentPage;
   }
 
