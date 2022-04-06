@@ -1,5 +1,5 @@
 const express = require('express');
-//require('dotenv').config();
+require('dotenv').config();
 const app = express();
 const mysql = require('mysql');
 const bodyParser = require('body-parser');
@@ -16,10 +16,10 @@ var jsonParser = bodyParser.json()
 var urlencodedParser = bodyParser.urlencoded({ extended: false })
 
 const db = mysql.createConnection({
-    host: process.env.REMOTE_HOST,
-    user:process.env.REMOTE_USERNAME,
-    password: process.env.REMOTE_PASSWORD,
-    database: process.env.REMOTE_DATABASE
+    host: "us-cdbr-east-05.cleardb.net",
+    user: "bd4bc2a4af2532",
+    password: "9d6b070",
+    database: "heroku_c46a86f28385fd5"
 });
 
 app.post('/fish', urlencodedParser, (req, res) => {
