@@ -140,45 +140,20 @@ export const testCapacity = (tank, newFish) => {
 export const testTankSize = (length, width, height, tank, userList) =>
 {
   let flag = true;
-  let sumAllFish = 0;
-  let tempTankSize = tank.size = Math.round(
-    (parseInt(length) *
-      parseInt(width) *
-      parseInt(height)) /
-      1000
-  );
 
   userList.forEach(element => 
   {
-    sumAllFish = sumAllFish + element.averageSize; 
+    if(length > 0 && width > 0 && height > 0 || tank.capacity+(1-((tank.size - (element.averageSize))/tank.size))*100 <= 100)
+    {
+      flag = true;
+    }
+    else
+    {
+      flag = false;
+    }
   });
 
-  //If all inputs are numeric and 
-  if(length > 0 && width > 0 && height > 0 && (tank.capacity+(1-((tempTankSize - (sumAllFish))/tempTankSize))*100) <= 100)
-  {
-    flag = true;
-  }
-  else
-  {
-    console.log("DAS");
-    flag = false;
-  }
-  return flag;
 }
-
-// export const testTankSize2 = (length, width, height) =>
-// {
-//   if(length > 0 && width > 0 && height > 0)
-//   {
-    
-//     return true;
-//   }
-//   else
-//   {
-//     return false;
-//   }
-// }
-
 
 export const testFishAggression = (userList, newFish) =>
 {

@@ -152,6 +152,7 @@ export const testTankSize = (length, width, height, tank, userList) =>
   {
     sumAllFish = sumAllFish + element.averageSize; 
   });
+  
 
   //If all inputs are numeric and 
   if(length > 0 && width > 0 && height > 0 && (tank.capacity+(1-((tempTankSize - (sumAllFish))/tempTankSize))*100) <= 100)
@@ -166,18 +167,18 @@ export const testTankSize = (length, width, height, tank, userList) =>
   return flag;
 }
 
-// export const testTankSize2 = (length, width, height) =>
-// {
-//   if(length > 0 && width > 0 && height > 0)
-//   {
+export const testTankSize2 = (length, width, height) =>
+{
+  if(length > 0 && width > 0 && height > 0)
+  {
     
-//     return true;
-//   }
-//   else
-//   {
-//     return false;
-//   }
-// }
+    return true;
+  }
+  else
+  {
+    return false;
+  }
+}
 
 
 export const testFishAggression = (userList, newFish) =>

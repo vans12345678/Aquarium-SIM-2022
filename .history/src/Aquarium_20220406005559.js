@@ -70,7 +70,7 @@ const Aquarium = () => {
   let tempTank = new Tank(0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
 
   const setTankDimensions = () => {
-    if (testTankSize(inputLength, inputWidth, inputHeight, fishTank, userList) == true) {
+    if (testTankSize(inputLength, inputWidth, inputHeight) == true) {
       if (
         parseInt(inputLength) != fishTank.length ||
         parseInt(inputWidth) != fishTank.width ||
@@ -91,7 +91,7 @@ const Aquarium = () => {
   };
 
   const updateTankDimensions = () => {
-    if (testTankSize(inputLength, inputWidth, inputHeight, fishTank, userList) == true) {
+    if (testTankSize(inputLength, inputWidth, inputHeight, tank, userList) == true) {
       if (parseInt(inputLength) != fishTank.length || parseInt(inputWidth) != fishTank.width || parseInt(inputHeight) != fishTank.height) {
         fishTank.length = parseInt(inputLength);
         fishTank.width = parseInt(inputWidth);
@@ -198,7 +198,7 @@ const Aquarium = () => {
 
   //sessionStorage.setItem("tank", JSON.stringify(fishTank));
   const addFish = (value) => {
-    if (testTankSize(inputLength, inputWidth, inputHeight, fishTank, userList) === true) {
+    if (testTankSize(inputLength, inputWidth, inputHeight) === true) {
       setTimeout(getKey(value.fishID), 1).toString();
       let fish = new Fish(
         value.fishID,

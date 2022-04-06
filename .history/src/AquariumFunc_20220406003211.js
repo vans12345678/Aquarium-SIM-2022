@@ -137,48 +137,18 @@ export const testCapacity = (tank, newFish) => {
 }
 
 
-export const testTankSize = (length, width, height, tank, userList) =>
+export const testTankSize = (length, width, height) =>
 {
-  let flag = true;
-  let sumAllFish = 0;
-  let tempTankSize = tank.size = Math.round(
-    (parseInt(length) *
-      parseInt(width) *
-      parseInt(height)) /
-      1000
-  );
-
-  userList.forEach(element => 
+  if(length > 0 && width > 0 && height > 0)
   {
-    sumAllFish = sumAllFish + element.averageSize; 
-  });
-
-  //If all inputs are numeric and 
-  if(length > 0 && width > 0 && height > 0 && (tank.capacity+(1-((tempTankSize - (sumAllFish))/tempTankSize))*100) <= 100)
-  {
-    flag = true;
+    
+    return true;
   }
   else
   {
-    console.log("DAS");
-    flag = false;
+    return false;
   }
-  return flag;
 }
-
-// export const testTankSize2 = (length, width, height) =>
-// {
-//   if(length > 0 && width > 0 && height > 0)
-//   {
-    
-//     return true;
-//   }
-//   else
-//   {
-//     return false;
-//   }
-// }
-
 
 export const testFishAggression = (userList, newFish) =>
 {
@@ -215,7 +185,8 @@ export const testFishAggression = (userList, newFish) =>
         {
           console.log("new fish is peaceful, but there is aggressive to smaller in fish list that is bigger");
           flag = false;
-        }    
+        }
+        
       }
       else if(newFish.aggressiveOtherSpecies == "aggressive to smaller")
       {
