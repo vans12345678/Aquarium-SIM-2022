@@ -16,10 +16,10 @@ var jsonParser = bodyParser.json()
 var urlencodedParser = bodyParser.urlencoded({ extended: false })
 
 const db = mysql.createConnection({
-    host: process.env.REMOTE_HOST,
-    user:process.env.REMOTE_USERNAME,
-    password: process.env.REMOTE_PASSWORD,
-    database: process.env.REMOTE_DATABASE
+    host: process.env.DB_HOST,
+    user:process.env.DB_USERNAME,
+    password: process.env.DB_PASSWORD,
+    database: process.env.DB_DATABASE
 });
 
 app.post('/fish', urlencodedParser, (req, res) => {
@@ -119,6 +119,6 @@ app.get('/fishGet', (req, res) => {
     })
 });
 
-app.listen(3001, ()=>{
-    console.log("Server running on port 3001");
+app.listen(3006, ()=>{
+    console.log("Server running on port 3006");
 });
