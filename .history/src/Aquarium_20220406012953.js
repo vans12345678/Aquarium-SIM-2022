@@ -10,7 +10,6 @@ import { Fish } from "./classes/Fish";
 import Toast from "react-bootstrap/Toast";
 import { ProgressBar } from "react-bootstrap";
 import ToastContainer from "react-bootstrap/ToastContainer";
-import ReactPaginate from "react-paginate";
 
 import TankStats from "./TankStats";
 import FishInfoModal from "./FishInfoModal";
@@ -42,8 +41,6 @@ const Aquarium = () => {
   let [message, setMessage] = useState("");
   const [currentPage, setCurrentPage] = useState(0);
 
-  const perPage = 5;
-
   const getFish = () => {
     Axios.get("http://localhost:3001/fishGet").then((response) => {
       setFishList(response.data);
@@ -55,7 +52,6 @@ const Aquarium = () => {
         setFishList(response.data);
       }
     );
-    resetPage();
   };
 
   function handlePageClick({ selected: selectedPage }) {
@@ -648,16 +644,11 @@ const Aquarium = () => {
                 id="search"
                 type="search"
                 placeholder="Ex. Betta splendens"
-                onChange={(event) => {
+                onBlur={(event) => {
+                  // console.log(event.target.value);
                   setSearch(event.target.value);
                 }}
-                onKeyPress={(event) => {
-                  if (event.key === "Enter") {
-                    event.preventDefault();
-                    console.log("Click");
-                    searchFishAll();
-                  }
-                }}/>
+              />
 
               <br />
               <br />

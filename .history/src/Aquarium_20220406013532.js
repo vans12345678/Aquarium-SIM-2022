@@ -648,16 +648,11 @@ const Aquarium = () => {
                 id="search"
                 type="search"
                 placeholder="Ex. Betta splendens"
-                onChange={(event) => {
+                onBlur={(event) => {
+                  // console.log(event.target.value);
                   setSearch(event.target.value);
                 }}
-                onKeyPress={(event) => {
-                  if (event.key === "Enter") {
-                    event.preventDefault();
-                    console.log("Click");
-                    searchFishAll();
-                  }
-                }}/>
+              />
 
               <br />
               <br />
