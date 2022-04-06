@@ -398,7 +398,7 @@ figcaption {
   z-index: 1;
   position: relative;
 
-  height: 750px;
+  height: 700px;
 }
 .alert {
   width:40%;    
@@ -504,7 +504,7 @@ button{
 }
 
 
-/*Aquarium Fish Images and Animations  */
+/*Aquarium Fish Images and Animations(TBD)   */
 
 .aquariumFish{
   position :absolute; 

@@ -20,7 +20,7 @@ import {
   testPH,
   testFishSize,
   testFishAggression,
-  testCapacity,
+  testCapacity
 } from "./AquariumFunc";
 import { Tank } from "./classes/Tank";
 
@@ -91,6 +91,7 @@ const Aquarium = () => {
 
   const pageCount = Math.ceil(fishList.length / perPage);
 
+
   const setTankDimensions = () => {
     if (testTankSize(inputLength, inputWidth, inputHeight) == true) {
       if (
@@ -114,11 +115,7 @@ const Aquarium = () => {
 
   const updateTankDimensions = () => {
     if (testTankSize(inputLength, inputWidth, inputHeight) == true) {
-      if (
-        parseInt(inputLength) != fishTank.length ||
-        parseInt(inputWidth) != fishTank.width ||
-        parseInt(inputHeight) != fishTank.height
-      ) {
+      if (parseInt(inputLength) != fishTank.length || parseInt(inputWidth) != fishTank.width || parseInt(inputHeight) != fishTank.height) {
         fishTank.length = parseInt(inputLength);
         fishTank.width = parseInt(inputWidth);
         fishTank.height = parseInt(inputHeight);
@@ -143,35 +140,50 @@ const Aquarium = () => {
     );
     userList.forEach((element) => {
       tempCapacity =
-        tempCapacity +
+      tempCapacity +
         (1 - (fishTank.size - element.averageSize) / fishTank.size) * 100;
-      setFishTank(fishTank);
-      if (tempCapacity < 100) {
-        element.fishScale =
-          ((element.averageSize / maxDimension) * 40).toString() + "%";
-        console.log(element.fishScale);
-      }
-      sessionStorage.setItem("fishNames", JSON.stringify(userList));
-      sessionStorage.setItem("tank", JSON.stringify(fishTank));
-    });
-    if (tempCapacity < 100) {
-      fishTank.capacity = tempCapacity;
-      setTankCapacity(Math.round(fishTank.capacity));
-    }
+          setFishTank(fishTank);
+          if (tempCapacity < 100)
+          {
+            element.fishScale =
+            ((element.averageSize / maxDimension) * 40).toString() + "%";
+          console.log(element.fishScale);
+          }
+          sessionStorage.setItem("fishNames", JSON.stringify(userList));
+          sessionStorage.setItem("tank", JSON.stringify(fishTank));
+        });
+        if (tempCapacity < 100)
+        {        
+          fishTank.capacity = tempCapacity;
+          setTankCapacity(Math.round(fishTank.capacity));
+        }
+
   };
 
-  const capacitySwitch = () => {
-    if (userList.length > 0) {
-      updateTankDimensions(inputLength, inputWidth, inputHeight, userList);
-    } else {
-      setTankDimensions(inputLength, inputWidth, inputHeight, userList);
+  const capacitySwitch = () =>{
+    if (userList.length > 0)
+    {
+      updateTankDimensions(
+        inputLength,
+        inputWidth,
+        inputHeight,
+        userList);
     }
-  };
+    else
+    {
+      setTankDimensions(
+        inputLength,
+        inputWidth,
+        inputHeight,
+        userList);
+    }
+  }
 
-  //function that renders the fish after the page has been refreshed
+
   const renderFish = () => {
+    //add fish image to tank
     let aquariumImg = document.getElementById("aquarium");
-
+    console.log(userList);
     arrFish.forEach((fish) => {
       // console.log(fish);
       var $img = $("<img />", {
@@ -209,31 +221,28 @@ const Aquarium = () => {
         $img.addClass("fishAnimAquariumSmall");
       }
 
-      //select all elements with the listed classes
+      //////////////////
       var elements = document.querySelectorAll(
         ".fishAnimAquariumSmall, .fishAnimAquariumMedium, .fishAnimAquariumLarge, .fishAnimAquariumXLarge"
       );
+      var animationDuration = 30000; // in milliseconds
 
-      /////////////Creates Random Animation delay//////////////////
-      var animationDuration = 30000;
-      //loops through all of the fish an applies a random delay too their animations
+      // Set the animationDelay of each element to a random value
+      // between 0 and animationDuration:
       for (var i = 0; i < elements.length; i++) {
         var randomDuration = Math.floor(Math.random() * animationDuration * -1);
         elements[i].style.animationDelay = randomDuration + "ms";
       }
-      /////////////////////////////////////////////////////////////
-
-      //Add fish image to tank
       $($img).insertAfter(aquariumImg);
 
       document.getElementById(fish.fishKey).style.width = fish.fishScale;
+      /////////////////
     });
   };
 
   //sessionStorage.setItem("tank", JSON.stringify(fishTank));
   const addFish = (value) => {
     if (testTankSize(inputLength, inputWidth, inputHeight) === true) {
-      //creates a unique key
       setTimeout(getKey(value.fishID), 1).toString();
       let fish = new Fish(
         value.fishID,
@@ -254,12 +263,12 @@ const Aquarium = () => {
         if (testTemperature(fishTank, fish) === true) {
           if (testPH(fishTank, fish) === true) {
             if (testFishSize(userList, fish, fishTank) === true) {
-              if (testFishAggression(userList, fish) == true) {
-                //calculates tank capacity occupied
+              if(testFishAggression(userList, fish) == true)
+              {
+                  //calculates tank capacity occupied
                 fishTank.capacity =
-                  fishTank.capacity +
-                  (1 - (fishTank.size - fish.averageSize) / fishTank.size) *
-                    100;
+                fishTank.capacity +
+                (1 - (fishTank.size - fish.averageSize) / fishTank.size) * 100;
 
                 setTankCapacity(Math.round(fishTank.capacity));
 
@@ -282,8 +291,7 @@ const Aquarium = () => {
                 arrFish = JSON.parse(sessionStorage.getItem("fishNames"));
 
                 setMessage(
-                  "Added: " +
-                    fishNameChange(fish.commonName, fish.scientificName)
+                  "Added: " + fishNameChange(fish.commonName, fish.scientificName)
                 );
                 //add fish image to tank
                 let aquariumImg = document.getElementById("aquarium");
@@ -348,18 +356,17 @@ const Aquarium = () => {
                 (function () {
                   document
                     .getElementById(fish.fishKey)
-                    .style.setProperty(
-                      "--animation-delay",
-                      randomDuration + "s"
-                    );
+                    .style.setProperty("--animation-delay", randomDuration + "s");
                 })();
 
                 /////////////////
 
                 toggleShowA();
-              } else {
+              }
+              else
+              {
                 setMessage("Fish aggression is invalid");
-                toggleShowA();
+              toggleShowA();
               }
             } else {
               setMessage("Fish size is invalid");
@@ -506,12 +513,16 @@ const Aquarium = () => {
     setTankCapacity(Math.round(fishTank.capacity));
   }
 
-  //creates a unique key with id and miliseconds
   function getKey(id) {
     const d = new Date();
     let ms = d.getMilliseconds();
 
     key1 = id.toString() + "_" + ms;
+    // console.log(id);
+    // key1 = id;
+    console.log(key1);
+
+    // return id;
   }
 
   function AlertDismissible() {
@@ -650,8 +661,7 @@ const Aquarium = () => {
                     console.log("Click");
                     searchFishAll();
                   }
-                }}
-              />
+                }}/>
 
               <br />
               <br />
@@ -727,26 +737,18 @@ const Aquarium = () => {
               >
                 <ListGroup variant="flush">
                   {userList.map((item) => {
-                    let quantity = 0;
-
-                    if (userList.includes(item.id)) {
-                      quantity++;
-                      console.log(quantity);
-                    }
                     return (
                       <ListGroup.Item key={item.fishKey}>
                         {/* key={setTimeout(getKey(item.id), 1)} */}
-                        {console.log(item.id)}
                         <img
+                          // id={key}
                           className="listImg"
                           src={require("./images/" + item.image)}
                           width="100px"
                           height="50px"
                           alt=""
                         />
-                        {fishNameChange(item.commonName, item.scientificName) +
-                          " x" +
-                          quantity}
+                        {fishNameChange(item.commonName, item.scientificName)}
                         <FishInfoModal
                           scientificName={item.scientificName}
                           commonName={item.commonName}

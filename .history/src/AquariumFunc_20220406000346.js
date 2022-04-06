@@ -152,8 +152,8 @@ export const testTankSize = (length, width, height) =>
 
 export const testFishAggression = (userList, newFish) =>
 {
-    let flag = true;
-    userList.forEach((element) => {
+  let flag = true;
+  userList.forEach((element) => {
 
     //Check to see if added fish is same as any fish in list
     if(newFish.id == element.id)
@@ -198,7 +198,23 @@ export const testFishAggression = (userList, newFish) =>
           flag = false;
         }
       }
+      // else if(element.aggressiveOtherSpecies == "aggressive to smaller")
+      // {
+      //   console.log("aggressive to smaller")
+      //   //Check so see if the size of the new fish is bigger than any fish in list
+      //   if(element.averageSize * 0.85 < newFish.averageSize)
+      //   {
+      //     console.log("new fish (aggressive to smaller) is smaller than fishes in tank, meaning it won't be aggressive to others");
+      //     flag = true;
+      //   }
+      //   else
+      //   {
+      //     console.log("new fish (aggressive to smaller) is not smaller than fishes in tank, meaning it will be aggressive to others");
+      //     flag = false;
+      //   }
+      // }
     }
   });
+
   return flag;
 }
