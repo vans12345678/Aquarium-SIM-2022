@@ -1,6 +1,6 @@
 [[redirects]]
-  from = "https://aquarium-sim-2022.netlify.app"
-  to = "https://mysql-aquarium.herokuapp.com"
+  from = "https://mysql-aquarium.herokuapp.com"
+  to = "https://aquarium-sim-2022.netlify.app"
   status = 200
   force = true
 

@@ -1,0 +1,10 @@
+[[redirects]]
+  from = "https://mysql-aquarium.herokuapp.com"
+  to = "https://aquarium-sim-2022.netlify.app"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
