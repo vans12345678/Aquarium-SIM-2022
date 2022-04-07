@@ -23,7 +23,7 @@ const Compendium = () => {
 
   //function for retrieving specific fish entries using search
   const searchFishAll = () => {
-    Axios.post("https://aquarium-sim-2022.netlify.app/fishComp", { search: search }).then(
+    Axios.post("https://aquarium-sim-2022.netlify.app//fishComp", { search: search }).then(
       (response) => {
         setFishList(response.data);
       }
