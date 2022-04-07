@@ -223,30 +223,21 @@ export const testFishAggression = (userList, newFish) =>
         console.log("new is aggressive, old is peaceful");
 
         //Check so see if the old fish is bigger than new fish
-        if(newFish.averageSize * 0.85 > element.averageSize)
+        if(element.averageSize* 0.85 > newFish.averageSize)
         {
           console.log("new fish is smaller than tank fish whom is aggressive to smaller");
           flag = false;
         }
-      }
-      else if(newFish.aggressiveOtherSpecies == "aggressive to smaller" && element.aggressiveOtherSpecies == "aggressive to smaller")  
-      {
-         //Check so see if the old fish is bigger than new fish
-         if(element.averageSize* 0.85 > newFish.averageSize)
-         {
-           console.log("old fish (aggressive to smaller) bigger than new fish (aggressive to smaller)");
-           flag = false;
-         }
-        //Checks to see if the new fish is bigger than the old fish
-        else if(newFish.averageSize * 0.85 > element.averageSize)
+        //Check to see if new fish is bigger than old fish
+        else if(newFish.averageSize * 0.85 < element.averageSize)
         {
-          console.log("new fish (aggressive to smaller) is bigger than old fish (aggressive to smaller)");
-          flag = false;
+          console.log("new fish (aggressive to smaller) is smaller than fishes in tank, meaning it won't be aggressive to others");
+          flag = true;
         }  
         else
         {
-          console.log("new fish (aggressive to smaller) same size as old fish (aggressive to smaller)");
-          flag = flag;
+          console.log("new fish (aggressive to smaller) is not smaller than fishes in tank, meaning it will be aggressive to others");
+          flag = false;
         }
       }
     }
