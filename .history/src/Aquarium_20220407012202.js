@@ -238,18 +238,12 @@ const Aquarium = () => {
       //random positions for fish based on their tank location
       var randomTop = Math.floor(Math.random() * (35 - 5 + 1) + 5);
       var randomMid = Math.floor(Math.random() * (60 - 40 + 1) + 40);
-      var randomBot = Math.floor(Math.random() * (65 - 62 + 1) + 62);
-      var randomBotSmall = Math.floor(Math.random() * (85 - 75 + 1) + 75);
+      var randomBot = Math.floor(Math.random() * (85 - 70 + 1) + 70);
 
       if (fish.locationTank === "Top levels") {
         document.getElementById(fish.fishKey).style.top = randomTop + "%";
       } else if (fish.locationTank === "Middle levels") {
         document.getElementById(fish.fishKey).style.top = randomMid + "%";
-      } else if (
-        fish.locationTank === "Bottom levels" &&
-        (fish.averageSize / maxDimension) * 40 <= 20
-      ) {
-        document.getElementById(fish.fishKey).style.top = randomBotSmall + "%";
       } else if (fish.locationTank === "Bottom levels") {
         document.getElementById(fish.fishKey).style.top = randomBot + "%";
       }
@@ -378,24 +372,14 @@ const Aquarium = () => {
                     Math.random() * (60 - 40 + 1) + 40
                   );
                   var randomBot = Math.floor(
-                    Math.random() * (65 - 62 + 1) + 62
+                    Math.random() * (85 - 70 + 1) + 70
                   );
-                  var randomBotSmall = Math.floor(
-                    Math.random() * (85 - 75 + 1) + 75
-                  );
-
                   if (fish.locationTank === "Top levels") {
                     document.getElementById(fish.fishKey).style.top =
                       randomTop + "%";
                   } else if (fish.locationTank === "Middle levels") {
                     document.getElementById(fish.fishKey).style.top =
                       randomMid + "%";
-                  } else if (
-                    fish.locationTank === "Bottom levels" &&
-                    (fish.averageSize / maxDimension) * 40 <= 20
-                  ) {
-                    document.getElementById(fish.fishKey).style.top =
-                      randomBotSmall + "%";
                   } else if (fish.locationTank === "Bottom levels") {
                     document.getElementById(fish.fishKey).style.top =
                       randomBot + "%";
@@ -536,6 +520,12 @@ const Aquarium = () => {
     return pageTitleName;
   }
 
+  function exportTank() {
+    getUserList();
+    console.log(arrFish);
+    const file = new Blob([]);
+  }
+
   function clearSession() {
     userList.forEach((element) => {
       $("#" + element.fishKey).remove();
@@ -673,7 +663,7 @@ const Aquarium = () => {
             <div className="aquariumBubbles aquariumBubble-6"></div>
             <div className="aquariumBubbles aquariumBubble-3"></div>
           </div>
-
+          <br />
           <div className="">
             <div className="searchAquarium ">
               <button
@@ -838,6 +828,14 @@ const Aquarium = () => {
                 }}
               >
                 Clear
+              </Button>
+              <Button
+                variant="info"
+                onClick={function () {
+                  exportTank();
+                }}
+              >
+                Export
               </Button>
             </div>
           </div>

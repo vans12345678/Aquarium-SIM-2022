@@ -249,7 +249,6 @@ const Aquarium = () => {
         fish.locationTank === "Bottom levels" &&
         (fish.averageSize / maxDimension) * 40 <= 20
       ) {
-        document.getElementById(fish.fishKey).style.top = randomBotSmall + "%";
       } else if (fish.locationTank === "Bottom levels") {
         document.getElementById(fish.fishKey).style.top = randomBot + "%";
       }
@@ -380,22 +379,12 @@ const Aquarium = () => {
                   var randomBot = Math.floor(
                     Math.random() * (65 - 62 + 1) + 62
                   );
-                  var randomBotSmall = Math.floor(
-                    Math.random() * (85 - 75 + 1) + 75
-                  );
-
                   if (fish.locationTank === "Top levels") {
                     document.getElementById(fish.fishKey).style.top =
                       randomTop + "%";
                   } else if (fish.locationTank === "Middle levels") {
                     document.getElementById(fish.fishKey).style.top =
                       randomMid + "%";
-                  } else if (
-                    fish.locationTank === "Bottom levels" &&
-                    (fish.averageSize / maxDimension) * 40 <= 20
-                  ) {
-                    document.getElementById(fish.fishKey).style.top =
-                      randomBotSmall + "%";
                   } else if (fish.locationTank === "Bottom levels") {
                     document.getElementById(fish.fishKey).style.top =
                       randomBot + "%";
