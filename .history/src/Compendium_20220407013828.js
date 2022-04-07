@@ -7,10 +7,6 @@ import { useRouteMatch } from "react-router-dom";
 import ReactPaginate from "react-paginate";
 import Wishlist from "./Wishlist";
 
-
-app.use(cors({origin: '*'}));
-app.use(express.json());
-
 const perPage = 10;
 
 const Compendium = () => {
@@ -20,14 +16,14 @@ const Compendium = () => {
 
   //function for retrieving all fish entries
   const getFish = () => {
-    Axios.get("https://mysql-aquarium.herokuapp.com/fishGet", cors()).then((response) => {
+    Axios.get("https://mysql-aquarium.herokuapp.com/fishGet").then((response) => {
       setFishList(response.data);
     });
   };
 
   //function for retrieving specific fish entries using search
   const searchFishAll = () => {
-    Axios.post("https://mysql-aquarium.herokuapp.com/fishComp",cors() , { search: search }).then(
+    Axios.post("https://mysql-aquarium.herokuapp.com/fishComp", { search: search }).then(
       (response) => {
         setFishList(response.data);
       }

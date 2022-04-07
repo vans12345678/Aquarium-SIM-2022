@@ -7,10 +7,6 @@ import { useRouteMatch } from "react-router-dom";
 import ReactPaginate from "react-paginate";
 import Wishlist from "./Wishlist";
 
-
-app.use(cors({origin: '*'}));
-app.use(express.json());
-
 const perPage = 10;
 
 const Compendium = () => {
