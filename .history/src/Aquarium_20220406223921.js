@@ -373,8 +373,9 @@ const Aquarium = () => {
                     Math.random() * (60 - 40 + 1) + 40
                   );
                   var randomBot = Math.floor(
-                    Math.random() * (90 - 70 + 1) + 70
+                    Math.random() * (75 - 65 + 1) + 65
                   );
+
                   if (fish.locationTank === "Top levels") {
                     document.getElementById(fish.fishKey).style.top =
                       randomTop + "%";

@@ -42,7 +42,6 @@ const Aquarium = () => {
   let [tankCapacity, setTankCapacity] = useState(0);
   let [message, setMessage] = useState("");
   const [currentPage, setCurrentPage] = useState(0);
-  const [currentPageUser, setCurrentPageUser] = useState(0);
 
   const perPage = 5;
 
@@ -64,8 +63,8 @@ const Aquarium = () => {
     setCurrentPage(selectedPage);
   }
 
-  function handlePageClickUser({ selected: selectedPageUser }) {
-    setCurrentPageUser(selectedPageUser);
+  function handlePageClickUser({ selected: selectedPage }) {
+    setCurrentPage(selectedPage);
   }
   function resetPage() {
     setCurrentPage(0);
@@ -73,9 +72,9 @@ const Aquarium = () => {
     return currentPage;
   }
   function resetPageUser() {
-    setCurrentPageUser(0);
-    const offsetUser = currentPageUser * perPage;
-    return currentPageUser;
+    setCurrentPage(0);
+    const offset = currentPage * perPage;
+    return currentPage;
   }
 
   useEffect(() => {
@@ -94,13 +93,10 @@ const Aquarium = () => {
   let tempTank = new Tank(0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
 
   const offset = currentPage * perPage;
-  const offsetUser = currentPageUser * perPage;
 
   const currentPageData = fishList.slice(offset, offset + perPage);
-  const currentPageDataUser = userList.slice(offsetUser, offsetUser + perPage);
 
   const pageCount = Math.ceil(fishList.length / perPage);
-  const pageCountUser = Math.ceil(userList.length / perPage);
 
   const setTankDimensions = () => {
     if (
@@ -239,7 +235,7 @@ const Aquarium = () => {
       document.getElementById(fish.fishKey).style.width = fish.fishScale;
       var randomTop = Math.floor(Math.random() * (35 - 5 + 1) + 5);
       var randomMid = Math.floor(Math.random() * (60 - 40 + 1) + 40);
-      var randomBot = Math.floor(Math.random() * (90 - 70 + 1) + 70);
+      var randomBot = Math.floor(Math.random() * (75 - 65 + 1) + 65);
 
       if (fish.locationTank === "Top levels") {
         document.getElementById(fish.fishKey).style.top = randomTop + "%";
@@ -373,8 +369,9 @@ const Aquarium = () => {
                     Math.random() * (60 - 40 + 1) + 40
                   );
                   var randomBot = Math.floor(
-                    Math.random() * (90 - 70 + 1) + 70
+                    Math.random() * (75 - 65 + 1) + 65
                   );
+
                   if (fish.locationTank === "Top levels") {
                     document.getElementById(fish.fishKey).style.top =
                       randomTop + "%";
@@ -658,7 +655,7 @@ const Aquarium = () => {
             <div className="aquariumBubbles aquariumBubble-6"></div>
             <div className="aquariumBubbles aquariumBubble-3"></div>
           </div>
-          <br />
+
           <div className="">
             <div className="searchAquarium ">
               <button
@@ -758,7 +755,7 @@ const Aquarium = () => {
                 style={{ width: useWindowSize(0), height: "40rem" }}
               >
                 <ListGroup variant="flush">
-                  {currentPageDataUser.map((item) => {
+                  {userList.map((item) => {
                     return (
                       <ListGroup.Item key={item.fishKey}>
                         <img
@@ -795,27 +792,6 @@ const Aquarium = () => {
                   })}
                 </ListGroup>
               </Card>
-              <ReactPaginate
-                containerClassName="pagination"
-                breakLabel="..."
-                nextLabel="next >"
-                onPageChange={handlePageClickUser}
-                pageRangeDisplayed={5}
-                marginPagesDisplayed={2}
-                pageCount={pageCountUser}
-                previousLabel="< previous"
-                renderOnZeroPageCount={null}
-                pageClassName="page-item"
-                pageLinkClassName="page-link"
-                previousClassName="page-item"
-                previousLinkClassName="page-link"
-                nextClassName="page-item"
-                nextLinkClassName="page-link"
-                breakClassName="page-item"
-                breakLinkClassName="page-link"
-                activeClassName="active"
-                forcePage={currentPageUser}
-              />
               <Button
                 variant="danger"
                 onClick={function () {

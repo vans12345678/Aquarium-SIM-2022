@@ -220,7 +220,7 @@ export const testFishAggression = (userList, newFish) => {
           console.log(
             "new fish (aggressive to smaller) is not smaller than fishes in tank, meaning it will be aggressive to others"
           );
-          console.log("HELLO");
+          console.log(newFish.aggressiveOtherSpecies);
           console.log(element.averageSize);
           flag = false;
         }
