@@ -14,12 +14,12 @@ const Listings = () => {
   const [currentPage, setCurrentPage] = useState(0);
 
   const getAllFish = () => {
-    Axios.post("http://localhost:3001/fishAll").then((response) => {
+    Axios.post("https://aquarium-sim-2022.herokuapp.com/fishAll").then((response) => {
       setFishList(response.data);
     });
   };
   const searchFish = () => {
-    Axios.post("http://localhost:3001/fish", { search: search }).then(
+    Axios.post("https://aquarium-sim-2022.herokuapp.com/fish", { search: search }).then(
       (response) => {
         setFishList(response.data);
       }
@@ -30,6 +30,7 @@ const Listings = () => {
   //initially grabs all the entries
   useEffect(() => {
     getAllFish();
+    console.log(process.env.DB_HOST);
   }, []);
 
   function handlePageClick({ selected: selectedPage }) {
