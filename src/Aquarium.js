@@ -44,19 +44,19 @@ const Aquarium = () => {
 
   const perPage = 5;
 
-  const getFish = () => {
-    Axios.get("http://localhost:3001/fishGet").then((response) => {
-      setFishList(response.data);
-    });
-  }; //function for retrieving specific fish entries using search
-  const searchFishAll = () => {
-    Axios.post("http://localhost:3001/fishComp", { search: search }).then(
-      (response) => {
-        setFishList(response.data);
-      }
-    );
-    resetPage();
-  };
+  // const getFish = () => {
+  //   Axios.get("http://localhost:3001/fishGet").then((response) => {
+  //     setFishList(response.data);
+  //   });
+  // }; //function for retrieving specific fish entries using search
+  // const searchFishAll = () => {
+  //   Axios.post("http://localhost:3001/fishComp", { search: search }).then(
+  //     (response) => {
+  //       setFishList(response.data);
+  //     }
+  //   );
+  //   resetPage();
+  // };
 
   function handlePageClick({ selected: selectedPage }) {
     setCurrentPage(selectedPage);
@@ -76,12 +76,12 @@ const Aquarium = () => {
     return currentPageUser;
   }
 
-  useEffect(() => {
-    getFish();
-    getUserList();
-    getFishTank();
-    renderFish();
-  }, []);
+  // useEffect(() => {
+  //   getFish();
+  //   getUserList();
+  //   getFishTank();
+  //   renderFish();
+  // }, []);
 
   let [userList, setUserList] = useState([]);
   let [fishTank, setFishTank] = useState(

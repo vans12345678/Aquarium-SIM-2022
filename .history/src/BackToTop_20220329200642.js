@@ -1,5 +1,0 @@
-const BackToTop = ({onClick}) () => {
-    return (
-      
-  )
-}

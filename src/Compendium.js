@@ -15,25 +15,25 @@ const Compendium = () => {
   const [currentPage, setCurrentPage] = useState(0);
 
   //function for retrieving all fish entries
-  const getFish = () => {
-    Axios.get("http://localhost:3001/fishGet").then((response) => {
-      setFishList(response.data);
-    });
-  };
+  // const getFish = () => {
+  //   Axios.get("http://localhost:3001/fishGet").then((response) => {
+  //     setFishList(response.data);
+  //   });
+  // };
 
-  //function for retrieving specific fish entries using search
-  const searchFishAll = () => {
-    Axios.post("http://localhost:3001/fishComp", { search: search }).then(
-      (response) => {
-        setFishList(response.data);
-      }
-    );
-    resetPage();
-  };
+  // //function for retrieving specific fish entries using search
+  // const searchFishAll = () => {
+  //   Axios.post("http://localhost:3001/fishComp", { search: search }).then(
+  //     (response) => {
+  //       setFishList(response.data);
+  //     }
+  //   );
+  //   resetPage();
+  // };
 
-  useEffect(() => {
-    getFish();
-  }, []);
+  // useEffect(() => {
+  //   getFish();
+  // }, []);
 
   function handlePageClick({ selected: selectedPage }) {
     // console.log("selected page", selectedPage);

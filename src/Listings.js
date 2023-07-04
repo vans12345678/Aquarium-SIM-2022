@@ -10,28 +10,28 @@ const perPage = 10;
 const Listings = () => {
   const [fishList, setFishList] = useState([]);
   const [userList, setUserList] = useState([]);
-  const [search, setSearch] = useState("");
+  // const [search, setSearch] = useState("");
   const [currentPage, setCurrentPage] = useState(0);
 
-  const getAllFish = () => {
-    Axios.post("http://localhost:3001/fishAll").then((response) => {
-      setFishList(response.data);
-    });
-  };
-  const searchFish = () => {
-    Axios.post("http://localhost:3001/fish", { search: search }).then(
-      (response) => {
-        setFishList(response.data);
-      }
-    );
-    resetPage();
-  };
+  // const getAllFish = () => {
+  //   Axios.post("http://localhost:3001/fishAll").then((response) => {
+  //     setFishList(response.data);
+  //   });
+  // };
+  // const searchFish = () => {
+  //   Axios.post("http://localhost:3001/fish", { search: search }).then(
+  //     (response) => {
+  //       setFishList(response.data);
+  //     }
+  //   );
+  //   resetPage();
+  // };
 
-  //initially grabs all the entries
-  useEffect(() => {
-    getAllFish();
-    //console.log(process.env.DB_HOST);
-  }, []);
+  // //initially grabs all the entries
+  // useEffect(() => {
+  //   getAllFish();
+  //   //console.log(process.env.DB_HOST);
+  // }, []);
 
   function handlePageClick({ selected: selectedPage }) {
     //console.log("selected page", selectedPage);
@@ -87,7 +87,8 @@ const Listings = () => {
         <h1 className="orangeText">Listings</h1>
         <p className="text-center ">{userList}</p>
         <div className="searchCenter">
-          <button onClick={searchFish}>Search Fish Names</button>
+          {/* <button onClick={searchFish}>Search Fish Names</button> */}
+          <button onClick=''>Search Fish Names</button>
           <input
             type="search"
             placeholder="Ex. Betta splendens"
@@ -98,7 +99,7 @@ const Listings = () => {
               if (event.key === "Enter") {
                 event.preventDefault();
                 //console.log("Click");
-                searchFish();
+                // searchFish();
               }
             }}
           />
